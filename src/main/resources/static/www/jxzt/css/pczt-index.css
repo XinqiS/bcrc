@@ -1,0 +1,89 @@
+
+
+.zpgw{ 
+	width:100%;
+	margin:10px 0 0 0;
+	overflow:hidden;
+	}
+.zpgw li{
+	width:20.83%;
+	margin:1% 1%;
+	border:dashed 1px #ccc;
+	padding:8px 1%;
+	float:left;
+	}
+.zpgw li a span{
+	font-size:18px;
+	color:#f13a29;
+	line-height:40px;
+	float:left;
+	}
+.zpgw li a em{
+	font-size:16px;
+	color:#333;
+	line-height:40px;
+	float:right;
+	}
+.zpgw li a p,.zpgw li a i{
+	font-size:14px;
+	color:#858686;
+	line-height:30px;
+	}
+.zpgw li a p{
+	display:block;
+	width:70%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	float:left;
+	}
+.zpgw li a i{
+	display:block;
+	float:right;
+	width:30%;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	text-align:right;
+	}
+.zpgw li:hover{
+	border:solid 1px #f13a29;
+	}
+
+
+
+.cont_left{
+	width:48%;
+	margin:0 0 10px 0;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

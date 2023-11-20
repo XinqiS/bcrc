@@ -1,0 +1,66 @@
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/system/cms/dbt/save" id="j_ad_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="dbtId" value="${dbt.dbtId!}">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <label for="j_username" class="control-label x85">代表团名称：</label>
+                    <input type="text" name="dbtName" id="j_username" value="${dbt.dbtName!,xss}" size="25" placeholder="代表团名称" data-rule="required;" >
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label for="dbtType" class="control-label x85"  data-toggle="selectpicker">类型：</label>
+                    <select name="dbtType" id="dbtType" style="width: 250px;height: 25px;">
+                        @if(isEmpty(dbt.dbtType)){
+                        <option value="0"> 全国人大代表</option>
+                        <option value="1" > 省人大代表</option>
+                        <option value="2"> 市人大代表 </option>
+                        <option value="3"> 县（市）区人大代表 </option>
+                        <option value="4"> 乡镇人大代表 </option>
+                        @}else if(dbt.dbtType == 0){
+                        <option value="0" selected> 全国人大代表</option>
+                        <option value="1" > 省人大代表</option>
+                        <option value="2"> 市人大代表 </option>
+                        <option value="3"> 县（市）区人大代表 </option>
+                        <option value="4"> 乡镇人大代表 </option>
+                        @}else if(dbt.dbtType ==1){
+                        <option value="0"> 全国人大代表</option>
+                        <option value="1" selected> 省人大代表</option>
+                        <option value="2"> 市人大代表 </option>
+                        <option value="3"> 县（市）区人大代表 </option>
+                        <option value="4"> 乡镇人大代表 </option>
+                        @}else if(dbt.dbtType ==2){
+                        <option value="0"> 全国人大代表</option>
+                        <option value="1"> 省人大代表</option>
+                        <option value="2" selected> 市人大代表 </option>
+                        <option value="3"> 县（市）区人大代表 </option>
+                        <option value="4"> 乡镇人大代表 </option>
+                        @}else if(dbt.dbtType ==3){
+                        <option value="0"> 全国人大代表</option>
+                        <option value="1"> 省人大代表</option>
+                        <option value="2"> 市人大代表 </option>
+                        <option value="3"selected> 县（市）区人大代表 </option>
+                        <option value="4"> 乡镇人大代表 </option>
+                        @}else if(dbt.dbtType ==4){
+                        <option value="0"> 全国人大代表</option>
+                        <option value="1"> 省人大代表</option>
+                        <option value="2"> 市人大代表 </option>
+                        <option value="3"> 县（市）区人大代表 </option>
+                        <option value="4" selected> 乡镇人大代表 </option>
+                        @}
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+    </div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+    </ul>
+</div>

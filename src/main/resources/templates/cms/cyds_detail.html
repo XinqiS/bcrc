@@ -1,0 +1,188 @@
+<style>
+    .measure-input{
+        background:transparent url("${ctxPath}/static/images/ruler.gif") repeat-x scroll 0 bottom
+    }
+    .mutiUpload{
+        max-width: 510px;
+        height:auto;
+        font-size: 18px;
+        margin-left: 90px;
+        margin-top: -10px;
+    }
+    .mutiUpload div{
+        line-height: 1.8;
+    }
+    .mutiUpload p{
+        font-size: 20px;
+    }
+    .bjui-pageContent{
+        margin: 0 auto;
+    }
+</style>
+<script type="text/javascript">
+
+	 function thumb_upload_success(file, data) {
+        var json = $.parseJSON(data)
+        $(this).bjuiajax('ajaxDone', json)
+        if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+            $('#j_content_thumb').val(json.filename).trigger('validate')
+            $('#j_custom_pic').val(json.filename)
+            $('#j_custom_span_pic').html('<img src="'+ json.filename +'"  style="margin: 10px 0 0 0" WIDTH="200" HEIGHT="120"/>')
+        }
+    }
+    //选择事件
+    function P_NodeCheck(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj(treeId),
+            nodes = zTree.getCheckedNodes(true)
+        var ids = '', names = ''
+
+        for (var i = 0; i < nodes.length; i++) {
+            ids   += ','+ nodes[i].id
+            names += ','+ nodes[i].name
+        }
+        if (ids.length > 0) {
+            ids = ids.substr(1)
+        }
+        $("#permissionId").val(ids);
+    }
+    //单击事件
+    function P_NodeClick(event, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj(treeId)
+
+        zTree.checkNode(treeNode, !treeNode.checked, true, true)
+
+        event.preventDefault()
+    } 
+    </script>
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/cms/enterprise/update" id="j_client_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="id" value="${enterprise.id!}">
+        <input TYPE="hidden" name="approveState" value="1">
+        <table cellspacing="1" cellpadding="6" border="0" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <label for="j_hdlb" class="control-label x85">活动类别：</label>
+                     <input type="text" name="hdlb" id="lb" value=""  style="width: 490px; margin-top:6px;"  readonly>
+                    <script> $("#lb").val(dicContainer.getDicItemName('103', ${cyds.cydsHdlb!,xss}));</script>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_xq" class="control-label x85">县区：</label>
+                     <input type="text" name="xq" id="xianqu" value=""  style="width: 490px; margin-top:6px;"  readonly>
+                     <script> $("#xianqu").val(dicContainer.getDicItemName('104', ${cyds.cydsXq!,xss}));</script>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">公司/项目名称：</label>
+                    <input type="text" name="hdlb" id="hdlb" value="${cyds.cydsXmmc!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">预计/注册资本（万元）：</label>
+                    <input type="text" name="hdlb" id="hdlb" value="${cyds.cydsZczb!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">项目介绍：</label>
+                    <textarea rows="10" cols="50" style="width: 490px; margin-top:6px;" readonly="readonly">${cyds.cydsXmjs!,xss}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">负责人姓名：</label>
+                     <input type="text" name="hdlb" id="hdlb" value="${cyds.cydsFzr!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">毕业院校及所学专业：</label>
+                     <input type="text" name="hdlb" id="hdlb" value="${cyds.cydsByyx!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">学历：</label>
+                   <input type="text" name="hdlb" id="xl" value=""  style="width: 490px; margin-top:6px;"  readonly>
+                   <script> $("#xl").val(dicContainer.getDicItemName('102', ${cyds.cydsXl!,xss}));</script>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">毕业年份：</label>
+                   <input type="text" name="hdlb" id="other" value="${cyds.cydsBynf!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">联系电话：</label>
+                    <input type="text" name="hdlb" id="other" value="${cyds.cydsLxdh!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">QQ/微信：</label>
+                    <input type="text" name="hdlb" id="other" value="${cyds.cydsQq!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">邮箱：</label>
+                     <input type="text" name="hdlb" id="other" value="${cyds.cydsYx!,xss}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   <div class="form-group tc">
+
+		            <label class="control-label x85">申请书附件：</label>
+		            <div style="display: inline-block; vertical-align: middle;">
+		               	<a href="${cyds.file!}">${cyds.cydsXmmc!,xss}申请书</a>
+		            </div>
+		        </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   <div class="form-group tc">
+
+		            <label class="control-label x85">项目书附件：</label>
+		            <div style="display: inline-block; vertical-align: middle;">
+		               <a href="${cyds.file1!}">${cyds.cydsXmmc!,xss}项目书</a>
+		            </div>
+		        </div>
+                </td>
+            </tr>
+             <tr>
+                <td>
+                   <div class="form-group tc">
+
+		            <label class="control-label x85">ppt附件：</label>
+		            <div style="display: inline-block; vertical-align: middle;">
+		                <a href="${cyds.file2!}">${cyds.cydsXmmc!,xss}ppt</a>
+		            </div>
+		        </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<!-- <div class="bjui-pageFooter">
+    <ul>
+        
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+        <li><button onclick="del(this)" type="button" class="btn-close" data-icon="close">删除</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">更新</button></li>
+       
+    </ul>
+</div> -->
+<script>
+    function del(obj) {
+        $(obj).bjuiajax('doAjax', {url:'${ctxPath}/cms/live/delete?id=${live.id!}',confirmMsg:'确定要删除该行信息吗？'});
+    }
+</script>

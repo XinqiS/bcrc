@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_jzd.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript" src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc/js/jlzx_js.js"></script>
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+<script type="text/javascript">
+	function sqzw(zwId,jlBbId){
+		$.ajax({
+        type: "POST",
+        async:false,
+        url: "${ctxPath}/cms/resume/skgwsqzw",
+        data: {zwId:zwId,jlBbId:jlBbId},
+        dataType: "json",
+        success: function(data){
+        	alert(data.message);
+        }
+     	});
+	
+	}
+	function skgwDel(id){
+		if(confirm("确定删除该条数据么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/deleteSkgw",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{ids:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findSkgwList"
+			 		}
+					}); 
+		 }
+  }
+
+
+</script>
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+
+
+<!--内容开始-->
+<div class="contentbox er_con">
+    <div class=" clearfix">
+		<div class="con_left fl">
+			<h4>个人中心</h4>
+			<ul class="left_nav">
+				@includeFileTemplate("/www/syrc/include/grzx-eightOtherLeftMeun.html",{"current":"index"}){}
+			</ul>
+		</div>
+		<div class="con_right fr">
+<!--			简历中心   开始-->
+			<div class="er_tit">
+				<span>谁看过我</span>
+			</div>
+			
+		<table class="wdsc_table">
+				<thead>
+					
+					<th width=220>公司名称</th>
+					<th width=150>所属行业</th>
+					<th width=140>公司地址</th>
+					<th width=120>公司规模</th>
+					<th width=240>操作</th>
+				</thead>
+				@for(map in model){
+				<tr>
+					
+					<td><a target="_blank" href="${ctxPath}/qyzx/qyXq?qy_id=${map.QY_ID!}">${map.QY_QYMC!}</a></td>
+					<td>${map.QY_SSHY!}</td>
+					<td>${map.QY_XXDZ!}</td>
+					<td>
+					@if(map.QY_QYGM==0){
+						20人以下
+					@}else if(map.QY_QYGM==1){
+						20-99人
+					@}else if(map.QY_QYGM==2){
+						100-499人
+					@}else if(map.QY_QYGM==3){
+						500-999人
+					@}else if(map.QY_QYGM==4){
+						1000-9999人
+					@}else if(map.QY_QYGM==5){
+						10000人以上
+					@}
+					</td>
+					<td>
+						<a class="btn_sc btn_a" href="javascript:void(0);" onclick="skgwDel('${map.JLLL_ID}');"><img src="${resPath}/syrc/images/jlzx_con_11.png"/>删除</a>
+					</td>
+				</tr>
+				@}
+			</table>
+			<div id="pagination" class="pagination"></div>
+			<script>
+
+			        var datatotal = '${total}';
+			        var pageAmount = '${pagesize}';
+			        var pagenum = '${pagenum}';
+			
+			        pageTotal=Math.ceil(datatotal/pageAmount);
+			
+			        if(pageTotal>5){
+			            pageSize=5
+			        }else{
+			            pageSize=pageTotal
+			        }
+			
+			        window.onload = function () {
+			            new myPagination({
+			                id: 'pagination',
+			                curPage:pagenum, //初始页码
+			                pageTotal: pageTotal, //总页数
+			                pageAmount: pageAmount,  //每页多少条
+			                dataTotal: datatotal, //总共多少条数据
+			                getPage: function (page) {
+			                    window.location.href ='${ctxPath}/cms/resume/findSkgwList?pageCurrent='+page;
+			
+			                }
+			            })
+			
+			        }
+			    </script>
+			
+			
+		<!-- 
+			<div class="fy_div">
+				<ul class="pagination">
+				  <li><a href="#">«</a></li>
+				  <li><a href="#">1</a></li>
+				  <li><a class="active" href="#">2</a></li>
+				  <li><a href="#">3</a></li>
+				  <li><a href="#">4</a></li>
+				  <li><a href="#">5</a></li>
+				  <li><a href="#">6</a></li>
+				  <li><a href="#">7</a></li>
+				  <li><a href="#">»</a></li>
+				</ul>
+			</div> -->
+<!--			简历中心   结束-->
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+
+</body>
+</html>

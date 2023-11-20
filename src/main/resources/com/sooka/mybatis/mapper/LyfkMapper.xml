@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.LyfkMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Lyfk" >
+    <id column="LYFK_ID" property="lyfkId" jdbcType="VARCHAR" />
+    <result column="LYFK_LB" property="lyfkLb" jdbcType="INTEGER" />
+    <result column="LYFK_YX" property="lyfkYx" jdbcType="VARCHAR" />
+    <result column="LYFK_DH" property="lyfkDh" jdbcType="VARCHAR" />
+    <result column="LYFK_QQ" property="lyfkQq" jdbcType="VARCHAR" />
+    <result column="LYFK_BT" property="lyfkBt" jdbcType="VARCHAR" />
+    <result column="LYFK_NR" property="lyfkNr" jdbcType="LONGVARCHAR" />
+    <result column="LYFK_FKNR" property="lyfkFknr" jdbcType="LONGVARCHAR" />
+    <result column="LYFK_FKSJ" property="lyfkFksj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LYFK_ID, LYFK_LB, LYFK_YX, LYFK_DH, LYFK_QQ, LYFK_BT, LYFK_NR,LYFK_FKNR,LYFK_FKSJ
+  </sql>
+  
+</mapper>

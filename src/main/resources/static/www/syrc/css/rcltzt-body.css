@@ -1,0 +1,38 @@
+
+
+
+/***********************头部***********************/
+.header{ width:100%; background:url(../images/rcltzt-index_01.png) no-repeat; height:596px;}
+.fhsy{width:1200px; margin:0 auto;}
+.fhsy a{ font-size:16px; color:#fff; background:url(../images/rcltzt-index_02.png) no-repeat; width:159px; height:75px; text-align:center; line-height:75px; display:block; background-size:100% 100%;}
+
+.logo{ width:1012px; height:271px; margin:100px auto 0 auto;}
+
+
+
+.contentbox{ width:1200px;background:#fff; margin:5px auto;}
+
+
+
+.all_list{ margin:10px 0;}
+.all_list li{ line-height:36px; font-size:16px; overflow:hidden;}
+.all_list li a{ float:left; color:#333; background:url(../images/rcltzt-index_14.png) no-repeat left center; padding:0 0 0 20px;}
+.all_list li em{ float:right; color:#888;}
+.all_list li.dashed{ border-bottom:dashed 1px #ccc;}
+
+.all_title{ width:100%; height:46px; background:#f5f6f8;}
+.all_title i{ width:3px; height:46px; background:#318ddc; float:left; margin:0 15px 0 0;}
+.all_title a{ font-size:20px; color:#318ddc; line-height:46px; font-weight:bold;}
+
+
+
+.xian{ width:3px; height:46px; background:#318ddc; float:left; margin:0 15px 0 0;}
+
+
+.footerbox{ width:100%; background:#033c6c; height:200px; padding:30px 0;}
+.footerbox table{ width:680px; margin:0 auto;}
+.footerbox table tr td img{ display:block; margin:0 auto;}
+.footerbox table tr td a{ display:block; width:120px; padding:0 0 40px 0; border-bottom:solid 1px #c8e3fa; font-size:16px; color:#fff; margin:10px 0 20px 0;}
+.footerbox table tr td p{ font-size:16px; color:#fff;}
+
+

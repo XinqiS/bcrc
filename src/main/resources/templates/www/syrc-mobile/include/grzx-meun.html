@@ -1,0 +1,31 @@
+<div class="jl_nav">
+    <div class="nav_a">
+        <a id="nav_title" class="on"></a>
+        <div class="inner-header">
+            <!--两条横线菜单-->
+            <div class="inner-header-icon inner-header-icon-out"><span></span><span></span><span></span></div>
+        </div>
+    </div>
+    <div class="gd_div inner-nav">
+        <a id="jlzx" href="${ctxPath}/cms/resume/findUserResume">简历中心</a>
+        <a id="skgw" href="${ctxPath}/cms/resume/findSkgwList">谁看过我</a>
+        <a id="wdsc" href="${ctxPath}/cms/resume/findWdscList">我的收藏</a>
+        <a id="wdsq" href="${ctxPath}/cms/resume/findWdsqList">我的申请</a>
+        <a id="1033" href="${ctxPath}/ecZxbm/grzx/list/1033">劳务派遣服务</a>
+        <a id="1034" href="${ctxPath}/ecZxbm/grzx/list/1034">人才招聘服务</a>
+        <a id="1035" href="${ctxPath}/ecZxbm/grzx/list/1035">人力资源外包服务</a>
+        <a id="1036" href="${ctxPath}/ecZxbm/grzx/list/1036">人才测评服务</a>
+        <a id="1037" href="${ctxPath}/ecZxbm/grzx/list/1037">人力资源培训服务</a>
+        <a id="1038" href="${ctxPath}/ecZxbm/grzx/list/1038">人力资源管理咨询服务</a>
+        <a id="1039" href="${ctxPath}/ecZxbm/grzx/list/1039">人力资源和社会保障事务代理</a>
+        <a id="1040" href="${ctxPath}/ecZxbm/grzx/list/1040">流动人员人事档案服务</a>
+    </div>
+</div>
+<input type="hidden" id="flag" value="${flag}">
+<script>
+    $(function () {
+        let id = $("#flag").val();
+        $("#"+id).addClass("on");
+        $("#nav_title").text($("#"+id).text());
+    });
+</script>

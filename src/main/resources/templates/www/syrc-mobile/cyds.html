@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>松原市“查干湖杯”创业创新大赛报名</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script src="${resPath}/syrc/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+ 	 var myarr=[];
+	 var formData = new FormData();
+        function printrwsInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('rwsfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+                formData.append('rwsfile',file);
+            }
+        }
+        
+         function printxmsInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('xmsfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+                formData.append('xmsfile',file);
+            }
+        }
+		
+		  function printpptInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('pptfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+               formData.append('pptfile',file);
+            }
+        }
+
+
+        var url = '${ctxPath}/cms/cyds/update';//数据地址
+        function save() {
+          
+            if(isNull($('#cydsHdlb').val())){
+                alert('活动类别不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXq').val())){
+                alert('县/区不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXmmc').val())){
+                alert('公司/项目名称不能为空');
+                return false;
+            }
+            if(isNull($('#cydsZczb').val())){
+                alert('预计/注册资本（万元）不能为空');
+                return false;
+            }else if(!validateResult($('#cydsZczb').val(),10,2)){
+            	alert('输入金钱不正确！');
+                return false;
+            }
+            if(isNull($('#cydsXmjs').val())){
+                alert('项目介绍不能为空');
+                return false;
+            }
+            if(isNull($('#cydsFzr').val())){
+                alert('负责人姓名不能为空');
+                return false;
+            }
+            if(isNull($('#cydsByyx').val())){
+                alert('毕业院校及所学专业不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXl').val())){
+                alert('学历不能为空');
+                return false;
+            }
+            if(isNull($('#cydsBynf').val())){
+                alert('毕业年份不能为空');
+                return false;
+            }
+            if(isNull($('#cydsLxdh').val())){
+                alert('联系电话不能为空');
+                return false;
+            }else if(!checkMobile($('#cydsLxdh').val())){
+            	alert('联系电话格式不正确！');
+                return false;
+            }
+            if(isNull($('#cydsQq').val())){
+                alert('QQ/微信不能为空');
+                return false;
+            }
+            if(isNull($('#cydsYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#cydsYx').val())){
+            	 alert('邮箱格式不正确！');
+                return false;
+            }
+           	if(!$('#rwsfile').get(0).files[0]){
+           		alert('申请书不能为空');
+           		return false;
+           	}
+           	if(!$('#xmsfile').get(0).files[0]){
+           		alert('项目书不能为空');
+           		return false;
+           	}
+           	if(!$('#pptfile').get(0).files[0]){
+           		alert('ppt不能为空');
+           		return false;
+           	}
+            
+            $.each(myarr,function(i,file){
+                formData.append('myfile',file);
+
+            });
+            //将file放入formdata中
+            formData.append('cydsHdlb',$('#cydsHdlb').val());
+            formData.append('cydsXq',$('#cydsXq').val());
+            formData.append('cydsXmmc',$('#cydsXmmc').val());
+            formData.append('cydsZczb',$('#cydsZczb').val());
+            formData.append('cydsXmjs',$('#cydsXmjs').val());
+            formData.append('cydsFzr',$('#cydsFzr').val());
+            formData.append('cydsByyx',$('#cydsByyx').val());
+            formData.append('cydsXl',$('#cydsXl').val());
+            formData.append('cydsBynf',$('#cydsBynf').val());
+            formData.append('cydsLxdh',$('#cydsLxdh').val());
+            formData.append('cydsQq',$('#cydsQq').val());
+            formData.append('cydsYx',$('#cydsYx').val());
+            $.ajax({
+                url : url,
+                type : 'POST',
+                dataType: 'json',
+                data : formData,
+                crossDomain: true,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success : function(responseStr) {
+                    alert(responseStr.message);
+                },
+            });
+
+        }
+	
+</script>
+
+
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+  <span class="location"><font style="font-size: 0.6rem;color: #747474;font-weight: bold"><a href="${frontPath!}/4">返回首页</a> </font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz"><a href="${ctxPath}/system/reception/nologin">个人登录</a></span> </div>
+  <!--	top  头部  结束--> 
+  
+  
+</div>
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2">松原市“查干湖杯”创业创新大赛报名</div>
+      <div class="aox">
+      	<div class="fjxz">
+            <#cms_content_list siteId="4" categoryId="1031" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="3" titleLen="26" var="bean">
+                    <a href="${bean.file!}" style="padding: 0.7%;">${bean.title!}</a>
+             </#cms_content_list>
+        </div>
+        
+        <div class="cyds_bd">
+            <b>请各位报名者认真填写下表内容，以便联系</b>
+            <table>
+                <tr>
+                    <td align="left" valign="top">活动类别</td>
+                </tr>
+                <tr>
+                    <td>
+                       <select name="cydsHdlb" id="cydsHdlb">
+                            	<script >
+									document.write(dicContainer["103"].toString());
+									var a='';
+									if(a!=''){
+										$("#cydsHdlb").find("option[value = '"+a+"']").attr("selected","selected"); 
+									}
+								</script>
+                       </select>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">县/区</td>
+                </tr>
+                <tr>
+                    <td>
+                       <select name="cydsXq" id="cydsXq">
+                            	<script >
+									document.write(dicContainer["104"].toString());
+									var b='';
+									if(b!=''){
+										$("#cydsXq").find("option[value = '"+b+"']").attr("selected","selected"); 
+									}
+								</script>
+                        </select>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">公司/项目名称</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" maxlength="100" name="cydsXmmc" id="cydsXmmc" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">预计/注册资本（万元）</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" maxlength="100" name="cydsZczb" id="cydsZczb" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">项目介绍</td>
+                </tr>
+                <tr>
+                    <td>
+                       <textarea name="cydsXmjs"  id="cydsXmjs"></textarea>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">负责人姓名</td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" name="cydsFzr" maxlength="100" id="cydsFzr" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">毕业院校及所学专业</td>
+                </tr>
+                <tr>
+                    <td>
+                       <input type="text" maxlength="20" name="cydsByyx" id="cydsByyx" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">学历</td>
+                </tr>
+                <tr>
+                    <td>
+                       <select name="cydsXl" id="cydsXl">
+                            	<script >
+									document.write(dicContainer["102"].toString());
+									var c='';
+									if(c!=''){
+										$("#cydsXl").find("option[value = '"+c+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">毕业年份</td>
+                </tr>
+                <tr>
+                    <td>
+                       <input type="text" onClick="WdatePicker({startDate: '%y-%M-01', dateFmt: 'yyyy',maxDate:'%y-%M-%d', alwaysUseStartDate: true})" class="Input_text" id="cydsBynf" name="cydsBynf"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">联系电话</td>
+                </tr>
+                <tr>
+                    <td>
+                       <input type="text" maxlength="20" name="cydsLxdh" id="cydsLxdh" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">QQ/微信</td>
+                </tr>
+                <tr>
+                    <td>
+                       <input type="text" maxlength="20" name="cydsQq" id="cydsQq" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">邮箱</td>
+                </tr>
+                <tr>
+                    <td>
+                       <input type="text" maxlength="20" name="cydsYx" id="cydsYx" class="Input_text"/>
+                        <span>*</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" valign="top">上传申请书</td>
+                </tr>
+                <tr>
+                    <td>
+                    	<div id="addFile">
+                    	<input class="csfj" type="file"  id="rwsfile"  name="rwsfile" onchange="printrwsInfo(this)" accept='application/msword' multiple="multiple"/>
+                    	</div>
+                    </td>
+                </tr>
+                 <tr>
+                 	
+                    <td align="left" valign="top">上传项目书：</td>
+                </tr>
+                <tr>
+                    <td>
+                    	<div id="addFile">
+                       <input class="csfj" type="file"  id="xmsfile"  name="xmsfile" onchange="printxmsInfo(this)" accept='application/msword' multiple="multiple"/>
+                    	</div>
+                    </td>
+                </tr>
+                 <tr>
+                    <td align="left" valign="top">上传ppt：</td>
+                </tr>
+                <tr>
+                    <td>
+                    	<div id="addFile">
+                        <input class="csfj" type="file"  id="pptfile"  name="pptfile" onchange="printpptInfo(this)" accept='application/vnd.ms-powerpoint' multiple="multiple"/>
+                   		</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="button" value="立即报名" class="bm_but" onclick="save();"></td>
+                </tr>
+            </table>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</div>
+
+<!--footer 开始-->
+	@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+	
+<!--footer 结束-->
+
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+<script src="${resPath}/syrc-mobile/images/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/TL_PC_Slider.js"></script>
+		<script type="text/javascript">
+    var time        = '1572657494575';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+			
+	</script>
+	<div id="shadow" style="display:none"></div>
+	
+	
+		
+</body>
+</html>

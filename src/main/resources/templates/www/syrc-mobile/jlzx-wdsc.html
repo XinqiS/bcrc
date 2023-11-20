@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+<script type="text/javascript">
+function sqzw(zwId){
+		$.ajax({
+        type: "POST",
+        async:false,
+        url: "${ctxPath}/cms/resume/wdscsqzw",
+        data: {zwId:zwId},
+        dataType: "json",
+        success: function(data){
+        	alert(data.message);
+        }
+     	});
+	
+	}
+	function wdscDel(id){
+		if(confirm("确定删除该条收藏数据么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/deleteWdsc",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{ids:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findWdscList";
+			 		}
+					}); 
+		 }
+  }
+
+</script>
+</head>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+    <div  class="wz_cont_in">
+        <div class="touxiangbox">
+            <div class="touxiang ckjj">
+                <a class="fl" href="javascript:void(0);">
+                    @if(jlinfo.jianliXb==0){
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/man.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}else if(jlinfo.jianliXb==1){
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}else{
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}
+                </a>
+                <div class="fl">
+                    <span>${jlinfo.jianliXm}</span>
+                    <p><span>${jlinfo.jianliJzd}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliCsrq}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliKsgz}</span></p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="con_left">
+                <!--简历中心   开始-->
+                <div class="all_title"><a><span>我的收藏</span></a></div>
+                @for(map in model){
+                <dl class="wdsc_table">
+                    <dd class="gwzl">
+                        <em>${map.ZW_ZWMC}</em>
+                        <em>${map.ZW_GZDZ}</em>
+                        <em>${map.xz}</em>
+                    </dd>
+                    <dd>
+                        <span><a href="${ctxPath}/qyzx/qyXq?qy_id=${map.QY_ID!}">${map.QY_QYMC}</a></span>
+                    </dd>
+                    <dt>
+                        <a class="sqzw_btn" href="javascript:void(0)" onclick="sqzw('${map.ZW_ID!}')">申请职位</a>
+                        <a class="btn_sc btn_a" href="javascript:void(0);" onclick="wdscDel('${map.ZWSCJL_ID}');">
+                            <img src="${resPath}/bcrc-mobile/images/jlzx_con_11.png"/>删除</a>
+                    </dt>
+                </dl>
+                @}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+    <link href="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.css" rel="stylesheet">
+
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/TL_Tab.js"></script>
+    <script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-core.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-regional.zh-CN.js"></script>
+    <!-- nice validate -->
+    <script src="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.js"></script>
+    <script src="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.themes.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+<!--内容开始-->
+<div class="contentbox">
+    <!--当前位置开始-->
+    <!--当前位置开始-->
+    <p class="rsj_dqwzbox">
+        <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+        当前位置：
+        ${bean.baseURL}
+        >>
+        @for(location in bean.locations){
+        ${location.categoryName}
+        @if(!locationLP.last){
+        >>
+        @}
+        @}
+    </#cms_site_pos>
+    </p>
+    <div class="clear"></div>
+        <input type="hidden" name="contentId" value="${contentId}"/>
+        <input TYPE="hidden" name="siteId" value="${site.siteId}" >
+        <input TYPE="hidden" name="categoryId" value="${category.categoryId}" >
+        <input TYPE="hidden" name="zhId" value="${zhId}" >
+        <table class="jbxx_table jbxx_table2">
+            <tbody>
+            <tr>
+                <td class="td_tit" valign="top">
+                    姓名：
+                </td>
+                <td>
+                    <input type="text" name="name" placeholder="请填写姓名"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top">
+                    性别：
+                </td>
+                <td>
+                    <label>
+                        <input type="radio" value="1" checked name="sex"/>
+                        <span>男</span>
+                    </label>
+                    <label>
+                        <input type="radio" value="0" name="sex"/>
+                        <span>女</span>
+                    </label>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top">
+                    民族：
+                </td>
+                <td>
+                    <input type="text" placeholder="请填写民族" name="nation"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top">
+                    出生年月：
+                </td>
+                <td>
+                    <input type="date" name="birthday"/>
+
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top" >
+                    联系电话：
+                </td>
+                <td>
+                    <input type="text" placeholder="请填写联系电话" name="tel"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top">
+                    身份证号：
+                </td>
+                <td>
+                    <input type="text" placeholder="请填写身份证号" name="idNumber"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="td_tit" valign="top">
+                    学历：
+                </td>
+                <td>
+                    <select name="education">
+                        <option value="0" selected>高中</option>
+                        <option value="1">大专</option>
+                        <option value="2">本科</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="td_tit" valign="top">
+                    <i class="red"></i>毕业时间：
+                </td>
+                <td>
+                    <input type="date" name="graduationTime"/>
+                </td>
+            </tr>
+            <tr>
+
+                <td class="td_tit" valign="top">
+                    <i class="red"></i>毕业院校：
+                </td>
+                <td>
+                    <input type="text" placeholder="请填写毕业院校" name="wentToSchool"/>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    <a class="qr_btn" onclick="submitForm()">提交</a>
+</div>
+<!--内容结束-->
+
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+<script>
+    function submitForm(){
+        let name = $("input[name='name']").val();
+        let sex = $("input[name='sex']").val();
+        let education = $("select[name='education']").val();
+        let nation = $("input[name='nation']").val();
+        let birthday = $("input[name='birthday']").val();
+        let tel = $("input[name='tel']").val();
+        let idNumber = $("input[name='idNumber']").val();
+        let graduationTime = $("input[name='graduationTime']").val();
+        let wentToSchool = $("input[name='wentToSchool']").val();
+        let contentId = $("input[name='contentId']").val();
+        let siteId = $("input[name='siteId']").val();
+        let categoryId = $("input[name='categoryId']").val();
+        if(name==''){
+            alert('姓名不能为空');
+            return;
+        }
+        if(nation==''){
+            alert('民族不能为空');
+            return;
+        }
+        if(birthday==''){
+            alert('出生年月不能为空');
+            return;
+        }
+        if(tel==''){
+            alert('联系电话不能为空');
+            return;
+        }
+        if(idNumber==''){
+            alert('身份证号不能为空');
+            return;
+        }
+        if(graduationTime==''){
+            alert('毕业时间不能为空');
+            return;
+        }
+        if(wentToSchool==''){
+            alert('毕业院校不能为空');
+            return;
+        }
+        $.post("${ctxPath}/ecZxbm/save",{
+            name:name,
+            sex:sex,
+            nation:nation,
+            birthday:birthday,
+            tel:tel,
+            idNumber:idNumber,
+            education:education,
+            graduationTime:graduationTime,
+            wentToSchool:wentToSchool,
+            contentId:contentId,
+            zhId:$("input[name='zhId']").val()
+        },function(res){
+            let data = eval('(' + res + ')');
+            alert(data.message);
+            location.href = "${frontPath!}/${siteId}/${categoryId}/${contentId}";
+        });
+    }
+</script>
+
+</body>
+</html>

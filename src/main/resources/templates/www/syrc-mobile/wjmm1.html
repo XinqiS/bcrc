@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>${siteTitle!}</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+	<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+	<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+	<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+	<script type="text/javascript">
+		var _tkd = _tkd || [];
+		var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	</script>
+</head>
+<body>
+<div class="login_bj"><img src="${resPath}/bcrc-mobile/images/login-bj.png"/></div>
+<div class="login">
+	@includeFileTemplate("/www/syrc-mobile/include/mm-header.html",{"current":"index"}){}
+	<div class="logo"><img src="${resPath}/bcrc-mobile/images/bcrc-index_03.png"/></div>
+	<div class="content2">
+		<ul class="lr_step">
+			<li>填写帐号</li>
+		</ul>
+		<div class="con_form con_form2">
+			<div class="line">
+				<span>邮箱：</span>
+				<input type="text" placeholder="请输入邮箱" id="zh_user">
+			</div>
+			<div class="line">
+				<span>验证码：</span>
+				<img class="img_yzm"  id="captcha_img"  src="${ctxPath}/verify" onclick="changeCode();" alt="点击更换" title="点击更换"/>
+				<input type="text" placeholder="不区分大小写，点击图片可刷新" class="inp_yzm" id="yzm" onblur=""/>
+				<div class="clear"></div>
+			</div>
+			<a class="qr_btn" onclick="wjmm1();" href="javascript:void(0)">下一步</a>
+			<a class="fhdl_a" href="${frontPath!}/4" >返回首页>></a>
+		</div>
+	</div>
+
+
+</div>
+
+
+@includeFileTemplate("/www/syrc-mobile/include/wjmm-footer.html"){}
+</body>
+</html>

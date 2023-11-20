@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_jzd.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript" src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc/js/TL_Tab.js"></script>
+
+
+
+
+<script type="text/javascript">
+	function sqzw(zwId){
+		$.ajax({
+        type: "POST",
+        async:false,
+        url: "${ctxPath}/cms/resume/wdscsqzw",
+        data: {zwId:zwId},
+        dataType: "json",
+        success: function(data){
+        	alert(data.message);
+        }
+     	});
+	
+	}
+	function wdscDel(id){
+		if(confirm("确定删除该条收藏数据么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/deleteWdsc",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{ids:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findWdscList";
+			 		}
+					}); 
+		 }
+  }
+
+
+</script>
+</head>
+
+<body>
+<div class="contentbig">
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+	<!--内容开始-->
+	<div class="wz_cont">
+		<div  class="wz_cont_in">
+			<div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>个人中心</div>
+			<div class=" clearfix">
+				<div class="con_left fl">
+					<h4><img src="${resPath}/bcrc/images/grzx_03.png"/></h4>
+					<ul class="left_nav">
+						@includeFileTemplate("/www/syrc/include/grzx-eightOtherLeftMeun.html",{"current":"index"}){}
+					</ul>
+				</div>
+				<div class="con_right fr">
+					<!--简历中心   开始-->
+					<div class="all_title"><a><span>我的收藏</span></a></div>
+					<table class="wdsc_table">
+						<thead>
+						<th width="20%">职位名称</th>
+						<th width="35%">公司名称</th>
+						<th width="15%">工作地点</th>
+						<th width="10%">薪资</th>
+						<th width="20%">操作</th>
+						</thead>
+						@for(map in model){
+						<tr>
+							<td><a target="open" href="${ctxPath}/qyzx/gwXq?zw_id=${map.ZW_ID!}">${map.ZW_ZWMC!}</a></td>
+							<td><a target="_blank" href="${ctxPath}/qyzx/qyXq?qy_id=${map.QY_ID!}" style="color: #4594d7;">${map.QY_QYMC!}</a></td>
+							<td>${map.ZW_GZDZ!}</td>
+							<td class="red">${map.xz!}</td>
+							<td>
+								<a class="sqzw_btn" href="javascript:void(0);" onclick="sqzw('${map.ZW_ID!}')">申请职位</a>
+								<a class="btn_sc btn_a" href="javascript:void(0);" onclick="wdscDel('${map.ZWSCJL_ID}');"><img src="${resPath}/bcrc/images/jlzx_con_11.png"/>删除</a>
+							</td>
+						</tr>
+
+						@}
+					</table>
+					<div id="pagination" class="pagination"></div>
+					<script>
+
+						var datatotal = '${total}';
+						var pageAmount = '${pagesize}';
+						var pagenum = '${pagenum}';
+
+						pageTotal=Math.ceil(datatotal/pageAmount);
+
+						if(pageTotal>5){
+							pageSize=5
+						}else{
+							pageSize=pageTotal
+						}
+
+						window.onload = function () {
+							new myPagination({
+								id: 'pagination',
+								curPage:pagenum, //初始页码
+								pageTotal: pageTotal, //总页数
+								pageAmount: pageAmount,  //每页多少条
+								dataTotal: datatotal, //总共多少条数据
+								getPage: function (page) {
+									window.location.href ='${ctxPath}/cms/resume/findWdscList?pageCurrent='+page;
+
+								}
+							})
+
+						}
+					</script>
+					<!--			简历中心   结束-->
+				</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--内容结束-->
+
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+</div>
+</body>
+</html>

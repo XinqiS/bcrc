@@ -1,0 +1,80 @@
+<script type="text/javascript">
+
+    function pic_title_upload_success(file, data) {
+        var json = $.parseJSON(data)
+        $(this).bjuiajax('ajaxDone', json)
+        if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+            $('#pc_file').val(json.filename).trigger('validate')
+            $('#j_title_span_pic').html('<img src="'+ json.filename +'" WIDTH="200" HEIGHT="120"/>')
+        }
+    }
+
+</script>
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/cms/pc/save" id="j_zrzc_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="id" value="${pc.id!}">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <label for="pc_name" class="control-label x85">名称：</label>
+                    <input type="text" name="pc_name" id="pc_name" value="${pc.pc_name!,xss}"  data-rule="required;" size="25">
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <label class="control-label x85">标题图：</label>
+                    <div style="display: inline-block; vertical-align: middle;">
+                        <div id="j_title_pic_up" data-toggle="upload" data-uploader="${ctxPath}/uploads"
+                             data-file-size-limit="1024000000"
+                             data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                             data-multi="false"
+                             data-on-upload-success="pic_title_upload_success"
+                             data-icon="cloud-upload"></div>
+                        <input type="hidden" name="pc_file" value="${pc.pc_file!}" id="pc_file">
+                        <span id="j_title_span_pic">
+                          @if(isNotEmpty(pc.pc_file)){
+                          <IMG WIDTH="300" HEIGHT="120"  style="margin: 5px 0 5px 0" src="${pc.pc_file!}">
+                          @}
+                        </span>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                <label for="j_pc_url" class="control-label x85">链接：</label>
+                <input type="text" name="pc_url" id="j_pc_url"  value="${pc.pc_url!,xss}"  class="input-nm"   placeholder="链接" size="50" data-rule="url;" >
+                </td>
+            </tr>
+
+
+            <tr>
+                <td>
+                    <label for="pc_state" class="control-label x85"  data-toggle="selectpicker">是否显示：</label>
+                    <select name="pc_state" id="pc_state" style="width: 250px;height: 25px;">
+                        @if(isEmpty(pc.pc_state)){
+                        <option value="1">隐藏</option>
+                        <option value="0">显示</option>
+                        @}else if(pc.pc_state == '0'){
+                        <option value="1">隐藏</option>
+                        <option value="0" selected>显示</option>
+                        @}else if(pc.pc_state=='1'){
+                        <option value="1" selected>隐藏</option>
+                        <option value="0">显示</option>
+                        @}
+                    </select>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+    </ul>
+</div>

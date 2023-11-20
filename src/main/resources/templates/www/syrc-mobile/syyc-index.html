@@ -1,0 +1,24 @@
+@includeFileTemplate("/www/syrc-mobile/include/syyc-header.html"){}
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2">赴外招聘计划</div>
+      <div class="aox">
+        <ul class="fwzp_list">
+         <#cms_content_list siteId="${site.siteId}" categoryId="1001" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+            <li>
+                <div class="fwzp_pic"><img src="${bean.thumb!}"/></div>
+                <div class="fwzp_cont">
+                    <a href="${bean.url!}">${bean.title!}</a>
+                    <span>时间：${bean.inputdate,dateFormat="YYYY年MM月dd日"}</span>
+                    <span>地点：${strutil.length(bean.content!)>40?strutil.subStringTo(bean.content!,0,40):bean.content!}...</span>
+                </div>
+            </li>
+               </#cms_content_list>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/syyc-footer.html"){}

@@ -1,0 +1,56 @@
+@includeFileTemplate("/www/syrc/include/gjrc-head.html",{"current":"index"}){}
+
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/gjrc_04.png" width="170" height="49"></h1>
+        <ul>
+        	<li><a  href="${frontPath!}/${site.siteId}/1020.html">加入高级人才库</a></li>
+             <li><a href="${ctxPath}/gjrc/gjrcb">高级人才榜</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1015.html">猎头服务</a></li>
+           <li><a href="${ctxPath}/gjrc/zgjgw">中高级岗位</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">中高级招聘会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1022.html">小型见面会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	
+    	<div class="gjrcb_main">
+        	<!--当前位置开始-->
+            <p class="rsj_dqwzbox"><#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+                ${bean.baseURL}
+            >>
+    @for(location in bean.locations){
+    ${location.categoryName}
+    @if(!locationLP.last){
+    >>
+    @}
+    @}
+	</#cms_site_pos>
+            <div class="clear"></div>
+            <div class="sycon_bg">
+                <div class="sycon_leftwh news_cont">
+                    <div class="news_title">
+                        <h1 class="sywzy_h2">${category.categoryName!}</h1>
+                        <div class="wxx_neirong_times">
+                          <div class="sywzy_xbt wxx_neirong_timecent"> 
+                          
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <p class="sy_wz">
+                  ${category.content!}
+                    </p>
+                </div>
+            </div>
+    
+    
+    
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}

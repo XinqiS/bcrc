@@ -1,0 +1,157 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="${ctxPath}/cms/enterprise/list" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+        <div class="bjui-searchBar">
+            <label>企业名称：</label><input type="text" value="${enterprise.qy_qymc!}" name="qy_qymc" class="form-control"
+                                       size="15">&nbsp;
+            <label>审核状态:</label>
+            <select name="qy_spzt" data-toggle="selectpicker">
+                @if(isEmpty(enterprise.qy_spzt)){
+                <option value="" selected>所有</option>
+                <option value="0">未审核</option>
+                <option value="1">已审核</option>
+                @}else if(enterprise.qy_spzt==0){
+                <option value="">所有</option>
+                <option value="0" selected>未审核</option>
+                <option value="1">已审核</option>
+                @}else if(enterprise.qy_spzt==1){
+                <option value="">所有</option>
+                <option value="0">未审核</option>
+                <option value="1" selected>已审核</option>
+                @}
+            </select>&nbsp;
+            <!-- <label>是否名企:</label>
+             <select name="qy_sftj" data-toggle="selectpicker">
+                 @if(isEmpty(enterprise.qy_sftj)){
+                 <option value="" selected>所有</option>
+                 <option value="0">否</option>
+                 <option value="1">知名企业 </option>
+                 <option value="2">名企招聘 </option>
+                 @}else if(enterprise.qy_sftj=='0'){
+                 <option value="">所有</option>
+                 <option value="0" selected>否</option>
+                 <option value="1">知名企业</option>
+                 <option value="2">名企招聘 </option>
+                 @}else if(enterprise.qy_sftj=='1'){
+                 <option value="" >所有</option>
+                 <option value="0">否</option>
+                 <option value="1"  selected>知名企业</option>
+                 <option value="2">名企招聘 </option>
+                 @}else if(enterprise.qy_sftj=='2'){
+                 <option value="" >所有</option>
+                 <option value="0">否</option>
+                 <option value="1">知名企业 </option>
+                 <option value="2" selected>名企招聘 </option>
+                 @}
+             </select>&nbsp;-->
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true"
+               data-icon="undo">刷新全部</a>
+            &nbsp;
+            <a href="${ctxPath}/cms/enterprise/input" class="btn btn-green" data-toggle="dialog" data-maxable="false"
+               data-resizable="false" data-width="1039" data-height="560" data-id="edit-admin-user"
+               data-title="新增">新增</a>
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">
+                        复选框-批量操作<span class="caret"></span></button>
+                    <ul class="dropdown-menu right" role="menu">
+                        <li><a href="${ctxPath}/cms/enterprise/delete" data-toggle="doajaxchecked"
+                               data-confirm-msg="确定要删除选中项吗？" data-idname="ids" data-group="ids">删除选中</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+        <tr>
+            <th align="center" width="50">企业名称</th>
+            <th align="center" width="50">联系人</th>
+            <th align="center" width="50">联系电话</th>
+            <th align="center" width="50">创建时间</th>
+            <th align="center" width="50">是否审核</th>
+            <!-- <th align="center"  width="50">是否为名企</th>-->
+            <th align="center" width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids"
+                                                 data-toggle="icheck"></th>
+            <th align="center" width="80">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        @for(enterprise in model.list){
+        <tr data-id="${enterprise.qy_id!}">
+            <td align="center">${enterprise.qy_qymc!,xss}</td>
+            <td align="center">${enterprise.qy_lxr!,xss}</td>
+            <td align="center">${enterprise.qy_lxdh!,xss}</td>
+            <td align="center">${strutil.subStringTo(enterprise.qy_fbsc!,0,10)}</td>
+            <td align="center">
+                @if(enterprise.qy_spzt==0){
+                <span style="font-weight: 500;color: red">未审核</span>
+                @}else if(enterprise.qy_spzt==1){
+                <span style="font-weight: 500;color:#4A8CDB">已审核</span>
+                @}
+            </td>
+            <!--  <td align="center">
+                  @if(enterprise.qy_sftj=='0'){
+                  <span style="font-weight: 500;color: red">否</span>
+                  @}else if(enterprise.qy_sftj=='1'){
+                  <span style="font-weight: 500;color:#4A8CDB">知名企业</span>
+                  @}else if(enterprise.qy_sftj=='2'){
+                  <span style="font-weight: 500;color:#4A8CDB">名企招聘</span>
+                  @}
+              </td>-->
+            <td align="center"><input type="checkbox" name="ids" data-toggle="icheck" value="${enterprise.qy_id!}"></td>
+            <td align="center" width='80'>
+                <!--  <a href="${ctxPath}/cms/enterprise/detail?qy_id=${enterprise.qy_id!}" class="btn btn-green"  data-toggle="dialog" data-maxable="false" data-resizable="false"  data-width="650" data-height="350" data-id="edit-admin-user"  data-title="企业详情">查看</a>-->
+                <a href="${ctxPath}/cms/enterprise/input?qy_id=${enterprise.qy_id!}" class="btn btn-green"
+                   data-toggle="dialog" data-maxable="false" data-resizable="false" data-width="1039" data-height="567"
+                   data-id="edit-admin-user" data-title="编辑">编辑</a>
+
+                @if(enterprise.qy_spzt==0){
+                <a href="${ctxPath}/cms/enterprise/approval?qy_id=${enterprise.qy_id!}&zh_id=${enterprise.zh_id}"
+                   data-toggle="doajax" class="btn btn-blue">审核</a>
+                @}
+                <!--@if(enterprise.qy_sftj=='0'){
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=1" data-toggle="doajax" class="btn btn-blue" >推送知名企业</a>
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=2" data-toggle="doajax" class="btn btn-blue" >推送名企招聘</a>
+                @}
+                @if(enterprise.qy_sftj=='1'){
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=0" data-toggle="doajax" class="btn btn-blue" >取消推送知名企业</a>
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=2" data-toggle="doajax" class="btn btn-blue" >推送名企招聘</a>
+                @}
+                @if(enterprise.qy_sftj=='2'){
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=0" data-toggle="doajax" class="btn btn-blue" >取消推送名企招聘</a>
+                <a href="${ctxPath}/cms/enterprise/updateSftj?qy_id=${enterprise.qy_id!}&type=1" data-toggle="doajax" class="btn btn-blue" >推送知名企业</a>
+                @}
+                -->
+                <a href="${ctxPath}/cms/post/list?qy_id=${enterprise.qy_id!}" class="btn btn-green" data-toggle="dialog"
+                   data-maxable="false" data-resizable="false" data-width="1280" data-height="580"
+                   data-id="edit-admin-user" data-title="企业岗位">企业岗位</a>
+                <a href="${ctxPath}/cms/enterprise/delete?ids=${enterprise.qy_id!}" class="btn btn-red"
+                   data-toggle="doajax" data-confirm-msg="确定要删除该行信息吗？">删</a>
+            </td>
+        </tr>
+        @}
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30"
+         data-page-current="1">
+    </div>
+</div>

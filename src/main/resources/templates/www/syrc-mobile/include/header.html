@@ -1,0 +1,150 @@
+<div class="contentbig">
+	<div class="index_login">
+		@if(session.tbZhInfo_loginSession != null){
+
+		@if(session.tbZhInfo_loginSession.zh_sf ==0){
+		<a href="${ctxPath}/cms/resume/goGrzxForSj">个人中心</a>
+		&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/logOut">退出</a>
+		@}
+		@ else if(session.tbZhInfo_loginSession.zh_sf ==1){
+		<a href="${ctxPath}/qyzx/goToyprclg">企业中心</a>
+		&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/logOut">退出</a>
+		@}
+		@else {
+		<a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a>
+		@}
+		@}
+		@else {
+		<a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a>
+		@ }
+	</div>
+	<!--top开始-->
+	<div class="nav">
+		<ul>
+			<li><a href="${frontPath!}/4">网站首页</a></li>
+			<li>
+				<a href="javascript:void(0)">就业信息</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1050.html">白城市就业信息</a>
+					<a href="${frontPath!}/4/1051.html">洮南市就业信息</a>
+					<a href="${frontPath!}/4/1052.html">大安市就业信息</a>
+					<a href="${frontPath!}/4/1053.html">通榆县就业信息</a>
+					<a href="${frontPath!}/4/1054.html">镇赉县就业信息</a>
+				</div>
+			</li>
+			<li>
+				<a href="javascript:void(0)">就业指导</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1055.html">毕业生信息</a>
+					<a href="${frontPath!}/4/1056.html">职业规划</a>
+					<a href="${frontPath!}/4/1057.html">入职指南</a>
+					<a href="${frontPath!}/4/1058.html">求职指南</a>
+					<a href="${frontPath!}/4/1059.html">人才评测</a>
+				</div>
+			</li>
+			<li><a href="${ctxPath}/qyzx/searchTalents">求职信息</a></li>
+			<li><a href="${ctxPath}/gjss/selectExample">招聘信息</a></li>
+			<li>
+				<a href="javascript:void(0)">就业资讯</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1042.html">就业动态</a>
+					<a href="${frontPath!}/4/1045.html">重要通知</a>
+					<a href="${frontPath!}/4/1043.html">政策法规</a>
+				</div>
+			</li>
+			<li>
+				<a href="javascript:void(0)">档案管理</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1069.html">档案邮寄</a>
+					<a href="${frontPath!}/4/1070.html">调档手续</a>
+					<!--<a href="${frontPath!}/4/1071.html">帮助文件</a>-->
+				</div>
+			</li>
+			<li>
+				<a href="javascript:void(0)">创业园地</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1049.html">就业创业政策</a>
+					<a href="${frontPath!}/4/1074.html">创业典型</a>
+				</div>
+			</li>
+			<li>
+				<a href="javascript:void(0)">关于我们</a>
+				<div class="child_nav">
+					<a href="${frontPath!}/4/1076.html">基本概况</a>
+					<a href="${frontPath!}/4/1077.html">机构职能</a>
+					<a href="${frontPath!}/4/1078.html">内设机构</a>
+					<a href="${frontPath!}/4/1079.html">通知公告</a>
+				</div>
+			</li>
+		</ul>
+		<div class="show_nav">
+			<img src="${resPath}/bcrc-mobile/images/mobile_menu.png"/>
+		</div>
+		<script>
+			$(document).ready(function(){
+
+				// 手机版导航显示
+				$('.show_nav').click(function () {
+					$('.nav ul').slideToggle();
+				})
+
+			});
+		</script>
+	</div>
+	<div class="clear"></div>
+	<div class="logo"><img src="${resPath}/bcrc-mobile/images/bcrc-index_03.png"/></div>
+	<!--搜索选项卡开始-->
+	<div class="searchbox">
+		<div class="search_title"> <span>站内搜索</span> <span>职位搜索</span></div>
+		<div class="clear"></div>
+		<div class="search_cont">
+			<input type="text" class="searchTEXT" id="znss"  id="znss"/>
+			<input type="button" value="搜索" class="searchBUT" placeholder="请输入标题关键字" onclick="searznss();" />
+		</div>
+		<div class="search_cont">
+			<input type="text" class="searchTEXT" id="zw"/>
+			<input type="button" value="搜索" class="searchBUT" placeholder="请输入职位关键字"  onclick="searchhead();"/>
+		</div>
+	</div>
+	<div class="clear"></div>
+	<script type="text/javascript">
+		$(function(){
+			$(this).TL_Tab ({
+				tab : ".searchbox .search_title span",
+				box : ".search_cont",
+				events : "over",// over
+				num : 1,
+				speed : 10
+			});
+		});
+	</script>
+	<script type="text/javascript">
+		function searchhead(){
+			var zw=$("#zw").val();
+			window.open("${ctxPath}/gjss/selectExample?mc="+zw+"");
+		}
+		function searznss(){
+			var title=$('#znss').val();
+			var url='${ctxPath}/system/reception/NoLoginSearchInTheStation';
+			mypost(url,{"title":title});
+		}
+		function mypost(url, params) {
+			var temp_form = document.createElement("form");
+			temp_form .action = url;
+			temp_form .target = "_blank";
+			temp_form .method = "post";
+			temp_form .style.display = "none";
+			for (var x in params) {
+				var opt = document.createElement("textarea");
+				opt.name = x;
+				opt.value = params[x];
+				temp_form .appendChild(opt);
+			}
+			document.body.appendChild(temp_form);
+			temp_form .submit();
+		}
+
+
+	</script>
+	<!--搜索结束-->
+	<!--top结束-->

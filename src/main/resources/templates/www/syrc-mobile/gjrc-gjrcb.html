@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+@includeFileTemplate("/www/syrc-mobile/include/gjrc-header.html",{"current":"index"}){}
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+ @includeFileTemplate("/www/syrc-mobile/include/gjrc-title.html",{"current":"index"}){}
+  <!--	top  头部  结束--> 
+   <!--简历nav 开始-->
+  <div class="jl_nav gjrcnav"> 
+    <a class="fl" href="${frontPath!}/4/1009.html">高级人才首页</a> 
+      <a class="hea_xl fr"></a>
+      <!--下拉-->
+   @includeFileTemplate("/www/syrc-mobile/include/gjrc-ul.html",{"current":"index"}){}
+        <!--下拉 end-->
+  </div>
+  <div class="clear"></div>
+  <!--简历nav 结束-->
+</div>
+  <div id="pageContent">
+  
+    <div class="mod">
+      <div class="t t2">高级人才榜</div>
+      <div class="new_l" value="397738433"> 
+        @for(lists in model.list){
+          <div  class="e">
+          <h1 class="gjrc_pm">${listsLP.index}</h1>
+            <div class="ms gjrcb">
+            <a href="${ctxPath}/cms/resume/previewResumeForAdmin?id=${lists.jl_bb_id}&zh_id=${lists.zh_id!}">
+                <strong>${lists.jianli_xm}</strong></a>
+                <b>
+                    <span>${lists.jianli_csrq}岁</span>
+                    <span>
+                     @if(lists.jianli_xb==0){
+                           		 男
+                            @}else if(lists.jianli_xb==1){
+								女                            
+                            @}
+                    </span>
+                    <span>
+                      @if(lists.jyjl_xl==0){ 
+                         		  初中及以下
+                            @}else if(lists.jyjl_xl==1){ 
+                         		  高中
+                            @}
+                            @else if(lists.jyjl_xl==2){ 
+                         		  中专
+                            @}
+                            @else if(lists.jyjl_xl==3){ 
+                         		大专
+                            @}
+                            @else if(lists.jyjl_xl==4){ 
+                         		本科
+                            @}
+                            @else if(lists.jyjl_xl==5){ 
+                         		硕士
+                            @}
+                            @else if(lists.jyjl_xl==6){ 
+                         		博士
+                            @}
+                            @else if(lists.jyjl_xl==7){ 
+                         		MBA
+                            @}
+                    </span>
+                    <span>
+                     ${strutil.length(lists.jyjl_xx!)>10?strutil.subStringTo(lists.jyjl_xx!,0,8)+"...":lists.jyjl_xx!}
+                    
+                    @if(lists.jyjl_zy !=null){
+                      (${strutil.length(lists.jyjl_zy!)>7?strutil.subStringTo(lists.jyjl_zy!,0,7)+"...":lists.jyjl_zy!})
+                            @}
+                            </span>
+                </b>
+                <b>
+                ${strutil.length(lists.qzyx_jntc!)>55?strutil.subStringTo(lists.qzyx_jntc!,0,17)+"...":lists.qzyx_jntc!}
+                </b>
+            </div>
+          </div> 
+          @}
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>
+
+
+	    @includeFileTemplate("/www/syrc-mobile/include/gjrc-footer.html",{"current":"index"}){}
+	
+		
+</body>
+</html>

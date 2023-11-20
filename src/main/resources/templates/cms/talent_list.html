@@ -1,0 +1,73 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="${ctxPath}/cms/resume/findTalentList" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+      <div class="bjui-searchBar">
+        	  <!-- <a class="btn  btn-default" data-icon="reply"   href="${ctxPath}/system/cms/content/page?categoryId=${live.categoryId!}"  data-toggle="ajaxload" data-target="#layout-content">返回栏目</a>&nbsp;
+            <label>发言人姓名：</label><input type="text"  value="${live.speakName!}" name="speakName" class="form-control" size="10">&nbsp;
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo">清空查询</a>
+            &nbsp;
+            <a href="${ctxPath}/cms/live/input?content_id=${live.content_id!}" class="btn btn-green" data-icon="plus" data-toggle="dialog" data-maxable="false" data-resizable="true"  data-width="650" data-height="350" data-id="add-admin-user"  data-title="新增发言">新增发言</a> -->
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">操作<span class="caret"></span></button>
+                    <ul class="dropdown-menu right" role="menu">
+                        <li><a href="${ctxPath}/cms/resume/excel" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出人才数据</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+            <tr>
+                <th align="center"  width="50">姓名</th>
+                <th align="center"  width="50">性别</th>
+                <th align="center"  width="80">出生日期</th>
+                <th align="center"  width="50">手机</th>
+                <th align="center"  width="50">邮箱</th>
+                <th align="center"  width="80">证件号码</th>
+                <th align="center"  width="80">家庭住址</th>
+               <!--  <th align="center"  width="26" ><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th> -->
+                <th align="center"  width="80">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for(talent in model.list){
+            <tr data-id="${talent.jianliId!}">
+                <td align="center">${talent.jianliXm!,xss}</td>
+                <td align="center" width='200'>${talent.jianliXb==0?'男':'女',xss}</td>
+                <td align="center">${talent.jianliCsrq!,xss}</td>
+                <td align="center">${talent.jianliSj!,xss}</td>
+                <td align="center">${talent.jianliYx!,xss}</td>
+                <td align="center">${talent.jianliZjhm!,xss}</td>
+                <td align="center">${talent.jianliJtzz!,xss}</td>
+               <!--  <td  align="center"><input type="checkbox" name="ids" data-toggle="icheck" value="${live.id!}"></td> -->
+                <td  align="center" width='80'>
+                    <a href="${ctxPath}/cms/resume/findUserResumeList?zhId=${talent.zhId!}" class="btn btn-green"  data-toggle="dialog" data-maxable="false" data-resizable="false"  data-width="650" data-height="350" data-id="edit-admin-user"  data-title="个人简历">查看简历</a>
+                    <!-- <a href="${ctxPath}/cms/live/delete?ids=${live.id!}" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确定要删除该行信息吗？">删</a> -->
+                </td>
+            </tr>
+        @}
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30" data-page-current="1">
+    </div>
+</div>

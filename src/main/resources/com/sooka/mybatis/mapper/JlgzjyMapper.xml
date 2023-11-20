@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlgzjyMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlgzjy" >
+    <id column="GZJY_ID" property="gzjyId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="GZJY_KSSJ" property="gzjyKssj" jdbcType="VARCHAR" />
+    <result column="GZJY_JSSJ" property="gzjyJssj" jdbcType="VARCHAR" />
+    <result column="GZJY_GS" property="gzjyGs" jdbcType="VARCHAR" />
+    <result column="GZJY_ZN" property="gzjyZn" jdbcType="VARCHAR" />
+    <result column="GZJY_HY" property="gzjyHy" jdbcType="VARCHAR" />
+    <result column="GZJY_ZW" property="gzjyZw" jdbcType="VARCHAR" />
+    <result column="GZJY_GSGM" property="gzjyGsgm" jdbcType="INTEGER" />
+    <result column="GZJY_BM" property="gzjyBm" jdbcType="VARCHAR" />
+    <result column="GZJY_GSXZ" property="gzjyGsxz" jdbcType="INTEGER" />
+    <result column="GZJY_GZLX" property="gzjyGzlx" jdbcType="INTEGER" />
+    <result column="GZJY_XSRS" property="gzjyXsrs" jdbcType="VARCHAR" />
+    <result column="GZJY_HBDX" property="gzjyHbdx" jdbcType="VARCHAR" />
+    <result column="GZJY_LZYY" property="gzjyLzyy" jdbcType="VARCHAR" />
+    <result column="GZJY_HWJL" property="gzjyHwjl" jdbcType="INTEGER" />
+    <result column="GZJY_GZMS" property="gzjyGzms" jdbcType="LONGVARCHAR" />
+    <result column="GZJY_ZYYJ" property="gzjyZyyj" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    GZJY_ID, JL_BB_ID, GZJY_KSSJ, GZJY_JSSJ, GZJY_GS, GZJY_ZN, GZJY_HY, GZJY_ZW, GZJY_GSGM, 
+    GZJY_BM, GZJY_GSXZ, GZJY_GZLX, GZJY_XSRS, GZJY_HBDX, GZJY_LZYY, GZJY_HWJL,GZJY_GZMS, GZJY_ZZYJ
+  </sql>
+</mapper>

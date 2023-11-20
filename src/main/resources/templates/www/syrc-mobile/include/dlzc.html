@@ -1,0 +1,19 @@
+   @if(session.tbZhInfo_loginSession != null){
+   
+ 		 @if(session.tbZhInfo_loginSession.zh_sf ==0){
+  			<a href="${ctxPath}/cms/resume/goGrzxForSj">个人中心</a>
+  			&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/logOut">退出</a>
+  			  @}
+  			@ else if(session.tbZhInfo_loginSession.zh_sf ==1){
+ 			<a href="${ctxPath}/qyzx/goToyprclg">企业中心</a>
+ 			&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/logOut">退出</a>
+ 			 @}
+ 			 @else {
+ 			  <a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a>
+ 			 @}
+ 	 @}
+  @else {
+    <a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a>
+ 	@ }
+
+

@@ -1,0 +1,517 @@
+<style>
+
+    td {
+        border-top: 1px solid #ddd;
+        line-height: 25px;
+        padding: 5px 5px 5px 7px;
+    }
+    .point{
+        color: #0099CC;
+        font-weight: bold;
+    }
+</style>
+<!-- 职能-->
+<script src="${resPath}/bcrc/cssjs/position.data.min.js" type="text/javascript"></script>
+<script src="${resPath}/bcrc/cssjs/jquery.position.select.js" type="text/javascript"></script>
+<script>
+    function result2(){
+        $("#result2").positionSelect({
+            containerId: "positionDiv",
+            className: "big-window",
+            nameId: "work_zn_input",
+            required: true,
+            maxCount: 5,
+            onConfirm: null
+        });
+    }
+</script>
+<div class="bjui-pageContent" style="width: 1025px;height: 510px">
+    <form method="post" action="${ctxPath}/cms/post/update" id="j_client_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="zw_id" value="${post.zw_id!}">
+        <input TYPE="hidden" name="qy_id" value="${post.qy_id!}">
+        <input TYPE="hidden" name="zw_sftj" value="${post.zw_sftj!}">
+        <input TYPE="hidden" name="zw_zt" value="${post.zw_zt!}">
+        <table cellspacing="1" cellpadding="6" border="0" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <label for="zw_zwmc" class="control-label x85"><span style="color: red">*</span>职位名称：</label>
+                    <input type="text" name="zw_zwmc" id="zw_zwmc" value="${post.zw_zwmc!,xss}" placeholder="请填写职位名称！" data-rule="required" size="50" maxlength="20">
+                </td>
+            </tr>
+            <tr>
+                <td style=" position: relative; ">
+                    <label for="zw_zwlb" class="control-label x85"><span style="color: red">*</span>职能：</label>
+                    <input type="text" name="zw_zwlb" id="work_zn_input" value="${post.zw_zwlb!,xss}" placeholder="请填写职位类别！" data-rule="required" size="50"  maxlength="20" >
+                  <!--  <input id="btn_IndustryID" type="button"  onclick="IndustrySelect('work_zn_input')" style=" position: absolute; left: 60%; top: 8px; "/>-->
+                    <a id="result2"  href="javascript:void(0);" class="zwxz" style="left:57%;top: 11px;" onclick="result2()"></a>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_gzxz" class="control-label x85">工作性质：</label>
+                    <select name="zw_gzxz" id="zw_gzxz" style="width: 500px;height: 25px;">
+                        <option value="0">全职</option>
+                        <option value="1">兼职</option>
+                        <option value="2">实习</option>
+                        <option value="3">就业见习人员</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_gzdz" class="control-label x85"><span style="color: red">*</span>工作地址：</label>
+                    <input type="text" name="zw_gzdz" id="zw_gzdz" value="${post.zw_gzdz!,xss}" placeholder="请填写工作地址！" data-rule="required"    maxlength="50" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_yxfw" class="control-label x85">月薪范围：</label>
+                    <select name="zw_yxfw" id="zw_yxfw" style="width: 500px;height: 25px;">
+                        <option value="0">1000元以下</option>
+                        <option value="1">1000-2000元</option>
+                        <option value="2">2000-4000元</option>
+                        <option value="3">4000-6000元</option>
+                        <option value="4">6000-8000元</option>
+                        <option value="5">8000-10000元</option>
+                        <option value="6">10000-15000元</option>
+                        <option value="7">15000-20000元</option>
+                        <option value="8">20000-30000元</option>
+                        <option value="9">30000-50000元</option>
+                        <option value="10">50000-70000元</option>
+                        <option value="11">70000-100000元</option>
+                        <option value="12">100000元以上</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_zdxl" class="control-label x85">最低学历：</label>
+                    <select name="zw_zdxl" id="zw_zdxl" style="width: 500px;height: 25px;">
+                        <option value="0">学历不限</option>
+                        <option value="1">本科</option>
+                        <option value="2">硕士</option>
+                        <option value="3">博士</option>
+                        <option value="4">大专</option>
+                        <option value="5">中技</option>
+                        <option value="6">中专</option>
+                        <option value="8">高中</option>
+                        <option value="7">高中以下</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_yjbys" class="control-label x85">应届毕业生：</label>
+                    <select name="zw_yjbys" id="zw_yjbys" style="width: 500px;height: 25px;">
+                        @if(isEmpty(post.zw_yjbys)){
+                        <option value="0">是</option>
+                        <option value="1">否</option>
+                        @}else if(post.zw_yjbys == '0'){
+                        <option value="0" selected>是</option>
+                        <option value="1">否</option>
+                        @}else if(post.zw_yjbys =='1'){
+                        <option value="0">是</option>
+                        <option value="1" selected>否</option>
+                        @}
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_gznx" class="control-label x85">工作年限：</label>
+                    <select name="zw_gznx" id="zw_gznx" style="width: 500px;height: 25px;">
+                        <option value="0">经验不限</option>
+                        <option value="1">无经验</option>
+                        <option value="2">1年以下</option>
+                        <option value="3">1-3年</option>
+                        <option value="4">3-5年</option>
+                        <option value="5">5-10年</option>
+                        <option value="6">10年以上</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_zwms" class="control-label x85">职位描述：</label>
+                    <textarea id="zw_zwms" name="zw_zwms"  placeholder="请填写职位描述"  style="height: 200px;resize:none;" cols="50" maxlength="1800" >${post.zw_zwms!,xss}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_jnyq" class="control-label x85"><span style="color: red">*</span>技能要求：</label>
+                    <input type="text" name="zw_jnyq" id="zw_jnyq" value="${post.zw_jnyq!,xss}" placeholder="请填写技能要求！" data-rule="required"   maxlength="50"  >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_zwldl" class="control-label x85">职位亮点：</label>
+                    <label><input type="checkbox" id="zw_zwldl" name="zw_zwld" value="1"/>五险一金</label>
+                    <label><input type="checkbox" id="zw_zwld2" name="zw_zwld" value="2"/>节日福利</label>
+                    <label><input type="checkbox" id="zw_zwld3" name="zw_zwld" value="3"/>带薪年假</label>
+                    <label><input type="checkbox" id="zw_zwld4" name="zw_zwld" value="4"/>现金补贴</label>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_zprs" class="control-label x85"><span style="color: red">*</span>招聘人数：</label>
+                    <input type="text" name="zw_zprs" id="zw_zprs" onchange="manth()" value="${post.zw_zprs!,xss}" placeholder="请填写招聘人数！" data-rule="required"  maxlength="4"  >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_fbsc" class="control-label x85">发布日期：</label>
+                    @if(isEmpty(post.zw_fbsc)){
+                    <input style="width:225px;margin-left:0px" name="zw_fbsc"  id="zw_fbsc" style="width: 500px;height: 25px;" readonly="readonly"  value=""  />
+                    @}else{
+                    <input style="width:225px;margin-left:0px" name="zw_fbsc"  id="zw_fbsc" style="width: 500px;height: 25px;" readonly="readonly"  value="${strutil.subStringTo(post.zw_fbsc!,0,10)}"  />
+                    @}
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="zw_ssbm" class="control-label x85"><span style="color: red">*</span>所属部门：</label>
+                    <input type="text" name="zw_ssbm" id="zw_ssbm" value="${post.zw_ssbm!,xss}" placeholder="请填写所属部门！" data-rule="required" size="50"  maxlength="10" >
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div class="bjui-pageFooter" style="padding: 0px 10px 0 0;">
+    <ul>
+        <li><input onclick="chognzhiqygw()"  class="btn btn-blue" type="button" data-icon="pencil" value="重置"> </li>
+        <li><button   type="submit" class="btn btn-green" data-icon="send"> 保存发布</button></li>
+    </ul>
+</div>
+<!--<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-default"   style=" margin-right: 565px;" data-icon="save">保存</button></li>
+    </ul>
+</div>-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<div id="base_area_layer" class="layer_class" init="true" >
+<iframe  scrolling="auto"   width="100%" height="100%" frameborder="0" id="iframe"  ></iframe>
+</div>
+<input type="hidden"  id="work_func">
+<input type="hidden"  id="count" value="5">
+<script>
+    function isNull(str) {
+        if (str == "")
+            return true;
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    }
+    function chognzhiqygw(){
+        if(isNull("${post.zw_zwmc!,xss}")){
+            $("#zw_zwmc").val("");
+        }else{
+            $("#zw_zwmc").val("${post.zw_zwmc!,xss}");
+        }
+        if(isNull("${post.zw_zwlb!,xss}")){
+            $("#work_zn_input").val("");
+        }else{
+            $("#work_zn_input").val("${post.zw_zwlb!,xss}");
+        }
+        if(isNull("${post.zw_gzxz!}")){
+            $("#zw_gzxz").val("0");
+        }else{
+            $("#zw_gzxz").find("option[value='${post.zw_gzxz!}']").attr("selected", 'selected');
+        }
+        if(isNull("${post.zw_gzdz!,xss}")){
+            $("#zw_gzdz").val("");
+        }else{
+            $("#zw_gzdz").val("${post.zw_gzdz!,xss}");
+        }
+        if(isNull("${post.zw_yxfw!}")){
+            $("#zw_yxfw").val("0");
+        }else{
+            $("#zw_yxfw").find("option[value='${post.zw_yxfw!}']").attr("selected", 'selected');
+        }
+        if(isNull("${post.zw_zdxl!}")){
+            $("#zw_zdxl").val("0");
+        }else{
+            $("#zw_zdxl").find("option[value='${post.zw_zdxl!}']").attr("selected", 'selected');
+        }
+        if(isNull("${post.zw_yjbys}")){
+            $("#zw_yjbys").val("0");
+        }else{
+            $("#zw_yjbys").find("option[value='${post.zw_yjbys}']").attr("selected", 'selected');
+        }
+        if(isNull("${post.zw_gznx!}")){
+            $("#zw_gznx").val("0");
+        }else{
+            $("#zw_gznx").find("option[value='${post.zw_gznx!}']").attr("selected", 'selected');
+        }
+        if(isNull("${post.zw_jnyq!,xss}")){
+            $("#zw_jnyq").val("");
+        }else{
+            $("#zw_jnyq").val("${post.zw_jnyq!,xss}");
+        }
+        if(isNull("${post.zw_zprs!,xss}")){
+            $("#zw_zprs").val("");
+        }else{
+            $("#zw_zprs").val("${post.zw_zprs!,xss}");
+        }
+        if(isNull("${post.zw_ssbm!,xss}")){
+            $("#zw_ssbm").val("");
+        }else{
+            $("#zw_ssbm").val("${post.zw_ssbm!,xss}");
+        }
+
+        if(isNull("${post.zw_zwld!}")){
+            var boxObj = $("input:checkbox[name='zw_zwld']");
+            boxObj[0].checked = false;
+            boxObj[1].checked = false;
+            boxObj[2].checked = false;
+            boxObj[3].checked = false;
+        }else{
+            var boxObj1 = $("input:checkbox[name='zw_zwld']");  //获取所有的复选框
+            boxObj1[0].checked = false;
+            boxObj1[1].checked = false;
+            boxObj1[2].checked = false;
+            boxObj1[3].checked = false;
+            var boxObj = $("input:checkbox[name='zw_zwld']");  //获取所有的复选框
+            var expresslist = '${post.zw_zwld!}'; //用el表达式获取在控制层存放的复选框的值为字符串类型
+            var express = expresslist.split(','); //去掉它们之间的分割符“，”
+            for (i = 0; i < boxObj.length; i++) {
+                for (j = 0; j < express.length; j++) {
+                    if (boxObj[i].value == express[j])  //如果值与修改前的值相等
+                    {
+                        boxObj[i].checked = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    $(function(){
+        $("#zw_gzxz").find("option[value='${post.zw_gzxz!}']").attr("selected", 'selected');
+        $("#zw_yxfw").find("option[value='${post.zw_yxfw!}']").attr("selected", 'selected');
+        $("#zw_zdxl").find("option[value='${post.zw_zdxl!}']").attr("selected", 'selected');
+        $("#zw_gznx").find("option[value='${post.zw_gznx!}']").attr("selected", 'selected');
+        var boxObj = $("input:checkbox[name='zw_zwld']");  //获取所有的复选框
+        var expresslist = '${post.zw_zwld!}'; //用el表达式获取在控制层存放的复选框的值为字符串类型
+        var express = expresslist.split(','); //去掉它们之间的分割符“，”
+        for (i = 0; i < boxObj.length; i++) {
+            for (j = 0; j < express.length; j++) {
+                if (boxObj[i].value == express[j])  //如果值与修改前的值相等
+                {
+                    boxObj[i].checked = true;
+                    break;
+                }
+            }
+        }
+    });
+    function manth(){
+      var em = /^\d+$/;
+        if(!em.test($('#zw_zprs').val())){
+            alert('招聘人数只能填写数字，请重新输入');
+            $('#zw_zprs').val("");
+            return false;
+        }
+    }
+    $(function(){
+    var myDate = new Date();
+    var time = myDate.toLocaleDateString().split('/').join('-');//将1970/08/08转化成1970-08-08
+    if(isNull($("#zw_fbsc").val())){
+        $("#zw_fbsc").val(time);
+    }
+});
+
+    function isNull(str) {
+        if (str == "")
+            return true;
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    }
+
+</script>
+<!--职能选择开始-->
+<!--<link href="${resPath}/bcrc/cssjs/base.css" rel="stylesheet" type="text/css">-->
+<link href="${resPath}/bcrc/cssjs/big-window.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+    /* $(document).ready(function () {
+         $("#result").click(function () {
+             $("#result").positionSelect({
+                 containerId: "positionDiv",
+                 className: "big-window",
+                 nameId: "resultinput",
+                 required: true,
+                 maxCount: 5,
+                 onConfirm: null
+             });
+         });
+     });*/
+</script>
+
+<!----><style>
+    .zwxz{
+        background: url(${resPath}/bcrc/images/form_03.png) no-repeat 10px;
+        position: absolute;
+        width: 36px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 12px;
+        color: #00457d;
+        text-align: center;
+        top: 5px;
+        right: 0;
+        border-left: 1px solid #ddd;}
+    #positionDiv_bg{display: none!important;}
+</style>
+<!--<textarea id="result" cols="80" rows="10">点我，狠狠地点我。</textarea>-->
+
+<!----><div id="positionDiv" style=" position: fixed;">
+</div>
+<!-- 职位-->
+<!---->
+<div class="big-window bg-f0" id="position">
+    <div class="title">
+        <b>选择职位</b><span class="tip">(最多选择5项)</span> <a href="#" onclick="javascript:closeposition()">
+    </a>
+    </div>
+    <div class="sele-tag">
+        <dl>
+            <dt>已选择：</dt>
+            <dd>
+                <a href="#">已选择的职位1</a>
+                <a href="#">已选择的职已选择的职位位2</a>
+                <a href="#">已选择已选择的职位的职位3</a>
+                <a href="#">已已选择的职位选择的职位4</a>
+                <a href="#">已已选择的职位选择的职位5</a>
+                <a href="#" class="btn">确 定</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="position-menu">
+        <div class="menu">
+            <ul>
+                <li>销售|客服|市场</li>
+                <li>财务|人力资源|行政</li>
+                <li class="sele">项目|质量|高级管理</li>
+                <li>IT|互联网|通信</li>
+                <li>房产|建筑|物业管理</li>
+                <li>金融</li>
+                <li>采购|贸易|交通|物流</li>
+                <li>生产|制造</li>
+                <li>传媒|印刷|艺术|设计</li>
+                <li>咨询|法律|教育|翻译</li>
+                <li>服务业</li>
+                <li>能源|环保|农业|科研</li>
+                <li>兼职|实习|社工|其他</li>
+            </ul>
+        </div>
+        <div class="sub-menu">
+            <dl>
+                <dt>电信/通信技术开发及应用</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>财务/审计/税务</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交通运输服务</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>生物/制药/医疗器械</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>互联网产品/运营管理</dt>
+                <dd>
+                    <a href="#">汽车/摩托车</a>
+                    <a href="#">大型设备/机电设备/重工业 </a>
+                    <a href="#">加工制造（原料加工/模具） </a>
+                    <a href="#">仪器仪表及工业自动化 </a>
+                    <a href="#">印刷/包装/造纸 </a>
+                    <a href="#">办公用品及设备 </a>
+                    <a href="#">医药/生物工程 </a>
+                    <a href="#">医疗设备/器械 </a>
+                    <a href="#">航空/航天研究与制造</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>房地产|建筑业</dt>
+                <dd>
+                    <a href="#">房地产/建筑/建材/工程 </a>
+                    <a href="#">家居/室内设计/装饰装潢 </a>
+                    <a href="#">物业管理/商业中心</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+<!--职能选择结束-->
+<!--行业-->
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/drag.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/funtype_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/major_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_funch.js"></script>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/css.css" />
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/alpha.css" />
+<!--行业结束-->
+<!--<input id="btn_IndustryID" type="button" value="请选择行业" onclick="IndustrySelect('btn_IndustryID')" />-->
+<!-- alpha div -->
+<div id="maskLayer" style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=0)"></iframe>
+    <div id="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag" >
+        <h3 id="drag_h"></h3>
+        <div id="drag_con"></div><!-- drag_con end -->
+    </div>
+</div><!-- maskLayer end -->
+<style>
+    #drag{top: 30px !important;left: 50px !important;}
+</style>
+</div>
+<!-- alpha div end -->
+<div id="sublist" style="display:none"></div>
+<!--行业选择  结束-->
+<!--
+<script>
+    function savebaocun(){
+        $("#j_client_form").submit();
+    }
+</script>-->

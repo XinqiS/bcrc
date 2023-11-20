@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/sy_sjbase.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/swiper.min.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/cover.css"  /><!--地区选择-->
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/resume.css"  />
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/basic.js"></script>
+	<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/zepto.js"></script>
+	<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+	<script src="${resPath}/syrc/js/idealDic.js"></script>
+	<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+	<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+	//$_CONFIG['domain'] = '//m.51job.com/';
+	//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+	//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+	//$_CONFIG['template'] = 'resume/baseinfo';
+	$_CONFIG['islogin'] = '1';
+	$_CONFIG['jobarea'] = '030800';
+	$_CONFIG['jobareaname'] = '东莞';
+	$_CONFIG['ip'] = '36.48.27.149';
+	$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function saveNsr(){
+	if(isNull($("#yearsalary").val())){
+		alert("年收入不能为空！！！");
+		return false;
+	}else if(!isNumber($("#yearsalary").val())){
+		alert("请输入正确的数字！！！");
+		return false;
+	}
+	var  json={};
+	if($("#qzyxId").val()!=undefined){
+		json.qzyxId=$("#qzyxId").val();
+	}
+	if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	}
+	json.qzyxNsr=$("#yearsalary").val();
+	$.ajax({
+      type: "POST",
+      async:false,
+      url: "saveUserQzyx",
+      data:json,
+      dataType: "json",
+      success: function(data){
+      		alert(data.message);
+      		window.location.href="${ctxPath}/cms/resume/goEditResume?id="+data.qzyx.jlBbId;
+      }
+	});
+}
+</script>
+</head>
+
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/cms/resume/goEditResume?id=${session.jlbbIdSession}"><span>目前年收入</span></a></div>
+
+				<div id="pageContent" class="fixtop qzyx">
+
+					<div class="sbox">
+
+						<div class="e e_ta eb">
+							<label>目前年收入</label>
+							<div class="tbox">
+								<input type="text" id="yearsalary" class="txt inputblur"
+									   placeholder="请输入" maxlength="6" value="${qzyx.qzyxNsr!}"> <span
+									class="wy">万元</span>
+
+							</div>
+						</div>
+					</div>
+					<center class="btnbox">
+						<button class="btn saveschoolhonour" click-data="1" onclick="saveNsr()">保存</button>
+					</center>
+					@if(isNotEmpty(qzyx.qzyxId)){
+					<input type="hidden" name="qzyxId" id="qzyxId" value="${qzyx.qzyxId}">
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${qzyx.jlBbId}">
+					@}
+					@if(isNotEmpty(jlBbId)){
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+					@}
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+<!--中间内容  结束-->
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/base.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/fun.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/myaccount.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/resume.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/swiper.min.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/exif.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/transform.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/alloy_finger.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/to.js"></script>
+<script type="text/javascript"
+		src="${resPath}/syrc-mobile/images/uploadhead.js"></script>
+
+
+
+<script type="text/javascript">
+	var time        = '1572572412018';
+	var pagecode    = '30199';
+	var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+	var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script>
+
+</body>
+</html>

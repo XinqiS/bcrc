@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+    <link href="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.css" rel="stylesheet">
+    <script src="${resPath}/syrc/css/print.min.css"></script>
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/TL_Tab.js"></script>
+    <script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+    <script src="${resPath}/syrc/js/print.min.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/jquery-1.7.2.min.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-core.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-regional.zh-CN.js"></script>
+    <!-- nice validate -->
+    <script src="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.js"></script>
+    <script src="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.themes.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+<!--内容开始-->
+<div class="contentbox">
+    <!--startprint-->
+    <table class="jbxx_table" id="printJS-table" style="border-collapse: collapse;" border="0">
+        <tbody>
+        <tr>
+            <td class="aac" colspan="6" style="text-align: center;padding: 20px 0px 20px 0px;font-size: 20px;font-weight: 900;">
+                <h2>报名表</h2>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">姓名：</td>
+            <td style="border: 1px solid #000;">
+                <input type="text" name="name" placeholder="请填写姓名" value="${ecZxbm.name}" readonly>
+            </td>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">性别：</td>
+            <td style="border: 1px solid #000;">
+                <input type="text" name="sex" value="${ecZxbm.sex == 0 ? '女' : '男'}" readonly>
+            </td>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">民族：</td>
+            <td style="border: 1px solid #000;">
+                <input type="text" placeholder="请填写民族" value="${ecZxbm.nation}" readonly name="nation">
+            </td>
+        </tr>
+
+        <tr>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">出生年月：</td>
+            <td style="border: 1px solid #000;">
+                <input type="text" name="birthday" value="${ecZxbm.birthday!'N/A',dateFormat='yyy-MM-dd'}" readonly>
+            </td>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">联系电话：</td>
+            <td style="border: 1px solid #000;" colspan="3">
+                <input type="text" placeholder="请填写联系电话" name="tel" value="${ecZxbm.tel}" readonly>
+            </td>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">身份证号：</td>
+            <td style="border: 1px solid #000;" colspan="2">
+                <input type="text" placeholder="请填写身份证号" name="idNumber" value="${ecZxbm.idNumber}" readonly>
+            </td>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top" width="200">学历：</td>
+            <td style="border: 1px solid #000;" colspan="2">
+                @if(ecZxbm.education == '0'){
+                <input type="text" name="education" value="高中" readonly/>
+                @}else if(ecZxbm.education == '1'){
+                <input type="text" name="education" value="大专" readonly/>
+                @}else if(ecZxbm.education == '2'){
+                <input type="text" name="education" value="本科" readonly/>
+                @}
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        <tr>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top"><i class="red"></i>毕业时间：</td>
+            <td style="border: 1px solid #000;" colspan="2">
+                <input type="text" name="graduationTime" value="${ecZxbm.graduationTime!'N/A',dateFormat='yyy-MM-dd'}"
+                       readonly>
+            </td>
+            <td style="border: 1px solid #000;" class="td_tit" valign="top"><i class="red"></i>毕业院校：</td>
+            <td style="border: 1px solid #000;" colspan="2">
+                <input type="text" placeholder="请填写毕业院校" name="wentToSchool" value="${ecZxbm.wentToSchool}" readonly>
+            </td>
+        </tr>
+        <tr>
+        </tr>
+        </tbody>
+    </table>
+    <!--endprint-->
+    <a class="qr_btn" onclick="printTable()">打印</a>
+</div>
+<!--内容结束-->
+
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+<script>
+    function printTable() {
+        printJS({
+            printable: 'printJS-table',
+            type: 'html',
+            css: '/www/syrc/css/syrc-page.css',//引入的外部css;
+            targetStyles: ['*'],
+            scanStyles: false
+        })
+    }
+</script>
+</body>
+</html>

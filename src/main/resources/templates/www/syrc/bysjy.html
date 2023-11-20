@@ -1,0 +1,271 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/gjrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/gjrc-index.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+    <div class="main">
+    	
+    	<div class="gjrcb_main">
+        	<p class="rsj_dqwzbox">当前位置：<a target="_blank" href="${frontPath!}/4">首页</a>>><a>毕业生就业</a></p>
+    <div class="clear"></div>
+        	<div class="all_title"><i></i><a>毕业生就业</a></div>
+            <dl class="gjrcb_cont">
+            	@for(list in model){
+                <dt>
+                	<h4>
+                        <span class="zw_tit fl"><a
+						   @if(session.tbZhInfo_loginSession !=null){
+						 href="${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}"  target="on"
+						  @}else {
+						   href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}');"
+						  @}
+						  >${list.zw_zwmc}</a></span>
+						  <a class="gs_tit fr" >${list.qy_qymc}</a>
+                    </h4>
+		  			<h5>
+                    <b class="red fl">
+                    @if(list.zw_yxfw==0){
+						  1K-
+						  @}
+						  @else if(list.zw_yxfw==1){
+						  1K-2K
+						  @}
+						  @else if(list.zw_yxfw==2){
+						  2K-4K
+						  @}
+						  @else if(list.zw_yxfw==3){
+						  4K-6K
+						  @}
+						  @else if(list.zw_yxfw==4){
+						  6K-8K
+						  @}
+						  @else if(list.zw_yxfw==5){
+						  8K-10K
+						  @}
+						  @else if(list.zw_yxfw==6){
+						  10K-15K
+						  @}
+						  @else if(list.zw_yxfw==7){
+						  15-20K
+						  @}
+						  @else if(list.zw_yxfw==8){
+						  20K-30K
+						  @}
+						  @else if(list.zw_yxfw==9){
+						  30K-50K
+						  @}
+						  @else if(list.zw_yxfw==10){
+						  50K-70K
+						  @}
+						  @else if(list.zw_yxfw==11){
+						  70L-100K
+						  @}
+						   @else if(list.zw_yxfw==12){
+						   100K+
+						  @}
+                    </b> 
+                    <span class="fl z_tit">${strutil.length(list.qy_xxdz!)>40?strutil.subStringTo(list.qy_xxdz!,0,15)+"...":list.qy_xxdz!} | 
+					 @if(list.zw_gznx==0){
+					  经验不限
+					  @}
+					  @else if(list.zw_gznx==1){
+					  无经验
+					  @}
+					  @else if(list.zw_gznx==2){
+					  1年以下
+					  @}
+					  @else if(list.zw_gznx==3){
+					  1-3年
+					  @}
+					  @else if(list.zw_gznx==4){
+					  3-5年
+					  @}
+					  @else if(list.zw_gznx==5){
+					  5-10年
+					  @}
+					  @else if(list.zw_gznx==6){
+					  10年以上
+					  @}
+					     |   
+					  @if(list.zw_zdxl==0){
+					  学历不限
+					  @}  
+					  @else if(list.zw_zdxl==1){
+					  本科
+					  @}
+					  @else if(list.zw_zdxl==2){
+					  硕士
+					  @}
+					  @else if(list.zw_zdxl==3){
+					  博士
+					  @}
+					  @else if(list.zw_zdxl==4){
+					  大专
+					  @}
+					  @else if(list.zw_zdxl==5){
+					  中技
+					  @}
+					  @else if(list.zw_zdxl==6){
+					  中专
+					  @}
+					  @else if(list.zw_zdxl==7){
+					  高中以下
+					  @}
+</span>
+                    <span class="fr z_tit">
+                     @if(list.qy_jjlx==0){
+				      国有经济
+				      @}
+				      @else if(list.qy_jjlx==1){
+				      集体经济
+				      @}
+				      @else if(list.qy_jjlx==2){
+				      私营经济
+				      @}
+				      @else if(list.qy_jjlx==3){
+				      个体经济
+				      @}
+				      @else if(list.qy_jjlx==4){
+				      联营经济
+				      @}
+				      @else if(list.qy_jjlx==5){
+				      股份制
+				      @}
+				      @else if(list.qy_jjlx==6){
+				     外商投资 
+				      @}
+				      @else if(list.qy_jjlx==7){
+				      港澳台投资
+				      @}
+				      @else if(list.qy_jjlx==8){
+				      其他经济类
+				      @}
+				        |  
+		  			${list.zw_zprs}</span></h5>
+		  			<p> 
+                        <span class="fl_span fl"> 
+                     @if(isNotEmpty(list.zw_zwld)){
+				     @for(fors in strutil.split(list.zw_zwld,",")){
+						@if(fors=="0"){
+						<span>五险一金</span> 
+						@}
+						@else if(fors=="1"){
+						 <span>节日福利</span>
+						@}
+						@else if(fors=="2"){
+						 <span>带薪年假</span>
+						@}
+						@else if(fors=="3"){
+						 <span>现金补贴</span>
+						@}
+						@}  
+						@}
+                        </span> 
+                        <i class="rq_tit fr">${list.zw_fbsj}</i> 
+                    </p>
+		  			<span class="fr btn_tit gsxx_btn"> <a class="sczw_btn yellow"
+		  
+					  @if(session.tbZhInfo_loginSession !=null){
+					   href="javascript:void(0)" 	 onclick="sczw('${list.zw_id}');"
+					  @}else {
+					   href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/bysjy');"
+					  @}
+					   ><img src="${resPath}/syrc/images/jlzx_con_47.png">收藏职位</a> <a class="sqzw_btn" 
+					   @if(session.tbZhInfo_loginSession !=null){
+						 href="javascript:void(0)"   onclick="sqzw('${list.zw_id}');"
+					  @}else {
+					   href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/bysjy');"
+					  @}
+					   >申请职位</a> </span> 
+			                </dt>
+                @}
+            </dl>
+            <!--分页位置-->
+            <div id="pagination" class="pagination"></div>
+			<script>
+
+			        var datatotal = '${total}';
+			        var pageAmount = '${pagesize}';
+			        var pagenum = '${pagenum}';
+			        
+			        pageTotal=Math.ceil(datatotal/pageAmount);
+			
+			        if(pageTotal>5){
+			            pageSize=5
+			        }else{
+			            pageSize=pageTotal
+			        }
+			
+			        window.onload = function () {
+			            new myPagination({
+			                id: 'pagination',
+			                curPage:pagenum, //初始页码
+			                pageTotal: pageTotal, //总页数
+			                pageAmount: pageAmount,  //每页多少条
+			                dataTotal: datatotal, //总共多少条数据
+			                getPage: function (page) {
+			                    window.location.href ='${ctxPath}/gjss/bysjy?pageCurrent='+page;
+			
+			                }
+			            })
+			
+			        }
+			    </script>
+        </div>
+        <script type="text/javascript">
+			$("..gjrcb_cont dt").hover(function(){
+				$(this).children('.gsxx_btn').fadeIn(300);
+			},function(){
+				$(this).children('.gsxx_btn').fadeOut(300);
+			});
+			function sczw(zw_id){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{zw_id:zw_id},    //参数值
+					type:"post",   //请求方式
+					success:function(data){
+					alert(data.message);
+			 		}
+					}); 
+				}
+				
+			function sqzw(zw_id){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{zwId:zw_id},    //参数值
+					type:"post",   //请求方式
+					success:function(data){
+					alert(data.message);
+			 		}
+					}); 
+				}
+		</script> 
+    </div>
+</div>
+<!--内容结束-->
+
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+</body>
+</html>

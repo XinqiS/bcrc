@@ -1,0 +1,59 @@
+@includeFileTemplate("/www/syrc/include/zypx-header.html"){}
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/zypx_04.png" width="171" height="48"></h1>
+        <ul>
+        		<li><a href="${frontPath!}/${site.siteId}/1026.html">资料下载</a></li>
+                  <li><a href="${frontPath!}/${site.siteId}/1024/12280.html">招生简章</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1025/12281.html">政策解读</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1027.html">专家团队</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1023.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	
+    	<div class="gjrcb_main">
+        	<!--当前位置开始-->
+            <p class="rsj_dqwzbox"><#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+                ${bean.baseURL}
+            >>
+    @for(location in bean.locations){
+    ${location.categoryName}
+    @if(!locationLP.last){
+    >>
+    @}
+    @}
+	</#cms_site_pos></p>
+            <div class="clear"></div>
+            <div class="sycon_bg">
+                <div class="sycon_leftwh news_cont">
+                    <div class="news_title">
+                        <h1 class="sywzy_h2">${content.title}</h1>
+                        <div class="wxx_neirong_times">
+                          <div class="sywzy_xbt wxx_neirong_timecent"> 
+                           <span>发布时间：${content.inputdate,dateFormat="yyyy年MM月dd日"}</span> <span>信息来源：${content.author}</span>
+                          </div>
+                        </div>
+                    </div>
+                    
+                    <p class="sy_wz">
+                    ${content.content!}
+                    </p>
+                </div>
+            </div>
+    
+    
+    
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+
+
+
+@includeFileTemplate("/www/syrc/include/syyc-footer.html"){}
+

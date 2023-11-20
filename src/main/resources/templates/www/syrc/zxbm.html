@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+</head>
+
+<body>
+<!--header begin-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--header end-->
+
+
+<!--内容开始-->
+<form method="post" action="${ctxPath}/cms/zxbm/update" id="form">
+<div class="gjrc_contentbox">
+    <div class="main">
+    	<div class="all_title"><i></i><a>在线报名</a></div>
+    	<div class="main_right_in">
+            <div class="zxbm_bd">
+            	<p>特别提醒：本表格所有栏目均为必填项，请仔细填写</p>
+            	<table>
+                	<tr>
+                    	<td width="10%" align="right"><span>课程名称</span></td>
+                        <td colspan="3"><input type="text" maxlength="200" name="zxbmKcmc" class="ckmc" id="zxbmKcmc"/></td>
+                    </tr>
+                    <tr>
+                    	<td width="10%" align="right"><span>单位名称</span></td>
+                        <td colspan="3"><input type="text" maxlength="200" name="zxbmDwmc" class="ckmc" id="zxbmDwmc"/></td>
+                    </tr>
+                    <tr>
+                    	<td width="10%" align="right"><span>单位性质</span></td>
+                        <td width="40%"><input type="text" maxlength="10" name="zxbmDwxz" id="zxbmDwxz"/></td>
+                        <td width="10%" align="right"><span>企业人数</span></td>
+                        <td width="40%"><input type="text" maxlength="10" name="zxbmQyrs" id="zxbmQyrs"/></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td width="10%" align="right"><span>年营业额</span></td>
+                        <td><input type="text" name="zxbmNyye" maxlength="20" id="zxbmNyye"/></td>
+                        <td width="10%" align="right"><span>总资产</span></td>
+                        <td><input type="text" name="zxbmZzc" maxlength="20" id="zxbmZzc"/></td>
+                        
+                    </tr>
+                    <tr>
+                    	<td width="10%" align="right"><span>所在地区</span></td>
+                        <td><input type="text" name="zxbmSzdq" maxlength="20" id="zxbmSzdq"/></td>
+                        <td width="10%" align="right"><span>所属行业</span></td>
+                        <td><input type="text" name="zxbmSshy" maxlength="20" id="zxbmSshy"/></td>
+                    </tr>
+                    <tr>
+                    	<td width="10%" align="right"><span>办公电话</span></td>
+                        <td><input type="text" name="zxbmBgdh" maxlength="20" id="zxbmBgdh"/></td>
+                        <td width="10%" align="right"><span>传真</span></td>
+                        <td><input type="text" name="zxbmCz" maxlength="20" id="zxbmCz"/></td>
+                        
+                    </tr>
+                    <tr>
+                    	<td width="10%" align="right"><span>手机</span></td>
+                        <td><input type="text" name="zxbmSj" maxlength="20" id="zxbmSj"/></td>
+                    	<td width="10%" align="right"><span>邮箱</span></td>
+                        <td><input type="text" name="zxbmYx" maxlength="20" id="zxbmYx"/></td>
+                    </tr>
+                    <tr>
+                    	<td colspan="4" align="center"><input type="button" value="提交" class="tj_but" onclick="save();"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+	function save() {
+		if(isNull($('#zxbmKcmc').val())){
+                alert('课程名称不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmDwmc').val())){
+                alert('单位名称不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmDwxz').val())){
+                alert('单位性质不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmQyrs').val())){
+                alert('企业人数不能为空');
+                return false;
+            }else if(!isNumber($('#zxbmQyrs').val())){
+            	alert('企业人数必须为数字！');
+                return false;
+            }
+            if(isNull($('#zxbmNyye').val())){
+                alert('年营业额不能为空');
+                return false;
+            }else if(!validateResult($('#zxbmNyye').val(),10,2)){
+            	alert('年营业额不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmZzc').val())){
+                alert('总资产不能为空');
+                return false;
+            }else if(!validateResult($('#zxbmZzc').val(),10,2)){
+            	alert('总资产不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmSzdq').val())){
+                alert('所在地区不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmSshy').val())){
+                alert('所属行业不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmBgdh').val())){
+                alert('办公电话不能为空');
+                return false;
+            }else if(!isTelephone($('#zxbmBgdh').val())){
+            	alert('办公电话格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmCz').val())){
+                alert('传真不能为空');
+                return false;
+            }else if(!isTelephone($('#zxbmCz').val())){
+            	alert('传真格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmSj').val())){
+                alert('手机不能为空');
+                return false;
+            }else if(!checkMobile($('#zxbmSj').val())){
+            	alert('手机格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#zxbmYx').val())){
+            	 alert('邮箱格式不正确！');
+                 return false;
+            }
+		$.post($("#form").attr("action"), $("#form").serialize(), function(data) {
+			alert(data.message);
+		}, "json");
+	}
+</script>
+<!--内容结束-->
+
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+</body>
+</html>

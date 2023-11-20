@@ -1,0 +1,16 @@
+
+<div class="dqwz ">
+	<span>
+    <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+                ${bean.baseURL}
+            >>
+			</span>
+  @for(location in bean.locations){
+  <a href="${location.url}">${location.categoryName}</a>
+  @if(!locationLP.last){
+  >>
+  @}
+  @}
+</#cms_site_pos>
+</div>

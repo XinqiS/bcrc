@@ -1,0 +1,400 @@
+
+<!--底部开始-->
+<!--<div class="footer">
+	<p>版权所有松原人才市场 吉ICP备12002825号-2 增值电信业务经营许可证号：吉B2-20150082号</p>
+	<p>技术支持：长春首佳科技有限公司</p>
+</div>-->
+<!--底部结束-->
+<script type="text/javascript">
+
+
+function changeCode(){
+ $("#captcha_img").attr("src", "${ctxPath}/verify?t="+ (new Date().getTime()));
+} 
+var em = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+ 	 var num= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+  	 var qrmm=$('#zh_pwds').val();
+	 var mm=$('#zh_pwd').val();
+	 var yzm=$('#yzm').val();
+	 var zh=$('#zh_user').val();
+
+function youxiang (){
+var zh=$('#zh_user').val();
+if(zh==''){ 
+$("#ys1").addClass("i3");
+}
+else {
+$("#ys1").removeClass("i3");
+$("#ys1").addClass("i2");
+}
+}
+
+function mima(){
+ var mm=$('#zh_pwd').val();
+ if(mm==''){
+   $("#ys2").addClass("i3");
+ }
+else {
+$("#ys2").removeClass("i3");
+$("#ys2").addClass("i2");
+}
+}
+$(function(){
+    var url= "${ctxPath}/cms/AllCharts";
+    $.ajax({
+        type: "POST",
+        async:false,
+        url:url,
+        dataType: "json",
+        success: function(data){
+
+        }
+    });
+
+});
+function mima2(){
+var qrmm=$('#zh_pwds').val();
+if(qrmm==''){
+$("#ys3").addClass("i3");
+ }
+ else {
+$("#ys3").removeClass("i3");
+$("#ys3").addClass("i2");
+ }
+}
+
+function yanzm(){
+var yzm=$('#yzm').val();
+	 if(yzm==""){
+	    $("#ys4").addClass("i3");
+	     return;
+	 }
+	 else {
+	  $("#ys4").removeClass("i3");
+		$("#ys4").addClass("i2");
+	 }
+}
+
+
+ function zhuce(){
+ 	 var em = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+ 	 var num= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+  	 var qrmm=$('#zh_pwds').val();
+	 var mm=$('#zh_pwd').val();
+	 var yzm=$('#yzm').val();
+	 var zh=$('#zh_user').val();
+	 var tset=$('#tset').val();
+	 if(zh==""){
+			 alert('还没有填写邮箱');
+			 $("#ys1").addClass("i3");
+			 return;
+			}
+			else if(!em.test(zh)){
+			alert('请输入正确的邮箱');
+	 		$("#ys1").addClass("i3");
+	  		return;
+			}
+		else {
+			$("#ys1").removeClass("i3");
+			$("#ys1").addClass("i2");
+		}
+		
+		if(mm==""){
+		 alert('还没有填写密码');
+		   $("#ys2").addClass("i3");
+		   return;
+	 }
+	 	else if(!num.test(mm)){
+	 alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+	  $("#ys2").addClass("i3");
+	  return;
+	 }
+	 else {
+	 $("#ys2").removeClass("i3");
+		$("#ys2").addClass("i2");
+	 }
+	 if(qrmm==""){
+		 alert('还没有填写确认密码');
+		  $("#ys3").addClass("i3");
+		   return;
+	 }
+	 else if(mm!=qrmm){
+	 	alert('请保持两次填写的密码一致');
+	 	  $("#ys3").addClass("i3");
+	 	   return;
+	 }
+	 else {
+	 $("#ys3").removeClass("i3");
+		$("#ys3").addClass("i2");
+	 }
+	 
+	 	 var yzm=$('#yzm').val();
+	 if(yzm==""){
+	  alert('请填写验证码');
+	    $("#ys4").addClass("i3");
+	     return;
+	 }
+	 else {
+	  $("#ys4").removeClass("i3");
+		$("#ys4").addClass("i2");
+	 }
+	 if(!$("#yd").is(":checked")){
+	 alert('请接受《新用户注册协议》');
+	   return;
+	 }
+	 else{
+	 //执行注册操作
+	 	$.ajax({
+		url:"${ctxPath}/system/reception/yzm",    //请求的url地址
+		dataType:"json",   //返回格式为json
+		data:{"yzm":yzm},    //参数值
+		type:"post",   //请求方式
+		success:function(data){
+			if(data){
+				$.ajax({
+		url:"${ctxPath}/system/reception/QueryWhetherTheMailBoxIsUnique",   //请求的url地址
+		dataType:"json",   //返回格式为json
+		data:{"zh_user":zh},    //参数值
+		type:"post",   //请求方式
+		success:function(data){
+			if(data>0){
+			alert("邮箱已注册过了");
+			  $("#ys1").addClass("i3");
+				return false;
+			}else{
+				$.ajax({
+		url:"${ctxPath}/system/reception/register",   //请求的url地址
+		dataType:"json",   //返回格式为json
+		data:{"zh_user":zh,"zh_sf":tset,"zh_pwd":mm},    //参数值
+		type:"post",   //请求方式
+		success:function(data){
+		if(tset==1){
+			alert("注册成功，请您及时关注申请的邮箱进行验证");
+			}
+			else if(tset==0){
+			alert('注册成功 正在跳转到主页');
+			window.location.href="${frontPath!}/4";
+			}
+			 }
+		});
+			}
+		 }
+		});
+			}else{
+			alert("验证码输入错误");
+				$("#ys4").addClass("i3");
+				return false;
+			}
+			
+			
+		 }
+		});
+	 }
+ }
+				function wjmm1(){
+				 var yzm=$('#yzm').val();
+	 			 var zh=$('#zh_user').val();
+	 			 var em = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+	 		if(zh==""){
+			 alert('还没有填写邮箱');
+			 $("#ys1").addClass("i3");
+			 return;
+			}
+			else if(!em.test(zh)){
+			alert('请输入正确的邮箱');
+	 		$("#ys1").addClass("i3");
+	  		return;
+			}
+			else {
+			$("#ys1").removeClass("i3");
+			$("#ys1").addClass("i2");
+			}
+			if(yzm==""){
+			  alert('请填写验证码');
+	  		  $("#ys4").addClass("i3");
+	  		   return;
+			 }
+	 		else {
+	 		 $("#ys4").removeClass("i3");
+			 $("#ys4").addClass("i2");
+			 }
+				$.ajax({
+					url:"${ctxPath}/system/reception/yzm",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{"yzm":yzm},      //参数值
+					type:"post",   //请求方式
+					success:function(data){
+					if(data){
+					$.ajax({
+					url:"${ctxPath}/system/reception/QueryWhetherTheMailBoxIsUnique",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{"zh_user":zh}, 
+					type:"post",   //请求方式
+					success:function(data){
+					if(data>0){
+					var  url="${ctxPath}/system/reception/gotowjmm2";
+ 					   mypost(url,{
+   								 "zh_user":zh
+			       			});      
+					}else {
+					alert("邮箱未注册过");
+					$("#ys1").addClass("i3");
+						return false;
+					}
+		 }
+		});
+					}else {
+					alert("验证码输入错误");
+					$("#ys4").addClass("i3");
+						return false;
+					}
+		 }
+		});
+		}
+</script>
+
+<script type="text/javascript">
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+
+
+</script>
+<script type="text/javascript">
+function yjyzm(){ 
+$.ajax({
+					url:"${ctxPath}/system/reception/yjyzm",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{"zh_user":"${zh_user!}"}, 
+					type:"post",   //请求方式
+					success:function(data){
+					
+					}
+					});
+}				
+</script>
+<script type="text/javascript">
+var flag = 1;  
+var i = 60;  
+function countDown() {  
+    i = i - 1;  
+    $("#yzm").val(i);  
+    $("#yzm").removeAttr("onclick");
+    if (i == 0) {  
+        $("#yzm").val("重新发送");  
+        flag = 1;  
+        i = 60;  
+        $("#yzm").attr("onclick","yjyzm();countDown();");
+        return;  
+    }  
+    setTimeout('countDown()',1000);  
+} 
+</script>
+
+<script type="text/javascript">
+				function wjmm2(){	
+					var  yyy=$("#yx").val();
+					var zh_user="${zh_user!}";
+						if(yyy==''){
+						alert("还没有填写验证码");
+						}
+							else {
+								$.ajax({
+									url:"${ctxPath}/system/reception/yxyzforxgmm",   //请求的url地址
+									dataType:"json",   //返回格式为json
+									data:{"zh_user":zh_user,"yzm":yyy},
+									type:"post",   //请求方式
+									success:function(data){
+									if(data==2){
+									var url="${ctxPath}/system/reception/gotowjmm3";
+									   mypost(url,{
+   								 		"zh_user":zh_user
+			       					});      
+									}
+									else {
+									alert('验证码错误，请重新尝试输入');
+									}
+								}
+							});
+						}
+						
+					}
+					
+
+</script>
+<script type="text/javascript">
+				function wjmm3(){
+				var qrmm=$('#zh_pwds').val();
+	 			var mm=$('#zh_pwd').val();
+	  			var num= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+	  			var zh_user=$('#zh').val();
+							if(mm==""){
+		 					alert('还没有填写密码');
+		   					$("#ys2").addClass("i3");
+						   return;
+					 		}
+					 			else if(!num.test(mm)){
+					 			alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+					 			$("#ys2").addClass("i3");
+					 			return;
+					 		}
+						else {
+						 $("#ys2").removeClass("i3");
+			   			 $("#ys2").addClass("i2");
+						 }
+						 
+							 if(qrmm==""){
+						 alert('还没有填写确认密码');
+						  $("#ys3").addClass("i3");
+						   return;
+					 }
+					 
+					 else if(mm !=qrmm){
+					 alert("请保持两次填写的密码一致");
+					 return;
+					 }
+					 	else {
+					 		$("#ys3").removeClass("i3");
+							$("#ys3").addClass("i2");
+					 	}
+					 	
+					 	$.ajax({	
+									url:"${ctxPath}/system/reception/wjmmEnd",   //请求的url地址
+									dataType:"json",   //返回格式为json
+									async:false,
+									data:{"zh_user":zh_user,"zh_pwd":mm}, 
+									type:"post",   //请求方式
+									success:function(data){
+									if(data!=null){
+									alert("注册成功 点击确定返回首页");	
+									window.location.href='${frontPath!}/4';
+										}
+										}
+							});
+					 	
+					 	
+					}
+
+
+
+</script>
+
+
+</body>
+</html>

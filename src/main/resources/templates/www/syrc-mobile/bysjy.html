@@ -1,0 +1,162 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	function sczw(zw_id){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{zw_id:zw_id},    //参数值
+					type:"post",   //请求方式
+					success:function(data){
+					alert(data.message);
+			 		}
+					}); 
+				}
+				
+			function sqzw(zw_id){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{zwId:zw_id},    //参数值
+					type:"post",   //请求方式
+					success:function(data){
+					alert(data.message);
+			 		}
+					}); 
+				}
+</script>
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+  <span class="location" onclick="shouye();"><font style="font-size: 0.6rem;color: #747474;font-weight: bold">返回首页</font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz">
+     @if(session.tbZhInfo_loginSession != null){
+   
+ 		 @if(session.tbZhInfo_loginSession.zh_sf ==0){
+  			 <a href="${ctxPath}/cms/resume/goGrzxForSj">个人中心</a>
+  			  @}
+  			@ else if(session.tbZhInfo_loginSession.zh_sf ==1){
+ 			<a href="${ctxPath}/qyzx/goToyprclg">企业中心</a>
+ 			 @}
+ 			 @else {
+ 			  <a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a></span>
+ 			 @}
+ 	 @}
+  @else {
+    <a href="${ctxPath}/system/reception/nologin">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/gotogrzc">注册</a></span>
+ 	@ }
+ 	
+ 	<script>
+ 	function shouye(){
+ 	window.location.href="${ctxPath}/bcrc/4"
+ 	}
+ 	 </script>
+  
+  </span> </div>
+  <!--	top  头部  结束--> 
+   
+</div>
+  <div id="pageContent">
+    <div class="mod">
+      <div class="t t2">毕业生就业</div>
+      <div class="items">
+      
+      @for(list in model){
+		  <div class="e eck" >
+			<h3><a 
+			@if(session.tbZhInfo_loginSession !=null){
+						 href="${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}"
+						  @}else {
+						   href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}');"
+						  @}
+			>${list.zw_zwmc}</a></h3>
+			<aside>${list.qy_qymc}</aside>
+			
+			<p class="items_p">
+			<a class="sqzw"
+			@if(session.tbZhInfo_loginSession !=null){
+						 href="javascript:void(0)"   onclick="sqzw('${list.zw_id}');"
+					  @}else {
+					   href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/bysjy');"
+					  @}
+			>申请职位</a>
+			
+			<a class="sczw" 
+					  @if(session.tbZhInfo_loginSession !=null){
+					   href="javascript:void(0)" 	 onclick="sczw('${list.zw_id}');"
+					  @}else {
+					   href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/bysjy');"
+					  @}
+			>收藏职位</a>
+			
+			</p>
+			<i class="adr">${strutil.length(list.zw_gzdz!)>40?strutil.subStringTo(list.zw_gzdz!,0,15)+"...":list.zw_gzdz!} </i>
+	
+		  </div>
+		  	  @}
+		</div>
+    </div>
+  </div>
+</div>
+  <script type="text/javascript">
+ function jinggao(url){
+    alert("对不起！您还未登录，请您先登录");
+    var  test='${ctxPath}/system/reception/nologin';
+     mypost(test,{"url":url});  
+ }
+  
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+ 
+</script>
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}
+		
+</body>
+</html>

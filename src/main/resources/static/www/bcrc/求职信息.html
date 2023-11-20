@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<title>白城市公共人才创业就业服务平台</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-page.css">
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/TL_PC_Slider.js"></script>
+<script type="text/javascript" language="javascript" src="js/TL_Tab.js"></script>
+</head>
+
+<body>
+<div class="contentbig">
+	<!--top开始-->
+	<div class="nav">
+        <ul>
+        	<li><a>网站首页</a></li>
+            <li><a>就业信息</a></li>
+            <li><a>就业指导</a></li>
+            <li><a>求职信息</a></li>
+            <li><a>招聘信息</a></li>
+            <li><a>就业资讯</a></li>
+            <li><a>办事指南</a></li>
+            <li><a>创业园地</a></li>
+            <li><a>关于我们</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="logo"><img src="images/bcrc-index_03.png"/></div>
+    <!--搜索选项卡开始-->
+    <div class="searchbox">
+        <div class="search_title clearfix"> <span>站内搜索</span> <span>职位搜索</span></div>
+        <div class="clear"></div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+            $(function(){
+                $(this).TL_Tab ({
+                    tab : ".searchbox .search_title span",
+                    box : ".search_cont",
+                    events : "over",// over
+                    num : 1,
+                    speed : 10
+                });
+            });
+    </script> 
+    
+    <!--搜索结束-->
+    <!--top结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+    	<div  class="wz_cont_in">
+        	<div class="dqwz">当前位置：首页>>列表页</div>
+            <!--搜索条件开始-->
+            <div class="sstj_div">
+          		<div class="line_div">
+                	<span class="tit_span">现从事行业</span>
+            		<div class="txt pointer" float-on="false" id="int_expectindustry_div">
+              			<input placeholder="填写/选择" class="ef cursor" id="int_expectindustry_input" type="text" maxlength="24">
+              			<span class="ic i_block pointer" onclick="work_func_click(this)" id="int_expectindustry_click"></span>
+              			<div class="ul u3" id="int_expectindustry_list"></div>
+            		</div>
+          		</div>
+              	<div class="line_div">
+                	<span class="tit_span">年龄</span>
+                	<input type="text" class="ssjl_inp"/>&nbsp;&nbsp;—&nbsp;&nbsp;<input type="text"  class="ssjl_inp"/>
+              	</div>
+      			<div class="line_div">
+                	<span class="tit_span">年龄</span>
+       				<select>
+                        <option>不限</option>
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+      			</div>
+		      	<div class="line_div">
+                	<span class="tit_span">工作年限</span>
+        			<input type="text" class="ssjl_inp"/>&nbsp;&nbsp;—&nbsp;&nbsp;<input type="text"  class="ssjl_inp"/>
+      			</div>
+		      	<div class="line_div">
+                	<span class="tit_span">学历</span>
+       				<select  class="ssjl_sel">
+                    	<option>学历不限</option>
+                        <option>初中及以下</option>
+                        <option>高中</option>
+                        <option>中专</option>
+                        <option>大专</option>
+                        <option>本科</option>
+                        <option>硕士</option>
+                        <option>博士</option>
+                        <option>MBA</option>
+                    </select>&nbsp;&nbsp;—&nbsp;&nbsp;
+                    <select  class="ssjl_sel">
+                        <option>学历不限</option>
+                        <option>初中及以下</option>
+                        <option>高中</option>
+                        <option>中专</option>
+                        <option>大专</option>
+                        <option>本科</option>
+                        <option>硕士</option>
+                        <option>博士</option>
+                        <option>MBA</option>
+                    </select>
+      			</div>
+
+    		</div>
+	 		<div class="sx_btn">
+	  			<a class="sxjl"><img src="images/qyzx_icon_31.png" />筛选简历</a>
+	  			<a class="del_btn"><img src="images/jlzx_con_11.png" />清空</a>
+			</div> 
+            <!--搜索条件结束-->
+            <dl class="gjrcb_cont">
+            	<dd>
+                	<span class="pm fl"><img src="images/bcrc-index_14.png"/></span>
+                    <div class="ryxx fl">
+                    	<a>
+                        	<h3 class="fl">景因梦</h3>
+                            <div class="jbxx fl"><span>33岁</span><span>女</span><span>本科</span><span>郑州大学(计算机网络)</span></div>
+                            <div class="clear"></div>
+                            <div class="qztj">
+                                <span>求职岗位:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>求职性质:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望薪水:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望地区:其他职位</span>
+                            </div>
+                            <div class="clear"></div>
+                            <p>精通C语言，Linux TCP/IP协议，精通防火墙处理流程，DDOS攻击，NAT,VPN,路由，vXworks等，能带技术团队。2006/8--至今某世界500强企业杭州研究所 产品SE...</p>
+                        </a>
+                    </div>
+                </dd>
+                
+                <dd>
+                	<span class="pm fl"><img src="images/bcrc-index_14.png"/></span>
+                    <div class="ryxx fl">
+                    	<a>
+                        	<h3 class="fl">景因梦</h3>
+                            <div class="jbxx fl"><span>33岁</span><span>女</span><span>本科</span><span>郑州大学(计算机网络)</span></div>
+                            <div class="clear"></div>
+                            <div class="qztj">
+                                <span>求职岗位:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>求职性质:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望薪水:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望地区:其他职位</span>
+                            </div>
+                            <div class="clear"></div>
+                            <p>精通C语言，Linux TCP/IP协议，精通防火墙处理流程，DDOS攻击，NAT,VPN,路由，vXworks等，能带技术团队。2006/8--至今某世界500强企业杭州研究所 产品SE...</p>
+                        </a>
+                    </div>
+                </dd>
+                
+                <dd>
+                	<span class="pm fl"><img src="images/bcrc-index_14.png"/></span>
+                    <div class="ryxx fl">
+                    	<a>
+                        	<h3 class="fl">景因梦</h3>
+                            <div class="jbxx fl"><span>33岁</span><span>女</span><span>本科</span><span>郑州大学(计算机网络)</span></div>
+                            <div class="clear"></div>
+                            <div class="qztj">
+                                <span>求职岗位:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>求职性质:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望薪水:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望地区:其他职位</span>
+                            </div>
+                            <div class="clear"></div>
+                            <p>精通C语言，Linux TCP/IP协议，精通防火墙处理流程，DDOS攻击，NAT,VPN,路由，vXworks等，能带技术团队。2006/8--至今某世界500强企业杭州研究所 产品SE...</p>
+                        </a>
+                    </div>
+                </dd>
+                
+                <dd>
+                	<span class="pm fl"><img src="images/bcrc-index_14.png"/></span>
+                    <div class="ryxx fl">
+                    	<a>
+                        	<h3 class="fl">景因梦</h3>
+                            <div class="jbxx fl"><span>33岁</span><span>女</span><span>本科</span><span>郑州大学(计算机网络)</span></div>
+                            <div class="clear"></div>
+                            <div class="qztj">
+                                <span>求职岗位:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>求职性质:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望薪水:其他职位</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span>期望地区:其他职位</span>
+                            </div>
+                            <div class="clear"></div>
+                            <p>精通C语言，Linux TCP/IP协议，精通防火墙处理流程，DDOS攻击，NAT,VPN,路由，vXworks等，能带技术团队。2006/8--至今某世界500强企业杭州研究所 产品SE...</p>
+                        </a>
+                    </div>
+                </dd>
+                
+            </dl>
+            
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--底部开始-->
+     <div class="footer">
+     	<div class="footer_in">
+        	<a><img src="images/blue.png"/></a>
+            <div>
+            	<p>主办：吉林省白城市暨洮北区人才交流中心&nbsp;&nbsp;&nbsp;技术支持：长春首佳科技有限公司</p>
+				<p>地址：白城市中兴东大路2-21号&nbsp;&nbsp;&nbsp;邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：347660</p>
+				<p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+            </div>
+        </div>
+     </div>
+    <!--底部结束-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

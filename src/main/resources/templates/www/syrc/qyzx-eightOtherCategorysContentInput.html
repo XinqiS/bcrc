@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+
+    <!-- core - css -->
+    <link href="${ctxPath}/static/BJUI/themes/css/style.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/themes/css/heart.css" rel="stylesheet">
+<!--    <link href="${ctxPath}/static/BJUI/themes/blue/core.css" id="bjui-link-theme" rel="stylesheet">-->
+    <!-- plug - css -->
+    <link href="${ctxPath}/static/BJUI/plugins/kindeditor_4.1.10/themes/default/default.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/plugins/colorpicker/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/plugins/niceValidator/jquery.validator.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/plugins/bootstrapSelect/bootstrap-select.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/themes/css/FA/css/font-awesome.min.css" rel="stylesheet">
+    <link href="${ctxPath}/static/BJUI/plugins/webuploader/webuploader.css" rel="stylesheet">
+
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+    <script src="${resPath}/syrc/js/DatePicker/WdatePicker.js"></script>
+
+    <!-- bootstrap plugins -->
+    <script src="${ctxPath}/static/BJUI/plugins/bootstrap.min.js"></script>
+    <script src="${ctxPath}/static/ckeditor4.8/ckeditor.js"></script>
+    <script src="${ctxPath}/static/ckeditor4.8/adapters/jquery.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-core.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-regional.zh-CN.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-frag.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-extends.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-basedrag.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-slidebar.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-contextmenu.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-navtab.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-dialog.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-taskbar.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-ajax.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-alertmsg.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-pagination.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-util.date.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-datepicker.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-ajaxtab.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-datagrid.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-tablefixed.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-tabledit.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-spinner.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-lookup.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-tags.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-upload.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-theme.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-initui.js"></script>
+    <script src="${ctxPath}/static/BJUI/js/bjui-plugins.js"></script>
+    <!-- other plugins -->
+    <script src="${ctxPath}/static/BJUI/plugins/other/jquery.autosize.js"></script>
+    <link href="${ctxPath}/static/BJUI/plugins/uploadify/css/uploadify.css" rel="stylesheet">
+    <script src="${ctxPath}/static/BJUI/plugins/uploadify/scripts/jquery.uploadify.min.js"></script>
+    <script src="${ctxPath}/static/BJUI/plugins/download/jquery.fileDownload.js"></script>
+    <script src="${ctxPath}/static/laydate/laydate.js"></script>
+    <script>
+        $(function() {
+            BJUI.init();
+        });
+    </script>
+</head>
+
+<body>
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+
+<!--内容开始-->
+<div class="contentbox er_con">
+
+    <div class="er_div2">
+        <p class="rsj_dqwzbox">当前位置：<a href="${frontPath!}/4">首页</a>&gt;&gt;<a href="${ctxPath!}/qyzx/goToyprclg">企业中心</a>&gt;&gt;<a>添加信息</a></p>
+        <fieldset class="xzzw_div">
+            <legend>添加信息</legend>
+            <table class="jbxx_table jbxx_table3">
+                <input TYPE="hidden" name="userId" value="1">
+                <input TYPE="hidden" name="siteId" value="4">
+                <input TYPE="hidden" name="status" value="2">
+                <input type="hidden" name="author" value="admin">
+                <input TYPE="hidden" name="contentId" value="${content.contentId!}">
+                <input TYPE="hidden" name="categoryId" value="${category.categoryId!}" >
+                <input TYPE="hidden" name="qy_id" value="${qyInfo.qy_id}" >
+                <input TYPE="hidden" name="qy_qymc" value="${qyInfo.qy_qymc}" >
+                <tr>
+                    <td class="td_tit">
+                        <i class="red">*</i>标题：
+                    </td>
+                    <td>
+                        <input type="text" placeholder="标题"  name="title" maxlength="20" value="${content.title!,xss}"  style="width: 98.6%" placeholder="请填写标题"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_tit" valign="top">
+                        <i class="red">*</i>日期：
+                    </td>
+                    <td>
+                        <input style="width:225px;margin-left:0px" name="inputdate"  id="j_inputdate" data-rule="required;" value="${content.inputdate!,xss}" class="laydate-icon timeUstyle stateUTime"
+                               onclick="laydate({istime: true,format:'YYYY-MM-DD'})"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_tit" valign="top">
+                        <i class="red">*</i>内容：
+                    </td>
+                    <td>
+                        @for(filed in modelFiled){
+                            @if(filed.filedClass=="editor"){
+                                <!--判断是否为文本编辑器-->
+                                <textarea  data-toggle="CKEditor"  data-upload="${ctxPath}/uploads/CKEditorUpload"   style="height:650px;max-height:750px;margin:10px 0 0 0" name="${filed.filedName!}">${(has(content)?content[filed.filedName]:filed.filedValue),xss="escape"}</textarea>
+                            @}
+                        @}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="td_tit" valign="top">
+                        附件：
+                    </td>
+                    <td>
+                        @for(filed in modelFiled){
+                        @if(filed.filedClass=="file"){
+                        <!--判断是否为文件上传字段-->
+                        <script type="text/javascript">
+                            function ${filed.filedName!}_upload_success(file, data) {
+                                var json = $.parseJSON(data)
+                                $(this).bjuiajax('ajaxDone', json)
+                                if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+                                    $('#${filed.filedName!}').val(json.filename).trigger('validate');
+                                    $('#${filed.filedName!}_file').val(json.filename);
+                                }
+                            }
+                        </script>
+                        <div style="display: inline-block; vertical-align: middle;width: 100%">
+                            <!--遍历获取运行上传的文件类型-->
+                            @var strs = strutil.split(filed.filedValue,"#");
+                            @var str="";
+                            @if(isNotEmpty(strs)){
+                            @for(s in strs){
+                            @str=str+"*."+s+";";
+                            @}
+                            @}
+                            <div id="${filed.filedName!}" data-toggle="upload" data-uploader="${ctxPath}/uploads"
+                                 data-file-size-limit="1024000000"
+                                 data-file-type-exts="${isNotEmpty(str)?strutil.subStringTo(str,0,strutil.length(str)-1):'*.jpg;*.png;*.gif;*.mpg;*.docx;*.doc;*.xls;*.mp4;'}"
+                                 data-multi="false"
+                                 data-on-upload-success="${filed.filedName!}_upload_success"
+                                 data-icon="cloud-upload"></div>
+                            <span>
+                               <input type="text"  class="input-nm" style="margin: 5px 0 0 0;width: 98.6%"    size="50" name="${filed.filedName!}" placeholder="${filed.alias!}" value="${(!has(content)?'':content[filed.filedName]!),xss='escape'}" id="${filed.filedName!}_file">
+                            </span>
+                        </div>
+                        @}
+                        @}
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+        <a class="qr_btn" onclick="content_save_post();">保存</a>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+<!--遮盖层 -->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<div id="base_area_layer" class="layer_class" init="true" >
+    <iframe  scrolling="auto"   width="100%" height="100%" frameborder="0" id="iframe"  ></iframe>
+</div>
+<input type="hidden"  id="work_func">
+<input type="hidden"  id="count" value="5">
+<!--遮盖层-->
+<script type="text/javascript">
+    function content_save_post(){
+        let categoryId = $("input[name='categoryId']").val();
+        let contentId = $("input[name='contentId']").val();
+        let qy_id = $("input[name='qy_id']").val();
+        let qy_qymc = $("input[name='qy_qymc']").val();
+        let author = $("input[name='author']").val();
+        let status = $("input[name='status']").val();
+        let userId = $("input[name='userId']").val();
+        let siteId = $("input[name='siteId']").val();
+        let title = $("input[name='title']").val();
+        let inputdate = new Date($("input[name='inputdate']").val());
+        let content = CKEDITOR.instances.content.getData();
+        if(title==''){
+            alert('标题不能为空');
+            return;
+        }
+        if(inputdate==''){
+            alert('日期不能为空');
+            return;
+        }
+        if(content==''){
+            alert('内容不能为空');
+            return;
+        }
+        $.post("${ctxPath!}/qyzx/save",{
+            categoryId:categoryId,
+            contentId:contentId,
+            qy_id:qy_id,
+            qy_qymc:qy_qymc,
+            author:author,
+            viewNum:0,
+            status:status,
+            userId:userId,
+            siteId:siteId,
+            title:title,
+            inputdate:inputdate,
+            content:content
+        },function(res){
+            let json = JSON.parse(res);
+            if(json.statusCode == "200"){
+                location.href = "${ctxPath}/qyzx/goToQyzxEightOtherCategorys/${qyInfo.qy_id}/${category.categoryId}";
+            }else {
+                alert("系统错误，添加失败！");
+            }
+        });
+    }
+</script>
+</body>
+</html>

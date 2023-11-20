@@ -1,0 +1,132 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+    <script src="${resPath}/syrc/js/myPagination.js"></script>
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+</head>
+
+<body>
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+
+
+<!--内容开始-->
+<div class="contentbox er_con">
+    <div class=" clearfix">
+        <div class="con_left fl">
+            <h4>个人中心</h4>
+            <ul class="left_nav">
+                @includeFileTemplate("/www/syrc/include/grzx-eightOtherLeftMeun.html",{"current":"index"}){}
+            </ul>
+        </div>
+        <div class="con_right fr">
+            <div class="er_tit">
+                <span>报名记录</span>
+                <a class="qyzx_xzgw er_tit_a" onclick="exportExcel()">导出记录</a>
+            </div>
+            <div class="qygl_con">
+                <div class="tab_tit2 con_tit">
+                    <span onclick="tzym();" class="on">报名记录</span>
+                </div>
+                <table class="con_table tab_table2">
+                    <thead>
+                    <th width="300">公司名称</th>
+                    <th width="100">姓名</th>
+                    <th width="100">联系电话</th>
+                    <th width="100">学历</th>
+                    <th width="200">毕业院校</th>
+                    <th width="100">操作</th>
+                    </thead>
+                    @for(zxbm in model.list){
+                    <tr>
+                        <td><a style="color:#318ddc" target="_blank" href="${ctxPath}/${sitePrefix}/4/${categoryId}/${zxbm.contentId}">${zxbm.qy_qymc!,xss}</a></td>
+                        <td>${zxbm.name!,xss}</td>
+                        <td>${zxbm.tel}</td>
+                        <td>
+                            @if(zxbm.education=='0'){
+                            <span>高中</span>
+                            @}else if(zxbm.education=='1'){
+                            <span>大专</span>
+                            @}else if(zxbm.education=='2'){
+                            <span>本科</span>
+                            @}
+                        </td>
+                        <td>${zxbm.wentToSchool}</td>
+                        <td>
+                            <a class="btn_sc btn_a" target="_blank" href="${ctxPath}/ecZxbm/zxbm/detail/${zxbm.id}">
+                                <img src="${resPath}/syrc/images/jlzx_con_34.png"/>详情
+                            </a>
+                        </td>
+                    </tr>
+                    @}
+                    <tr>
+                        <td colspan="8">
+                            <div id="pagination" class="pagination"></div>
+                        </td>
+                    </tr>
+                </table>
+                <script type="text/javascript">
+                    var datatotal = '${model.total}';
+                    var pageAmount =10;
+                    var pagenum = '${model.pageNum}';
+
+                    pageTotal=Math.ceil(datatotal/pageAmount);
+
+                    if(pageTotal>10){
+                        pageSize=10
+                    }else{
+                        pageSize=pageTotal
+                    }
+
+                    window.onload = function () {
+                        new myPagination({
+                            id: 'pagination',
+                            curPage:pagenum, //初始页码
+                            pageTotal: pageTotal, //总页数
+                            pageAmount: pageAmount,  //每页多少条
+                            dataTotal: datatotal, //总共多少条数据
+                            getPage: function (page) {
+
+                                window.location.href ='${ctxPath}/ecZxbm/grzx/list/${categoryId}?pageNum='+page;
+
+                            }
+                        })
+
+                    }
+                    function exportExcel() {
+                        $.post("${ctxPath}/ecZxbm/grzx/excelCount/${categoryId}",function(res){
+                            if(res == 0){
+                                alert("未查询到数据!");
+                                return;
+                            }
+                            location.href = "${ctxPath}/ecZxbm/grzx/excel/${categoryId}";
+                        });
+                    }
+                </script>
+
+            </div>
+
+        </div>
+        <!--			应聘人才管理   结束-->
+    </div>
+</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+<!--邀请人才弹出框-->
+<div class="yqrc_div">
+    <p>成功邀请面试</p>
+    <a class="yq_qd">确定</a>
+</div>
+<!--邀请人才弹出框-->
+<!--遮盖层-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<!--遮盖层-->
+

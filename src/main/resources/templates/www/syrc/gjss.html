@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/cjjl_jzd.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/jlzx_js.js"></script>
+</head>
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="contentbox er_con">
+
+  <div class="er_div2 clearfix">
+	  	<p class="rsj_dqwzbox">当前位置：<a>首页</a>&gt;&gt;<a>高级搜索</a></p>
+    <table class="jbxx_table">
+		  	<tbody>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					职能类别：
+				</td>
+				<td>
+					<div class="sh"><div class="txt pointer" float-on="false" id="work_func_div"><input id="work_zn_input" placeholder="填写/选择" class="ef cursor" type="text" value="" pre_value=""> <span class="ic i_block pointer" id="work_func_click" onclick="work_func_click(5)"></span><div class="ul u3" id="work_func_list"> </div></div><input id="work_func" type="hidden" value="" pre_code=""> </div>
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					行业类别：
+				</td>
+				<td>
+					<div class="sh"><div class="txt pointer" float-on="false" id="int_expectindustry_div"><input placeholder="填写/选择" class="ef cursor" id="int_hy_input" type="text" maxlength="24" value="" > <span class="ic i_block pointer" onclick="work_industry_click(5)" id="int_expectindustry_click"></span><div class="ul u3" id="int_expectindustry_list"></div></div><input id="int_expectindustry"  type="hidden" value="" ></div>
+					
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					经济类型：
+				</td>
+				<td>
+					 <select id="qy_jjlx">
+					 			<option value="-1">请选择</option>
+                                <option value="0">国有经济</option>
+                                <option value="1">集体经济</option>
+                                <option value="2">私营经济</option>
+                                <option value="3">个体经济</option>
+                                <option value="4">联营经济</option>
+                                <option value="5">股份制</option>
+                                <option value="6">外商投资</option>
+                                <option value="7">港澳台投资</option>
+                                <option value="8">其他经济类</option>
+                            </select>
+					
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>工作年限：
+				</td>
+				<td>
+					<select id="zw_gznx">
+					    <option value="-1">请选择</option>
+						<option value="0">经验不限</option>
+						<option value="1">无经验</option>
+						<option value="2">1年以下</option>
+						<option value="3">1-3年</option>
+						<option value="4">3-5年</option>
+						<option value="5">5-10年</option>
+						<option value="6">10年以上</option>
+					</select>
+				</td>
+			  </tr>
+		   <tr>
+		  	 		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>月薪范围：
+				</td>
+				<td>
+					<select id="zw_yxfw">
+						<option value="-1">请选择</option>
+						<option value="0">1k-</option>
+						<option value="1">1k-2k</option>
+						<option value="2">2k-4k</option>
+						<option value="3">4k-6k</option>
+						<option value="4">6k-8k</option>
+						<option value="5">8k-10k</option>
+						<option value="6">10k-15k</option>
+						<option value="7">15k-20k</option>
+						<option value="8">20k-30k</option>
+						<option value="9">30k-50k</option>
+						<option value="10">50k-70k</option>
+						<option value="11">70k-100k</option>
+						<option value="12">100k+</option>
+					</select>
+				</td>
+			  </tr>
+		   <tr>
+		   <tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>学历要求：
+				</td>
+				<td>
+					<select id="zw_zdxl">
+						<option value="-1">请选择</option>
+						<option value="0">学历不限</option>
+						<option value="1">本科</option>
+						<option value="2">硕士</option>
+						<option value="3">博士</option>
+						<option value="4">大专</option>
+						<option value="5">中技</option>
+						<option value="6">中专</option>
+						<option value="7">高中以下</option>
+					</select>
+					</td>
+			  </tr>
+		   <tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>工作性质：
+				</td>
+				<td>
+					<select id="zw_gzxz">
+						<option value="-1">请选择</option>
+						<option value="0">全职</option>
+						<option value="1">兼职</option>
+						<option value="2">实习</option>
+					</select>
+				</td>
+			  </tr>
+		  </tbody></table>
+	  <a class="qr_btn" onclick="sub();" style="margin-left:520px;">搜索</a>
+</div>
+	</div>
+	<script type="text/javascript">
+	function sub(){
+	var zw_zwlb=$('#work_zn_input').val();
+	var qy_sshy=$('#int_hy_input').val();
+	var qy_jjlx=$('#qy_jjlx').val();
+	var zw_gznx=$('#zw_gznx').val();
+	var zw_yxfw=$('#zw_yxfw').val();
+	var zw_zdxl=$('#zw_zdxl').val();
+	var zw_gzxz=$('#zw_gzxz').val();
+	var  url="${ctxPath}/gjss/selectExample";
+	mypost(url,{
+	"zw_zwlb":zw_zwlb,
+	"qy_sshy":qy_sshy,
+	"qy_jjlx":qy_jjlx,
+	"zw_gznx":zw_gznx,
+	"zw_yxfw":zw_yxfw,
+	"zw_zdxl":zw_zdxl,
+	"zw_gzxz":zw_gzxz
+	});
+	}
+	
+	function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+	
+	</script>
+<!--内容结束--> 
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+
+<!--遮盖层 -->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<div id="base_area_layer" class="layer_class" init="true" >
+<iframe  scrolling="auto"   width="100%" height="100%" frameborder="0" id="iframe" src="1.html" ></iframe>
+</div>
+<input type="hidden"  id="work_func">
+<input type="hidden"  id="count" value="5">
+<!--遮盖层-->
+</body>
+</html>

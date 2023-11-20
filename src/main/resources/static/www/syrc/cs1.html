@@ -1,0 +1,363 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建简历</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_jzd.css">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jlzx_js.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+<div class="header">
+  <div class="logo fl"><img src="images/sy-index_03.png" width="390" height="79"></div>
+  <ul class="nav fr">
+    <li class="zypx_on"><a class="zypx">职业培训</a></li>
+    <li><a class="gjrc">高级人才</a></li>
+    <li><a class="xczp">现场招聘</a></li>
+    <li><a class="wlzp">网络招聘</a></li>
+    <li><a class="syyc">松原引才</a></li>
+    <li><a class="xzsy">网站首页</a></li>
+  </ul>
+</div>
+<!--头部结束--> 
+
+<!--内容开始-->
+<div class="contentbox er_con">
+  <div class=" clearfix">
+    <div class="con_left cjjl_nav fl">
+      <h4>创建简历</h4>
+      <div class="nav_body left_nav"> <a href="#Basic" class="" id="base_index"><span class="left a"></span>基本信息<span id="base_complete" class="right y"></span></a> <a href="#Career" id="intention_index"><span class="left b"></span>求职意向<span id="intention_complete" class="right n"></span></a> <a href="#Work" id="work_index"><span class="left c"></span>工作经验<span id="work_complete" class="right n"></span></a> <a href="#Education" id="education_index"><span class="left e"></span>教育经历<span id="education_complete" class="right n"></span></a> <a href="#Graduate" id="school_index"><span class="left f"></span>在校情况<span id="school_complete" class="right n"></span></a> <a href="#Skills" class="" id="skill_index"><span class="left g"></span>技能特长<span id="skill_complete" class="right n"></span></a> </div>
+      <a class="btn_yljl">预览简历</a> </div>
+    <div class="con_right fr"> 
+      <!--			创建简历   开始-->
+      <div class="er_tit"> <span>创建简历</span> <a class="jlzx_jlzx er_tit_a">简历中心</a></div>
+      <div class="column Fm" id="maincontent">
+        <div class="box mk com" id="basedetail">
+          <div class="head" id="Basic">
+            <div class="face f2"> <img id="base_avatar" src="images/man.png" width="85" height="104" alt="头像"> </div>
+            <div class="cbox">
+              <div class="h30">
+                <div class="c c2">
+                  <label>姓名</label>
+                  <i>*</i>
+                  <div class="sh">
+                    <div class="txt">
+                      <input id="base_name" class="ef" maxlength="20" type="text" value="王一">
+                    </div>
+                  </div>
+                  <div class="err" id="base_name_warning" style="display:none"><em class="icons"></em></div>
+                </div>
+                <div class="c c4">
+                  <label>性别</label>
+                  <i>*</i>
+                  <div class="sh" id="base_sex_div">
+                    <div class="txt pointer" id="base_csituation_list" float-on="false">
+                      <select class="ef">
+                        <option>男</option>
+                        <option>女</option>
+                      </select>
+                    </div>
+                    <div class="err" id="base_sex_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="h30">
+              <div class="c c2" float-index="false">
+                <label>出生日期</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" id="base_birthday_calendar" float-on="false">
+                    <input class="ef date_img" id="base_birthday_input" type="date"  value="1990-07-18">
+                  </div>
+                  <input id="base_birthday" type="hidden" value="1990/07/18">
+                </div>
+                <div class="err" id="base_birthday_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+              <div class="c c4" float-index="false">
+                <label>开始工作年份</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" id="base_workyear_calendar" float-on="false">
+                    <input class="ef date_img" id="base_workyear_input" type="date"  value="2011">
+                  </div>
+                  <input id="base_workyear" type="hidden" value="2011">
+                </div>
+                <div class="err" id="base_workyear_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+            </div>
+            <div class="h30" style="*position:relative;*z-index:2">
+              <div class="c c2">
+                <label>手机</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" name="11" onclick="Modify_Info('user_phone',1)">
+                    <input class="ef c_bbb" id="tele" type="text" disabled="disabled" value="15948700252">
+                    <span class="ic pointer" id="mobilepointer">修改</span> </div>
+                </div>
+                <div class="err" id="base_mobile_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+              <div class="c c4" float-index="false">
+                <label>求职状态</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" id="base_csituation_list" float-on="false">
+                    <select class="ef">
+                      <option>目前正在找工作</option>
+                      <option>观望有好机会会考虑</option>
+                      <option>我目前不想换工作</option>
+                    </select>
+                  </div>
+                  <input id="base_csituation" type="hidden" value="0">
+                </div>
+                <div class="err" id="base_csituation_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+            </div>
+            <div class="h30" style="*position:relative;*z-index:1">
+              <div class="c c2">
+                <label>邮箱</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" onclick="Modify_Info('user_email',1)">
+                    <input class="ef c_bbb" id="email" type="text" disabled="disabled" value="3431877856@qq.com">
+                    <span class="ic pointer" id="emailpointer">修改</span> </div>
+                </div>
+                <div class="err" id="base_email_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+              <div class="c c4" float-index="false" id="base_area_index">
+                <label>居住地</label>
+                <i>*</i>
+                <div class="sh">
+                  <div class="txt pointer" float-on="false" id="base_area_div">
+                    <input class="ef cursor" maxlength="35" type="text" id="base_area_input" placeholder="填写/选择" value="长春-南关区" pre_value="长春-南关区">
+                    <span class="ic i_block pointer" id="base_area_click" onclick="base_area_click(this)"></span>
+                    <div class="ul u3" id="base_area_list" style="display:none"> </div>
+                  </div>
+                  <input class="ef" id="base_area" type="hidden" value="240202" pre_code="240202">
+                </div>
+                <div class="err" id="base_area_warning" style="display:none"><em class="icons"></em></div>
+              </div>
+            </div>
+            <div class="abox">
+              <div class="mbox" onclick="showMoreClickEvent(this)"> <span class="icons">更多展开</span> <em class="icons"></em> </div>
+              <div class="all">
+                <div class="h30">
+                  <div class="c c1" float-index="false" id="base_country_index">
+                    <label>户口/国籍</label>
+                    <div class="sh">
+                      <div class="txt pointer" float-on="false" id="base_country_div">
+                        <input class="ef cursor" maxlength="35" id="base_country_input" placeholder="填写/选择" type="text" value="宁波" pre_value="宁波">
+                        <span id="base_country_click" onclick="base_country_click(this)" class="ic i_block pointer"></span>
+                        <div class="ul u3" id="base_country_list"> </div>
+                      </div>
+                      <input id="base_country" type="hidden" value="080300" pre_code="080300">
+                    </div>
+                  </div>
+                  <div class="c c4" float-index="false">
+                    <label>婚姻状态</label>
+                    <div class="sh">
+                      <div class="sh">
+                        <div class="txt pointer" id="base_marriage_list" float-on="false">
+                          <select class="ef">
+                            <option>已婚</option>
+                            <option>未婚</option>
+                            <option>保密</option>
+                          </select>
+                        </div>
+                        <input class="ef" id="base_marriage" type="hidden" value="">
+                      </div>
+                      <input class="ef" id="base_marriage" type="hidden" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="h30">
+                  <div class="c c1" float-index="false">
+                    <label>证件号</label>
+                    <div class="sh sm">
+                      <div class="txt pointer" id="base_idtype_list" float-on="false">
+                        <select class="ef select2">
+                          <option>身份证</option>
+                          <option>护照</option>
+                          <option>军人证</option>
+                          <option>港澳居民来往内地通行证</option>
+                          <option>外国人永久居留身份证</option>
+                          <option>其它</option>
+                        </select>
+                      </div>
+                      <input class="ef" id="base_idtype" type="hidden" value="0">
+                    </div>
+                    <div class="sh sl">
+                      <div class="txt">
+                        <input id="base_idcard" class="ef" maxlength="25" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="err" id="base_idcard_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                  <div class="c c4" float-index="false">
+                    <label>政治面貌</label>
+                    <div class="sh">
+                      <div class="txt pointer" id="base_politicsstatus_list" float-on="false">
+                        <select class="ef ">
+                          <option>中共党员</option>
+                          <option>共青团员</option>
+                          <option>民主党派人士</option>
+                          <option>无党派民主人士</option>
+                          <option>无党派民主人士</option>
+                          <option>普通公民</option>
+                        </select>
+                      </div>
+                      <input class="ef" id="base_politicsstatus" type="hidden" value="">
+                    </div>
+                  </div>
+                </div>
+                <div class="h30">
+                  <div class="c c1" float-index="false">
+                    <label>其他联系方式</label>
+                    <div class="sh sm">
+                      <div class="txt pointer" id="base_contacttype_list" float-on="false">
+                        <select class="ef select2">
+                          <option>家庭电话</option>
+                          <option>公司电话</option>
+                          <option>微信</option>
+                          <option>QQ号</option>
+                        </select>
+                      </div>
+                      <input class="ef" id="base_contacttype" type="hidden" value="00">
+                    </div>
+                    <div class="sh sl">
+                      <div class="txt">
+                        <input class="ef" maxlength="20" id="base_othercontact" type="text" placeholder="区号-号码" value="">
+                      </div>
+                    </div>
+                    <div class="err" id="base_othercontact_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                  <div class="c c4">
+                    <label>身高</label>
+                    <div class="sh">
+                      <div class="txt">
+                        <input class="ef" maxlength="3" id="base_stature" type="text" value="">
+                      </div>
+                    </div>
+                    cm
+                    <div class="err" id="base_stature_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                </div>
+                <div class="h30">
+                  <div class="c c1">
+                    <label>家庭住址</label>
+                    <div class="sh">
+                      <div class="txt">
+                        <input class="ef" maxlength="100" id="base_address" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="err" id="base_address_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                  <div class="c c4">
+                    <label>邮编</label>
+                    <div class="sh">
+                      <div class="txt">
+                        <input class="ef" maxlength="6" id="base_zipcode" type="text" value="">
+                      </div>
+                    </div>
+                    <div class="err" id="base_zipcode_warning" style="display:none"><em class="icons"></em></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clear"></div>
+            <div class="btnbox"> <span class="p_but" id="basedetail_save" onclick="saveConfirmClick(this)">保存</span> </div>
+          </div>
+        </div>
+        <div class="box m1 top_wrap" id="salary">
+          <div class="hd"> <strong class="icons"><em class="e0 icons"></em>目前年收入</strong> <span class="f16"></span> </div>
+          <div class="bh_div">
+            <div class="none icons">完善年收入情况，让HR更了解你！</div>
+          </div>
+          <span class="ed_icon_blue icons" onclick="salary_editButtonClick(this)" id="salary_edit" ></span> </div>
+        <div class="box mk top_wrap" id="intention">
+          <div class="hd"> <strong class="icons" id="Career"><em class="e1 icons"></em>求职意向</strong> </div>
+          <div  class="bh_div2">
+            <div class="bd">
+              <div class="con">
+                <div class="e">
+                  <label>工作类型</label>
+                  <i>：</i>
+                  <div>全职</div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+          <span class="ed_icon_blue icons" id="intention_edit"  onclick="intention_editButtonClick(this)" ></span> </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Work"><em class="e2 icons"></em>工作经验 </strong><a id="work_new" onclick="workButtonClick(this);"  class="add icons">新增工作</a> </div>
+          <div id="work">
+            <div class="none icons" id="work_empty">完善工作经验，展现工作内容及能力，让HR更了解你！</div>
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Education"><em class="e4 icons"></em>教育经历 </strong><a id="education_new"  onclick="EducationButtonClick(this);" class="add icons">新增教育</a> </div>
+          <div id="education">
+            <div class="none icons" id="education_empty">完善教育经历，展现专业能力，让HR更了解你！</div>
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"><strong class="icons" id="Graduate"><em class="e5 icons"></em>在校情况 </strong><!--  <a id="schoolaward_new"  onclick="schoolaward_newButtonClick(this);" class="add icons">新增校况</a>--></div>
+          <div class="tit" style=""> <span>校内荣誉</span><a id="schoolaward_new" onclick="schoolaward_newClick(this);" class="add icons">新增荣誉</a> </div>
+          <div id="schoolaward">
+            <div class="none icons" id="schoolaward_empty">完善校内荣誉，展现学习能力，让HR更了解你！</div>
+          </div>
+          <div class="tit"> <span>校内职务</span><a id="schooljob_new" onclick="schooljob_newClick(this);" class="add icons">新增职务</a> </div>
+          <div id="schooljob">
+            <div class="none icons" id="schooljob_empty">完善校内职务，展现校园活动经验，让HR更了解你！</div>
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Skills"><em class="e6 icons"></em>技能特长 </strong><span class="f12">（包含IT技能、语言能力、证书、成绩、培训经历）</span> <a id="skilllanguage_new" onclick="skilllanguage_newButtonClick(this);" class="add icons">新增特长</a></div>
+          <div id="Skills_div">
+            <div class="none icons">完善技能特长能力，让HR更了解你！</div>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      
+      <!--			创建简历   结束--> 
+    </div>
+  </div>
+</div>
+<!--内容结束--> 
+
+<!--底部开始-->
+<div class="footerbox">
+  <table>
+    <tr>
+      <td align="center" valign="top"><img src="images/sy-index_82.png" width="38" height="38"/> <a>关于我们</a></td>
+      <td align="center" valign="top"><img src="images/sy-index_84.png" width="38" height="38"/> <a>法律申明</a></td>
+      <td align="center" valign="top"><img src="images/sy-index_86.png" width="38" height="38"/> <a>帮助中心</a></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><p>版权所有松原人才市场 吉ICP备12002825号-2 增值电信业务经营许可证号：吉B2-20150082号</p></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><p>技术支持：长春首佳科技有限公司</p></td>
+    </tr>
+  </table>
+</div>
+<!--底部结束--> 
+
+<!--遮盖层-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<!--遮盖层-->
+<div id="base_area_layer" class="layer_class" init="true" >
+<iframe src="cs.html" width="100%" height="100%" frameborder="0" id="iframe"  scrolling="no"></iframe>
+</div>
+<input type="hidden"  id="work_func">
+</body>
+</html>

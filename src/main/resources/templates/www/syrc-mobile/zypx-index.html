@@ -1,0 +1,106 @@
+@includeFileTemplate("/www/syrc-mobile/include/zypx-header.html"){}
+<div id="pageContent">
+	
+    <div class="ly_01_01">
+      <div class="ly_01_01_box">
+        <a class="df_prev" href="javascript:void(0)"></a>
+        <a class="df_next" href="javascript:void(0)"></a>
+        <ol></ol>
+        <ul>
+        <#cms_content_list siteId="${site.siteId}" categoryId="1030" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="5" titleLen="15" var="bean">
+          <li>
+          <p><a href="#"><img src="${bean.file!}" /></a></p>
+          </li>
+                 </#cms_content_list>
+        </ul>
+        <script type="text/javascript">
+            $(function(){
+                $(".ly_01_01").TL_PC_Slider({
+                    tab : ".ly_01_01_box ol",
+                    box : ".ly_01_01_box ul",
+                    type : "TL_Display",
+                    auto_play: true,
+                    page: true,
+                    actions: "tl_hover",//tl_click 点击发生
+                    timer: 800,//持续时间
+                    speed: 3000
+                });
+            });
+            function jinggao(url){
+    alert("对不起！您还未登录，请您先登录");
+    var  test='${ctxPath}/system/reception/nologin';
+     mypost(test,{"url":url});  
+ }
+
+
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+        </script>
+      </div>
+    </div>
+	
+
+ 
+    <div class="mod">
+      <div class="t t2">松原人才市场创业培训</div>
+      <div class="aox" style=" padding:10px 0;">
+        <article> 
+        	松原人才市场创业培训为应届毕业生免费提供创业培训，免费提供教材
+            <br>
+            <br>
+            培训时间：另行通知<br>
+			培训内容：创业培训
+            
+		</article>
+     	<a class="more fr zxbm"
+     	    @if(session.tbZhInfo_loginSession !=null){
+           href="${ctxPath}/cms/zxbm/input"
+          @}else {
+          href="javascript:void(0)" onclick="jinggao('${ctxPath}/cms/zxbm/input');"
+          @}
+            
+     	>在线报名</a>
+      </div>
+    </div>
+    
+    <div class="mod">
+      <div class="t t2">职业技能鉴定</div>
+      <div class="aox">
+        <ul class="all_list">
+        <#cms_content_list siteId="${site.siteId}" categoryId="1028" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="16" var="bean">
+			<li><a href="${bean.url}">${bean.title!}</a>   ${bean.temp!}<em>${bean.inputdate,dateFormat="yyyy年MM月dd日"}</em></li>
+		 </#cms_content_list>
+		</ul>
+      </div>
+    </div>
+    
+    <div class="mod">
+      <div class="t t2">企业内训</div>
+      <div class="aox">
+        <ul class="all_list">
+         <#cms_content_list siteId="${site.siteId}" categoryId="1029" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="16" var="bean">
+			<li><a href="${bean.url}">${bean.title!}</a> ${bean.temp!}<em>${bean.inputdate,dateFormat="yyyy年MM月dd日"}</em></li>
+            </#cms_content_list>
+		</ul>
+      </div>
+    </div>
+  </div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/zypx-footer.html"){}

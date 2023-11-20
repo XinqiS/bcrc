@@ -1,0 +1,611 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Expires" content="0"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge"/>
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/cjjl_css1.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/cjjl_form.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/cjjl_jzd.css">
+    <script src="${resPath}/bcrc/js/jquery-3.6.0.min.js"></script>
+    <!-- <script type="text/javascript" src="${resPath}/bcrc/js/jquery-1.7.2.min.js"></script>-->
+    <script type="text/javascript" src="${resPath}/bcrc/js/TL_PC_Slider.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/js/TL_Tab.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/js/jlzx_js.js"></script>
+    <script language="javascript" src="${resPath}/bcrc/js/gangweixuanze.js"></script>
+    <script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+    <script src="${resPath}/syrc/js/idealDic.js"></script>
+    <script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+    <script src="${resPath}/syrc/js/formValidate.js"></script>
+
+    <!-- 职能-->
+    <script src="${resPath}/bcrc/cssjs/position.data.min.js" type="text/javascript"></script>
+    <script src="${resPath}/bcrc/cssjs/jquery.position.select.js" type="text/javascript"></script>
+    <!--行业-->
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/drag.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/funtype_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/major_arr.js"></script>
+</head>
+<script>
+
+    var _tkd = _tkd || [];
+    var $_CONFIG = {};
+    //$_CONFIG['domain'] = '//m.51job.com/';
+    //$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+    //$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+    //$_CONFIG['template'] = 'resume/baseinfo';
+    $_CONFIG['islogin'] = '1';
+    $_CONFIG['jobarea'] = '030800';
+    $_CONFIG['jobareaname'] = '东莞';
+    $_CONFIG['ip'] = '36.48.27.149';
+    $_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+<body>
+<!--内容开始-->
+<div class="contentbig">
+    <!--header begin-->
+    @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+    <!--header end-->
+    <!--内容开始-->
+    <input type="hidden" id="jianliId" name="jianliId" value="${jlinfo.jianliId!}"/>
+    <input type="hidden" id="qzyxId" name="qzyxId" value="${qzyx==null?'':qzyx.qzyxId}"/>
+    <input type="hidden" id="jlBanbenId" name="jlBanbenId" value="${jlbb==null?'':jlbb.jlBbId}"/>
+    <div class="wz_cont">
+        <div class="wz_cont_in">
+            <div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>个人简历</div>
+            <div class=" clearfix">
+                <div class="con_left cjjl_nav fl">
+                    <h4><img src="${resPath}/bcrc/images/bjjl_03.png"></h4>
+                    <div class="nav_body left_nav">
+                        <a href="#Basic" class="" id="base_index"><span class="left a"></span>基本信息<span
+                                id="base_complete" class="right y"></span></a>
+                        @if(qzyx!=null&&qzyx.qzyxQwxz!=null&&qzyx.qzyxQwxz!=""){
+                        <a href="#Career" id="intention_index"><span class="left b"></span>求职意向<span
+                                id="intention_complete" class="right y"></span></a>
+                        @}else{
+                        <a href="#Career" id="intention_index"><span class="left b"></span>求职意向<span
+                                id="intention_complete" class="right n"></span></a>
+                        @}
+                        @if(isNotEmpty(gzjyList)){
+                        <a href="#Work" id="work_index"><span class="left c"></span>工作经验<span id="work_complete"
+                                                                                              class="right y"></span></a>
+                        @}else{
+                        <a href="#Work" id="work_index"><span class="left c"></span>工作经验<span id="work_complete"
+                                                                                              class="right n"></span></a>
+                        @}
+                        @if(isNotEmpty(jyjlList)){
+                        <a href="#Education" id="education_index"><span class="left e"></span>教育经历<span
+                                id="education_complete" class="right y"></span></a>
+                        @}else{
+                        <a href="#Education" id="education_index"><span class="left e"></span>教育经历<span
+                                id="education_complete" class="right n"></span></a>
+                        @}
+                        @if(isNotEmpty(xnzwList)||isNotEmpty(xnryList)){
+                        <a href="#Graduate" id="school_index"><span class="left f"></span>在校情况<span id="school_complete"
+                                                                                                    class="right y"></span></a>
+                        @}else{
+                        <a href="#Graduate" id="school_index"><span class="left f"></span>在校情况<span id="school_complete"
+                                                                                                    class="right n"></span></a>
+                        @ }
+                        @if(qzyx!=null&&qzyx.qzyxJntc!=null&&qzyx.qzyxJntc!=""){
+                        <a href="#Skills" class="" id="skill_index"><span class="left g"></span>技能特长<span
+                                id="skill_complete" class="right y"></span></a>
+                        @}else{
+                        <a href="#Skills" class="" id="skill_index"><span class="left g"></span>技能特长<span
+                                id="skill_complete" class="right n"></span></a>
+                        @}
+                    </div>
+                    @if(isNotEmpty(jlbb.jlBbId)){
+                    @}
+                    @if(isNotEmpty(jlinfo.jianliId)){
+                    <a class="btn_yljl" href="${ctxPath}/cms/resume/previewResume?id=${jlbb.jlBbId!}"
+                       target="on">预览简历</a>
+                    @}
+                </div>
+                <div class="con_right fr">
+                    <!--简历中心   开始-->
+                    <div class="all_title"><a><span>编辑简历</span></a><a class="jlzx_jlzx er_tit_a"
+                                                                      href="${ctxPath}/cms/resume/findUserResume"
+                                                                      style="float: right;background: none;font-size: 16px; margin: 1px 0 0 0;color: #046798;font-weight: normal;line-height: 40px;">个人中心</a>
+                    </div>
+
+                    <!--			创建简历   开始-->
+                    <div class="column Fm" id="maincontent">
+                        <div class="box mk top_wrap" id="basedetail">
+                            <div class="head" id="Basic">
+                                <div class="face">
+                                    @if(jlinfo.jianliXb==0){
+                                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                    <img src="${resPath}/bcrc/images/man.png" width="85" height="104" alt="头像">
+                                    @}else{
+                                    <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                    @ }
+                                    @}else if(jlinfo.jianliXb==1){
+                                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                    <img src="${resPath}/bcrc/images/woman.png" width="85" height="104" alt="头像">
+                                    @}else{
+                                    <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                    @ }
+                                    @}else{
+                                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                    <img src="${resPath}/bcrc/images/woman.png" width="85" height="104" alt="头像">
+                                    @}else{
+                                    <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                    @ }
+                                    @}
+
+                                </div>
+
+                                <div class="name">${jlinfo.jianliXm!}</div>
+                                <p class="at">现居住${jlinfo.jianliJzd!} │
+                                    ${jlinfo.jianliKsgz!} │
+                                    @if(jlinfo.jianliXb!=null){
+                                    <script>document.write(dicContainer.getDicItemName('100', ${jlinfo.jianliXb!}));</script>
+                                    @}
+                                    │ ${jlinfo.jianliCsrq!} │
+                                    @if(jlinfo.jianliXb!=null){
+                                    <script> document.write(dicContainer.getDicItemName('qzzt', ${jlinfo.jianliQzzt!}));</script>
+                                    @}
+                                </p>
+                                <div class="tab"><span class="email icons at"
+                                                       title="${jlinfo.jianliYx!}">${jlinfo.jianliYx!}</span> <span
+                                        class="tel icons">${jlinfo.jianliSj!}</span></div>
+                                <div class="abox">
+                                    <div class="mbox" onclick="showMoreClickEvent(this)"><span class="icons">更多展开</span>
+                                        <em class="icons"></em></div>
+                                    <div class="all">
+                                        @if(isNotEmpty(jlinfo.jianliHk)){
+                                        <div class="e e2 ef">
+                                            <label>户口/国籍</label>
+                                            <i>：</i>
+                                            <div>${jlinfo.jianliHk!}</div>
+                                        </div>
+                                        @}
+                                        @if(isNotEmpty(jlinfo.jianliHyzt)){
+                                        <div class="e e2">
+                                            <label>婚姻状态</label>
+                                            <i>：</i>
+                                            <div>
+                                                <script> document.write(dicContainer.getDicItemName('hyzt', ${jlinfo.jianliHyzt!}));</script>
+                                            </div>
+                                        </div>
+                                        @}
+                                        @if(isNotEmpty(jlinfo.jianliZzmm)){
+                                        <div class="e e2">
+                                            <label>政治面貌</label>
+                                            <i>：</i>
+                                            <div>
+                                                <script> document.write(dicContainer.getDicItemName('106', ${jlinfo.jianliZzmm!}));</script>
+                                            </div>
+                                        </div>
+                                        @}
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <span class="ed_icon_blue icons" id="xxxx_btn"></span></div>
+                        <div class="box m1 top_wrap" id="salary">
+                            <div class="hd"><strong class="icons"><em class="e0 icons"></em>目前年收入</strong>
+                                @if(qzyx!=null&&qzyx.qzyxNsr!=null){
+                                <span class="f16">${qzyx.qzyxNsr!}万元</span>
+                                @}else{
+                                <div class="none icons">完善年收入情况，让HR更了解你！</div>
+
+                                @}
+                            </div>
+                            <div class="bh_div">
+                            </div>
+
+                            <span class="ed_icon_blue icons" onclick="salary_editButtonClick(this)"
+                                  id="salary_edit"></span></div>
+                        <div class="box mk top_wrap" id="intention">
+                            <div class="hd"><strong class="icons" id="Career"><em class="e1 icons"></em>求职意向</strong>
+                            </div>
+                            <div class="bh_div2">
+                                @if(qzyx!=null&&qzyx.qzyxQwxz!=null){
+                                <div class="bd">
+                                    <div class="con">
+                                        <div class="e e3">
+                                            <label>期望薪资</label><i>：</i>
+                                            <div>${qzyx.qzyxQwxz!}</div>
+                                        </div>
+                                        <div class="e e3">
+                                            <label>地点</label><i>：</i>
+                                            <div><span class="ong">${qzyx.qzyxDd!}</span></div>
+                                        </div>
+                                        <div class="e e3 ef">
+                                            <label>职能/职位</label><i>：</i>
+                                            <div><span class="ong" title="${qzyx.qzyxZn!}">${strutil.length(qzyx.qzyxZn!)>10?strutil.subStringTo(qzyx.qzyxZn!,0,10)+"...":qzyx.qzyxZn!}/</span><span
+                                                    class="ong">${qzyx.qzyxZw!}</span></div>
+                                        </div>
+                                        <div class="e e3">
+                                            <label>行业</label><i>：</i>
+                                            <div><span class="ong" title="${qzyx.qzyxHy!}">${strutil.length(qzyx.qzyxHy!)>10?strutil.subStringTo(qzyx.qzyxHy!,0,10)+"...":qzyx.qzyxHy!}</span>
+                                            </div>
+                                        </div>
+                                        <div class="e">
+                                            <label>工作类型</label>
+                                            <i>：</i>
+                                            <div>
+                                                <script>document.write(dicContainer.getDicItemName('gzlx', ${qzyx.qzyxGzlx!}));</script>
+                                            </div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                </div>
+                                @}else{
+                                <div class="none icons">完善求职意向，让HR更了解你！</div>
+                                @}
+                            </div>
+                            <span class="ed_icon_blue icons" id="intention_edit"
+                                  onclick="intention_editButtonClick(this)"></span></div>
+                        <div class="box mk gzjy">
+                            <div class="hd"><strong class="icons" id="Work"><em class="e2 icons"></em>工作经验 </strong><a
+                                    id="work_new" onclick="workButtonClick(this);" class="add icons">新增工作</a></div>
+                            <div id="work">
+                                @if(isNotEmpty(gzjyList)){
+                                @for(gzjy in gzjyList){
+                                <div class="bd" id="${gzjy.gzjyId!}">
+                                    <div class="con edit ebox">
+                                        <div class="sp">
+                                            <span>${gzjy.gzjyKssj!}-${gzjy.gzjyJssj!}</span>
+                                            <strong class="w280 at" title="${gzjy.gzjyGs!}">${gzjy.gzjyGs!}</strong>
+                                            <strong class="fbox jian hai">
+                                                <span class="zhi at" title="${gzjy.gzjyZn!}">${gzjy.gzjyZn}</span>
+                                                @if(gzjy.gzjyHwjl==0){
+                                                <em>(${gzjy.gzjyHbdx!})<i>海外经历</i></em>
+                                                @}
+                                            </strong>
+                                        </div>
+                                        <p class="pp at">
+                                            ${gzjy.gzjyHy!} | ${gzjy.gzjyXsrs!} | ${gzjy.gzjyLzyy!} |
+                                            ${gzjy.gzjyBm!} </p>
+                                        <!--<div class="e">
+                                            <label>工作描述</label><i>：</i>
+                                            <div>${gzjy.gzjyGzms!} </div>
+                                        </div>-->
+                                        <div class="clear"></div>
+                                        <span class="ed_icon"><em class="edi icons"
+                                                                  onclick="gzjyEdit('${gzjy.gzjyId!}')"></em><em
+                                                class="del icons" onclick="gzjyDel('${gzjy.gzjyId!}')"></em></span>
+                                    </div>
+                                </div>
+                                @}
+                                @}else{
+                                <div class="none icons" id="work_empty">完善工作经验，展现工作内容及能力，让HR更了解你！</div>
+                                @}
+                            </div>
+                        </div>
+                        <div class="box mk">
+                            <div class="hd"><strong class="icons" id="Education"><em class="e4 icons"></em>教育经历
+                            </strong><a id="education_new" onclick="EducationButtonClick(this);"
+                                        class="add icons">新增教育</a></div>
+                            <div id="education"> @if(isNotEmpty(jyjlList)){
+                                @for(jyjl in jyjlList){
+                                <div class="bd">
+                                    <div class="con edit" id="${jyjl.jyjlId!}">
+                                        <div class="sp">
+                                            <span>${jyjl.jyjlKssj!}-${jyjl.jyjlJssj!}</span>
+
+                                            @if(jyjl.jyjlHwjl==0){
+                                            <strong class="fbox jian hai">
+                                                <span class="at" title="${jyjl.jyjlXx!}">${jyjl.jyjlXx!}</span>
+                                                <input type="hidden" id="education_verify_178692305" value="0">
+                                                <em><i>海外经历</i></em>
+                                            </strong>
+                                            @}else{
+                                            <strong class="fbox w146">
+                                                <span class="at" title="${jyjl.jyjlXx!}">${jyjl.jyjlXx!}</span>
+                                                <input type="hidden" id="education_verify_178692305" value="0">
+                                            </strong>
+                                            @}
+
+                                            <strong class="w140 at" title="计算机科学与技术">${jyjl.jyjlZy!}</strong>
+                                            <span class="cl3 w140 at"> ${jyjl.jyjlZyms!}</span>
+                                        </div>
+                                        <div class="clear"></div>
+                                        <span class="ed_icon"><em class="edi icons"
+                                                                  onclick="jyjlEdit('${jyjl.jyjlId!}')"></em><em
+                                                class="del icons" id="education_delete_178692305"
+                                                onclick="jyjlDel('${jyjl.jyjlId!}')"></em></span>
+                                    </div>
+                                </div>
+                                @}
+                                @}else{
+                                <div class="none icons" id="education_empty">完善教育经历，展现专业能力，让HR更了解你！</div>
+                                @}
+                            </div>
+                        </div>
+                        <div class="box mk">
+                            <div class="hd"><strong class="icons" id="Graduate"><em class="e5 icons"></em>在校情况 </strong>
+                                <!--  <a id="schoolaward_new"  onclick="schoolaward_newButtonClick(this);" class="add icons">新增校况</a>-->
+                            </div>
+                            <div class="tit" style=""><span>校内荣誉</span><a id="schoolaward_new"
+                                                                          onclick="schoolaward_newClick(this);"
+                                                                          class="add icons">新增荣誉</a></div>
+                            <div id="schoolaward">
+                                @if(isNotEmpty(xnryList)){
+                                @for(xnry in xnryList){
+                                <!-- 校内荣誉 列表数据  Start  -->
+                                <div class="bd" id="${xnry.xnryId!}">
+
+
+                                    <div class="con edit">
+                                        <div class="sp">
+                                            <span>${xnry.xnrySj!}</span>
+                                            <strong class="w180 at" title="${xnry.xnryJx!}">${xnry.xnryJx!}</strong>
+                                            <span class="cl3 w230 at" title="${xnry.xnryJb!}">${xnry.xnryJb!}</span>
+                                        </div>
+                                        <span class="ed_icon"><em class="edi icons"
+                                                                  onclick="xnryEdit('${xnry.xnryId!}')"></em><em
+                                                class="del icons" onclick="xnryDel('${xnry.xnryId!}')"></em></span>
+                                    </div>
+                                </div>
+                                @}
+                                @}else{
+
+                                <div class="none icons" id="schoolaward_empty">完善校内荣誉，展现学习能力，让HR更了解你！</div>
+                                @}
+                            </div>
+                            <div class="tit"><span>校内职务</span><a id="schooljob_new" onclick="schooljob_newClick(this);"
+                                                                 class="add icons">新增职务</a></div>
+                            <div id="schooljob">
+                                @if(isNotEmpty(xnzwList)){
+                                @for(xnzw in xnzwList){
+                                <div class="bd" id="${xnzw.xnzwId!}">
+                                    <div class="con edit">
+                                        <div class="sp">
+                                            <span>${xnzw.xnzwKssj!}-${xnzw.xnzwJssj!}</span>
+                                            <strong class="w430 at" title="团支书">${xnzw.xnzwZw!}</strong>
+                                        </div>
+                                        <!-- <div class="e">
+                                             <label>职务描述</label><i>：</i>
+                                             <div>${xnzw.xnzwZwms!}</div>
+                                         </div>-->
+                                        <div class="clear"></div>
+                                        <span class="ed_icon"><em class="edi icons"
+                                                                  onclick="xnzwEdit('${xnzw.xnzwId!}')"></em><em
+                                                class="del icons" onclick="xnzwDel('${xnzw.xnzwId!}')"></em></span>
+                                    </div>
+                                </div>
+
+
+                                @}
+                                @}else{
+                                <div class="none icons" id="schooljob_empty">完善校内职务，展现校园活动经验，让HR更了解你！</div>
+                                @}
+
+                            </div>
+
+
+                        </div>
+                        <div class="box mk">
+                            <div class="hd"><strong class="icons" id="Skills"><em class="e6 icons"></em>技能特长
+                            </strong><span class="f12">（包含IT技能、语言能力、证书、成绩、培训经历）</span>
+                                <a id="skilllanguage_new" onclick="skilllanguage_newButtonClick(this);"
+                                   class="add icons">新增特长</a></div>
+                            <div id="Skills_div">
+                                @if(qzyx!=null&&qzyx.qzyxJntc!=null){
+                                <div class="tit"><span>${qzyx.qzyxJntc!}</span></div>
+                                @}else{
+                                <div class="none icons">完善技能特长能力，让HR更了解你！</div>
+                                @}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+
+                    <!--			创建简历   结束-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" id="work_func">
+    <input type="hidden" id="count" value="5">
+    <!--内容结束-->
+    <!--footer begin-->
+    @includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+    <!--footer end-->
+</div>
+<!--职能选择开始-->
+<link href="${resPath}/bcrc/cssjs/base.css" rel="stylesheet" type="text/css">
+<link href="${resPath}/bcrc/cssjs/big-window.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+    /* $(document).ready(function () {
+         $("#result").click(function () {
+             $("#result").positionSelect({
+                 containerId: "positionDiv",
+                 className: "big-window",
+                 nameId: "resultinput",
+                 required: true,
+                 maxCount: 5,
+                 onConfirm: null
+             });
+         });
+     });*/
+</script>
+
+<!---->
+<style>
+    .zwxz {
+        background: url(${resPath}/bcrc/images/form_03.png) no-repeat 10px;
+        position: absolute;
+        width: 25px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 12px;
+        color: #00457d;
+        text-align: center;
+        top: 5px;
+        right: 0;
+        border-left: 1px solid #ddd;
+    }
+</style>
+<!--<textarea id="result" cols="80" rows="10">点我，狠狠地点我。</textarea>-->
+<!---->
+<div id="positionDiv">
+</div>
+<!-- 职位-->
+<!---->
+<div class="big-window bg-f0" id="position">
+    <div class="title">
+        <b>选择职位</b><span class="tip">(最多选择5项)</span> <a href="#" onclick="javascript:closeposition()">
+    </a>
+    </div>
+    <div class="sele-tag">
+        <dl>
+            <dt>已选择：</dt>
+            <dd>
+                <a href="#">已选择的职位1</a>
+                <a href="#">已选择的职已选择的职位位2</a>
+                <a href="#">已选择已选择的职位的职位3</a>
+                <a href="#">已已选择的职位选择的职位4</a>
+                <a href="#">已已选择的职位选择的职位5</a>
+                <a href="#" class="btn">确 定</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="position-menu">
+        <div class="menu">
+            <ul>
+                <li>销售|客服|市场</li>
+                <li>财务|人力资源|行政</li>
+                <li class="sele">项目|质量|高级管理</li>
+                <li>IT|互联网|通信</li>
+                <li>房产|建筑|物业管理</li>
+                <li>金融</li>
+                <li>采购|贸易|交通|物流</li>
+                <li>生产|制造</li>
+                <li>传媒|印刷|艺术|设计</li>
+                <li>咨询|法律|教育|翻译</li>
+                <li>服务业</li>
+                <li>能源|环保|农业|科研</li>
+                <li>兼职|实习|社工|其他</li>
+            </ul>
+        </div>
+        <div class="sub-menu">
+            <dl>
+                <dt>电信/通信技术开发及应用</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>财务/审计/税务</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交通运输服务</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>生物/制药/医疗器械</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>互联网产品/运营管理</dt>
+                <dd>
+                    <a href="#">汽车/摩托车</a>
+                    <a href="#">大型设备/机电设备/重工业 </a>
+                    <a href="#">加工制造（原料加工/模具） </a>
+                    <a href="#">仪器仪表及工业自动化 </a>
+                    <a href="#">印刷/包装/造纸 </a>
+                    <a href="#">办公用品及设备 </a>
+                    <a href="#">医药/生物工程 </a>
+                    <a href="#">医疗设备/器械 </a>
+                    <a href="#">航空/航天研究与制造</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>房地产|建筑业</dt>
+                <dd>
+                    <a href="#">房地产/建筑/建材/工程 </a>
+                    <a href="#">家居/室内设计/装饰装潢 </a>
+                    <a href="#">物业管理/商业中心</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+<!--职能选择结束-->
+
+<!--行业选择开始-->
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/css.css"/>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/alpha.css"/>
+<!---->
+<script type="text/javascript">
+    // 是否在数组内
+    function in_array(needle, haystack) {
+        if (typeof needle == 'string' || typeof needle == 'number') {
+            for (var i in haystack) {
+                if (haystack[i] == needle) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+</script>
+<!---->
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_func.js"></script>
+
+<!-- alpha div -->
+<!---->
+<div id="maskLayer" style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+    <div id="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag">
+        <h3 id="drag_h"></h3>
+        <div id="drag_con"></div>
+    </div>
+</div>
+</div>
+<!-- alpha div end -->
+<!---->
+<div id="sublist" style="display:none"></div>
+<!--行业选择  结束-->
+
+</body>
+</html>

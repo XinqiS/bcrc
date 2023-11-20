@@ -1,0 +1,1 @@
+var geo={getLocation:function(){if(navigator.geolocation){navigator.geolocation.getCurrentPosition(this.getPositionSuccess,this.getPositionError)}},getPositionSuccess:function(a){successCallback(a)},getPositionError:function(a){errorCallback()}};

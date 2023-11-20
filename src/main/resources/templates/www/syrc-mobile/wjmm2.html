@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>${siteTitle!}</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+	<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+	<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+	<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+	<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+	<script type="text/javascript">
+		var _tkd = _tkd || [];
+		var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	</script>
+</head>
+<body>
+<div class="login_bj"><img src="${resPath}/bcrc-mobile/images/login-bj.png"/></div>
+<div class="login">
+	@includeFileTemplate("/www/syrc-mobile/include/mm-header.html",{"current":"index"}){}
+
+	<div class="logo"><img src="${resPath}/bcrc-mobile/images/bcrc-index_03.png"/></div>
+	<div class="content2 ">
+		<ul class="lr_step">
+			<li>验证身份</li>
+		</ul>
+		<div class="con_form con_form2">
+			<h5>验证当前帐号绑定的邮箱： <b class="red">${zh_user!}</b></h5>
+			<h6>为了你的帐号安全，请通过身份验证：</h6>
+			<div class="line line2">
+				<p>邮箱验证码</p>
+				<input type="text" placeholder="请输入邮箱中收到的6位数字验证码" class="yx_yz" id="yx"/>
+				<input type="button"  class="yx_fs" onclick=" yjyzm();countDown();" id="yzm" value="发送验证码">
+			</div>
+			<a class="qr_btn" href="javascript:void(0);" onclick="wjmm2();">下一步</a>
+		</div>
+	</div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/wjmm-footer.html"){}
+
+</body>
+</html>

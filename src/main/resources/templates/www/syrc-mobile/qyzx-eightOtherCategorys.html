@@ -1,0 +1,35 @@
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+
+<!--企业中间   开始-->
+<div id="pageContent">
+    <ul class="qy_table qy_tab">
+        @for(content in model.list){
+        <li>
+            <h2>
+                <a href="${ctxPath}/ecZxbm/zxbm/list/${content.contentId}">
+                    ${strutil.length(content.title!)>15?strutil.subStringTo(content.title!,0,15)+"...":content.title!}
+                </a>
+                <span>浏览：${content.viewNum!,xss}</span>
+            </h2>
+            <p>
+                <i>
+                @if(content.status==2){
+                    <span style="font-weight: 500;color:#4A8CDB"> 待审核</span>
+                @}else if(content.status==1){
+                    <span style="font-weight: 500;color:green"> 发布</span>
+                @}
+                </i>
+                <span>更新日期：${content.inputdate!"N/A",dateFormat="yyyy/MM/dd"}</span>
+            </p>
+        </li>
+        @}
+    </ul>
+    <!--企业中间   结束-->
+</div>
+<!--底部导航  开始-->
+<div id="pageFooter">
+    <!--底部导航  结束-->
+    <script type="text/javascript">
+    </script>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-footer.html",{"current":"index"}){}

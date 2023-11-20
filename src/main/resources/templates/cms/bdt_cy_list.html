@@ -1,0 +1,81 @@
+<script type="text/javascript">
+</script>
+
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="${ctxPath}/dbtUser/page?id=${dbt.dbtId}" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+        <input type="hidden" name="id" value="${dbt.dbtId}">
+        <div class="bjui-searchBar">
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo">刷新全部</a>
+            &nbsp;
+            <a   href="${ctxPath}/dbtUser/input?dbtId=${dbt.dbtId}" class="btn btn-green" data-icon="plus" data-toggle="dialog"  data-resizable="true"  data-width="800" data-height="600" data-id="add-ad"  data-title="添加成员">添加成员</a>
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                    <ul class="dropdown-menu right" role="menu">
+                        <li><a href="${ctxPath}/system/cms/content/delete" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="ids" data-group="ids">删除<span style="color:red;">选中</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+				<label>代表团名称：</label>  ${dbt.dbtName}
+    <table data-toggle="tablefixed" data-width="100%" data-nowrap="true" class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+            <tr>
+                <th align="center" data-order-field="content_id" width="20">No</th>
+                <th align="center"  width="150">成员名称</th>
+                <th align="center"  width="150">代表团成员性别</th>
+                <th align="center"  width="150">代表团成员职务</th>
+               <!--  <th align="center"  width="150">代表团名称</th> -->
+
+
+                <th align="center" width="26" ><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
+                <th align="center"  width="150">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for(dbtUser in model.list){
+            <tr >
+                <td align="center">${dbtUser.id}</td>
+                <td align="left" style="padding-left: 5px">
+                    <a target="_blank" >${dbtUser.cyName}</a>
+                </td>
+                <td align="left" style="padding-left: 5px">
+                    <a target="_blank" >${dbtUser.cySex}</a>
+                </td>
+                <td align="left" style="padding-left: 5px">
+                    <a target="_blank" >${dbtUser.cyJob}</a>
+                </td>
+               
+
+                <td  align="center"><input type="checkbox" name="ids" data-toggle="icheck" value="${dbt.dbtId!}"></td>
+                <td  align="center">
+	                <a href="${ctxPath}/dbtUser/input?id=${dbtUser.id}&dbtId=${dbt.dbtId}" class="btn btn-green"  data-toggle="dialog" title="编辑团成员"  data-resizable="false"  data-width="800" data-height="600" data-id="edit-ad-tab"  data-title="修改">编辑团成员</a>
+	                <a href="${ctxPath}/dbtUser/delete?ids=${dbtUser.id!}" class="btn btn-red" data-toggle="doajax" title="删除" data-confirm-msg="确定要删除该行信息吗？">删</a>
+                </td>
+            </tr>
+        @}
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30" data-page-current="1">
+    </div>
+</div>

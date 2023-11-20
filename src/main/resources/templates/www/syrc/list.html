@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+<script src="${resPath}/bcrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/bcrc/js/TL_Tab.js"></script>
+<script src="${resPath}/bcrc/js/TL_PC_Slider.js"></script>
+
+</head>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #318ddc;
+        width: auto;
+    }
+    .fy .pag .current {
+        background-color: #318ddc;
+    }
+</style>
+<body>
+<div class="contentbig">
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+<!--内容开始-->
+<div class="wz_cont">
+    <div  class="wz_cont_in">
+        <div class="dqwz">
+            <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+            ${bean.baseURL}
+            >>
+            @for(location in bean.locations){
+            ${location.categoryName}
+            @if(!locationLP.last){
+            >>
+            @}
+            @}
+            </#cms_site_pos>
+        </div>
+        <div class="all_title"><a><span>${category.categoryName}</span></a></div>
+    <#cms_category categoryId="${category.categoryId}" isParent="1" var="bean">
+        <ul class="all_list">
+            <#cms_content_page  siteId="${site.siteId!}"  titleLen="66" page="${page!}" var="content">
+            <li><a href="${content.url!}">${content.title!}</a><i>[浏览次数：${content.viewNum!}次]</i>
+                <em>${content.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+            @if(content.index%5==0){
+            <li class="dotted"></li>
+            @}
+        </#cms_content_page>
+
+        </ul>
+    <!--分页开始-->
+    <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+    <!--分页结束-->
+    </div>
+</#cms_category>
+</div>
+<!--内容结束-->
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+
+
+</body>
+</html>

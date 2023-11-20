@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head >
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/swiper.min.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js" ></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/swiper.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc/js/pointtrack.js"></script>
+<script language="javascript" src="${resPath}/syrc/js/jquery.placeholder.min.js"></script>
+<script language="javascript" src="${resPath}/syrc/js/trackData.js"></script>
+
+
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		//$_CONFIG['domain'] = '//m.51job.com/';
+		//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		//$_CONFIG['template'] = 'resume/baseinfo';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+</head>
+
+<body  id="m_45">
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/qyzx/goToQyzxQyxxxgJbxx"><span>基本信息</span></a><a href="${ctxPath}/qyzx/goToLogoxg"><span>logo上传</span></a></div>
+				<div class="sbox" ng-controller="appCtrl">
+
+					<div class="e">
+						<label>企业LOGO</label>
+						<a class="xx_logo" id="uptea">
+							@if(isNotEmpty(qyInfo.qy_file_logo)){
+							<img src="${qyInfo.qy_file_logo!}"  WIDTH="200" HEIGHT="200"/>
+							@}else{
+							<img src="${resPath}/syrc-mobile/images/qy_yyzz.png" />
+							@}
+						</a>
+						<input type="file" style='display:none;'  id="myfile"  name="myfile" onchange="printFileInfo(this)" accept="image/png,image/jpeg,image/gif"  multiple="multiple"/>
+						<h4 class="qy_xtit"><em class="red">*</em>此图片可作为首页广告位使用。为确保成功，请您上传后缀名为jpg、gif、png、bmp的图片，图片大小不得超过2M。</h4>
+					</div>
+					<center class="btnbox">
+						<a href="javascript:void(0); "><button class="btn" onclick="save()" >保存</button></a>
+						<input type="hidden" id="rsmid" value="398719117"/>
+					</center>
+				</div>
+
+
+			</div>
+		</div>
+	</div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js">
+	</script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/indtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/funtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popindtype.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+
+<div id="shadow" style="display:none"></div>
+
+</body>
+<script>
+    $("#uptea").click(function () {
+        $("#myfile").click();
+    });
+
+    var myarr=[];
+    function printFileInfo(target){
+        $('#uptea').html('<img src="'+ URL.createObjectURL(target.files[0]) +'" WIDTH="200" HEIGHT="200"/>')
+        var fileSize = 0;
+        if ( !target.files) {
+            var filePath = target.value;
+            var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+            var file = fileSystem.GetFile (filePath);
+            fileSize = file.Size;
+        } else {
+            fileSize = target.files[0].size;
+        }
+        var size = fileSize / 1024;
+        if(size>2048){
+            window.wxc.xcConfirm("附件不能大于2M!", "error");
+            target.value="";
+            return
+        }
+        var picFile = document.getElementById('myfile');
+        var files = picFile.files;
+        for(var i=0; i<files.length; i++){
+            var file = files[i];
+            myarr.push(file)
+        }
+
+    }
+
+	var url = '${ctxPath}/qyzx/UpdateLogo';//数据地址
+	function save() {
+		var formData = new FormData();
+		$.each(myarr,function(i,file){
+			formData.append('myfile',file);
+
+		});
+		$.ajax({
+			url : url,
+			type : 'POST',
+			dataType: 'json',
+			data : formData,
+			crossDomain: true,
+			cache: false,
+			processData: false,
+			contentType: false,
+			success : function(responseStr) {
+				alert("修改成功，管理员将在24小时内进行审核，请耐心等待。");
+				window.location.href="${ctxPath}/qyzx/goToyprclg";
+			},
+		});
+
+	}
+
+
+</script>
+<!--底部开始-->
+<script type="text/javascript">
+    function jinggao(){
+        alert("您的企业信息还未通过审核或未提交  请耐心等待");
+    }
+</script>
+</html>

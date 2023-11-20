@@ -1,0 +1,56 @@
+@includeFileTemplate("/www/syrc/include/syyc-head.html"){}
+  <div class="main">
+    	<div class="main_left fl" >
+        	<ul class="small_nav" id="lis">
+            	<li ><a href="${frontPath!}/${site.siteId}/1001.html">赴外招聘计划</a></li>
+                <li><a href="${frontPath!}/${site.siteId}/1000.html">单位组织和报名方式</a></li>
+                <li class="djym"><a href="${frontPath!}/${site.siteId}/1002.html">会务文件及报名表下载</a></li>
+                <li><a href="${frontPath!}/${site.siteId}/1003.html">参会单位列表</a></li>
+                <li><a href="${frontPath!}/${site.siteId}/1004.html">单位须知和交通指南</a></li>
+            </ul>
+        </div>
+    	<div class="main_right fr">
+        	<div class="all_title gjrc"><i></i><a>会务文件及报名表下载</a></div>
+            <div class="news_cont">
+                <ul class="all_list">
+                
+                      <#cms_content_list siteId="${site.siteId}" categoryId="1002" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="10" titleLen="37" var="bean">
+                    <li>
+                        <a target="_blank" href="${bean.file!}">${bean.title!}</a>
+                     <em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                    </li>
+                </#cms_content_list>
+                </ul>
+                <!--分页位置-->
+                   <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.news_cont').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/syyc-footer.html"){}

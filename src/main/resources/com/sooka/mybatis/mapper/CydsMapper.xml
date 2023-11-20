@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.CydsMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Cyds" >
+    <id column="CYDS_ID" property="cydsId" jdbcType="VARCHAR" />
+    <result column="CYDS_HDLB" property="cydsHdlb" jdbcType="INTEGER" />
+    <result column="CYDS_XQ" property="cydsXq" jdbcType="VARCHAR" />
+    <result column="CYDS_XMMC" property="cydsXmmc" jdbcType="VARCHAR" />
+    <result column="CYDS_ZCZB" property="cydsZczb" jdbcType="VARCHAR" />
+    <result column="CYDS_FZR" property="cydsFzr" jdbcType="VARCHAR" />
+    <result column="CYDS_BYYX" property="cydsByyx" jdbcType="VARCHAR" />
+    <result column="CYDS_XL" property="cydsXl" jdbcType="INTEGER" />
+    <result column="CYDS_BYNF" property="cydsBynf" jdbcType="VARCHAR" />
+    <result column="CYDS_LXDH" property="cydsLxdh" jdbcType="VARCHAR" />
+    <result column="CYDS_QQ" property="cydsQq" jdbcType="VARCHAR" />
+    <result column="CYDS_YX" property="cydsYx" jdbcType="VARCHAR" />
+    <result column="file" property="file" jdbcType="VARCHAR" />
+    <result column="file1" property="file1" jdbcType="VARCHAR" />
+    <result column="file2" property="file2" jdbcType="VARCHAR" />
+    <result column="CYDS_XMJS" property="cydsXmjs" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CYDS_ID, CYDS_HDLB, CYDS_XQ, CYDS_XMMC, CYDS_ZCZB, CYDS_FZR, CYDS_BYYX, CYDS_XL, 
+    CYDS_BYNF, CYDS_LXDH, CYDS_QQ, CYDS_YX,CYDS_XMJS,file
+  </sql>
+</mapper>

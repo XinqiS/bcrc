@@ -1,0 +1,65 @@
+<div class="nav">
+  <ul>
+      @if(isNotEmpty(current)&&current=='index'){
+      <li>
+        @}else{
+      <li>
+        @}
+        <a href="${frontPath!}/4">网站首页</a>
+      </li>
+
+      <#cms_category_list siteId="4" categoryId="0" isNav="1" var="bean">
+          @if(bean.index==6){
+          <li class="br0">
+            @}else{
+          <li>
+            @}
+      @if(bean.index==2){
+            @if(isNotEmpty(bean.hasChild)&&bean.hasChild){
+            <a href="${baseURL}/cms/dh/selectLfgz?category_id=978">${bean.categoryName!}</a>
+            <dl>
+                <#cms_category_list  siteId="4" categoryId="1" isNav="0" var="subBean">
+                <dd>
+                    <a href="${subBean.url!}" style="font-weight: bold">${subBean.categoryName!}</a>
+                </dd>
+            </#cms_category_list>
+              </dl>
+            </li>
+            @}
+      @}else if(bean.index==3){
+              @if(isNotEmpty(bean.hasChild)&&bean.hasChild){
+              <a href="${baseURL}/cms/dh/selectJdgz?category_id=980">${bean.categoryName!}</a>
+              <dl>
+                  <#cms_category_list  siteId="4" categoryId="3" isNav="0" var="subBean">
+                  <dd>
+                      <a href="${subBean.url!}" style="font-weight: bold">${subBean.categoryName!}</a>
+                  </dd>
+              </#cms_category_list>
+              </dl>
+              </li>
+              @}
+      @}else if(bean.index==6){
+              @if(isNotEmpty(bean.hasChild)&&bean.hasChild){
+              <a href="${baseURL}/cms/dh/selectDbgz?category_id=898">${bean.categoryName!}</a>
+              <dl>
+                  <#cms_category_list  siteId="4" categoryId="4" isNav="0" var="subBean">
+                  <dd>
+                      <a href="${subBean.url!}" style="font-weight: bold">${subBean.categoryName!}</a>
+                  </dd>
+              </#cms_category_list>
+              </dl>
+              </li>
+              @}
+      @}else{
+              @if(bean.index==1){
+              <a href="${baseURL}/cms/dh/selectRdjg">${bean.categoryName!}</a>
+              @}else{
+              <a href="${bean.url!}">${bean.categoryName!}</a>
+              @}
+          @}
+        </li>
+    </#cms_category_list>
+
+  </ul>
+  <div class="clear"></div>
+</div>

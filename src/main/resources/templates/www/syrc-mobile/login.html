@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+	.<script type="text/javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+<script type="text/javascript">
+	
+	 function  grdl(){
+			  var url='${url}';
+              var zh_user=$('#zh_user').val();
+              var zh_pwd=$('#zh_pwd').val();
+              
+           		 if(zh_user==''){
+				 alert("账号不能为空");
+				 return;
+  				 }
+  				 if(zh_pwd==''){
+  				 alert("密码不能为空");
+  				 return;
+        		}
+            $.ajax({
+				url:"${ctxPath}/system/reception/methodNotLoggedIn",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{"zh_user":zh_user,"zh_pwd":zh_pwd,"url":url},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+					if(data.msg=='success'){
+					window.location.href=data.url;
+		 			}
+		 			else if(data.msg=='notUrl'){
+		 			window.location.href='${frontPath!}/4';
+		 			}
+		 			else if(data.msg=='error'){
+		 			alert("您输入的帐号或密码有误,重新登录或尝试找回密码");
+		 			}
+		 			}
+				}); 
+             	}
+
+</script>
+</head>
+<body>
+<div class="login_bj"><img src="${resPath}/bcrc-mobile/images/login-bj.png"/></div>
+<div class="login">
+	@includeFileTemplate("/www/syrc-mobile/include/mm-header.html",{"current":"index"}){}
+	<div class="index_login"></div>
+	<div class="logo"><img src="${resPath}/bcrc-mobile/images/bcrc-index_03.png"/></div>
+	<div class="clearfix">
+		<div class="dl_right">
+			<h1>登录</h1>
+			<div class="login_cont">
+				<div class="name">
+					<img src="${resPath}/bcrc-mobile/images/bcrc-index_20.png"/>
+					<input type="text" id="zh_user"  placeholder="请输入登录账号">
+				</div>
+				<div class="name">
+					<img src="${resPath}/bcrc-mobile/images/bcrc-index_25.png"/>
+					<input  type="password" id="zh_pwd"  placeholder="请输入登录密码">
+				</div>
+				<a class="wjmm" href="${ctxPath}/system/reception/gotowjmm1">忘记密码</a>
+				<div class="clear"></div>
+				<div class="login_but"><input type="button" onclick="grdl();" value="登录"/><a href="${ctxPath}/system/reception/gotogrzc" >还没账号？去注册&gt;&gt;</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+
+

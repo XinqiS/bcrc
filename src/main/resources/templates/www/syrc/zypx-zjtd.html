@@ -1,0 +1,88 @@
+@includeFileTemplate("/www/syrc/include/zypx-header.html"){}
+    
+
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #318ddc;
+        width: auto;
+    }
+    .fy .pag .current {
+       background-color: #318ddc;
+    }
+</style>
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/zypx_04.png" width="171" height="48"></h1>
+        <ul>
+        	<li><a href="${frontPath!}/${site.siteId}/1026.html">资料下载</a></li>
+                  <li><a href="${frontPath!}/${site.siteId}/1024/12280.html">招生简章</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1025/12281.html">政策解读</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1027.html">专家团队</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1023.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	<div class="all_title gjrc"><i></i><a>专家团队</a></div>
+    	<div class="main_right_in">
+            <ul class="zpjh_list">
+                 <#cms_content_list siteId="${site.siteId}" categoryId="1027" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+                <li>
+                    <div class="zpjh_pic"><img src="${bean.file!}"/></div>
+                    <div class="zpjh_cont">
+                        <a>${bean.title!}</a>
+                        <span>${bean.content!}</span>
+                    </div>
+                </li>
+                   </#cms_content_list>
+            </ul>
+          
+            <!--分页-->
+             <!--分页开始-->
+    <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/syyc-footer.html"){}
+

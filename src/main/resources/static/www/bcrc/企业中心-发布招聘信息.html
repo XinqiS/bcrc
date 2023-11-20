@@ -1,0 +1,237 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<title>白城市公共人才创业就业服务平台</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-page.css">
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/TL_PC_Slider.js"></script>
+<script type="text/javascript" language="javascript" src="js/TL_Tab.js"></script>
+</head>
+
+<body>
+<div class="contentbig">
+	<!--top开始-->
+	<div class="nav">
+        <ul>
+        	<li><a>网站首页</a></li>
+            <li><a>就业信息</a></li>
+            <li><a>就业指导</a></li>
+            <li><a>求职信息</a></li>
+            <li><a>招聘信息</a></li>
+            <li><a>就业资讯</a></li>
+            <li><a>办事指南</a></li>
+            <li><a>创业园地</a></li>
+            <li><a>关于我们</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="logo"><img src="images/bcrc-index_03.png"/></div>
+    <!--搜索选项卡开始-->
+    <div class="searchbox">
+        <div class="search_title clearfix"> <span>站内搜索</span> <span>职位搜索</span></div>
+        <div class="clear"></div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+            $(function(){
+                $(this).TL_Tab ({
+                    tab : ".searchbox .search_title span",
+                    box : ".search_cont",
+                    events : "over",// over
+                    num : 1,
+                    speed : 10
+                });
+            });
+    </script> 
+    
+    <!--搜索结束-->
+    <!--top结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+    	<div  class="wz_cont_in">
+        	<div class="dqwz">当前位置：首页>>列表页</div>
+            <div class=" clearfix">
+                <div class="con_left fl">
+                    <h4><img src="images/qyzx_03.png"/></h4>
+                    <ul class="left_nav">
+                        <li class="on"><a class="qyxxgl">公司资料</a></li>
+                        <li><a class="fbzwgl">发布招聘信息</a></li>
+                        <li><a class="yprcgl">修改密码</a></li>
+                        <li><a class="lwpqfw">发布职位管理</a></li>
+                        <li><a class="rczpfw">应聘人才管理</a></li>
+                        <li><a class="tcdl">退出登录</a></li>
+                    </ul>
+                </div>
+                <div class="con_right fr">
+        			<!--简历中心   开始-->
+                    <div class="all_title"><a><span>发布招聘信息</span></a></div>
+                    <fieldset class="xzzw_div">
+                        <legend>职位信息</legend>
+                        <table class="jbxx_table">
+                            <tr>
+                                <td class="td_tit"><i class="red">*</i>职位名称：</td>
+                                <td><input type="text" placeholder="请输入职位名称" class="zw_name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>职位类别：</td>
+                                <td><input type="text" placeholder="请输入职位类别"  class="zw_name"/></td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>工作性质：</td>
+                                <td>
+                                    <select>
+                                        <option>全职</option>
+                                        <option>兼职</option>
+                                        <option>实习</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>工作地址：</td>
+                                <td>
+                                    <select class="stl_1_1">
+                                        <option>省/市</option>
+                                        <option>吉林省</option>
+                                        <option>辽宁省</option>
+                                        <option>黑龙江省</option>
+                                    </select>
+                                    <input class="sel_2" type="text" placeholder="请输入具体地址" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>月薪范围：</td>
+                                <td>
+                                    <select>
+                                        <option>1000元以下</option>
+                                        <option>1000-2000元</option>
+                                        <option>2000-4000元</option>
+                                        <option>4000-6000元</option>
+                                        <option>6000-8000元</option>
+                                        <option>8000-10000元</option>
+                                        <option>10000-15000元</option>
+                                        <option>15000-20000元</option>
+                                        <option>20000-30000元</option>
+                                        <option>30000-50000元</option>
+                                        <option>50000-70000元</option>
+                                        <option>70000-100000元</option>
+                                        <option>100000元以上</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>最低学历：</td>
+                                <td>
+                                    <select>
+                                        <option>学历不限</option>
+                                        <option>本科</option>
+                                        <option>硕士</option>
+                                        <option>博士</option>
+                                        <option>大专</option>
+                                        <option>中技</option>
+                                        <option>中专</option>
+                                        <option>高中以下</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>工作年限：</td>
+                                <td>
+                                    <select>
+                                        <option>经验不限</option>
+                                        <option>无经验</option>
+                                        <option>1年以下</option>
+                                        <option>1-3年</option>
+                                        <option>3-5年</option>
+                                        <option>5-10年</option>
+                                        <option>10年以上</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red"></i>职位描述：</td>
+                                <td><textarea></textarea></td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit" valign="top"><i class="red">*</i>技能要求：</td>
+                                <td><input type="text" placeholder="请输入技能要求" /></td>
+                            </tr>
+                            <tr>
+                                <td class="td_tit"><i class="red"></i>职位亮点：</td>
+                                <td>
+                                    <label><input type="checkbox" />五险一金</label>
+                                    <label><input type="checkbox" />节日福利</label>
+                                    <label><input type="checkbox" />带薪年假</label>
+                                    <label><input type="checkbox" />现金补贴</label>
+                                </td>
+                            </tr>
+                        </table>
+              		</fieldset>	
+                  	<fieldset class="xzzw_div">
+                		<legend>职位设置</legend>
+                        <table class="jbxx_table">
+                            <tr>
+                                <td class="td_tit"><i class="red">*</i>招聘人数：</td>
+                                <td><input type="text" placeholder="请输入招聘人数" /></td>
+                            </tr>
+                        	<tr>
+                            	<td class="td_tit" valign="top"><i class="red">*</i>发布时长：</td>
+                            	<td><input type="text" placeholder="请输入发布时长" /></td>
+                          	</tr>
+                        	<tr>
+                            	<td class="td_tit" valign="top"><i class="red">*</i>所属部门：</td>
+                            	<td><input type="text" placeholder="请输入所属部门" /></td>
+                          	</tr>
+                        </table>
+               		</fieldset>
+               		<a class="qr_btn">保存修改</a>
+  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--底部开始-->
+     <div class="footer">
+     	<div class="footer_in">
+        	<a><img src="images/blue.png"/></a>
+            <div>
+            	<p>主办：吉林省白城市暨洮北区人才交流中心&nbsp;&nbsp;&nbsp;技术支持：长春首佳科技有限公司</p>
+				<p>地址：白城市中兴东大路2-21号&nbsp;&nbsp;&nbsp;邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：347660</p>
+				<p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+            </div>
+        </div>
+     </div>
+    <!--底部结束-->
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

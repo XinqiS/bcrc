@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/search.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/swiper.min.css"  />
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js" ></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function saveXnry(){
+	if(isNull($("#bonustime").text())){
+		alert("时间不能为空！！！");
+		return false;
+	}
+	if(isNull($("#cbonusname").val())){
+		alert("奖项不能为空！！！");
+		return false;
+	}
+	var  json={};
+	if($("#xnryId").val()!=undefined){
+		json.xnryId=$("#xnryId").val();
+	}
+	if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	}
+	json.xnrySj=$("#bonustime").text();
+	json.xnryJx=$("#cbonusname").val();
+	json.xnryJb=$("#cbonusclass").val();
+	$.ajax({
+      type: "POST",
+      async:false,
+      url: "saveXnry",
+      data:json,
+      dataType: "json",
+      success: function(data){
+      		alert(data.message);
+      		window.location.href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId?jlBbId="+data.xnry.jlBbId;
+      }
+	});
+}
+</script>
+</head>
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId?jlBbId=${session.jlbbIdSession}"><span>校内荣誉</span></a></div>
+
+				<div id="pageContent" class="fixtop qzyx">
+
+					<div class="sbox">
+						<a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [0,70] , 'bonustime' );">
+							<label><em>*</em>时间</label>
+							<div class="txt c_default" id="bonustime">
+								@if(isNotEmpty(xnry.xnrySj)){
+								${xnry.xnrySj!}
+								@}else{
+								2019-01-01
+								@}
+
+							</div>
+						</a>
+
+						<div class="e">
+							<label><em>*</em>奖项</label>
+							<input type="text" id="cbonusname" class="txt inputblur" placeholder="请输入奖项" value="${xnry.xnryJx}" maxlength="50" err_text="请输入奖项">
+							<p class="error" style="display:none;" id="err_cbonusname"><span>请输入奖项</span></p>
+						</div>
+
+						<div class="e eb">
+							<label>级别</label>
+							<input type="text" id="cbonusclass" class="txt inputblur" placeholder="请输入级别" value="${xnry.xnryJb}" maxlength="50">
+							<p class="error" style="display:none;" id="err_cbonusclass"><span>请输入奖项</span></p>
+						</div>
+					</div>
+					<center class="btnbox">
+						<button class="btn saveschoolhonour" click-data="1" onclick="saveXnry();">保存</button>
+					</center>
+					@if(isNotEmpty(xnry.xnryId)){
+					<input type="hidden" name="xnryId" id="xnryId" value="${xnry.xnryId}">
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${xnry.jlBbId}">
+					@}
+					@if(isNotEmpty(jlBbId)){
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+					@}
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resumecommon.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/swiper.min.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/school.js"></script> 
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

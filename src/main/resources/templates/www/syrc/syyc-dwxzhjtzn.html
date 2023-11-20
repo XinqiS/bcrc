@@ -1,0 +1,35 @@
+@includeFileTemplate("/www/syrc/include/syyc-head.html"){}
+     <div class="main">
+    	<div class="main_left fl" >
+        	<ul class="small_nav" id="lis">
+            	<li ><a href="${frontPath!}/${site.siteId}/1001.html">赴外招聘计划</a></li>
+                <li  ><a href="${frontPath!}/${site.siteId}/1000.html">单位组织和报名方式</a></li>
+                <li><a href="${frontPath!}/${site.siteId}/1002.html">会务文件及报名表下载</a></li>
+                <li ><a href="${frontPath!}/${site.siteId}/1003.html">参会单位列表</a></li>
+                <li class="djym"><a href="${frontPath!}/${site.siteId}/1004.html">单位须知和交通指南</a></li>
+            </ul>
+        </div>
+    	<div class="main_right fr">
+        	<div class="all_title gjrc"><i></i><a>单位须知和交通指南</a></div>
+            <div class="main_right_in">
+                <div class="sycon_bg">
+                    <div class="news_cont">
+                        <p class="sy_wz">
+                        
+                ${category.content!}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/syyc-footer.html"){}

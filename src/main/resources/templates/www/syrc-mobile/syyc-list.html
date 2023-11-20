@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #09b5c0;
+        width: auto;
+    }
+    .fy .pag .current {
+       background-color: #09b5c0;
+    }
+</style>
+
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+  <span class="location" onclick="window.location.href='${frontPath!}/4'"><font style="font-size: 0.6rem;color: #747474;font-weight: bold">返回首页</font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz">
+@includeFileTemplate("/www/syrc-mobile/include/dlzc.html"){}
+</span> </div>
+  <!--	top  头部  结束--> 
+   <!--简历nav 开始-->
+  <div class="jl_nav syycnav"> 
+      <a class="fl" href="${frontPath!}/${site.siteId}/1001.html" >松原引才</a> 
+      <a class="hea_xl fr"></a>
+      <!--下拉-->
+        <ul class="nav-jit-hid syyc_hid" style="display:none;">  
+            <li><a href="${frontPath!}/${site.siteId}/1001.html">频道首页</a>
+            	<dl>
+                	<dd><a href="${frontPath!}/${site.siteId}/1001.html">赴外招聘计划</a></dd>
+                    <dd><a href="${frontPath!}/${site.siteId}/1000.html">单位组织和报名方式</a></dd>
+                    <dd><a href="${frontPath!}/${site.siteId}/1002.html">会务文件及报名表下载</a></dd>
+                    <dd><a href="${frontPath!}/${site.siteId}/1003.html">参会单位列表</a></dd>
+                    <dd><a href="${frontPath!}/${site.siteId}/1004.html">单位须知和交通指南</a></dd>
+                </dl>
+            </li>                   
+            <li><a href="${frontPath!}/${site.siteId}/1003.html">参会单位</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1006.html">松原经济</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1008.html">人文松原</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1007.html">引才政策</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1005.html">联系我们</a></li>
+        </ul>
+        <!--下拉 end-->
+  </div>
+  <div class="clear"></div>
+  <!--简历nav 结束-->
+</div>
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2" id="titles">${category.categoryName}</div>
+      <div class="aox">
+        <ul class="all_list">
+         <#cms_content_list siteId="${site.siteId}" categoryId="1007" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="30" titleLen="15" var="bean">
+			<li><a href="${bean.url}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                            <li class="dashed"></li>
+           </#cms_content_list>
+		</ul>
+      </div>
+      <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+    </div>
+    
+    
+    
+    
+  </div>
+</div>
+<script type="text/javascript">
+function title(){
+var url=window.location.href;
+var index = url.lastIndexOf("/");  
+url= url.substring(index + 1,url.length);
+if(url='1007.html'){
+$('#titles').html('引才政策');
+}
+}
+
+</script>
+@includeFileTemplate("/www/syrc-mobile/include/syyc-footer.html"){}

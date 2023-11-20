@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/gjrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/gjrc-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+</head>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #318ddc;
+        width: auto;
+    }
+    .fy .pag .current {
+       background-color: #318ddc;
+    }
+</style>
+<body>
+<!--头部开始-->
+<div class="header">
+	<div class="logo fl"><img src="${resPath}/syrc/images/sy-index_03.png" width="390" height="79"></div>
+      <ul class="nav fr">
+    	<li class="zypx_on"><a target="_blank" class="zypx" href="${frontPath!}/4/1023.html">职业培训</a></li>
+        <li><a target="_blank" class="gjrc" href="${frontPath!}/4/1009.html">高级人才</a></li>
+        <!--<li><a target="_blank" class="xczp" href="${frontPath!}/${site.siteId!}/986.html">现场招聘</a></li>-->
+       <li><a target="_blank" class="wlzp" href="${ctxPath!}/gjss/selectExample">网络招聘</a></li>
+        <li><a target="_blank" class="syyc" href="${frontPath!}/4/999.html">松原引才</a></li>
+        <li><a target="_blank" class="xzsy" href="${frontPath!}/4">网站首页</a></li>
+    </ul>
+</div>
+<!--头部结束-->

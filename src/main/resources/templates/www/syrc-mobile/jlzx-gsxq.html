@@ -1,0 +1,345 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/bcrc-mobile/images/sy_sjhtml.css"/>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+
+</head>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont">
+	<div  class="wz_cont_in">
+		<div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>公司详情</div>
+
+		<div class="er_div">
+			<div class="erdiv_fl fl">
+				<h2>${model.qy_qymc}</h2>
+				<p>@if(model.qy_jjlx=="0"){
+					国有企业
+					@}
+					@else if(model.qy_jjlx=="1"){
+					集体企业
+					@}
+					@else if(model.qy_jjlx=="2"){
+					私营企业
+					@}
+					@else if(model.qy_jjlx=="3"){
+					个体企业
+					@}
+					@else if(model.qy_jjlx=="4"){
+					联营企业
+					@}
+					@else if(model.qy_jjlx=="5"){
+					股份制企业
+					@}
+					@else if(model.qy_jjlx=="6"){
+					外商投资企业
+					@}
+					@else if(model.qy_jjlx=="7"){
+					港澳台投资企业
+					@}
+					@else if(model.qy_jjlx=="8"){
+					其他企业
+					@}
+					| ${model.qy_sshy}  |
+					@if(model.qy_qygm=="0"){
+					0-20以下
+					@}
+					@else if(model.qy_qygm=="1"){
+					20-99
+					@}
+					@else if(model.qy_qygm=="2"){
+					100-499
+					@}
+					@else if(model.qy_qygm=="3"){
+					500-999
+					@}
+					@else if(model.qy_qygm=="4"){
+					1000-9999
+					@}
+					@else if(model.qy_qygm=="5"){
+					10000以上
+					@}
+				人</p>
+				<div class="fl_span">
+					@if(isNotEmpty(list.zw_zwld)){
+					@for(fors in strutil.split(list.zw_zwld,",")){
+					@if(fors=="0"){
+					<span>五险一金</span>
+					@}
+					@else if(fors=="1"){
+					<span>节日福利</span>
+					@}
+					@else if(fors=="2"){
+					<span>带薪年假</span>
+					@}
+					@else if(fors=="3"){
+					<span>现金补贴</span>
+					@}
+					@}
+					@}
+				</div>
+			</div>
+			<div class="erdiv_fr fr">
+				<span>在招职位</span>
+				<h2>${count}</h2>
+			</div>
+			<div class="clear"></div>
+			<div class="er_div gsxx_div">
+				<h4 class="gsxx_tit">公司简介</h4>
+				<p style="white-space: pre;white-space: pre-line;word-wrap: break-word;text-indent: 2em;" id="qy_qyjl">${model.qy_qyjl}</p>
+				<h4 class="gsxx_tit">公司地址</h4>
+				<p>${model.qy_xxdz}</p>
+				<h4 class="gsxx_tit">联系方式</h4>
+				<p style="padding: 0 0 20px 0;border-bottom: solid 1px #ccc;">联系人：${model.qy_lxr} <br> 联系电话：${model.qy_lxdh} </p>
+				<h4 class="gsxx_tit">招聘职位</h4>
+				@for(list in lists){
+				<div class="list3">
+					<h4><span class="zw_tit fl">
+						<a
+								@if(session.tbZhInfo_loginSession !=null){
+								href="${ctxPath}/qyzx/gwXq?zw_id=${list.ZW_ID}"  target="on"
+								@}else {
+								href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/gwXq?zw_id=${list.ZW_ID}');"
+								@}
+						>${list.ZW_ZWMC}</a>
+					</span><a class="gs_tit fr">${model.qy_qymc}</a></h4>
+					<h5><b class="red fl">
+						@if(list.ZW_YXFW==0){
+						1000元以下
+						@}
+						@else if(list.ZW_YXFW==1){
+						1000-2000元
+						@}
+						@else if(list.ZW_YXFW==2){
+						2000-4000元
+						@}
+						@else if(list.ZW_YXFW==3){
+						4000-6000元
+						@}
+						@else if(list.ZW_YXFW==4){
+						6000-8000元
+						@}
+						@else if(list.ZW_YXFW==5){
+						8000-10000元
+						@}
+						@else if(list.ZW_YXFW==6){
+						10000-15000元
+						@}
+						@else if(list.ZW_YXFW==7){
+						15000-20000元
+						@}
+						@else if(list.ZW_YXFW==8){
+						20000-30000元
+						@}
+						@else if(list.ZW_YXFW==9){
+						30000-50000元
+						@}
+						@else if(list.ZW_YXFW==10){
+						50000-70000元
+						@}
+						@else if(list.ZW_YXFW==11){
+						70000-100000元
+						@}
+						@else if(list.ZW_YXFW==12){
+						100000元以上
+						@}
+					</b> <span class="fl z_tit">
+						${strutil.length(model.qy_xxdz!)>40?strutil.subStringTo(model.qy_xxdz!,0,15)+"...":model.qy_xxdz!}
+		    |
+		  @if(list.ZW_GZNX==0){
+		  经验不限
+		  @}
+		  @else if(list.ZW_GZNX==1){
+		  无经验
+		  @}
+		  @else if(list.ZW_GZNX==2){
+		  1年以下
+		  @}
+		  @else if(list.ZW_GZNX==3){
+		  1-3年
+		  @}
+		  @else if(list.ZW_GZNX==4){
+		  3-5年
+		  @}
+		  @else if(list.ZW_GZNX==5){
+		  5-10年
+		  @}
+		  @else if(list.ZW_GZNX==6){
+		  10年以上
+		  @}
+		     |
+		  @if(list.ZW_ZDXL==0){
+		  学历不限
+		  @}
+		  @else if(list.ZW_ZDXL==1){
+		  本科
+		  @}
+		  @else if(list.ZW_ZDXL==2){
+		  硕士
+		  @}
+		  @else if(list.ZW_ZDXL==3){
+		  博士
+		  @}
+		  @else if(list.ZW_ZDXL==4){
+		  大专
+		  @}
+		  @else if(list.ZW_ZDXL==5){
+		  中技
+		  @}
+		  @else if(list.ZW_ZDXL==6){
+		  中专
+		  @}
+		  @else if(list.ZW_ZDXL==7){
+		  高中以下
+		  @}
+					</span><span class="fr z_tit">
+						 @if(model.qy_jjlx=="0"){
+      国有企业
+      @}
+      @else if(model.qy_jjlx=="1"){
+      集体企业
+      @}
+      @else if(model.qy_jjlx=="2"){
+      私营企业
+      @}
+      @else if(model.qy_jjlx=="3"){
+      个体企业
+      @}
+      @else if(model.qy_jjlx=="4"){
+      联营企业
+      @}
+      @else if(model.qy_jjlx=="5"){
+      股份制企业
+      @}
+      @else if(model.qy_jjlx=="6"){
+     外商投资企业
+      @}
+      @else if(model.qy_jjlx=="7"){
+      港澳台投资企业
+      @}
+      @else if(model.qy_jjlx=="8"){
+      其他企业
+      @}
+        |
+		  ${list.ZW_ZPRS}
+						人</span></h5>
+					<p> <span class="fl_span fl">
+						@if(isNotEmpty(list.ZW_ZWLD)){
+		@for(fors in strutil.split(list.ZW_ZWLD,",")){
+		@if(fors=="0"){
+		<span>五险一金</span>
+		@}
+		@else if(fors=="1"){
+		 <span>节日福利</span>
+		@}
+		@else if(fors=="2"){
+		 <span>带薪年假</span>
+		@}
+		@else if(fors=="3"){
+		 <span>现金补贴</span>
+		@}
+		@}
+		@}
+					</span> <i class="rq_tit fr">${strutil.subStringTo(list.ZW_FBSC,0,10)}</i> </p>
+					<span class="fr btn_tit gsxx_btn"> <a class="sczw_btn yellow"
+														  @if(session.tbZhInfo_loginSession !=null){
+														  href="javascript:void(0)" 	 onclick="sczw('${list.ZW_ID}',this);"
+														  @}else {
+														  href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/qyXq?qy_id=${model.qy_id}');"
+														  @}
+					>
+						<div class="ss" ><h1><input type="hidden" value="${list.ZW_ID}">
+							<img src="${resPath}/syrc/images/jlzx_con_47.png" style="float: left;margin: 10% 2%  0 0;"></h1></div>收藏职位</a> <a class="sqzw_btn"
+																				   @if(session.tbZhInfo_loginSession !=null){
+																				   href="javascript:void(0)"   onclick="sqzw('${list.ZW_ID}');"
+																				   @}else {
+																				   href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/qyXq?qy_id=${model.qy_id}');"
+																				   @}
+					>申请职位</a> </span>
+				</div>
+				@}
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+</body>
+</html>
+<script type="text/javascript">
+	$(function () {
+		var replaceRegex = /(\n\r|\r\n|\r|\n)/g;
+		var qy_qyjl=$("#qy_qyjl").text();
+		qy_qyjl =qy_qyjl || '';
+		qy_qyjl=qy_qyjl.replace(replaceRegex,'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;');
+		$("#qy_qyjl").html(qy_qyjl);
+	})
+	function sczw(zw_id,org){
+		$.ajax({
+			url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+			dataType:"json",   //返回格式为json
+			data:{zw_id:zw_id},    //参数值
+			type:"post",   //请求方式
+			success:function(data){
+				alert(data.message);
+				if(data.type=="2"){
+					$(org).children("div").children("h1").children("img").attr("src","${resPath}/bcrc/images/jlzx_con_47after.png");
+				}
+
+			}
+		});
+	}
+
+	function sqzw(zw_id){
+		$.ajax({
+			url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+			dataType:"json",   //返回格式为json
+			data:{zwId:zw_id},    //参数值
+			type:"post",   //请求方式
+			success:function(data){
+				alert(data.message);
+			}
+		});
+	}
+
+	function jinggao(url){
+		alert("对不起！您还未登录，请您先登录");
+		var  test='${ctxPath}/system/reception/nologin';
+		mypost(test,{"url":url});
+	}
+
+
+	function mypost(url, params) {
+		// 创建form
+		var temp_form = document.createElement("form");
+		// 设置form
+		temp_form .action = url;
+		temp_form .target = "_self";
+		temp_form .method = "post";
+		temp_form .style.display = "none";
+		// 处理需要传递的参数
+		for (var x in params) {
+			var opt = document.createElement("textarea");
+			opt.name = x;
+			opt.value = params[x];
+			temp_form .appendChild(opt);
+		}
+		document.body.appendChild(temp_form);
+		// 提交表单
+		temp_form .submit();
+	}
+
+</script>

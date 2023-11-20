@@ -1,0 +1,81 @@
+
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/rcltzt-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/rcltzt-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+<div class="header">
+	<div class="fhsy"><a target="_blank" href="${frontPath!}/4">返回网站首页</a></div>
+	<div class="logo"><img src="${resPath}/syrc/images/rcltzt-index_06.png" width="1012" height="271"/></div>
+</div>
+<!--头部结束-->
+
+<!--内容开始-->
+<div class="contentbox">
+	
+    <!--新闻开始-->
+    <div class="main">
+    	<div class="main_left fl">
+            <div class="xczp_box">
+                <div class="hdsp_title"><a target="_blank" class="wenzi fl">活动视频</a> <a target="_blank" class="more fr" href="${frontPath!}/${site.siteId}/997.html">更多+</a></div>
+                <dl class="hdsp_cont">
+                    	 <#cms_content_list siteId="${site.siteId}" categoryId="997" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="1" titleLen="20" var="bean">
+                	<dd><video src="${bean.file!}" width="460px" height="240px" controls="controls"></video></dd>
+                    <dt><a target="_blank" href="${frontPath!}/${site.siteId}/995.html">${bean.title!}</a></dt>
+                      </#cms_content_list>
+                </dl>
+                
+            </div>
+            <ul class="lj_lm">
+                <li class="zbpt"><a target="_blank">直播平台</a></li>
+                <li class="rccyy"><a target="_blank">人才产业园</a></li>
+                <li class="wjxz"><a target="_blank" href="${frontPath!}/${site.siteId}/998.html">文件下载</a></li>
+            </ul>
+        </div>
+        <div class="main_left fr">
+        	<div class="ltxz">
+            	<div class="ltxz_title">
+                    <span class="fl">论坛动态</span>
+                    <img src="${resPath}/syrc/images/rcltzt-index_04.png" class="fl"/>
+                    <a target="_blank" class="more fr" href="${frontPath!}/${site.siteId}/995.html">更多+</a>
+                </div>
+                <ul class="all_list">
+                	  	 <#cms_content_list siteId="${site.siteId}" categoryId="995" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+                	
+                	<li><a target="_blank" href="${bean.url!}">${bean.title!}</a>  ${bean.temp!}  <em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                   
+                      </#cms_content_list>
+                </ul>
+            </div>
+            <div class="ltxz">
+            	<div class="ltxz_title">
+                    <span class="fl">论坛须知</span>
+                    <img src="${resPath}/syrc/images/rcltzt-index_04.png" class="fl"/>
+                    <a target="_blank" class="more fr" href="${frontPath!}/${site.siteId}/994.html">更多+</a>
+                </div>
+                <ul class="all_list">
+                	 <#cms_content_list siteId="${site.siteId}" categoryId="994" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+                	
+                	<li><a target="_blank" href="${bean.url!}">${bean.title!}</a>  ${bean.temp!}  <em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                   
+                      </#cms_content_list>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+    <!--新闻结束-->
+    
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}

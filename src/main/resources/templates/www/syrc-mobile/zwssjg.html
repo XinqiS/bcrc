@@ -1,0 +1,574 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>${siteTitle!}</title>
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/cover.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/resume.css"  />
+
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+	<script src="${resPath}/bcrc-mobile/js/basic.js"></script>
+	<script src="${resPath}/bcrc-mobile/js/zepto.js"></script>
+	<script src="${resPath}/syrc/js/myPagination.js"></script>
+	<script type="text/javascript">
+		var _tkd = _tkd || [];
+		var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	</script>
+</head>
+<script type="text/javascript">
+	function jinggao(url) {
+		alert("对不起！您还未登录，请您先登录");
+		var test = '${ctxPath}/system/reception/nologin';
+		mypost(test, {"url": url});
+	}
+
+	function mypost(url, params) {
+		// 创建form
+		var temp_form = document.createElement("form");
+		// 设置form
+		temp_form.action = url;
+		temp_form.target = "_self";
+		temp_form.method = "post";
+		temp_form.style.display = "none";
+		// 处理需要传递的参数
+		for (var x in params) {
+			var opt = document.createElement("textarea");
+			opt.name = x;
+			opt.value = params[x];
+			temp_form.appendChild(opt);
+		}
+		document.body.appendChild(temp_form);
+		// 提交表单
+		temp_form.submit();
+	}
+
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+	$_CONFIG['domain'] = '//m.51job.com/';
+	$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+	$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+	$_CONFIG['template'] = 'resume/myresume';
+	$_CONFIG['islogin'] = '1';
+	$_CONFIG['jobarea'] = '030800';
+	$_CONFIG['jobareaname'] = '东莞';
+	$_CONFIG['ip'] = '36.48.27.149';
+	$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+
+	$(function () {
+		var mc1 = '${gjss.mc}';
+		var dd1 = '${gjss.dd}';
+		var indtype_input1 = '${gjss.qy_sshy}';
+		var funtype_input1 = '${gjss.zw_zwlb}';
+		var fbrq1 = '${gjss.fbrq}';
+		var yxfw1 = '${gjss.zw_yxfw}';
+		var jjlx1 = '${gjss.qy_jjlx}';
+		var gznx1 = '${gjss.zw_gznx}';
+		var xlyq1 = '${gjss.zw_zdxl}';
+		var gsgm1 = '${gjss.gsgm}';
+		var xzfl1 = '${gjss.xzfl}';
+		var gzlx1 = '${gjss.zw_gzxz}';
+		$("#position").val(mc1);
+		$("#dd").val(dd1);
+		var funtypename = "";
+		var indtypename = "";
+		if (funtype_input1 != "") {
+			$("#funtypename").text(funtype_input1);
+		} else {
+			$("#funtypename").text("不限");
+		}
+		if (indtype_input1 != "") {
+			$("#indtypename").text(indtype_input1);
+		} else {
+			$("#indtypename").text("不限");
+		}
+		var xzwz = $("#qwxz").find("option[value = '" + yxfw1 + "']").text();
+		var lxwz = $("#jobterm").find("option[value = '" + gzlx1 + "']").text();
+		$("#lx").text(lxwz);
+		$("#xz").text(xzwz);
+		$("#qwxz").on('click', function () {
+			// alert(this_txt);
+			var this_txt = $('#qwxz option:selected').text();
+			$('#qwxz option:selected').val();
+			// alert(this_txt);
+			$('#qwxz').siblings('span').text(this_txt);
+		});
+	});
+
+	function sousuo() {
+		var xz = -1;
+		var lx = -1;
+		if ($("#lx").text() == '全部') {
+			lx = -1;
+		} else if ($("#lx").text() == '全职') {
+			lx = 0;
+		} else if ($("#lx").text() == '兼职') {
+			lx = 1;
+		} else if ($("#lx").text() == '实习') {
+			lx = 2;
+		}
+		if ($("#xz").text() == '全部') {
+			xz = -1;
+		} else if ($("#xz").text() == '1k以下') {
+			xz = 0;
+		} else if ($("#xz").text() == '1-2k') {
+			xz = 1;
+		} else if ($("#xz").text() == '2-4k') {
+			xz = 2;
+		} else if ($("#xz").text() == '4-6k') {
+			xz = 3;
+		} else if ($("#xz").text() == '6-8k') {
+			xz = 4;
+		} else if ($("#xz").text() == '8-10k') {
+			xz = 5;
+		} else if ($("#xz").text() == '10-15k') {
+			xz = 6;
+		} else if ($("#xz").text() == '15k-20k') {
+			xz = 7;
+		} else if ($("#xz").text() == '20k-30k') {
+			xz = 8;
+		} else if ($("#xz").text() == '30k-50k') {
+			xz = 9;
+		} else if ($("#xz").text() == '50k-70k') {
+			xz = 10;
+		} else if ($("#xz").text() == '70k-100k') {
+			xz = 11;
+		} else if ($("#xz").text() == '100k以上') {
+			xz = 12;
+		}
+		var dd = $("#dd").val();
+		var position = $("#position").val();
+		var funtypename = "";
+		var indtypename = "";
+		if ($("#indtypename").text() != "不限") {
+			indtypename = $("#indtypename").text();
+		}
+		if ($("#funtypename").text() != "不限") {
+			funtypename = $("#funtypename").text();
+		}
+		window.location.href = '${ctxPath}/gjss/zwss?mc=' + position + '&dd=' + dd + '&zw_zwlb=' + funtypename + '&qy_sshy=' + indtypename + '&zw_gzxz=' + lx + '&zw_yxfw=' + xz + '&zw_zplx=-1';
+	}
+
+	function sczw(zw_id) {
+		$.ajax({
+			url: "${ctxPath}/cms/resume/zwsc",   //请求的url地址
+			dataType: "json",   //返回格式为json
+			data: {zw_id: zw_id},    //参数值
+			type: "post",   //请求方式
+			success: function (data) {
+				alert(data.message);
+			}
+		});
+	}
+
+	function sqzw(zw_id) {
+		$.ajax({
+			url: "${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+			dataType: "json",   //返回格式为json
+			data: {zwId: zw_id},    //参数值
+			type: "post",   //请求方式
+			success: function (data) {
+				alert(data.message);
+			}
+		});
+	}
+</script>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/header.html"){}
+<!--内容开始-->
+<div class="wz_cont">
+	<div class="wz_cont_in">
+		<div class="dqwz">当前位置：<a target="_blank" href="${frontPath!}/4">首页</a>>>招聘信息</div>
+		<div class="dw_search Fm">
+
+			<!--简历nav 开始-->
+			<div class="jl_nav bysjynav">
+
+				<a class="hea_xl fr"></a>
+				<!--下拉-->
+				<div class="nav-jit-hid bysjy gwxz" style="display:none;">
+					<div class="sbox">
+					<a href="javascript:void(0)" class="e">
+
+							<label><em>*</em>地点</label>
+							<input type="text" class="txt inputblur" id="dd" placeholder="请输入地点" name="didian"
+								   value="" maxlength="25"/>
+					</a>
+					<a href="javascript:void(0)" class="e">
+						<label><em>*</em>职能</label>
+						<div id="funtypename" class="txt c_default" onclick="setFuntypePage(this,1)">请选择</div>
+						<input type="hidden" id="funtype" value="">
+						<p class="error" style="display:none;" id="err_funtype"><span></span></p>
+					</a>
+					<div class="e">
+						<label><em>*</em>职位</label>
+						<input type="text" class="txt inputblur" id="position" placeholder="请输入职位名称" name="Job"
+							   oninput="simpleAssociationforintent('Job')" value="" maxlength="25">
+						<p class="error" style="display:none;" id="err_position"><span></span></p>
+					</div>
+					<div class="e lb_w">
+						<label><em>*</em>期望薪资</label>
+						<div class="selt xx" id="a">
+							<span class="sval c_default" id="xz">全部</span>
+							<select id="qwxz" class="selectchange">
+								<option value="-1">全部</option>
+								<option value="0">1k以下</option>
+								<option value="1">1-2k</option>
+								<option value="2">2-4k</option>
+								<option value="3">4-6k</option>
+								<option value="4">6-8k</option>
+								<option value="5">8-10k</option>
+								<option value="6">10-15k</option>
+								<option value="7">15k-20k</option>
+								<option value="8">20k-30k</option>
+								<option value="9">30k-50k</option>
+								<option value="10">50k-70k</option>
+								<option value="11">70k-100k</option>
+								<option value="12">100k以上</option>
+							</select>
+						</div>
+
+					</div>
+					<a href="javascript:void(0)" class="e">
+						<label>工作类型</label>
+						<div class="selt"><span class="sval" id="lx">全部</span>
+							<select id="jobterm">
+								<option value="-1">全部</option>
+								<option value="0">全职</option>
+								<option value="1">兼职</option>
+								<option value="2">实习</option>
+							</select>
+						</div>
+					</a> <a href="javascript:void(0)" class="e">
+					<label>行业</label>
+					<!-- <div class="txt c_default">请选择</div> -->
+					<div href="javascript:void(0)" id="indtypename" class="txt c_default"
+						 onclick="setIndtypePage(this,1);">请选择
+					</div>
+					<input type="hidden" id="indtype" value="">
+				</a>
+					<a  href="javascript:void(0);" style="background: #117edc;width: 48%;display: block;margin: 0;line-height: 2em;color: #fff;float: left;" onclick="sousuo();">开始搜索</a>
+					<a  href="javascript:void(0);" style="background: #f19804;width: 48%;display: block;margin: 0;line-height: 2em;color: #fff;float: right;" onclick="chongzhizwss();">重置</a>
+				</div>
+			</div>
+			<!--下拉 end-->
+		</div>
+		<div class="clear"></div>
+		<!--简历nav 结束-->
+
+
+		<!--招聘岗位开始-->
+		@for(list in model){
+		<div class="list3">
+			<h4><span class="zw_tit fl" style="white-space: nowrap;text-overflow: ellipsis;overflow: hidden;width: 30%">
+                    <a
+							@if(session.tbZhInfo_loginSession !=null){
+							href="${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}"
+							@}else {
+							href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}');"
+							@}
+					>${list.zw_zwmc}</a>
+                </span><a class="gs_tit fr" href="${ctxPath}/qyzx/qyXq?qy_id=${list.qy_id!}">${list.qy_qymc}</a></h4>
+			<h5><b class="red fl">
+				@if(list.zw_yxfw==0){
+				1K-
+				@}
+				@else if(list.zw_yxfw==1){
+				1K-2K
+				@}
+				@else if(list.zw_yxfw==2){
+				2K-4K
+				@}
+				@else if(list.zw_yxfw==3){
+				4K-6K
+				@}
+				@else if(list.zw_yxfw==4){
+				6K-8K
+				@}
+				@else if(list.zw_yxfw==5){
+				8K-10K
+				@}
+				@else if(list.zw_yxfw==6){
+				10K-15K
+				@}
+				@else if(list.zw_yxfw==7){
+				15-20K
+				@}
+				@else if(list.zw_yxfw==8){
+				20K-30K
+				@}
+				@else if(list.zw_yxfw==9){
+				30K-50K
+				@}
+				@else if(list.zw_yxfw==10){
+				50K-70K
+				@}
+				@else if(list.zw_yxfw==11){
+				70L-100K
+				@}
+				@else if(list.zw_yxfw==12){
+				100K+
+				@}
+			</b> <span class="fl z_tit">
+                    ${strutil.length(list.qy_xxdz!)>40?strutil.subStringTo(list.qy_xxdz!,0,15)+"...":list.qy_xxdz!} |
+					 @if(list.zw_gznx==0){
+					  经验不限
+					  @}
+					  @else if(list.zw_gznx==1){
+					  无经验
+					  @}
+					  @else if(list.zw_gznx==2){
+					  1年以下
+					  @}
+					  @else if(list.zw_gznx==3){
+					  1-3年
+					  @}
+					  @else if(list.zw_gznx==4){
+					  3-5年
+					  @}
+					  @else if(list.zw_gznx==5){
+					  5-10年
+					  @}
+					  @else if(list.zw_gznx==6){
+					  10年以上
+					  @}
+					     |
+					  @if(list.zw_zdxl==0){
+					  学历不限
+					  @}
+					  @else if(list.zw_zdxl==1){
+					  本科
+					  @}
+					  @else if(list.zw_zdxl==2){
+					  硕士
+					  @}
+					  @else if(list.zw_zdxl==3){
+					  博士
+					  @}
+					  @else if(list.zw_zdxl==4){
+					  大专
+					  @}
+					  @else if(list.zw_zdxl==5){
+					  中技
+					  @}
+					  @else if(list.zw_zdxl==6){
+					  中专
+					  @}
+					  @else if(list.zw_zdxl==7){
+					  高中以下
+					  @}
+                </span><span
+					class="fr z_tit">
+                    @if(list.qy_jjlx==0){
+				      国有经济
+				      @}
+				      @else if(list.qy_jjlx==1){
+				      集体经济
+				      @}
+				      @else if(list.qy_jjlx==2){
+				      私营经济
+				      @}
+				      @else if(list.qy_jjlx==3){
+				      个体经济
+				      @}
+				      @else if(list.qy_jjlx==4){
+				      联营经济
+				      @}
+				      @else if(list.qy_jjlx==5){
+				      股份制
+				      @}
+				      @else if(list.qy_jjlx==6){
+				     外商投资
+				      @}
+				      @else if(list.qy_jjlx==7){
+				      港澳台投资
+				      @}
+				      @else if(list.qy_jjlx==8){
+				      其他经济类
+				      @}
+				        |
+		  			${list.zw_zprs}
+                </span></h5>
+			<p><span class="fl_span fl">
+                 @if(isNotEmpty(list.zw_zwld)){
+				     @for(fors in strutil.split(list.zw_zwld,",")){
+						@if(fors=="0"){
+						<span>五险一金</span>
+						@}
+						@else if(fors=="1"){
+						 <span>节日福利</span>
+						@}
+						@else if(fors=="2"){
+						 <span>带薪年假</span>
+						@}
+						@else if(fors=="3"){
+						 <span>现金补贴</span>
+						@}
+						@}
+						@}
+                </span> <i class="rq_tit fr">${list.zw_fbsj}</i>
+			</p>
+			<span class="fr btn_tit gsxx_btn"> <a class="sczw_btn yellow"
+												  @if(session.tbZhInfo_loginSession !=null){
+												  href="javascript:void(0)" onclick="sczw('${list.zw_id}');"
+												  @}else {
+												  href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/zwss');"
+												  @}
+			><img src="${resPath}/bcrc-mobile/images/jlzx_con_47.png">收藏职位</a> <a
+					class="sqzw_btn"
+					@if(session.tbZhInfo_loginSession !=null){
+					href="javascript:void(0)" onclick="sqzw('${list.zw_id}');"
+					@}else {
+					href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/zwss');"
+					@}
+			>申请职位</a> </span>
+		</div>
+		@}
+		<script type="text/javascript">
+			$(".list3").hover(function () {
+				$(this).children('.gsxx_btn').fadeIn(300);
+			}, function () {
+				$(this).children('.gsxx_btn').fadeOut(300);
+			});
+		</script>
+
+
+		<!--招聘岗位结束-->
+		<!--分页位置-->
+		<div id="pagination" class="pagination"></div>
+		<script>
+
+			var datatotal = '${total}';
+			var pageAmount = '${pagesize}';
+			var pagenum = '${pagenum}';
+			var mc1='${gjss.mc}';
+			var dd1='${gjss.dd}';
+			var indtype_input1='${gjss.qy_sshy}';
+			var funtype_input1='${gjss.zw_zwlb}';
+			var fbrq1='${gjss.fbrq}';
+			var yxfw1='${gjss.zw_yxfw}';
+			var jjlx1='${gjss.qy_jjlx}';
+			var gznx1='${gjss.zw_gznx}';
+			var xlyq1='${gjss.zw_zdxl}';
+			var gsgm1='${gjss.gsgm}';
+			var xzfl1='${gjss.xzfl}';
+			var gzlx1='${gjss.zw_gzxz}';
+			pageTotal=Math.ceil(datatotal/pageAmount);
+
+			if(pageTotal>5){
+				pageSize=5
+			}else{
+				pageSize=pageTotal
+			}
+
+			window.onload = function () {
+				var xz = -1;
+				var lx = -1;
+				if ($("#lx").text() == '全部') {
+					lx = -1;
+				} else if ($("#lx").text() == '全职') {
+					lx = 0;
+				} else if ($("#lx").text() == '兼职') {
+					lx = 1;
+				} else if ($("#lx").text() == '实习') {
+					lx = 2;
+				}
+				if ($("#xz").text() == '全部') {
+					xz = -1;
+				} else if ($("#xz").text() == '1k以下') {
+					xz = 0;
+				} else if ($("#xz").text() == '1-2k') {
+					xz = 1;
+				} else if ($("#xz").text() == '2-4k') {
+					xz = 2;
+				} else if ($("#xz").text() == '4-6k') {
+					xz = 3;
+				} else if ($("#xz").text() == '6-8k') {
+					xz = 4;
+				} else if ($("#xz").text() == '8-10k') {
+					xz = 5;
+				} else if ($("#xz").text() == '10-15k') {
+					xz = 6;
+				} else if ($("#xz").text() == '15k-20k') {
+					xz = 7;
+				} else if ($("#xz").text() == '20k-30k') {
+					xz = 8;
+				} else if ($("#xz").text() == '30k-50k') {
+					xz = 9;
+				} else if ($("#xz").text() == '50k-70k') {
+					xz = 10;
+				} else if ($("#xz").text() == '70k-100k') {
+					xz = 11;
+				} else if ($("#xz").text() == '100k以上') {
+					xz = 12;
+				}
+				var dd = $("#dd").val();
+				var position = $("#position").val();
+				var funtypename = "";
+				var indtypename = "";
+				if ($("#indtypename").text() != "不限") {
+					indtypename = $("#indtypename").text();
+				}
+				if ($("#funtypename").text() != "不限") {
+					funtypename = $("#funtypename").text();
+				}
+				new myPagination({
+					id: 'pagination',
+					curPage:pagenum, //初始页码
+					pageTotal: pageTotal, //总页数
+					pageAmount: pageAmount,  //每页多少条
+					dataTotal: datatotal, //总共多少条数据
+					getPage: function (page) {
+						window.location.href ='${ctxPath}/gjss/zwss?mc='+position+'&dd='+dd+'&zw_zwlb='+funtypename+'&qy_sshy='+indtypename+'&zw_gzxz=' + lx + '&zw_yxfw=' + xz + '&zw_zplx=-1&pageCurrent='+page;
+
+					}
+				})
+
+			}
+			function chongzhizwss(){
+				window.location.href ='${ctxPath}/gjss/zwss';
+			}
+		</script>
+	</div>
+</div>
+
+</div>
+<!--内容结束-->
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/base.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/fun.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/d_jobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popjobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/resume.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/indtype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/funtype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popfuntype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popindtype.js"></script>
+<script type="text/javascript">
+	var time = '1572657494575';
+	var pagecode = '30199';
+	var cusParam = "116425202951job_msem_baidupz_570m.51job.com";
+	var param = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script>
+<div id="shadow" style="display:none"></div>
+
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

@@ -1,0 +1,527 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+	<meta http-equiv="Expires" content="0" />
+	<meta name="renderer" content="webkit" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<title>${siteTitle!}</title>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/cover.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/swiper.min.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/resume.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/pop.css"  />
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/basic.js" ></script>
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/zepto.js"></script>
+	<script type="text/javascript" src="${resPath}/bcrc-mobile/js/swiper.min.js"></script>
+	<script src="${resPath}/syrc/js/myPagination.js"></script>
+	<script type="text/javascript">
+		var _tkd = _tkd || [];
+		var $_CONFIG = {};
+		//$_CONFIG['domain'] = '//m.51job.com/';
+		//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		//$_CONFIG['template'] = 'resume/baseinfo';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	</script>
+</head>
+
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/header.html",{"current":"index"}){}
+
+<!--内容开始-->
+<div class="wz_cont">
+	<div  class="wz_cont_in">
+		<div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>求职信息</div>
+		<div class="sbox" ng-controller="appCtrl">
+			<!--搜索条件开始-->
+			<a href="javascript:void(0)" class="e">
+				<label>现从事行业</label>
+				<div href="javascript:void(0)" id="int_hy_input"   class="txt c_default" onclick="setIndtypePage(this,1);">
+					@ if(isNotEmpty(jl.cshy)){
+					${jl.cshy}
+					@}else{
+
+					@}
+				</div>
+				<input type="hidden" id="indtype" value="">
+			</a>
+			<div class="e ssrc_nl">
+				<label>年龄</label>
+				<p class="ipt"><input type="text" id="nl" value="${jl.nl}" class="txt inputblur"  maxlength="25" placeholder="请输入" value="">&nbsp;&nbsp;—&nbsp;&nbsp;<input type="text" id="nl1" value="${jl.nl1}" class="txt inputblur" placeholder="请输入"   maxlength="25" value="">
+				</p>
+			</div>
+
+			<div class="e">
+				<label>性别</label>
+				<div class="selt">
+					<input class="sval" id="zw_gzxzspan" style="line-height: 2.5em;border: 0;width: 100%;"
+						   @if(isNotEmpty(jl.xb)){
+						   @if(jl.xb=="0"){
+						     value="男"
+						   @}else if(jl.xb=="1"){
+						   	value="女"
+						   @}
+						   @}else{
+						   	value="不限"
+						   @}
+					>
+					<input type="hidden" id="gzxb">
+					<select id="xb">
+						@if(isNotEmpty(jl.xb)){
+						@if(jl.xb=="0"){
+						<option value="">不限</option>
+						<option value="0" selected="selected">男</option>
+						<option value="1">女</option>
+						@}else if(jl.xb=="1"){
+						<option value="">不限</option>
+						<option value="0">男</option>
+						<option value="1" selected="selected">女</option>
+						@}
+						@}else{
+						<option value="" selected="selected">不限</option>
+						<option value="0">男</option>
+						<option value="1">女</option>
+						@}
+					</select>
+				</div>
+			</div>
+			<div class="e ssrc_nl">
+				<label>工作年限</label>
+				<p class="ipt"><input type="text" id="gznx" value="${jl.gznx}" class="txt inputblur"  maxlength="25" placeholder="请输入" value="">&nbsp;&nbsp;—&nbsp;&nbsp;<input type="text" id="gznx1" value="${jl.gznx1}" class="txt inputblur" placeholder="请输入"   maxlength="25" value="">
+				</p>
+			</div>
+
+			<div class="e  ssrc_xl">
+				<label>学历</label>
+
+				<select id="xl">
+					@if(isNotEmpty(jl.xl)){
+					@if(jl.xl=="0"){
+					<option  value="">学历不限</option>
+					<option value="0" selected>初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+					@}else if(jl.xl=="1"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1"  selected>高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="2"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2"  selected>中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="3"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3"  selected>大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="4"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4"  selected>本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="5"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5" selected>硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="6"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6"  selected>博士</option>
+					<option value="7">MBA</option>
+
+					@}else if(jl.xl=="7"){
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7"  selected>MBA</option>
+
+					@}
+					@}else{
+					<option  value="">学历不限</option>
+					<option value="0">初中及以下</option>
+					<option value="1">高中</option>
+					<option value="2">中专</option>
+					<option value="3">大专</option>
+					<option value="4">本科</option>
+					<option value="5">硕士</option>
+					<option value="6">博士</option>
+					<option value="7">MBA</option>
+					@}
+				</select>&nbsp;&nbsp;—&nbsp;&nbsp;<select id="xl1">
+				@if(isNotEmpty(jl.xl1)){
+				@if(jl.xl1=="0"){
+				<option  value="">学历不限</option>
+				<option value="0" selected>初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+				@}else if(jl.xl1=="1"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1"  selected>高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="2"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2"  selected>中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="3"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3"  selected>大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="4"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4"  selected>本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="5"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5" selected>硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="6"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6"  selected>博士</option>
+				<option value="7">MBA</option>
+
+				@}else if(jl.xl1=="7"){
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7"  selected>MBA</option>
+
+				@}
+				@}else{
+				<option  value="">学历不限</option>
+				<option value="0">初中及以下</option>
+				<option value="1">高中</option>
+				<option value="2">中专</option>
+				<option value="3">大专</option>
+				<option value="4">本科</option>
+				<option value="5">硕士</option>
+				<option value="6">博士</option>
+				<option value="7">MBA</option>
+				@}
+			</select>
+
+			</div>
+
+			<div class="sx_btn">
+				<a class="sxjl" onclick="screeningResume()">筛选简历</a>
+				<a class="del_btn" onclick="qk()">清空</a>
+
+			</div>
+
+		</div>
+		<!--搜索条件结束-->
+		<dl class="gjrcb_cont">
+			@for(list in model){
+			<dd>
+				<span class="pm fl">
+					@if(list.JIANLI_XB== 0){
+                                    @if(isEmpty(list.JIANLI_TX) || list.JIANLI_TX=="null"){
+                                    <img src="${resPath}/bcrc/images/man.png"  alt="头像">
+                                    @}else{
+                                    <img src="${list.JIANLI_TX}"  alt="头像">
+
+                                    @ }
+                                    @}else if(list.JIANLI_XB== 1){
+                                    @if(isEmpty(list.JIANLI_TX) || list.JIANLI_TX=="null"){
+                                    <img src="${resPath}/bcrc/images/woman.png"  alt="头像">
+                                    @}else{
+                                    <img src="${list.JIANLI_TX}" alt="头像">
+
+                                    @ }
+                                    @}else{
+                                    @if(isEmpty(list.JIANLI_TX) || list.JIANLI_TX=="null"){
+                                    <img src="${resPath}/bcrc/images/woman.png"  alt="头像">
+                                    @}else{
+                                    <img src="${list.JIANLI_TX}" alt="头像">
+
+                                    @ }
+						@}
+				</span>
+				<div class="ryxx">
+					<a target="_blank"
+					   @if(isNotEmpty(qyInfo.qy_id)){
+					   href="${ctxPath}/cms/resume/previewResume?id=${list.JL_BB_ID}&zh_id=${list.ZH_ID}&qy_id=${qyInfo.qy_id}"
+					   @}else{
+					   href="${ctxPath}/cms/resume/previewResume?id=${list.JL_BB_ID}&zh_id=${list.ZH_ID}"
+					   @}
+					>
+						<h3>${list.JIANLI_XM}</h3>
+						<div class="jbxx "><span>${list.age}岁</span><span>${list.JIANLI_XB == 1 ? "女" : "男"}</span><span>
+							${list.JYJL_XL}
+						</span><span>
+								@if(isNotEmpty(list.JYJL_XX)&& list.JYJL_XX!="null"){
+									${list.JYJL_XX}
+								@}else{
+								@}
+								@if(isNotEmpty(list.JYJL_ZY)&& list.JYJL_ZY!="null"){
+									（${list.JYJL_ZY}）
+								@}else{
+								（）
+								@}
+								</span></div>
+						<div class="clear"></div>
+						<div class="qztj">
+							<span >求职岗位:${list.qzyx.qzyxZw}</span>
+							<span >求职性质:${list.qzyx.qzyxHy}</span>
+							<div class="clear"></div>
+							<span >期望薪水:${list.qzyx.qzyxQwxz}</span>
+							<span >期望地区:${list.qzyx.qzyxDd}</span>
+						</div>
+						<div class="clear"></div>
+						<!--<p>${list.qzyx.qzyxZwpj}</p>-->
+					</a>
+				</div>
+			</dd>
+			@}
+			<!--分页位置-->
+			<div id="pagination" class="pagination"></div>
+			<script>
+
+				var datatotal = '${total}';
+				var pageAmount = '${pagesize}';
+				var pagenum = '${pagenum}';
+
+				pageTotal=Math.ceil(datatotal/pageAmount);
+
+				if(pageTotal>5){
+					pageSize=5
+				}else{
+					pageSize=pageTotal
+				}
+
+				var isNumber=/^\d+$/;
+				window.onload = function () {
+					new myPagination({
+						id: 'pagination',
+						curPage:pagenum, //初始页码
+						pageTotal: pageTotal, //总页数
+						pageAmount: pageAmount,  //每页多少条
+						dataTotal: datatotal, //总共多少条数据
+						getPage: function (page) {
+							var cshy="";
+							if ($("#int_hy_input").text() != "不限") {
+								cshy = $("#int_hy_input").text();
+							}
+							if(cshy!=""&&cshy!=null&&cshy.indexOf("+")){
+								cshy=cshy.replace(/\+/g,'%2B');
+							}
+							var nl=$('#nl').val();
+							var nl1=$('#nl1').val();
+							var xb=$('#xb').val();
+							var gznx=$('#gznx').val();
+							var gznx1=$('#gznx1').val();
+							var xl=$('#xl').val();
+							var xl1=$('#xl1').val();
+							if(nl!=""&&nl!=null&&!isNumber.test(nl)){
+								alert("起始年龄不为数字！");
+								return false;
+							}
+							if(nl1!=""&&nl1!=null&&!isNumber.test(nl1)){
+								alert("结束年龄不为数字！");
+								return false;
+							}
+							if(gznx!=""&&gznx!=null&&!isNumber.test(gznx)){
+								alert("起始年限不为数字！");
+								return false;
+							}
+							if(gznx1!=""&&gznx1!=null&&!isNumber.test(gznx1)){
+								alert("结束年限不为数字！");
+								return false;
+							}
+							window.location.href ='${ctxPath}/qyzx/searchTalents?pageCurrent='+page+'&cshy='+cshy+'&nl='+nl+'&nl1='+nl1+'&xb='+xb+'&gznx='+gznx+'&gznx1='+gznx1+'&xl='+xl+'&xl1='+xl1;
+
+						}
+					})
+
+				}
+			</script>
+
+		</dl>
+
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+<script>
+	$("#xb").change(function(){
+		var xbval=$("#xb").val();
+		var xbtext=$("#xb").find("option:selected").text();
+		$("#zw_gzxzspan").val(xbtext);
+		$('#gzxb').val(xbval);
+	});
+	function qk() {
+		$('#int_hy_input').val("");
+		$('#nl').val("");
+		$('#nl1').val("");
+		$('#xb').val("")
+		$('#gznx').val("")
+		$('#gznx1').val("");
+		$('#xl').val("");
+		$('#xl1').val("");
+	}
+
+	//	var url = '${ctxPath}/qyzx/searchTalents';//数据地址
+	function screeningResume() {
+		var isNumber=/^\d+$/;
+		var cshy="";
+		if ($("#int_hy_input").text() != "不限") {
+			cshy = $("#int_hy_input").text();
+		}
+		if(cshy!=""&&cshy!=null&&cshy.indexOf("+")){
+			cshy=cshy.replace(/\+/g,'%2B');
+		}
+		var nl=$('#nl').val();
+		var nl1=$('#nl1').val();
+		var xb=$('#gzxb').val();
+		var gznx=$('#gznx').val();
+		var gznx1=$('#gznx1').val();
+		var xl=$('#xl').val();
+		var xl1=$('#xl1').val();
+		if(nl!=""&&nl!=null&&!isNumber.test(nl)){
+			alert("起始年龄不为数字！");
+			return false;
+		}
+		if(nl1!=""&&nl1!=null&&!isNumber.test(nl1)){
+			alert("结束年龄不为数字！");
+			return false;
+		}
+		if(gznx!=""&&gznx!=null&&!isNumber.test(gznx)){
+			alert("起始年限不为数字！");
+			return false;
+		}
+		if(gznx1!=""&&gznx1!=null&&!isNumber.test(gznx1)){
+			alert("结束年限不为数字！");
+			return false;
+		}
+		window.location.href ='${ctxPath}/qyzx/searchTalents?cshy='+cshy+'&nl='+nl+'&nl1='+nl1+'&xb='+xb+'&gznx='+gznx+'&gznx1='+gznx1+'&xl='+xl+'&xl1='+xl1;
+
+	}
+</script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/base.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/fun.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/d_jobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popjobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/resume.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/indtype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/funtype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popfuntype.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popindtype.js"></script>
+<script type="text/javascript">
+	var time        = '1572570880666';
+	var pagecode    = '30199';
+	var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+	var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+</script>
+<div id="shadow" style="display:none"></div>
+</body>
+</html>
+

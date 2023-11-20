@@ -1,0 +1,413 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+<title>白城市公共人才创业就业服务平台</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-page.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_jzd.css">
+<script type="text/javascript" language="javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" language="javascript" src="js/TL_Tab.js"></script>
+<script type="text/javascript" src="js/jlzx_js.js"></script>
+</head>
+
+<body>
+<div class="contentbig">
+	<!--top开始-->
+	<div class="nav">
+        <ul>
+        	<li><a>网站首页</a></li>
+            <li><a>就业信息</a></li>
+            <li><a>就业指导</a></li>
+            <li><a>求职信息</a></li>
+            <li><a>招聘信息</a></li>
+            <li><a>就业资讯</a></li>
+            <li><a>办事指南</a></li>
+            <li><a>创业园地</a></li>
+            <li><a>关于我们</a></li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="logo"><img src="images/bcrc-index_03.png"/></div>
+    <!--搜索选项卡开始-->
+    <div class="searchbox">
+        <div class="search_title clearfix"> <span>站内搜索</span> <span>职位搜索</span></div>
+        <div class="clear"></div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+        <div class="search_cont">
+            <input type="text" class="searchTEXT"/>
+            <input type="button" value="搜索" class="searchBUT"/>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <script type="text/javascript">
+            $(function(){
+                $(this).TL_Tab ({
+                    tab : ".searchbox .search_title span",
+                    box : ".search_cont",
+                    events : "over",// over
+                    num : 1,
+                    speed : 10
+                });
+            });
+    </script> 
+    
+    <!--搜索结束-->
+    <!--top结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+    	<div  class="wz_cont_in">
+        	<div class="dqwz">当前位置：首页>>列表页</div>
+            <div class=" clearfix">
+                <div class="con_left fl">
+                    <h4><img src="images/qyzx_03.png"/></h4>
+                    <ul class="left_nav">
+                        <li class="on"><a class="qyxxgl">公司资料</a></li>
+                        <li><a class="fbzwgl">发布招聘信息</a></li>
+                        <li><a class="yprcgl">修改密码</a></li>
+                        <li><a class="lwpqfw">发布职位管理</a></li>
+                        <li><a class="rczpfw">应聘人才管理</a></li>
+                        <li><a class="tcdl">退出登录</a></li>
+                    </ul>
+                </div>
+                <div class="con_right fr">
+                	<div class="all_title"><a><span>基本信息</span></a></div>
+        			<table class="jbxx_table">
+                        <tr>
+                        	<td class="td_tit"><i class="red">*</i>企业名称：</td>
+                            <td><input type="text" placeholder="请输入企业名称" /></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit" valign="top"><i class="red">*</i>营业执照：</td>
+                            <td><a class="xx_logo">上传<img src="" /></a></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit" valign="top">公司logo：</td>
+                            <td>
+                            	<a class="xx_logo2">LOGO<img src=""/></a>
+                            	<h4 class="xx_logotit"><i class="red">*</i>此图片可作为首页广告位使用。为确保成功，请您上传后缀名为jpg、gif、png、bmp的图片，图片大小不得超过2M。</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>所属行业：</td>
+                            <td>
+                                <div class="txt pointer" float-on="false" id="work_func_div">
+                                	<input id="work_func_input" placeholder="填写/选择" class="ef cursor" type="text" value="" pre_value=""> 
+                                	<span class="ic i_block pointer" id="work_func_click" onclick="work_func_click(this)"></span>
+                                	<div class="ul u3" id="work_func_list"> </div>
+                                </div>
+                            </td>
+                        </tr>	
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>经济类型：</td>
+                            <td>
+                                <select>
+                                    <option>国有经济</option>
+                                    <option>集体经济</option>
+                                    <option>私营经济</option>
+                                    <option>个体经济</option>
+                                    <option>联营经济</option>
+                                    <option>股份制</option>
+                                    <option>外商投资</option>
+                                    <option>港澳台投资</option>
+                                    <option>其他经济类</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>企业规模：</td>
+                            <td>
+                                <select>
+                                    <option>20人以下</option>
+                                    <option>20-99人</option>
+                                    <option>100-499人</option>
+                                    <option>500-999人</option>
+                                    <option>1000-9999人</option>
+                                    <option>10000人以上</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit" valign="top"><i class="red"></i>企业简历：</td>
+                            <td><textarea></textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red"></i>企业福利：</td>
+                            <td>
+                                <label><input type="checkbox" />五险一金</label>
+                                <label><input type="checkbox" />节日福利</label>
+                                <label><input type="checkbox" />带薪年假</label>
+                                <label><input type="checkbox" />现金补贴</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red"></i>企业网址：</td>
+                            <td><input type="text" placeholder="请输入企业网址" /></td>
+                        </tr>
+                    </table>
+                    <div class="all_title"><a><span>联系方式</span></a></div>
+                    <table class="jbxx_table">
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>联系人：</td>
+                            <td><input type="text" placeholder="请输入联系人姓名" /></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red"></i>联系电话：</td>
+                            <td>
+                                <input type="text" placeholder="请输入联系人电话" style="width:71%" />
+                                <label><input type="radio" />公开</label>
+                                <label><input type="radio" />不公开</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>邮箱：</td>
+                            <td><input type="text" placeholder="请输入邮箱地址" /></td>
+                        </tr>	
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>详细地址：</td>
+                            <td><input type="text" placeholder="请输入公司详细地址" /></td>
+                        </tr>
+                     </table>
+                     <a class="qr_btn">保存修改</a>  
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--底部开始-->
+     <div class="footer">
+     	<div class="footer_in">
+        	<a><img src="images/blue.png"/></a>
+            <div>
+            	<p>主办：吉林省白城市暨洮北区人才交流中心&nbsp;&nbsp;&nbsp;技术支持：长春首佳科技有限公司</p>
+				<p>地址：白城市中兴东大路2-21号&nbsp;&nbsp;&nbsp;邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：347660</p>
+				<p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+            </div>
+        </div>
+     </div>
+    <!--底部结束-->
+</div>
+
+	<!--职能-->
+<div id="work_func_layer" class="layer_class" init="true" >
+  <div id="work_func_click_init" class="panel_lnp panel_py panel_ct2 con_l">
+    <h2 id="work_func_click_top">
+      <p id="work_func_click_top_message">选择职能</p>
+      <a class="work_func_click_close"  onClick="close_i(this)" href="javascript:void(0);"><i></i></a></h2>
+    <div id="work_func_click_center" class="panel_selt">
+      <ul id="work_func_click_center_left" class="sbar tab_zndiv">
+        <li id="work_func_click_center_left_each_0100" class="on" data-value="0100">计算机/互联网/通信/电子<em></em></li>
+        <li id="work_func_click_center_left_each_0200" class="" data-value="0200">销售/客服/技术支持<em></em></li>
+        <li id="work_func_click_center_left_each_0400" class="" data-value="0400">会计/金融/银行/保险<em></em></li>
+        <li id="work_func_click_center_left_each_3500" class="" data-value="3500">生产/营运/采购/物流<em></em></li>
+        <li id="work_func_click_center_left_each_4100" class="" data-value="4100">生物/制药/医疗/护理<em></em></li>
+        <li id="work_func_click_center_left_each_4200" class="" data-value="4200">广告/市场/媒体/艺术<em></em></li>
+        <li id="work_func_click_center_left_each_2100" class="" data-value="2100">建筑/房地产<em></em></li>
+        <li id="work_func_click_center_left_each_0600" class="" data-value="0600">人事/行政/高级管理<em></em></li>
+        <li id="work_func_click_center_left_each_1400" class="" data-value="1400">咨询/法律/教育/科研<em></em></li>
+        <li id="work_func_click_center_left_each_4800" class="" data-value="4800">服务业<em></em></li>
+        <li id="work_func_click_center_left_each_1500" class="" data-value="1500">公务员/翻译/其他<em></em></li>
+      </ul>
+      <div id="work_func_click_center_right" class="con zn_table">
+        <div id="work_func_click_center_right_list_0100" class="work_func_click_center_right_list de d3" style="display: block;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_0100" data-value="0100" data-navigation="0100" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2400" data-value="2400" data-navigation="0100" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2500" data-value="2500" data-navigation="0100" class="">互联网/电子商务/网游</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_6100" data-value="6100" data-navigation="0100" class="">网店淘宝</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2600" data-value="2600" data-navigation="0100" class="">IT-管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2700" data-value="2700" data-navigation="0100" class="">IT-品管、技术支持及其它</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2800" data-value="2800" data-navigation="0100" class="">通信技术开发及应用</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2900" data-value="2900" data-navigation="0100" class="">电子/电器/半导体/仪器仪表</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0600" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_0600" data-value="0600" data-navigation="0600" class="">人力资源</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_0700" data-value="0700" data-navigation="0600" class="">高级管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_2300" data-value="2300" data-navigation="0600" class="">行政/后勤</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_1500" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1500" data-value="1500" data-navigation="1500" class="">公务员</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_2000" data-value="2000" data-navigation="1500" class="">翻译</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1600" data-value="1600" data-navigation="1500" class="">在校学生</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1700" data-value="1700" data-navigation="1500" class="">储备干部/培训生/实习生</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5300" data-value="5300" data-navigation="1500" class="">兼职</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1900" data-value="1900" data-navigation="1500" class="">其他</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5600" data-value="5600" data-navigation="1500" class="">环保</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5800" data-value="5800" data-navigation="1500" class="">农/林/牧/渔</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4800" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_4800" data-value="4800" data-navigation="4800" class="">餐饮服务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_4900" data-value="4900" data-navigation="4800" class="">酒店旅游</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5000" data-value="5000" data-navigation="4800" class="">美容保健</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_6400" data-value="6400" data-navigation="4800" class="">运动健身</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_6500" data-value="6500" data-navigation="4800" class="">休闲娱乐</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5100" data-value="5100" data-navigation="4800" class="">百货零售</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_1800" data-value="1800" data-navigation="4800" class="">交通运输服务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5200" data-value="5200" data-navigation="4800" class="">家政保洁</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_1400" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1400" data-value="1400" data-navigation="1400" class="">咨询/顾问</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1100" data-value="1100" data-navigation="1400" class="">律师/法务/合规</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1200" data-value="1200" data-navigation="1400" class="">教师</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_5700" data-value="5700" data-navigation="1400" class="">培训</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1000" data-value="1000" data-navigation="1400" class="">科研</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4200" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4200" data-value="4200" data-navigation="4200" class="">广告</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4300" data-value="4300" data-navigation="4200" class="">公关/媒介</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_0300" data-value="0300" data-navigation="4200" class="">市场/营销</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4400" data-value="4400" data-navigation="4200" class="">影视/媒体</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4500" data-value="4500" data-navigation="4200" class="">编辑出版</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_0900" data-value="0900" data-navigation="4200" class="">艺术/设计</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_3500" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3500" data-value="3500" data-navigation="3500" class="">生产/营运</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3600" data-value="3600" data-navigation="3500" class="">质量安全</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_0500" data-value="0500" data-navigation="3500" class="">工程/机械/能源</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_5400" data-value="5400" data-navigation="3500" class="">汽车制造</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3700" data-value="3700" data-navigation="3500" class="">技工普工</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_6200" data-value="6200" data-navigation="3500" class="">机械机床</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3800" data-value="3800" data-navigation="3500" class="">服装/纺织/皮革</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_6300" data-value="6300" data-navigation="3500" class="">印刷包装</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3900" data-value="3900" data-navigation="3500" class="">采购</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_4000" data-value="4000" data-navigation="3500" class="">贸易</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_0800" data-value="0800" data-navigation="3500" class="">物流/仓储</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_5900" data-value="5900" data-navigation="3500" class="">汽车销售与服务</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4100" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_4100" data-value="4100" data-navigation="4100" class="">生物/制药/医疗器械</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_5500" data-value="5500" data-navigation="4100" class="">化工</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_1300" data-value="1300" data-navigation="4100" class="">医院/医疗/护理</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0400" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_0400" data-value="0400" data-navigation="0400" class="">财务/审计/税务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_3300" data-value="3300" data-navigation="0400" class="">金融/证券/期货/投资</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_2200" data-value="2200" data-navigation="0400" class="">银行</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_3400" data-value="3400" data-navigation="0400" class="">保险</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0200" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_0200" data-value="0200" data-navigation="0200" class="">销售管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3000" data-value="3000" data-navigation="0200" class="">销售人员</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3100" data-value="3100" data-navigation="0200" class="">销售行政及商务</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3200" data-value="3200" data-navigation="0200" class="">客服及支持</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="declear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!--职能--> 
+	
+	<!--遮盖层-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<!--遮盖层-->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

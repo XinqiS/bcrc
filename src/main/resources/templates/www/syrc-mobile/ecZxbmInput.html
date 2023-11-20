@@ -1,0 +1,188 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>投递详情</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/swiper.min.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"/>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/swiper.min.js"></script>
+    <script type="text/javascript">
+        var _tkd = _tkd || [];
+        var $_CONFIG = {};
+        //$_CONFIG['domain'] = '//m.51job.com/';
+        //$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+        //$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+        //$_CONFIG['template'] = 'resume/baseinfo';
+        $_CONFIG['islogin'] = '1';
+        $_CONFIG['jobarea'] = '030800';
+        $_CONFIG['jobareaname'] = '东莞';
+        $_CONFIG['ip'] = '36.48.27.149';
+        $_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+    </script>
+</head>
+
+<body style="background: #f6f6f5 ;" id="m_45">
+
+<div id="pageContent" class="fixtop">
+    <div class="top">
+        <a href="javascript:history.go(-1)" class="back"></a>
+        投递详情
+    </div>
+    <div class="sbox" ng-controller="appCtrl">
+        <input type="hidden" name="contentId" value="${contentId}"/>
+        <input TYPE="hidden" name="siteId" value="${site.siteId}" >
+        <input TYPE="hidden" name="categoryId" value="${category.categoryId}" >
+        <input TYPE="hidden" name="zhId" value="${zhId}" >
+        <div class="e">
+            <label>姓名</label>
+            <input type="text" class="txt inputblur" id="name" maxlength="20" name="name" placeholder="请填写姓名"/>
+            <p class="error" style="display:none;" id="err_name"><span></span></p>
+        </div>
+        <div class="e">
+            <label>性别</label>
+            <div class="rdob">
+                <span class="rdo on" name="sex" value="0">男</span>
+                <span class="rdo" name="sex" value="1">女</span>
+            </div>
+        </div>
+        <div class="e">
+            <label>民族</label>
+            <input type="text" class="txt inputblur" id="nation" placeholder="请填写民族" name="nation"/>
+            <p class="error" style="display:none;" id="err_nation"><span></span></p>
+        </div>
+        <div class="e">
+            <label>身份证号</label>
+            <input type="text" class="txt inputblur" id="idNumber" placeholder="请填写身份证号" name="idNumber"/>
+            <p class="error" style="display:none;" id="err_idNumber"><span></span></p>
+        </div>
+        <div class="e">
+            <label>联系电话</label>
+            <input type="text" class="txt inputblur" id="tel" placeholder="请填写联系电话" name="tel"/>
+            <p class="error" style="display:none;" id="err_tel"><span></span></p>
+        </div>
+        <div class="e">
+            <label>学历</label>
+            <div class="rdob">
+                <span class="rdo on" name="education" value="0">高中</span>
+                <span class="rdo" name="education" value="1">大专</span>
+                <span class="rdo" name="education" value="2">本科</span>
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [-10,70] , 'birthday' );">
+            <label>出生年月</label>
+            <div class="selt"><span class="sval" id="birthday" name="birthday">1990-07-18</span>
+                <p class="error" style="display:none;" id="err_birthday"><span></span></p></div>
+        </a>
+        <a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [-10,70] , 'graduationTime' );">
+            <label>毕业时间</label>
+            <div class="selt"><span class="sval" id="graduationTime" name="graduationTime">1990-07-18</span>
+                <p class="error" style="display:none;" name="err_graduationTime"><span></span></p></div>
+        </a>
+        <div class="e">
+            <label>毕业院校</label>
+            <input type="text" class="txt inputblur" id="wentToSchool" name="wentToSchool" maxlength="50" value="" placeholder="请输入毕业院校"/>
+            <p class="error" style="display:none;" id="err_wentToSchool"><span></span></p>
+        </div>
+        <center class="btnbox">
+            <button class="btn" onclick="submitForm()">保存</button>
+            <input type="hidden" id="rsmid" value="398719117"/>
+        </center>
+    </div>
+    <!-- 修改页面 -->
+</div>
+<!--中间内容  结束-->
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js">
+</script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/indtype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/funtype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popindtype.js"></script>
+<script type="text/javascript">
+    var time = '1572570880666';
+    var pagecode = '30199';
+    var cusParam = "116425202951job_msem_baidupz_570m.51job.com";
+    var param = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+    function submitForm(){
+        let name = $("input[name='name']").val();
+        let sex;
+        $("span[name='sex']").each(function(){
+            if($(this).hasClass("on")){
+                sex = $(this).val();
+            }
+        });
+        let education;
+        $("span[name='education']").each(function(){
+            if($(this).hasClass("on")){
+                education = $(this).val();
+            }
+        });
+        let nation = $("input[name='nation']").val();
+        let birthday = $("input[name='birthday']").val();
+        let tel = $("input[name='tel']").val();
+        let idNumber = $("input[name='idNumber']").val();
+        let graduationTime = $("input[name='graduationTime']").val();
+        let wentToSchool = $("input[name='wentToSchool']").val();
+        let contentId = $("input[name='contentId']").val();
+        if(name==''){
+            alert('姓名不能为空');
+            return;
+        }
+        if(nation==''){
+            alert('民族不能为空');
+            return;
+        }
+        if(birthday==''){
+            alert('出生年月不能为空');
+            return;
+        }
+        if(tel==''){
+            alert('联系电话不能为空');
+            return;
+        }
+        if(idNumber==''){
+            alert('身份证号不能为空');
+            return;
+        }
+        if(graduationTime==''){
+            alert('毕业时间不能为空');
+            return;
+        }
+        if(wentToSchool==''){
+            alert('毕业院校不能为空');
+            return;
+        }
+        $.post("${ctxPath}/ecZxbm/save",{
+            name:name,
+            sex:sex,
+            nation:nation,
+            birthday:birthday,
+            tel:tel,
+            idNumber:idNumber,
+            education:education,
+            graduationTime:graduationTime,
+            wentToSchool:wentToSchool,
+            contentId:contentId,
+            zhId:$("input[name='zhId']").val()
+        },function(res){
+            let data = eval('(' + res + ')');
+            alert(data.message);
+            location.href = "${frontPath!}/${siteId}/${categoryId}/${contentId}";
+        });
+    }
+</script>
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

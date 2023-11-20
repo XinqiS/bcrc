@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syyc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syyc-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+</head>
+
+<body>
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/syyc_06.png" width="171" height="48"></h1>
+        <ul>
+       		<li><a href="${frontPath!}/${site.siteId}/1005.html">联系我们</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1007.html">引才政策</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1008.html">人文松原</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1006.html"">松原经济</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1003.html">参会单位</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1001.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	<div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>联系我们</a></div>
+            <div class="sycon_bg">
+                <div class="news_cont">
+                    <p class="sy_wz">
+                       ${category.content!}
+                    </p>
+                </div>
+            </div>
+    
+    
+    
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+
+
+</body>
+</html>

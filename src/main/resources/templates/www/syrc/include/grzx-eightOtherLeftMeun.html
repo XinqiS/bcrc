@@ -1,0 +1,28 @@
+<!--<li id="jlzx"><a class="jlzx" href="${ctxPath}/cms/resume/findUserResume">简历中心</a></li>
+<li id="skgw"><a class="skgw" href="${ctxPath}/cms/resume/findSkgwList">谁看过我</a></li>
+<li id="wdsc"><a class="wdsc" href="${ctxPath}/cms/resume/findWdscList">我的收藏</a></li>
+<li id="wdsq"><a class="wdsq" href="${ctxPath}/cms/resume/findWdsqList">我的申请</a></li>-->
+
+<li id="jlzx"><a class=" jlzx" href="${ctxPath}/cms/resume/findUserResume">查看简历</a></li>
+<li id="wdsc"><a class="wdsc" href="${ctxPath}/cms/resume/findWdscList">我的收藏</a></li>
+<li id="wdsq"><a class="wdsq" href="${ctxPath}/cms/resume/findWdsqList">我的申请</a></li>
+<li id="skgw"><a class="skgw" href="${ctxPath}/cms/resume/goToXgmm" >修改密码</a></li>
+<li ><a class="tcdl" href="${ctxPath}/system/reception/logOut">退出登录</a></li>
+
+<!-- 新增的8个栏目
+<li id="1033"><a class="lwpqfw" href="${ctxPath}/ecZxbm/grzx/list/1033">劳务派遣服务</a></li>
+<li id="1034"><a class="rczpfw" href="${ctxPath}/ecZxbm/grzx/list/1034">人才招聘服务</a></li>
+<li id="1035"><a class="rlzywbfw" href="${ctxPath}/ecZxbm/grzx/list/1035">人力资源外包服务</a></li>
+<li id="1036"><a class="rccpfw" href="${ctxPath}/ecZxbm/grzx/list/1036">人才测评服务</a></li>
+<li id="1037"><a class="rlzypxfw" href="${ctxPath}/ecZxbm/grzx/list/1037">人力资源培训服务</a></li>
+<li id="1038"><a class="rlzyglzxfw" href="${ctxPath}/ecZxbm/grzx/list/1038">人力资源管理咨询服务</a></li>
+<li id="1039"><a class="rlzyhshbzswdl" href="${ctxPath}/ecZxbm/grzx/list/1039">人力资源和社会保障事务代理</a></li>
+<li id="1040"><a class="ldryrsdafw" href="${ctxPath}/ecZxbm/grzx/list/1040">流动人员人事档案服务</a></li>-->
+
+<input type="hidden" id="flag" value="${flag}">
+<script>
+    $(function () {
+        let id = $("#flag").val();
+        $("#"+id).addClass("on");
+    });
+</script>

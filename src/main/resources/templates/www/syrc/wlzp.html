@@ -1,0 +1,1022 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/common.1017570d.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/wangluosousuo.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+
+    <script type="text/javascript" src="${resPath}/bcrc/js/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript"  src="${resPath}/bcrc/js/TL_Tab.js"></script>
+    <!--<script type="text/javascript"  src="${resPath}/bcrc/js/jquery.placeholder.min.js"></script>-->
+    <!--<script type="text/javascript"  src="${resPath}/bcrc/js/trackData.js"></script>-->
+    <!--<script type="text/javascript"  src="${resPath}/bcrc/js/gangweixuanze.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/js/searchResult.92340277.js"></script>-->
+    <!--	<script src="${resPath}/syrc/js/myPagination.js"></script>-->
+    <script language="javascript" src="${resPath}/syrc/js/jlzx_js.js"></script>
+
+<!-- <script language="javascript" src="${resPath}/syrc/js/searchResult.92340277.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc/js/pointtrack.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/jquery.placeholder.min.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/trackData.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/gangweixuanze.js"></script>
+    -->
+
+    <script src="${resPath}/syrc/js/myPagination.js"></script>
+    <!-- 职能-->
+    <script src="${resPath}/bcrc/cssjs/position.data.min.js" type="text/javascript"></script>
+    <script src="${resPath}/bcrc/cssjs/jquery.position.select.js" type="text/javascript"></script>
+    <!--行业-->
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/drag.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/funtype_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/major_arr.js"></script>
+
+</head>
+<script>
+    function result2(){
+        $("#result2").positionSelect({
+            containerId: "positionDiv",
+            className: "big-window",
+            nameId: "funtype_input",
+            required: true,
+            maxCount: 5,
+            onConfirm: null
+        });
+    }
+</script>
+<body>
+<div class="contentbig">
+    <!--头部开始-->
+    @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+    <!--头部结束-->
+    <form id="form">
+        <!--内容开始-->
+        <div class="wz_cont">
+            <div  class="wz_cont_in">
+                <div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>招聘信息</div>
+                <div class="dw_search clearfix Fm">
+                    <!--搜索条件开始-->
+                    <div class="dw_search_in">
+                        <!-- 全文及相关关键字 -->
+                        <div class="el on el_q">
+                            <ul>
+                                <li style="width:90px">岗位搜索</li>
+                                <li></li>
+                            </ul>
+                            <p class="ipt">
+                                <input type="text" maxlength="200" value="${gjss.mc}" id="mc" placeholder="搜索全文/职位名" autocomplete="off" vindex="-1" name="keyword" value="" class="mytxt at" preval="">
+                            </p>
+                            <div class="ul" id="KwdSearchResult" style="display:none;"></div>
+                        </div>
+                        <!--地点 -->
+                        <div class="txt pointer">
+                            <p class="hdl">地点</p>
+                            <input type="text" id="dd" placeholder="输入地点" style=" border:none; margin:0 0 0 10px;width: 100%;" value="${gjss.dd}">
+                        </div>
+
+                        <!-- 行业类别 -->
+                       <!-- <div class="txt pointer long" id="indtype_click">
+                            <p class="hdl">行业</p>
+                            <input autocomplete="off" id="indtype_input" readonly type="text" class="ef" placeholder="选择行业" value="">
+                            <input name="industrytype" type="hidden" id="indtype_code" value="">
+                        </div>-->
+                        <div class="txt pointer long" >
+                            <p class="hdl">行业</p>
+                            <input autocomplete="off" id="indtype_input"  type="text" class="ef" placeholder="填写/选择" value="">
+                            <input id="btn_residency" type="button"  onclick="IndustrySelect('indtype_input')" />
+                        </div>
+                        <!-- 职能类别 -->
+                       <!-- <div class="txt pointer long brn" id="funtype_click">
+                            <p class="hdl">职能</p>
+                            <input autocomplete="off" id="funtype_input" readonly type="text" class="ef" placeholder="选择职能" value="">
+                            <input name="funtype" type="hidden" id="funtype_code" value="">
+                        </div>-->
+                        <div class="txt pointer long brn" >
+                            <p class="hdl">职能</p>
+                            <input autocomplete="off" id="funtype_input"  type="text" class="ef"  placeholder="填写/选择" value="">
+                            <a id="result2" cols="80" rows="10" href="javascript:void(0);" class="zwxz" onclick="result2()"></a>
+                        </div>
+
+                        <!-- 搜索按钮 -->
+                        <button class="p_but" type="button"  onclick="chongzhizwss();">重&nbsp;置</button>
+                        <button class="p_but" type="button" id="ss" onclick="search();">搜&nbsp;索</button>
+                    </div>
+                </div>
+                <!--过滤条件-->
+                <div class="dw_filter  on">
+                    <!--发布日期-->
+                    <div class="el mk on" id="filter_issuedate">
+                        <span class="title">发布日期：</span>
+                        <ul>
+                            <li id="fbrq-1" class="fbrq"><a track-type="searchConditionTrackButtonClick" event-type="" class="dw_c_orange"><input type="hidden" name="fbrq" value="-1"/>所有</a></li>
+                            <li id="fbrq0" class="fbrq"><a track-type="searchConditionTrackButtonClick" event-type="" class=""><input type="hidden" name="fbrq" value="0"/>24小时内</a></li>
+                            <li id="fbrq1" class="fbrq"><a track-type="searchConditionTrackButtonClick" event-type="" class=""><input type="hidden" name="fbrq" value="1"/>近三天</a></li>
+                            <li id="fbrq2" class="fbrq"><a track-type="searchConditionTrackButtonClick" event-type="" class=""><input type="hidden" name="fbrq" value="2"/>近一周</a></li>
+                            <li id="fbrq3" class="fbrq" ><a track-type="searchConditionTrackButtonClick" event-type="" class=""><input type="hidden" name="fbrq" value="3"/>近一月</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--月薪范围-->
+                    <div class="el mk on" id="filter_providesalary">
+                        <span class="title">月薪范围：</span>
+                       <!-- <span class="more dicon Dm">更多</span>-->
+                        <ul>
+                            <li id="yxfw-1" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class="dw_c_orange"><input type="hidden" name="yxfw" value="-1"/>所有</a></li>
+                            <li id="yxfw0" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="0"/>1000元以下</a></li>
+                            <li id=yxfw1" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="1"/>1000-2000元</a></li>
+                            <li id="yxfw2" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="2"/>2000-4000元</a></li>
+                            <li id="yxfw3" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="3"/>4000-6000元</a></li>
+                            <li id="yxfw4" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="4"/>6000-8000元</a></li>
+                            <li id="yxfw5" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="5"/>8000-10000元</a></li>
+                            <li id="yxfw6" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="6"/>10000-15000元</a></li>
+                            <li id="yxfw7" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="7"/>15000-20000元</a></li>
+                            <li id="yxfw8" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="8"/>20000-30000元</a></li>
+                            <li id="yxfw9" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="9"/>30000-50000元</a></li>
+                            <li id="yxfw10" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="10"/>50000-70000元</a></li>
+                            <li id="yxfw11" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="11"/>70000-100000元</a></li>
+                            <li id="yxfw12" class="yxfw"><a track-type="searchConditionTrackButtonClick" event-type="20" class=""><input type="hidden" name="yxfw" value="12"/>100000元以上</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--公司性质-->
+                    <div class="el" id="filter_cotype">
+                        <span class="title">企业类型：</span>
+                      <!--  <span class="more dicon Dm">更多</span>-->
+                        <ul>
+                            <li id="jjlx-1" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class="dw_c_orange"> <input type="hidden" name="jjlx" value="-1"/>所有</a></li>
+                            <li id="jjlx0" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="0"/>国有企业</a></li>
+                            <li id="jjlx1" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="1"/>集体企业</a></li>
+                            <li id="jjlx2" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="2"/>私营企业</a></li>
+                            <li id="jjlx3" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="3"/>个体企业</a></li>
+                            <li id="jjlx4" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="4"/>联营企业</a></li>
+                            <li id="jjlx5" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="5"/>股份制企业</a></li>
+                            <li id="jjlx6" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="6"/>外商投资企业</a></li>
+                            <li id="jjlx7" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="7"/>港澳台投资企业</a></li>
+                            <li id="jjlx8" class="jjlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="jjlx" value="8"/>其他企业</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--工作年限-->
+                    <div class="el" id="filter_workyear">
+                        <span class="title">工作年限：</span>
+                        <ul>
+                            <li id="gznx-1" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class="dw_c_orange"><input type="hidden" name="gznx" value="-1"/>所有</a></li>
+                            <li id="gznx0" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="0"/>不限经验</a></li>
+                            <li id="gznx1" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="1"/>无经验</a></li>
+                            <li id="gznx2" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="2"/>1年以下</a></li>
+                            <li id="gznx3" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="3"/>1-3年</a></li>
+                            <li id="gznx4" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="4"/>3-5年</a></li>
+                            <li id="gznx5" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="5"/>5-10年</a></li>
+                            <li id="gznx6" class="gznx"><a track-type="searchConditionTrackButtonClick" event-type="22" class=""><input type="hidden" name="gznx" value="6"/>10年以上</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--学历要求-->
+                    <div class="el" id="filter_degreefrom">
+                        <span class="title">学历要求：</span>
+                        <ul>
+                            <li id="xlyq-1" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class="dw_c_orange"><input type="hidden" name="xlyq" value="-1"/>所有</a></li>
+                            <li id="xlyq0" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="0"/>不限学历</a></li>
+                            <li id="xlyq1" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="1"/>本科</a></li>
+                            <li id="xlyq2" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="2"/>硕士</a></li>
+                            <li id="xlyq3" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="3"/>博士</a></li>
+                            <li id="xlyq4" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="4"/>大专</a></li>
+                            <li id="xlyq5" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="5"/>中技</a></li>
+                            <li id="xlyq6" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="6"/>中专</a></li>
+                            <li id="xlyq8" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="8"/>高中</a></li>
+                            <li id="xlyq7" class="xlyq"><a track-type="searchConditionTrackButtonClick" event-type="23" class=""><input type="hidden" name="xlyq" value="7"/>高中以下</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--公司规模-->
+                    <div class="el" id="filter_companysize">
+                        <span class="title">公司规模：</span>
+                        <ul>
+                            <li id="gsgm-1" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class="dw_c_orange"><input type="hidden" name="gsgm" value="-1"/>所有</a></li>
+                            <li id="gsgm0" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="0"/>少于20人</a></li>
+                            <li id="gsgm1" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="1"/>20-99人</a></li>
+                            <li id="gsgm2" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="2"/>100-499人</a></li>
+                            <li id="gsgm3" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="3"/>500-999人</a></li>
+                            <li id="gsgm4" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="4"/>1000-9999人</a></li>
+                            <li id="gsgm5" class="gsgm"><a track-type="searchConditionTrackButtonClick" event-type="24" class=""><input type="hidden" name="gsgm" value="5"/>10000人以上</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!--其他筛选-->
+                    <div class="el" filter_cotype>
+                        <span class="title">薪资福利：</span>
+                        <ul>
+                            <li id="xzfl-1" class="xzfl"><a track-type="searchConditionTrackButtonClick" event-type="66" class="dw_c_orange"><input type="hidden" name="xzfl" value="-1"/>所有</a></li>
+                            <li id="xzfl0" class="xzfl"><a track-type="searchConditionTrackButtonClick" event-type="66" class=""><input type="hidden" name="xzfl" value="0"/>五险一金</a></li>
+                            <li id="xzfl1" class="xzfl"><a track-type="searchConditionTrackButtonClick" event-type="66" class=""><input type="hidden" name="xzfl" value="1"/>节日福利</a></li>
+                            <li id="xzfl2" class="xzfl"><a track-type="searchConditionTrackButtonClick" event-type="66" class=""><input type="hidden" name="xzfl" value="2"/>带薪年假</a></li>
+                            <li id="xzfl3" class="xzfl"><a track-type="searchConditionTrackButtonClick" event-type="66" class=""><input type="hidden" name="xzfl" value="3"/>现金补贴</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="el" filter_cotype>
+                        <span class="title">工作类型：</span>
+                        <ul>
+                            <li id="gzlx-1" class="gzlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class="dw_c_orange"><input type="hidden" name="gzlx" value="-1"/>所有</a></li>
+                            <li id="gzlx0" class="gzlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="gzlx" value="0"/>全职</a></li>
+                            <li id="gzlx1" class="gzlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="gzlx" value="1"/>兼职</a></li>
+                            <li id="gzlx2" class="gzlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="gzlx" value="2"/>实习</a></li>
+                            <li id="gzlx3" class="gzlx"><a track-type="searchConditionTrackButtonClick" event-type="21" class=""><input type="hidden" name="gzlx" value="3"/>就业见习人员</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+    </form>
+    <!--排除关键字 -->
+   <!-- <div class="op" onclick="collapseExpansionSearch(&#39;https://search.51job.com&#39;, &#39;dw_filter&#39;, this);">
+        <span>收起选项<em class="dicon Dm"></em></span>
+    </div>-->
+</div>
+
+<!--过滤条件 END-->
+<!--招聘岗位开始-->
+@for(list in model){
+<div class="list3">
+    <h4><span class="zw_tit fl"><a
+            @if(session.tbZhInfo_loginSession !=null){
+            href="${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}"  target="on"
+            @}else {
+            href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/gwXq?zw_id=${list.zw_id}');"
+            @}
+    >${list.zw_zwmc}</a>
+				</span><a class="gs_tit fr" href="${ctxPath}/qyzx/qyXq?qy_id=${list.qy_id!}">${list.qy_qymc}</a></h4>
+    <h5><b class="red fl">
+        @if(list.zw_yxfw==0){
+        1000元以下
+        @}
+        @else if(list.zw_yxfw==1){
+        1000-2000元
+        @}
+        @else if(list.zw_yxfw==2){
+        2000-4000元
+        @}
+        @else if(list.zw_yxfw==3){
+        4000-6000元
+        @}
+        @else if(list.zw_yxfw==4){
+        6000-8000元
+        @}
+        @else if(list.zw_yxfw==5){
+        8000-10000元
+        @}
+        @else if(list.zw_yxfw==6){
+        10000-15000元
+        @}
+        @else if(list.zw_yxfw==7){
+        15000-20000元
+        @}
+        @else if(list.zw_yxfw==8){
+        20000-30000元
+        @}
+        @else if(list.zw_yxfw==9){
+        30000-50000元
+        @}
+        @else if(list.zw_yxfw==10){
+        50000-70000元
+        @}
+        @else if(list.zw_yxfw==11){
+        70000-100000元
+        @}
+        @else if(list.zw_yxfw==12){
+        100000元以上
+        @}
+    </b> <span class="fl z_tit">
+					${strutil.length(list.qy_xxdz!)>40?strutil.subStringTo(list.qy_xxdz!,0,15)+"...":list.qy_xxdz!} |
+					 @if(list.zw_gznx==0){
+					  经验不限
+					  @}
+					  @else if(list.zw_gznx==1){
+					  无经验
+					  @}
+					  @else if(list.zw_gznx==2){
+					  1年以下
+					  @}
+					  @else if(list.zw_gznx==3){
+					  1-3年
+					  @}
+					  @else if(list.zw_gznx==4){
+					  3-5年
+					  @}
+					  @else if(list.zw_gznx==5){
+					  5-10年
+					  @}
+					  @else if(list.zw_gznx==6){
+					  10年以上
+					  @}
+					     |
+					  @if(list.zw_zdxl==0){
+					  学历不限
+					  @}
+					  @else if(list.zw_zdxl==1){
+					  本科
+					  @}
+					  @else if(list.zw_zdxl==2){
+					  硕士
+					  @}
+					  @else if(list.zw_zdxl==3){
+					  博士
+					  @}
+					  @else if(list.zw_zdxl==4){
+					  大专
+					  @}
+					  @else if(list.zw_zdxl==5){
+					  中技
+					  @}
+					  @else if(list.zw_zdxl==6){
+					  中专
+					  @}
+                      @else if(list.zw_zdxl==8){
+					  高中
+					  @}
+					  @else if(list.zw_zdxl==7){
+					  高中以下
+					  @}
+				</span><span class="fr z_tit">
+					@if(list.qy_jjlx==0){
+				      国有企业
+				      @}
+				      @else if(list.qy_jjlx==1){
+				      集体企业
+				      @}
+				      @else if(list.qy_jjlx==2){
+				      私营企业
+				      @}
+				      @else if(list.qy_jjlx==3){
+				      个体企业
+				      @}
+				      @else if(list.qy_jjlx==4){
+				      联营企业
+				      @}
+				      @else if(list.qy_jjlx==5){
+				      股份制企业
+				      @}
+				      @else if(list.qy_jjlx==6){
+				     外商投资企业
+				      @}
+				      @else if(list.qy_jjlx==7){
+				      港澳台投资企业
+				      @}
+				      @else if(list.qy_jjlx==8){
+				      其他企业类
+				      @}
+				        |
+		  			${list.zw_zprs}
+				</span></h5>
+    <p> <span class="fl_span fl">
+					 @if(isNotEmpty(list.zw_zwld)){
+				     @for(fors in strutil.split(list.zw_zwld,",")){
+						@if(fors=="0"){
+						<span>五险一金</span>
+						@}
+						@else if(fors=="1"){
+						 <span>节日福利</span>
+						@}
+						@else if(fors=="2"){
+						 <span>带薪年假</span>
+						@}
+						@else if(fors=="3"){
+						 <span>现金补贴</span>
+						@}
+						@}
+						@}
+					<i class="rq_tit fr">${strutil.subStringTo(list.zw_fbsc,0,10)}</i> </p>
+    <span class="fr btn_tit gsxx_btn"> <a class="sczw_btn yellow"
+                                          @if(session.tbZhInfo_loginSession !=null){
+                                          href="javascript:void(0)" 	 onclick="sczw('${list.zw_id}',this);"
+                                          @}else {
+                                          href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/selectExample');"
+                                          @}
+                                          style="display: block;float: left;line-height: 40px;width: 48%;">
+        <div class="ss" style="line-height: 38px;"><h1><input type="hidden" value="${list.zw_id}">
+							<img src="${resPath}/bcrc/images/jlzx_con_47.png" style="float: left;margin: 12px 10px 0 0;"></h1></div>收藏职位</a> <a class="sqzw_btn"
+                                                                   @if(session.tbZhInfo_loginSession !=null){
+                                                                   href="javascript:void(0)"   onclick="sqzw('${list.zw_id}');"
+                                                                   @}else {
+                                                                   href="javascript:void(0)" onclick="jinggao('${ctxPath}/gjss/selectExample');"
+                                                                   @}
+    style="color: #fff;line-height: 40px;">申请职位</a> </span>
+</div>
+@}
+<!--分页位置-->
+<div id="pagination" class="pagination"></div>
+<script>
+
+    var datatotal = '${total}';
+    var pageAmount = '${pagesize}';
+    var pagenum = '${pagenum}';
+    var mc1=$("#mc").val();
+    var dd1=$("#dd").val();
+    var indtype_input1='${gjss.qy_sshy}';
+    var funtype_input1='${gjss.zw_zwlb}';
+    var fbrq1='${gjss.fbrq}';
+    var yxfw1='${gjss.zw_yxfw}';
+    var jjlx1='${gjss.qy_jjlx}';
+    var gznx1='${gjss.zw_gznx}';
+    var xlyq1='${gjss.zw_zdxl}';
+    var gsgm1='${gjss.gsgm}';
+    var xzfl1='${gjss.xzfl}';
+    var gzlx1='${gjss.zw_gzxz}';
+    var zplx1='${gjss.zw_zplx}';
+    pageTotal=Math.ceil(datatotal/pageAmount);
+
+    if(pageTotal>10){
+        pageSize=10
+    }else{
+        pageSize=pageTotal
+    }
+
+    window.onload = function () {
+        $("#mc").val(mc1);
+        $("#dd").val(dd1);
+        $("#indtype_input").val(indtype_input1);
+        $("#funtype_input").val(funtype_input1);
+        $("#fbrq"+fbrq1).children().attr("class","dw_c_orange");
+        $("#fbrq"+fbrq1).siblings().children().removeAttr("class");
+
+        $("#jjlx"+jjlx1).children().attr("class","dw_c_orange");
+        $("#jjlx"+jjlx1).siblings().children().removeAttr("class");
+
+        $("#yxfw"+yxfw1).children().attr("class","dw_c_orange");
+        $("#yxfw"+yxfw1).siblings().children().removeAttr("class");
+
+        $("#gznx"+gznx1).children().attr("class","dw_c_orange");
+        $("#gznx"+gznx1).siblings().children().removeAttr("class");
+
+        $("#xlyq"+xlyq1).children().attr("class","dw_c_orange");
+        $("#xlyq"+xlyq1).siblings().children().removeAttr("class");
+
+        $("#gsgm"+gsgm1).children().attr("class","dw_c_orange");
+        $("#gsgm"+gsgm1).siblings().children().removeAttr("class");
+
+        $("#xzfl"+xzfl1).children().attr("class","dw_c_orange");
+        $("#xzfl"+xzfl1).siblings().children().removeAttr("class");
+
+        $("#gzlx"+gzlx1).children().attr("class","dw_c_orange");
+        $("#gzlx"+gzlx1).siblings().children().removeAttr("class");
+
+
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        new myPagination({
+            id: 'pagination',
+            curPage:pagenum, //初始页码
+            pageTotal: pageTotal, //总页数
+            pageAmount: pageAmount,  //每页多少条
+            dataTotal: datatotal, //总共多少条数据
+            getPage: function (page) {
+                window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&gsgm='+gsgm+'&xzfl='+xzfl+'&zw_zplx=-1&pageCurrent='+page;
+
+            }
+        })
+
+    }
+</script>
+
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".ss h1").each(function(){
+            var zw_id = $(this).children("input").val();
+            var commoba=this;
+            $.ajax({
+                url:"${ctxPath}/cms/resume/zwscor",   //请求的url地址
+                dataType:"json",   //返回格式为json
+                data:{zw_id:zw_id},    //参数值
+                type:"post",   //请求方式
+                success:function(data){
+                    if(data.type=="1"){
+                        $(commoba).children("img").attr("src","${resPath}/bcrc/images/jlzx_con_47after.png");
+                    }
+
+                }
+            });
+
+
+        });
+    });
+
+    function chongzhizwss(){
+        window.location.href ='${ctxPath}/gjss/selectExample?mc=&dd=&zw_zwlb=&qy_sshy=&fbrq=-1&qy_jjlx=-1&zw_gznx=-1&zw_yxfw=-1&zw_zdxl=-1&zw_gzxz=-1&zw_zplx=-1&gsgm=-1&xzfl=-1';
+    }
+    function search(){
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+            //alert(indtype_input);
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+            //alert(funtype_input);
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+    }
+    //发布日期
+    $(".fbrq").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+    });
+    // 月薪范围
+    $(".yxfw").click(function(){
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+    //企业类型
+    $(".jjlx").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+    //工作年限
+    $(".gznx").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+    //学历要求
+    $(".xlyq").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+    //公司规模
+    $(".gsgm").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+    //薪资福利
+    $(".xzfl").click(function(){
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+    });
+    //工作类型
+    $(".gzlx").click(function(){
+
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+
+    /**
+     * 招聘类型
+     * limeng 2021/12/22新增 为啥这么写不知道 照抄的
+     * **/
+    $(".zplx").click(function(){
+        $(this).children().attr("class","dw_c_orange");
+        $(this).siblings().children().removeAttr("class");
+        var mc=$("#mc").val();
+        var dd=$("#dd").val();
+        var indtype_input=$("#indtype_input").val();
+        var funtype_input=$("#funtype_input").val();
+        if(indtype_input.indexOf("+")){
+            indtype_input=indtype_input.replace(/\+/g,'%2B');
+        }
+        if(funtype_input.indexOf("+")){
+            funtype_input=funtype_input.replace(/\+/g,'%2B');
+        }
+        var fbrq=$(".fbrq").children().filter(".dw_c_orange").children().val();
+        var yxfw=$(".yxfw").children().filter(".dw_c_orange").children().val();
+        var jjlx=$(".jjlx").children().filter(".dw_c_orange").children().val();
+        var gznx=$(".gznx").children().filter(".dw_c_orange").children().val();
+        var xlyq=$(".xlyq").children().filter(".dw_c_orange").children().val();
+        var gsgm=$(".gsgm").children().filter(".dw_c_orange").children().val();
+        var xzfl=$(".xzfl").children().filter(".dw_c_orange").children().val();
+        var gzlx=$(".gzlx").children().filter(".dw_c_orange").children().val();
+        window.location.href ='${ctxPath}/gjss/selectExample?mc='+mc+'&dd='+dd+'&zw_zwlb='+funtype_input+'&qy_sshy='+indtype_input+'&fbrq='+fbrq+'&qy_jjlx='+jjlx+'&zw_gznx='+gznx+'&zw_yxfw='+yxfw+'&zw_zdxl='+xlyq+'&zw_gzxz='+gzlx+'&zw_zplx=-1&gsgm='+gsgm+'&xzfl='+xzfl;
+
+    });
+
+
+
+
+    $("..gjrcb_cont dt").hover(function(){
+        $(this).children('.gsxx_btn').fadeIn(300);
+    },function(){
+        $(this).children('.gsxx_btn').fadeOut(300);
+    });
+    function sczw(zw_id,org){
+        $.ajax({
+            url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+            dataType:"json",   //返回格式为json
+            data:{zw_id:zw_id},    //参数值
+            type:"post",   //请求方式
+            success:function(data){
+                alert(data.message);
+                if(data.type=="2"){
+                    $(org).children("div").children("h1").children("img").attr("src","${resPath}/bcrc/images/jlzx_con_47after.png");
+                }
+            }
+        });
+    }
+
+    function sqzw(zw_id){
+        $.ajax({
+            url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+            dataType:"json",   //返回格式为json
+            data:{zwId:zw_id},    //参数值
+            type:"post",   //请求方式
+            success:function(data){
+                alert(data.message);
+            }
+        });
+    }
+
+
+</script>
+<script type="text/javascript">
+    $(".list3").hover(function(){
+        $(this).children('.gsxx_btn').fadeIn(300);
+    },function(){
+        $(this).children('.gsxx_btn').fadeOut(300);
+    });
+</script>
+
+
+<!--招聘岗位结束-->
+</div>
+
+<!--内容结束-->
+
+
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+</div>
+<!--职能选择开始-->
+<link href="${resPath}/bcrc/cssjs/base.css" rel="stylesheet" type="text/css">
+<link href="${resPath}/bcrc/cssjs/big-window.css" rel="stylesheet" type="text/css">
+
+
+<script type="text/javascript">
+    /* $(document).ready(function () {
+         $("#result").click(function () {
+             $("#result").positionSelect({
+                 containerId: "positionDiv",
+                 className: "big-window",
+                 nameId: "resultinput",
+                 required: true,
+                 maxCount: 5,
+                 onConfirm: null
+             });
+         });
+     });*/
+</script>
+
+<!----><style>
+    .zwxz{
+        background: url(${resPath}/bcrc/images/form_03.png) no-repeat 10px;
+        position: absolute;
+        width: 36px;
+        height: 18px;
+        line-height: 18px;
+        font-size: 12px;
+        color: #00457d;
+        text-align: center;
+        top: 5px;
+        right: 0;
+        border-left: 1px solid #ddd;}
+</style>
+<!--<textarea id="result" cols="80" rows="10">点我，狠狠地点我。</textarea>-->
+<!----><div id="positionDiv">
+</div>
+<!-- 职位-->
+<!----> <div class="big-window bg-f0" id="position">
+    <div class="title">
+        <b>选择职位</b><span class="tip">(最多选择5项)</span> <a href="#" onclick="javascript:closeposition()">
+    </a>
+    </div>
+    <div class="sele-tag">
+        <dl>
+            <dt>已选择：</dt>
+            <dd>
+                <a href="#">已选择的职位1</a>
+                <a href="#">已选择的职已选择的职位位2</a>
+                <a href="#">已选择已选择的职位的职位3</a>
+                <a href="#">已已选择的职位选择的职位4</a>
+                <a href="#">已已选择的职位选择的职位5</a>
+                <a href="#" class="btn">确 定</a>
+            </dd>
+        </dl>
+    </div>
+    <div class="position-menu">
+        <div class="menu">
+            <ul>
+                <li>销售|客服|市场</li>
+                <li>财务|人力资源|行政</li>
+                <li class="sele">项目|质量|高级管理</li>
+                <li>IT|互联网|通信</li>
+                <li>房产|建筑|物业管理</li>
+                <li>金融</li>
+                <li>采购|贸易|交通|物流</li>
+                <li>生产|制造</li>
+                <li>传媒|印刷|艺术|设计</li>
+                <li>咨询|法律|教育|翻译</li>
+                <li>服务业</li>
+                <li>能源|环保|农业|科研</li>
+                <li>兼职|实习|社工|其他</li>
+            </ul>
+        </div>
+        <div class="sub-menu">
+            <dl>
+                <dt>电信/通信技术开发及应用</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>财务/审计/税务</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>交通运输服务</dt>
+                <dd>
+                    <a href="#">互联网/电子商务 </a>
+                    <a href="#">计算机软件 </a>
+                    <a href="#">IT服务(系统/数据/维护) </a>
+                    <a href="#">电子技术/半导体/集成电路 </a>
+                    <a href="#">计算机硬件 </a>
+                    <a href="#">通信/电信/网络设备 </a>
+                    <a href="#">通信/电信运营、增值服务 </a>
+                    <a href="#">网络游戏</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>生物/制药/医疗器械</dt>
+                <dd>
+                    <a href="#">快速消费品（食品/饮料/烟酒/日化） </a>
+                    <a href="#">耐用消费品（服饰/纺织/皮革/家具/家电） </a>
+                    <a href="#">贸易/进出口 </a>
+                    <a href="#">零售/批发 </a>
+                    <a href="#">租赁服务 </a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>互联网产品/运营管理</dt>
+                <dd>
+                    <a href="#">汽车/摩托车</a>
+                    <a href="#">大型设备/机电设备/重工业 </a>
+                    <a href="#">加工制造（原料加工/模具） </a>
+                    <a href="#">仪器仪表及工业自动化 </a>
+                    <a href="#">印刷/包装/造纸 </a>
+                    <a href="#">办公用品及设备 </a>
+                    <a href="#">医药/生物工程 </a>
+                    <a href="#">医疗设备/器械 </a>
+                    <a href="#">航空/航天研究与制造</a>
+                </dd>
+            </dl>
+            <dl>
+                <dt>房地产|建筑业</dt>
+                <dd>
+                    <a href="#">房地产/建筑/建材/工程 </a>
+                    <a href="#">家居/室内设计/装饰装潢 </a>
+                    <a href="#">物业管理/商业中心</a>
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+
+
+<!--职能选择结束-->
+
+<!--行业选择开始-->
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/css.css" />
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/alpha.css" />
+<!----><script type="text/javascript">
+    // 是否在数组内
+    function in_array(needle, haystack) {
+        if(typeof needle == 'string' || typeof needle == 'number') {
+            for(var i in haystack) {
+                if(haystack[i] == needle) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+</script>
+<!----><script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_func.js"></script>
+
+<!-- alpha div -->
+<!----><div id="maskLayer" style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+    <div id="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag">
+        <h3 id="drag_h"></h3>
+        <div id="drag_con"></div>
+    </div>
+</div>
+</div>
+<!-- alpha div end -->
+<!----><div id="sublist" style="display:none"></div>
+<!--行业选择  结束-->
+
+</body>
+
+</html>

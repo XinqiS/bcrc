@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sooka.mybatis.mapper.TCmsEnterpriseMapper">
+    <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.TCmsEnterprise">
+        <id column="enterprise_id" jdbcType="BIGINT" property="id" />
+        <result column="enterprise_name" jdbcType="VARCHAR" property="enterpriseName" />
+        <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+        <result column="approve_state" jdbcType="INTEGER" property="approveState" />
+        <result column="is_famous" jdbcType="INTEGER" property="isFamous" />
+    </resultMap>
+     <select id="selectEnterpriseById" parameterType="Long" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        t_cms_enterprise where enterprise_id = #{enterprise_id,jdbcType=BIGINT}
+    </select>
+      <select id="selectFamousEnterprise" parameterType="Map" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        t_cms_enterprise where is_famous = #{isFamous,jdbcType=INTEGER} limit 0,#{size,jdbcType=INTEGER}
+    </select>
+    
+</mapper>

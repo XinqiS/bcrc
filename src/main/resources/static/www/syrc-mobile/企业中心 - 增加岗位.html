@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>增加岗位</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="images/sy_sjbase.css"  />
+<link rel="stylesheet" href="images/cover.css"  />
+<link rel="stylesheet" href="images/swiper.min.css"  />
+<link rel="stylesheet" href="images/resume.css"  />
+<link rel="stylesheet" href="images/pop.css"  />
+<script type="text/javascript" src="images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="images/basic.js" ></script>
+<script type="text/javascript" src="images/zepto.js"></script>
+<script type="text/javascript" src="images/swiper.min.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		//$_CONFIG['domain'] = '//m.51job.com/';
+		//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		//$_CONFIG['template'] = 'resume/baseinfo';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+</head>
+
+<body style="background: #f6f6f5 ;" id="m_45">
+
+	<div id="pageContent" class="fixtop">
+	<div class="top">
+		<a href="企业中心-发布职位管理.html" class="back"></a>
+		增加岗位
+	</div>
+	
+	<div class="sbox" ng-controller="appCtrl">
+		
+		<h2 class="qy_tit">职位信息</h2>
+		<div class="e">	
+			<label><em>*</em>职位名称</label>
+			<input type="text" class="txt inputblur" id="cname" maxlength="20" value="" placeholder="（必填）请输入职位名称" />			<p class="error" style="display:none;" id="err_cname"><span></span></p>
+		</div>
+
+		<a href="javascript:void(0)" class="e">
+    <label><em>*</em>职能</label>
+    <div id="funtypename" class="txt c_default" onclick="setFuntypePage(this,1)">请选择</div>
+    <input type="hidden" id="funtype" value="">
+    <p class="error" style="display:none;" id="err_funtype"><span></span></p>
+    </a>
+		<div class="e">
+			<label><em>*</em>工作性质</label>
+			<div class="rdob" id="worktype">
+				<span class="rdo on" value="0">全职</span><span class="rdo" value="1">兼职</span><span class="rdo" value="2">实习</span>			</div>
+		</div>
+		<div class="e">
+			<label><em>*</em>工作地址</label>
+			<input type="text" id="position" value="" class="txt inputblur" placeholder="请输入具体地址" name="Job" oninput="simpleAssociation('Job')" maxlength="35">
+			
+			<div class="asslist bb" style="display:none;">
+				<div class="Job cn"></div>
+			</div>
+		</div>
+		
+		<div class="e">
+			<label><em>*</em>月薪范围</label>
+			<div class="selt">
+				<span class="sval">1k-</span>				
+				<select id="workyear">
+					<option value="0">1k-</option>
+						<option value="1">1k-2k</option>
+						<option value="2">2k-4k</option>
+						<option value="3">4k-6k</option>
+						<option value="4">6k-8k</option>
+						<option value="5">8k-10k</option>
+						<option value="6">10k-15k</option>
+						<option value="7">15k-20k</option>
+						<option value="8">20k-30k</option>
+						<option value="9">30k-50k</option>
+						<option value="10">50k-50k</option>
+						<option value="11">70k-100k</option>
+						<option value="12">100k+</option></select>
+			</div>
+		</div>
+		<div class="e">
+			<label><em>*</em>最低学历</label>
+			<div class="selt">
+				<span class="sval">学历不限</span>				
+				<select id="zw_zdxl">
+					<option value="0">学历不限</option>
+						<option value="1">本科</option>
+						<option value="2">硕士</option>
+						<option value="3">博士</option>
+						<option value="4">大专</option>
+						<option value="5">中技</option>
+						<option value="6">中专</option>
+						<option value="8">高中</option>
+						<option value="7">高中以下</option></select>
+			</div>
+		</div>
+		<div class="e">
+			<label><em>*</em>应届毕业生</label>
+			<div class="selt">
+				<span class="sval">是</span>				
+				<select id="zw_yjbys">
+					<option value="0">是</option>
+						<option value="1">否</option></select>
+			</div>
+		</div>
+		<div class="e">
+			<label><em>*</em>工作年限</label>
+			<div class="selt">
+				<span class="sval">经验不限</span>				
+				<select id="zw_gznx">
+					<option value="0">经验不限</option>
+						<option value="1">无经验</option>
+						<option value="2">1年以下</option>
+						<option value="3">1-3年</option>
+						<option value="4">3-5年</option>
+						<option value="5">5-10年</option>
+						<option value="6">10年以上</option></select>
+			</div>
+		</div>
+		<div class="e e_ta">
+      <label>职位描述</label>
+      <div class="ptxa">
+        <textarea maxlength="2000" id="qy_zwms" class="inputblur" placeholder="描述你的职责范围、工作任务及取得的成绩等，限1000中文字"></textarea>
+        <div class="gray">0/1000</div>
+      </div>
+      <p class="error" style="display:none;" id="err_qy_zwms"><span></span></p>
+    </div>
+	<div class="e">	
+			<label><em>*</em>技能要求</label>
+			<input type="text" class="txt inputblur" id="cjnyq" maxlength="20" value="" placeholder="（必填）请输入技能要求" />			<p class="error" style="display:none;" id="err_cjnyq"><span></span></p>
+		</div>	
+		<div class="e">
+			<label>职位亮点</label>
+			<div class="rdob" id="workzwld">
+				<label class=" on" value="0"><input type="checkbox" name="1" value="五险一金" />五险一金</label>
+				<label class="" value="0"><input type="checkbox" name="1" value="节日福利" />节日福利</label>
+				<label class="" value="0"><input type="checkbox" name="1" value="带薪年假" />带薪年假</label>
+				<label class="" value="0"><input type="checkbox" name="1" value="现金补贴" />现金补贴</label>			
+			</div>
+		</div>
+		
+		<h2 class="qy_tit">职位设置</h2>
+		<div class="e">	
+			<label><em>*</em>招聘人数</label>
+			<input type="text" class="txt inputblur" id="czprs" maxlength="20" value="" placeholder="（必填）请输入招聘人数" />			<p class="error" style="display:none;" id="err_czprs"><span></span></p>
+		</div>
+		
+		
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [-10,70] , 'jsfbrq' );">		
+			<label><em>*</em>结束发布日期</label>			
+			<div class="selt"><span class="sval" id="jsfbrq">1990-07-18</span><p class="error" style="display:none;" id="err_jsfbrq"><span></span></p></div></a>
+		
+		
+		<div class="e">	
+			<label><em>*</em>所属部门</label>
+			<input type="text" class="txt inputblur" id="zw_ssbm" maxlength="20" value="" placeholder="（必填）请输入所属部门" />			<p class="error" style="display:none;" id="err_zw_ssbm"><span></span></p>
+		</div>
+			
+
+	<center class="btnbox">
+		<button class="btn" onclick="saveResumeOne()">保存</button>
+		<input type="hidden" id="rsmid" value="398719117"/>
+	</center>
+</div>
+<!-- 修改页面 -->
+</div>
+<!--中间内容  结束-->
+<script type="text/javascript" src="images/base.js"></script> 
+<script type="text/javascript" src="images/fun.js"></script> 
+<script type="text/javascript" src="images/d_jobarea.js"></script> 
+<script type="text/javascript" src="images/popjobarea.js"></script> 
+<script type="text/javascript" src="images/resume.js">
+	</script>
+	<script type="text/javascript" src="images/indtype.js"></script>
+	<script type="text/javascript" src="images/funtype.js"></script>
+	<script type="text/javascript" src="images/popfuntype.js"></script>
+	<script type="text/javascript" src="images/popindtype.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+
+<div id="shadow" style="display:none"></div>
+
+</body>
+</html>

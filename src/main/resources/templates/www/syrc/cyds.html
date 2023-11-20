@@ -1,0 +1,367 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script src="${resPath}/syrc/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	 var myarr=[];
+	 var formData = new FormData();
+        function printrwsInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('rwsfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+                formData.append('rwsfile',file);
+            }
+        }
+        
+         function printxmsInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('xmsfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+                formData.append('xmsfile',file);
+            }
+        }
+		
+		  function printpptInfo(target){
+            var fileSize = 0;
+            if ( !target.files) {
+                var filePath = target.value;
+                var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fileSystem.GetFile (filePath);
+                fileSize = file.Size;
+            } else {
+                fileSize = target.files[0].size;
+            }
+            var size = fileSize / 1024;
+            if(size>10240){
+                window.wxc.xcConfirm("附件不能大于10M!", "error");
+                target.value="";
+                return
+            }
+            var picFile = document.getElementById('pptfile');
+            var files = picFile.files;
+            for(var i=0; i<files.length; i++){
+                var file = files[i];
+               formData.append('pptfile',file);
+            }
+        }
+
+
+        var url = '${ctxPath}/cms/cyds/update';//数据地址
+        function save() {
+          
+            if(isNull($('#cydsHdlb').val())){
+                alert('活动类别不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXq').val())){
+                alert('县/区不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXmmc').val())){
+                alert('公司/项目名称不能为空');
+                return false;
+            }
+            if(isNull($('#cydsZczb').val())){
+                alert('预计/注册资本（万元）不能为空');
+                return false;
+            }else if(!validateResult($('#cydsZczb').val(),10,2)){
+            	alert('输入金钱不正确！');
+                return false;
+            }
+            if(isNull($('#cydsXmjs').val())){
+                alert('项目介绍不能为空');
+                return false;
+            }
+            if(isNull($('#cydsFzr').val())){
+                alert('负责人姓名不能为空');
+                return false;
+            }
+            if(isNull($('#cydsByyx').val())){
+                alert('毕业院校及所学专业不能为空');
+                return false;
+            }
+            if(isNull($('#cydsXl').val())){
+                alert('学历不能为空');
+                return false;
+            }
+            if(isNull($('#cydsBynf').val())){
+                alert('毕业年份不能为空');
+                return false;
+            }
+            if(isNull($('#cydsLxdh').val())){
+                alert('联系电话不能为空');
+                return false;
+            }else if(!checkMobile($('#cydsLxdh').val())){
+            	alert('联系电话格式不正确！');
+                return false;
+            }
+            if(isNull($('#cydsQq').val())){
+                alert('QQ/微信不能为空');
+                return false;
+            }
+            if(isNull($('#cydsYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#cydsYx').val())){
+            	 alert('邮箱格式不正确！');
+                return false;
+            }
+           	if(!$('#rwsfile').get(0).files[0]){
+           		alert('申请书不能为空');
+           		return false;
+           	}
+           	if(!$('#xmsfile').get(0).files[0]){
+           		alert('项目书不能为空');
+           		return false;
+           	}
+           	if(!$('#pptfile').get(0).files[0]){
+           		alert('ppt不能为空');
+           		return false;
+           	}
+            
+            $.each(myarr,function(i,file){
+                formData.append('myfile',file);
+
+            });
+            //将file放入formdata中
+            formData.append('cydsHdlb',$('#cydsHdlb').val());
+            formData.append('cydsXq',$('#cydsXq').val());
+            formData.append('cydsXmmc',$('#cydsXmmc').val());
+            formData.append('cydsZczb',$('#cydsZczb').val());
+            formData.append('cydsXmjs',$('#cydsXmjs').val());
+            formData.append('cydsFzr',$('#cydsFzr').val());
+            formData.append('cydsByyx',$('#cydsByyx').val());
+            formData.append('cydsXl',$('#cydsXl').val());
+            formData.append('cydsBynf',$('#cydsBynf').val());
+            formData.append('cydsLxdh',$('#cydsLxdh').val());
+            formData.append('cydsQq',$('#cydsQq').val());
+            formData.append('cydsYx',$('#cydsYx').val());
+            $.ajax({
+                url : url,
+                type : 'POST',
+                dataType: 'json',
+                data : formData,
+                crossDomain: true,
+                cache: false,
+                processData: false,
+                contentType: false,
+                success : function(responseStr) {
+                    alert(responseStr.message);
+                },
+            });
+
+        }
+	
+
+</script>
+</head>
+
+<body>
+<!--header begin-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--header end-->
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+    <div class="main">
+    	<div class="all_title"><i></i><a>松原市“查干湖杯”创业创新大赛报名</a></div>
+    	<div class="main_right_in">
+        	<div class="fjxz">
+        		 <#cms_content_list siteId="4" categoryId="1031" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="3" titleLen="26" var="bean">
+                    <a href="${bean.file!}">${bean.title!}</a>
+                </#cms_content_list>
+            </div>
+            <div class="cyds_bd">
+            	<b>请各位报名者认真填写下表内容，以便联系</b>
+            	<table>
+                	<tr>
+                    	<td align="right" valign="top">活动类别</td>
+                        <td>
+                        	<select name="cydsHdlb" id="cydsHdlb">
+                            	<script >
+									document.write(dicContainer["103"].toString());
+									var a='';
+									if(a!=''){
+										$("#cydsHdlb").find("option[value = '"+a+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">县/区</td>
+                        <td>
+                        	<select name="cydsXq" id="cydsXq">
+                            	<script >
+									document.write(dicContainer["104"].toString());
+									var b='';
+									if(b!=''){
+										$("#cydsXq").find("option[value = '"+b+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">公司/项目名称</td>
+                        <td>
+                        	<input type="text" maxlength="100" name="cydsXmmc" id="cydsXmmc" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">预计/注册资本（万元）</td>
+                        <td>
+                        	<input type="text" maxlength="100" name="cydsZczb" id="cydsZczb" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">项目介绍</td>
+                        <td>
+                        	<textarea name="cydsXmjs"  id="cydsXmjs"></textarea>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">负责人姓名</td>
+                        <td>
+                        	<input type="text" name="cydsFzr" maxlength="100" id="cydsFzr" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">毕业院校及所学专业</td>
+                        <td>
+                        	<input type="text" maxlength="20" name="cydsByyx" id="cydsByyx" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">学历</td>
+                        <td>
+                        	<select name="cydsXl" id="cydsXl">
+                            	<script >
+									document.write(dicContainer["102"].toString());
+									var c='';
+									if(c!=''){
+										$("#cydsXl").find("option[value = '"+c+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right"  valign="top">毕业年份</td>
+                        <td>
+                        	<input type="text" onClick="WdatePicker({startDate: '%y-%M-01', dateFmt: 'yyyy',maxDate:'%y-%M-%d', alwaysUseStartDate: true})" class="jcDate" id="cydsBynf" name="cydsBynf"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right"  valign="top">联系电话</td>
+                        <td>
+                        	<input type="text" maxlength="20" name="cydsLxdh" id="cydsLxdh" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">QQ/微信</td>
+                        <td>
+                        	<input type="text" maxlength="20" name="cydsQq" id="cydsQq" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">邮箱</td>
+                        <td>
+                        	<input type="text" maxlength="20" name="cydsYx" id="cydsYx" class="Input_text"/>
+                            <span>*</span>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td align="right" valign="top">上传申请书：</td>
+                        <td>
+                        	<div id="addFile">
+                        		<input class="csfj" type="file"  id="rwsfile"  name="rwsfile" onchange="printrwsInfo(this)" accept='application/msword' multiple="multiple"/>
+                    		 </div>
+                        </td>
+                    </tr>
+                      <tr>
+                    	<td align="right" valign="top">上传项目书：</td>
+                        <td>
+                        	<div id="addFile">
+                        		<input class="csfj" type="file"  id="xmsfile"  name="xmsfile" onchange="printxmsInfo(this)" accept='application/msword' multiple="multiple"/>
+                    		 </div>
+                        </td>
+                    </tr>
+                      <tr>
+                    	<td align="right" valign="top">上传ppt：</td>
+                        <td>
+                        	<div id="addFile">
+                        		<input class="csfj" type="file"  id="pptfile"  name="pptfile" onchange="printpptInfo(this)" accept='application/vnd.ms-powerpoint' multiple="multiple"/>
+                    		 </div>
+                        </td>
+                    </tr>
+                    <tr>
+                    	<td colspan="2" align="center"><input type="button" value="立即报名" class="bm_but" onclick="save();"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+</body>
+</html>

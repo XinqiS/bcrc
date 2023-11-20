@@ -1,0 +1,535 @@
+<!doctype html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<title>${siteTitle!}</title>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+	<script type="text/javascript" src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+    <script src="${resPath}/syrc/js/idealDic.js"></script>
+    <script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+    <script src="${resPath}/syrc/js/formValidate.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+        <script type="text/javascript"  src="${resPath}/bcrc/js/TL_Tab.js"></script>
+	</head>
+
+	<body>
+    <div class="contentbig">
+        @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+        <!--内容开始-->
+        <div class="wz_cont">
+            <div  class="wz_cont_in">
+                <div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>个人简历</div>
+
+                <table cellpadding="0" cellspacing="0" align="center" class="column">
+                    <tr>
+                        <td valign="top"><!--基本信息-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box1">
+                                <tr>
+                                    <td class="hbox" align="middle">
+                                        @if(jlinfo.jianliXb==0){
+                                        @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                        <img src="${resPath}/bcrc/images/man.png" width="85" height="104" alt="头像">
+                                        @}else{
+                                        <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                        @ }
+                                        @}else if(jlinfo.jianliXb==1){
+                                        @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                        <img src="${resPath}/bcrc/images/woman.png" width="85" height="104" alt="头像">
+                                        @}else{
+                                        <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                        @ }
+                                        @}else{
+                                        @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                                        <img src="${resPath}/bcrc/images/woman.png" width="85" height="104" alt="头像">
+                                        @}else{
+                                        <img src="${jlinfo.jianliTx!}" width="85" height="104" alt="头像">
+
+                                        @ }
+                                        @}
+                                    </td>
+                                    <td>
+                                        <table cellspacing="0" cellpadding="0" border="0" class="infr">
+                                            <tr>
+                                                <td colspan="2" class="name">${jlinfo.jianliXm!}</td>
+                                                <td align="right" class="icard" style=" display:none;">ID:397738433</td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top"><img class="vam" src="${resPath}/bcrc/images/y1.png" width="20" height="20">
+                                                    @if(jlinfo.jianliQzzt!=null){
+                                                    <script>
+                                                        document.write(dicContainer.getDicItemName('qzzt',${jlinfo.jianliQzzt!}));
+                                                    </script>
+                                                    @}
+                                                </td>
+                                                <td valign="top"><img class="vam" src="${resPath}/bcrc/images/y2.png" width="20" height="20">
+                                                    ${jlinfo.jianliSj!} </td>
+                                                <td valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0" class="email">
+                                                        <tr>
+                                                            <td valign="top" width="25">
+                                                                <img class="vam" src="${resPath}/bcrc/images/y3.png" width="20" height="20"></td>
+                                                            <td valign="top" class="txt4">${jlinfo.jianliYx!}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" colspan="3">
+                                                    <p>
+                                                        <img class="vam" src="${resPath}/bcrc/images/y4.png" width="20" height="20">
+                                                        @if(jlinfo.jianliXb!=null){
+                                                        <script>document.write(dicContainer.getDicItemName('100',${jlinfo.jianliXb!}));</script>
+                                                        @}
+                                                        <span class="p5">|</span>${jlinfo.jianliCsrq!}
+                                                        <span class="p5">|</span>现居住${jlinfo.jianliJzd!}
+                                                        <span class="p5">|</span>${jlinfo.jianliKsgz!}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--最近工作-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box2">
+                                <tr>
+                                    <td class="tba">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td valign="top" class="tb2">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <thead style="height:0">
+                                                        <tr>
+                                                            <td valign="top" class="keys"></td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td colspan="2" class="plate2">最近工作</td>
+                                                        </tr>
+                                                        @if(isNotEmpty(gzjyList)){
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">职位：</td>
+                                                            <td valign="top" class="txt2">${gzjyList.gzjyZw!}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">公司：</td>
+                                                            <td valign="top" class="txt2">${gzjyList.gzjyGs!}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">行业：</td>
+                                                            <td valign="top" class="txt2">${gzjyList.gzjyHy!}</td>
+                                                        </tr>
+                                                        @}else{
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">职位：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">公司：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">行业：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        @}
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td valign="top" class="tb2">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <thead style="height:0">
+                                                        <tr>
+                                                            <td valign="top" class="keys"></td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        <tr>
+                                                            <td colspan="2" class="plate2">最高学历/学位</td>
+                                                        </tr>
+                                                        @if(isNotEmpty(jyjlList)){
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">专业：</td>
+                                                            <td valign="top" class="txt2">${jyjlList.jyjlZy!}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">学校：</td>
+                                                            <td valign="top" class="txt2">${jyjlList.jyjlXx!}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">学历/学位：</td>
+                                                            <td valign="top" class="txt2">${jyjlList.jyjlZyms!}</td>
+                                                        </tr>
+                                                        @}else{
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">专业：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">学校：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">学历/学位：</td>
+                                                            <td valign="top" class="txt2"></td>
+                                                        </tr>
+                                                        @}
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--个人信息-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1">个人信息</td>
+                                </tr>
+                                <tr>
+                                    <td class="tba">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">户口/国籍：</td>
+                                                            <td valign="top" class="txt2">${jlinfo.jianliHk!}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">婚姻状态：</td>
+                                                            <td valign="top" class="txt2">
+                                                                <script> document.write(dicContainer.getDicItemName('hyzt', ${jlinfo.jianliHyzt!}));</script>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">政治面貌：</td>
+                                                            <td valign="top" class="txt2">
+                                                                <script> document.write(dicContainer.getDicItemName('106', ${jlinfo.jianliZzmm!}));</script>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--目前年收入-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1">目前年收入
+                                        @if(qzyx!=null&&qzyx.qzyxNsr!=null){
+                                        <span>&nbsp;${qzyx.qzyxNsr!}万元</span>
+                                        @}
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--求职意向-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1">求职意向</td>
+                                </tr>
+                                <tr>
+                                    <td class="tba">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">期望薪资：</td>
+                                                            <td valign="top" class="txt2"> ${qzyx.qzyxQwxz!} 元/年 </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">地点：</td>
+                                                            <td valign="top" class="txt2"><span class="tag">${qzyx.qzyxDd!}</span></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">职能/职位：</td>
+                                                            <td valign="top" class="txt2">
+                                                                <span class="tag"> ${strutil.length(qzyx.qzyxZn!)>15?strutil.subStringTo(qzyx.qzyxZn!,0,15)+"...":qzyx.qzyxZn!}/</span><span class="tag">${qzyx.qzyxZw!}</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">行业：</td>
+                                                            <td valign="top" class="txt2">
+                                                                <span class="tag">  ${qzyx.qzyxHy!} </span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td class="tb2" valign="top">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys" nowrap="nowrap" align="right">工作类型：</td>
+                                                            <td valign="top" class="txt2">
+                                                                @if(isNotEmpty(qzyx.qzyxGzlx)){
+                                                                <script>document.write(dicContainer.getDicItemName('gzlx', ${qzyx.qzyxGzlx!}));</script>
+                                                                @}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                                <td class="tb2" valign="top">&nbsp;</td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--工作经验-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1">工作经验</td>
+                                </tr>
+                                <tr>
+                                    <td class="tbb">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            @if(isNotEmpty(gzjyLists)){
+                                            @for(gzjy in gzjyLists){
+                                            <tr>
+                                                <td class="p15">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="time">${gzjy.gzjyKssj!}-${gzjy.gzjyJssj!}</td>
+                                                            <td valign="top" class="rtbox">
+                                                                <strong class="txt3">${gzjy.gzjyZn}</strong>
+                                                                @if(gzjy.gzjyHwjl==0){
+                                                                <span>(${gzjy.gzjyHbdx!})</span><span class="hai">海外经历</span>
+                                                                @}
+                                                                <span class="p5">|</span>
+                                                                <span>${gzjy.gzjyBm!}</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="phd tb1" colspan="2">
+                                                                <span>${gzjy.gzjyGs!}</span>
+
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="phd tb1 gray2" colspan="2">${gzjy.gzjyHy!}
+                                                                <span class="p5">|</span>${gzjy.gzjyLzyy!}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tb1" colspan="2">
+                                                                <table cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td valign="top" class="keys" nowrap="nowrap">工作描述：</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td valign="top" class="txt1"><p style="white-space: pre;white-space: pre-line;word-wrap: break-word;" onchange="jiazai(this)">${gzjy.gzjyGzms!}</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            @}
+                                            @}
+
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!-- 项目经验 -->
+
+                            <!--教育经历-->
+                            <table class="box">
+                                <tr>
+                                    <td class="plate1">教育经历</td>
+                                </tr>
+                                <tr>
+                                    <td class="tba">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            @if(isNotEmpty(jyjlLists)){
+                                            @for(jyjl in jyjlLists){
+                                            <tr>
+                                                <td class="p15">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="time">${jyjl.jyjlKssj!}-${jyjl.jyjlJssj!}</td>
+                                                            <td valign="top" class="rtbox">
+                                                                <strong>${jyjl.jyjlXx!}</strong>
+                                                                @if(jyjl.jyjlHwjl==0){
+                                                                <span class="hai">海外经历</span>
+                                                                @}
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tb1" colspan="2">${jyjl.jyjlZyms!}
+                                                                @if(jyjl.jyjlZy != null){
+                                                                <span class="p5">|</span>${jyjl.jyjlZy!}
+                                                                @}
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            @}
+                                            @}
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--在校情况-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1">在校情况</td>
+                                </tr>
+                                <tr>
+                                    <td class="tbb">
+                                        <!--校内荣誉-->
+                                        <table cellspacing="0" style="width: 100%" cellpadding="0" border="0">
+                                            <tr>
+                                                <td class="tit">校内荣誉</td>
+                                            </tr>
+                                            @if(isNotEmpty(xnryList)){
+                                            @for(xnry  in   xnryList){
+                                            <tr>
+                                                <td class="tb3">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="time">${xnry.xnrySj!}</td>
+                                                            <td valign="top" class="rtbox">
+                                                                <strong class="txt3">${xnry.xnryJx!}</strong>
+                                                                <span>（${xnry.xnryJb!}）</span>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            @}
+                                            @}
+
+                                        </table>
+                                        <!--校内职务-->
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td class="tit">校内职务</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="p15">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        @if(isNotEmpty(xnzwList)){
+                                                        @for(xnzw  in   xnzwList){
+                                                        <tr>
+                                                            <td valign="top" class="time">${xnzw.xnzwKssj!}-${xnzw.xnzwJssj!}</td>
+                                                            <td valign="top" class="rtbox">
+                                                                <strong class="txt3">${xnzw.xnzwZw!}</strong>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="tb1" colspan="2">
+                                                                <table cellspacing="0" cellpadding="0" border="0">
+                                                                    <tr>
+                                                                        <td valign="top" class="keys">职务描述：</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td valign="top" class="txt1"><p style="white-space: pre;white-space: pre-line;word-wrap: break-word;" onchange="jiazai(this)">${xnzw.xnzwZwms!}</p></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        @}
+                                                        @}
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--技能特长-->
+                            <table cellspacing="0" cellpadding="0" border="0" class="box">
+                                <tr>
+                                    <td class="plate1"> 技能特长
+                                        <span class="f12">（包含IT技能、语言能力、证书、成绩、培训经历）</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="tbb">
+                                        <table cellspacing="0" cellpadding="0" border="0">
+                                            <tr>
+                                                <td class="tb1" colspan="2">
+                                                    <table cellspacing="0" cellpadding="0" border="0">
+                                                        <tr>
+                                                            <td valign="top" class="keys">技能描述：</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td valign="top" class="txt1"><p style="white-space: pre;white-space: pre-line;word-wrap: break-word;" onchange="jiazai(this)">${qzyx.qzyxJntc!}</p></td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            <!--附加信息-->
+                        </td>
+                    </tr>
+                </table>
+
+
+            </div>
+        </div>
+        <!--内容结束-->
+
+
+ <!--footer begin-->
+ @includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+ <!--footer end-->
+</div>
+    <script>
+        function jiazai(org){
+            var replaceRegex = /(\n\r|\r\n|\r|\n)/g;
+            var text=$(org).text();
+            text =text || '';
+            text=text.replace(replaceRegex,'<br />');
+            $(org).html(text);
+        }
+    </script>
+</body>
+</html>

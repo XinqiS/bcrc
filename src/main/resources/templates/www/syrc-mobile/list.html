@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" id="viewport" content="width=device-width, initial-scale=1" />
+<meta content="yes" name="apple-mobile-web-app-capable">     
+<meta content="black" name="apple-mobile-web-app-status-bar-style">     
+<meta content="telephone=no" name="format-detection">	
+<title>分页</title>
+
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+
+</head>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #318ddc;
+        width: auto;
+    }
+    .fy .pag .current {
+        background-color: #318ddc;
+    }
+</style>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont">
+    <div  class="wz_cont_in">
+        <div class="dqwz">
+            <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+            ${bean.baseURL}
+            >>
+            @for(location in bean.locations){
+            ${location.categoryName}
+            @if(!locationLP.last){
+            >>
+            @}
+            @}
+        </#cms_site_pos>
+        </div>
+        <div class="all_title"><a><span>${category.categoryName}</span></a></div>
+
+        <#cms_category categoryId="${category.categoryId}" isParent="1" var="bean">
+        <#cms_content_page  siteId="${site.siteId!}"  titleLen="15" page="${page!}" var="content">
+        <div class="serachcont">
+            <h3><a href="${content.url!}">${content.title!}</a><span>${content.inputdate,dateFormat="yyyy年MM月dd日"}</span></h3>
+        </div>
+    </#cms_content_page>
+</div>
+    <!--分页开始-->
+    <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+    <!--分页结束-->
+</#cms_category>
+
+</div>
+<!--内容结束-->
+<!--footer 开始-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

@@ -1,0 +1,104 @@
+﻿
+* {
+    margin:0px;
+    padding:0px;
+}
+
+html {
+    padding:0px;
+	font-family:"Microsoft YaHei",Arial,Helvetica,sans-serif,"宋体";
+	overflow-x:hidden;
+}
+
+body {
+    margin:0px;
+    padding:0px;
+}
+
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button,article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section {
+    margin:0;
+    padding:0;
+}
+em{ text-decoration:none; font-style:normal;}
+table {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+
+img {
+    border:none;
+}
+
+
+ol,ul,li {
+    list-style:none;
+}
+
+/* 标题自定义 */
+h1,h2,h3,h4,h5,h6 {
+}
+input,textarea,select,a:focus { outline: none;}
+
+a{
+	font-family:"Microsoft YaHei";
+	text-decoration: none;
+}
+a:hover {
+    text-decoration:none;
+	cursor: pointer;
+}
+span{
+	font-family:"Microsoft YaHei";
+}
+font{
+	font-family:"Microsoft YaHei";
+}
+h1,h2,h3,h4,h5,h6{ font-weight:normal;}
+.ly_clear {
+    height:0px;
+    line-height:0px;
+    font-size:0px;
+    overflow:hidden;
+    display:none;
+    clear:both;
+}
+/* 显示和隐藏 */
+.ly_hide {
+    display:none;
+}
+.ly_block {
+    display:block;
+}
+.clear{ clear:both;}
+i{ font-style:normal;}
+.mr0{ margin:0 auto !important;}
+
+.fl{ float:left;}
+.fr{ float:right;}
+.clearfix:after {       
+    content: ".";     
+   display: block;  
+    clear: both;     
+    visibility: hidden;     
+   line-height: 0;   
+    height: 0;    
+   font-size:0;   }
+
+.clearfix { *zoom:1;}  
+
+
+.red{
+	color: #C70509!important;
+}
+.yellow{
+	color: #ee9c12!important;
+}
+.gray{
+	color: #aeaeae!important;
+}
+.blue{
+	color: #0b62ad!important;
+}
+.green{
+	color: #269604!important;
+}

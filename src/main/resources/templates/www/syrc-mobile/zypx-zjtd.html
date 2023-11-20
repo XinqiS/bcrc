@@ -1,0 +1,43 @@
+@includeFileTemplate("/www/syrc-mobile/include/zypx-header.html"){}
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2">专家团队</div>
+      <div class="aox">
+        <ul class="zpjh_list">
+        
+          <#cms_content_list siteId="${site.siteId}" categoryId="1027" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+            <li>
+                <div class="zpjh_pic"><img src="${bean.file!}"/></div>
+                <div class="zpjh_cont">
+                    <a href="javascript:void(0)">${bean.title!}</a>
+                    <span>${bean.content!}</span>
+                </div>
+            </li>
+               </#cms_content_list>
+        </ul>
+      </div>
+        <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+    </div>
+  </div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/zypx-footer.html"){}

@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+@includeFileTemplate("/www/syrc-mobile/include/gjrc-header.html",{"current":"index"}){}
+
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+@includeFileTemplate("/www/syrc-mobile/include/gjrc-title.html",{"current":"index"}){}
+ <!--	top  头部  结束--> 
+   <!--简历nav 开始-->
+  <div class="jl_nav gjrcnav"> 
+  <a class="fl" href="${frontPath!}/4/1009.html">高级人才首页</a> 
+      <a class="hea_xl fr"></a>
+      <!--下拉-->
+        @includeFileTemplate("/www/syrc-mobile/include/gjrc-ul.html",{"current":"index"}){}
+ 
+        <!--下拉 end-->
+  </div>
+  <div class="clear"></div>
+  <!--简历nav 结束-->
+</div>
+  <div id="pageContent">
+  
+    <div class="mod">
+      <div class="t t2">中高级岗位</div>
+      <div class="items">
+      
+       @for(user in model.list){
+		  <div class="e eck" >
+			<h3>${user.zw_zwmc}</h3>
+			<a href="${ctxPath}/qyzx/qyXq?qy_id=${user.qy_id!}"><aside>${user.qy_qymc}</aside></a>
+			<p class="items_p">
+			<a class="sqzw"
+			 @if(session.tbZhInfo_loginSession !=null){
+		  				 onclick="zwsclist('${user.zw_id}');"
+		  				 @}
+		  			 	@else {
+		  			 onclick="jinggao('${ctxPath}/gjrc/zgjgw')";
+		  				 @}
+			>申请职位</a>
+			<a class="t5 delrsm"
+			 @if(session.tbZhInfo_loginSession !=null){
+		  				 onclick="sqzwlist('${user.zw_id}');"
+		  				 @}
+		  			 	@else {
+		  			 onclick="jinggao('${ctxPath}/gjrc/zgjgw')";
+		  				 @}
+			>收藏</a></p>
+			<i class="adr">长春-汽车产业开发区</i><font class="time">2019-10-08</font>
+		  </div>
+		  
+		  @}
+			</div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+  </div>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/gjrc-footer.html",{"current":"index"}){}
+    
+</body>
+        <script type="text/javascript">
+			$("..gjrcb_cont dt").hover(function(){
+				$(this).children('.gsxx_btn').fadeIn(300);
+			},function(){
+				$(this).children('.gsxx_btn').fadeOut(300);
+			});
+			function zwsclist(zw_id){
+		$.ajax({
+				url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{zw_id:zw_id},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+				alert(data.message);
+		 		}
+				}); 
+  }
+			
+			function sqzwlist(ZW_ID){
+			$.ajax({
+				url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{zwId:ZW_ID},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+				alert(data.message);
+		 		}
+				});
+			}
+			
+			function xq(id){
+			window.open('${ctxPath}/qyzx/gwXq?zw_id='+id);
+			
+			}
+		</script> 
+		<script type="text/javascript">
+ function jinggao(url){
+    alert("对不起！您还未登录，请您先登录");
+    var  test='${ctxPath}/system/reception/nologin';
+     mypost(test,{"url":url});  
+ }
+
+
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+
+
+</script>
+</html>

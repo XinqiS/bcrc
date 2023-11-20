@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-index.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/TL_Tab.js"></script>
+    <script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+    <script src="${resPath}/syrc/js/myPagination.js"></script>
+
+</head>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #318ddc;
+        width: auto;
+    }
+    .fy .pag .current {
+        background-color: #318ddc;
+    }
+</style>
+<body>
+<div class="contentbig">
+    <!--头部开始-->
+    @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+    <!--头部结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+        <div  class="wz_cont_in">
+            <div class="dqwz"><a target="_blank" href="${frontPath!}/4">首页</a>>><a>站内搜索</a></div>
+            <div class="all_title"><a><span>站内搜索</span></a></div>
+            @for(content in list){
+            <div class="serachcont">
+                <h3 style="overflow: hidden;"><a href="${ctxPath}/system/reception/NoLoginSearchInTheStationNews?contentId=${content.contentId}" style="font-weight: normal;">
+                    <i class="finKey" style="float: left;">${content.title}</i>
+                    <span style="float: right;">${content.inputdate,dateFormat="YYYY年MM月dd日"}</span>
+                </a>
+                </h3>
+            </div>
+            @}
+            <div id="pagination" class="pagination"></div>
+            <script>
+
+                var datatotal = '${total}';
+                var pageAmount = '${pagesize}';
+                var pagenum = '${pagenum}';
+
+                pageTotal=Math.ceil(datatotal/pageAmount);
+
+                if(pageTotal>15){
+                    pageSize=15
+                }else{
+                    pageSize=pageTotal
+                }
+
+                window.onload = function () {
+                    new myPagination({
+                        id: 'pagination',
+                        curPage:pagenum, //初始页码
+                        pageTotal: pageTotal, //总页数
+                        pageAmount: pageAmount,  //每页多少条
+                        dataTotal: datatotal, //总共多少条数据
+                        getPage: function (page) {
+                            window.location.href ='${ctxPath}/system/reception/NoLoginSearchInTheStation?pageNumber='+page+'&title=${title}';
+                        }
+                    })
+
+                }
+            </script>
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+<script>
+    $(function(){
+        var keyword='${title}';
+        if (keyword!=''){
+            $(".finKey").each(function () {
+                var str=$(this).text();
+                var substr="/("+keyword+")/g";
+                var replaceStr=str.replace(eval(substr),"<span style='color:red;font-size: 18px;'>"+keyword+"</span>")
+                $(this).html(replaceStr);
+            });
+        }
+    });
+
+
+</script>
+
+
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+</body>
+</html>

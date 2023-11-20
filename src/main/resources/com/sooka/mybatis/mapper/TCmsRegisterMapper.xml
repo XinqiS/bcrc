@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sooka.mybatis.mapper.TCmsRegisterMapper">
+    <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.TCmsRegister">
+        <id column="r_id" jdbcType="INTEGER" property="r_id" />
+        <result column="r_name" jdbcType="VARCHAR" property="r_name" />
+        <result column="r_tel" jdbcType="VARCHAR" property="r_tel" />
+        <result column="r_idcard" jdbcType="VARCHAR" property="r_idcard" />
+        <result column="r_major" jdbcType="VARCHAR" property="r_major" />
+        <result column="r_time" jdbcType="TIMESTAMP" property="r_time" />
+        <result column="r_state" jdbcType="INTEGER" property="r_state"/>
+    </resultMap>
+</mapper>

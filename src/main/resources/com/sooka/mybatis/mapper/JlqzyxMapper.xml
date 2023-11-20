@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlqzyxMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlqzyx" >
+    <id column="QZYX_ID" property="qzyxId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="QZYX_QWXZ" property="qzyxQwxz" jdbcType="VARCHAR" />
+    <result column="QZYX_DD" property="qzyxDd" jdbcType="VARCHAR" />
+    <result column="QZYX_ZN" property="qzyxZn" jdbcType="VARCHAR" />
+    <result column="QZYX_ZW" property="qzyxZw" jdbcType="VARCHAR" />
+    <result column="QZYX_HY" property="qzyxHy" jdbcType="VARCHAR" />
+    <result column="QZYX_GRBQ" property="qzyxGrbq" jdbcType="VARCHAR" />
+    <result column="QZYX_DGSJ" property="qzyxDgsj" jdbcType="INTEGER" />
+    <result column="QZYX_GZLX" property="qzyxGzlx" jdbcType="INTEGER" />
+    <result column="QZYX_NSR" property="qzyxNsr" jdbcType="VARCHAR" />
+    <result column="QZYX_ZWPJ" property="qzyxZwpj" jdbcType="LONGVARCHAR" />
+    <result column="QZYX_JNTC" property="qzyxJntc" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    QZYX_ID, JL_BB_ID, QZYX_QWXZ, QZYX_DD, QZYX_ZN, QZYX_ZW, QZYX_HY, QZYX_GRBQ, QZYX_DGSJ, 
+    QZYX_GZLX, QZYX_NSR, QZYX_ZWPJ, QZYX_JNTC
+  </sql>
+  
+</mapper>

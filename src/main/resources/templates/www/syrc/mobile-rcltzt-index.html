@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+
+
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+   <span class="location" onclick="window.location.href='${frontPath!}/4'"><font style="font-size: 0.6rem;color: #747474;font-weight: bold">返回首页</font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz">
+   @includeFileTemplate("/www/syrc-mobile/include/dlzc.html",{"current":"index"}){}
+  </span> </div>
+  <!--	top  头部  结束--> 
+   <!--简历nav 开始-->
+  <div class="jl_nav rcltnav"> 
+      <img src="${resPath}/syrc-mobile/images/sy_sj_03.png"/>
+  </div>
+  <div class="clear"></div>
+  <!--简历nav 结束-->
+  
+  
+</div>
+<div id="pageContent">
+	
+    <!--非我莫属 开始-->
+	<div class="content">
+		<h4><img src="${resPath}/syrc-mobile/images/sy_sj_20.png"/><a>活动视频</a></h4>
+		<#cms_content_list siteId="${site.siteId}" categoryId="997" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="1" titleLen="15" var="bean">
+                	<dd><video src="${bean.file!}" width="400px" height="240px" controls="controls"></video></dd>
+                    <dt style="text-align: center;"><a class="sy_spa" href="${frontPath!}/${site.siteId}/995.html">${bean.title!}</a></dt>
+                      </#cms_content_list>
+                    
+	</div>
+	<!--非我莫属 结束-->
+	
+    <!--四图 开始-->
+	<div class="content clearfix first">
+		<a class="zbpt">直播平台</a>
+		<a class="rccyy">人才产业园</a>
+		<a class="wjxz" href="${frontPath!}/${site.siteId}/998.html">文件下载</a>
+	</div>
+	<!--四图 结束-->
+    
+	<!--非我莫属 开始-->
+	<div class="content">
+		<h4><img src="${resPath}/syrc-mobile/images/sy_sj_30.png"/><a>论坛须知</a></h4>
+		<ul class="all_list">
+			 <#cms_content_list siteId="${site.siteId}" categoryId="994" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="15" var="bean">
+                	<li><a target="_blank" href="${bean.url!}">${bean.title!}</a>  ${bean.temp!}  <em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                      </#cms_content_list>
+		</ul>
+	</div>
+	<!--非我莫属 结束-->
+ 
+    <!--非我莫属 开始-->
+	<div class="content">
+		<h4><img src="${resPath}/syrc-mobile/images/sy_sj_30.png"/><a>论坛动态</a></h4>
+		<ul class="all_list">
+			 <#cms_content_list siteId="${site.siteId}" categoryId="995" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="15" var="bean">
+                	
+                	<li><a target="_blank" href="${bean.url!}">${bean.title!}</a>  ${bean.temp!}  <em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                   
+                      </#cms_content_list>
+		</ul>
+	</div>
+	<!--非我莫属 结束-->
+    
+    
+    
+    
+  </div>
+</div>
+
+<!--footer 开始-->
+	<div class="footerbox" style=" height:320px !important;">
+	<table>
+    	<tr>
+        	  <td align="center" valign="top">
+                    <img src="${resPath}/syrc-mobile/images/sy-index_82.png" width="38" height="38"/>
+                    <a target="_blank" href="${frontPath!}/4/991.html">关于我们</a>
+                </td>
+                <td align="center" valign="top">
+                    <img src="${resPath}/syrc-mobile/images/sy-index_84.png" width="38" height="38"/>
+                    <a target="_blank" href="${frontPath!}/4/992.html">法律申明</a>
+                </td>
+                <td align="center" valign="top">
+                    <img src="${resPath}/syrc-mobile/images/sy-index_86.png" width="38" height="38"/>
+                    <a  target="_blank" href="${frontPath!}/4/993.html">帮助中心</a>
+                </td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center"><p>版权所有松原人才市场 吉ICP备12002825号-2 </p></td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center"><p>增值电信业务经营许可证号：吉B2-20150082号</p></td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center"><p>技术支持：长春首佳科技有限公司</p></td>
+        </tr>
+    </table>
+</div>
+	
+<!--footer 结束-->
+
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+<script src="${resPath}/syrc-mobile/images/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/TL_PC_Slider.js"></script>
+		<script type="text/javascript">
+    var time        = '1572657494575';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+			
+	</script>
+	<div id="shadow" style="display:none"></div>
+	
+	
+		
+</body>
+</html>

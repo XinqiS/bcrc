@@ -1,0 +1,278 @@
+@includeFileTemplate("/www/syrc/include/gjrc-head.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/gjrc_04.png" width="170" height="49"></h1>
+        <ul>
+    <li><a  href="${frontPath!}/4/1020.html">加入高级人才库</a></li>
+           <li><a href="${ctxPath}/gjrc/gjrcb">高级人才榜</a></li>
+            <li><a href="${frontPath!}/4/1015.html">猎头服务</a></li>
+           <li><a href="${ctxPath}/gjrc/zgjgw">中高级岗位</a></li>
+            <li><a href="${frontPath!}/4/1009.html">中高级招聘会</a></li>
+            <li><a href="${frontPath!}/4/1022.html">小型见面会</a></li>
+            <li><a href="${frontPath!}/4/1009.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	
+    	<div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>中高级岗位</a></div>
+            <dl class="gjrcb_cont">
+            @for(user in model.list){
+            	<dt>
+                	<h4>
+                        <span class="zw_tit fl" style="cursor:pointer;" onclick="xq('${user.zw_id}');">${user.zw_zwmc}</span>
+                        <a class="gs_tit fr" href="${ctxPath}/qyzx/qyXq?qy_id=${user.qy_id!}" target="_blank">${user.qy_qymc}</a>
+                    </h4>
+		  			<h5>
+                    <b class="red fl">
+                      @if(user.zw_yxfw==0){
+		  1K-
+		  @}
+		  @else if(user.zw_yxfw==1){
+		  1K-2K
+		  @}
+		  @else if(user.zw_yxfw==2){
+		  2K-4K
+		  @}
+		  @else if(user.zw_yxfw==3){
+		  4K-6K
+		  @}
+		  @else if(user.zw_yxfw==4){
+		  6K-8K
+		  @}
+		  @else if(user.zw_yxfw==5){
+		  8K-10K
+		  @}
+		  @else if(user.zw_yxfw==6){
+		  10K-15K
+		  @}
+		  @else if(user.zw_yxfw==7){
+		  15-20K
+		  @}
+		  @else if(user.zw_yxfw==8){
+		  20K-30K
+		  @}
+		  @else if(user.zw_yxfw==9){
+		  30K-50K
+		  @}
+		  @else if(user.zw_yxfw==10){
+		  50K-70K
+		  @}
+		  @else if(user.zw_yxfw==11){
+		  70L-100K
+		  @}
+		   @else if(user.zw_yxfw==12){
+		   100K+
+		  @}
+                    </b> 
+                    <span class="fl z_tit">
+                    ${strutil.length(user.qy_xxdz!)>40?strutil.subStringTo(user.qy_xxdz!,0,15)+"...":qy.qy_xxdz!}
+                      |  
+                         @if(user.zw_gznx==0){
+		  经验不限
+		  @}
+		  @else if(user.zw_gznx==1){
+		  无经验
+		  @}
+		  @else if(user.zw_gznx==2){
+		  1年以下
+		  @}
+		  @else if(user.zw_gznx==3){
+		  1-3年
+		  @}
+		  @else if(user.zw_gznx==4){
+		  3-5年
+		  @}
+		  @else if(user.zw_gznx==5){
+		  5-10年
+		  @}
+		  @else if(user.zw_gznx==6){
+		  10年以上
+		  @}
+                        | 
+                         @if(user.zw_zdxl==0){
+		  学历不限
+		  @}  
+		  @else if(user.zw_zdxl==1){
+		  本科
+		  @}
+		  @else if(user.zw_zdxl==2){
+		  硕士
+		  @}
+		  @else if(user.zw_zdxl==3){
+		  博士
+		  @}
+		  @else if(user.zw_zdxl==4){
+		  大专
+		  @}
+		  @else if(user.zw_zdxl==5){
+		  中技
+		  @}
+		  @else if(user.zw_zdxl==6){
+		  中专
+		  @}
+		  @else if(user.zw_zdxl==7){
+		  高中以下
+		  @}
+                        </span>
+                    <span class="fr z_tit">
+   @if(user.qy_jjlx==0){
+      国有经济
+      @}
+      @else if(user.qy_jjlx==1){
+      集体经济
+      @}
+      @else if(user.qy_jjlx==2){
+      私营经济
+      @}
+      @else if(user.qy_jjlx==3){
+      个体经济
+      @}
+      @else if(user.qy_jjlx==4){
+      联营经济
+      @}
+      @else if(user.qy_jjlx==5){
+      股份制
+      @}
+      @else if(user.qy_jjlx==6){
+     外商投资 
+      @}
+      @else if(user.qy_jjlx==7){
+      港澳台投资
+      @}
+      @else if(user.qy_jjlx==8){
+      其他经济类
+      @} 
+                     |  
+                 @if(user.qy_qygm=="0"){
+      0-20以下
+      @}
+      @else if(user.qy_qygm=="1"){
+      20-99
+      @}
+      @else if(user.qy_qygm=="2"){
+      100-499
+      @}
+      @else if(user.qy_qygm=="3"){
+      500-999
+      @}
+      @else if(model.qy_qygm=="4"){
+      1000-9999
+      @}
+      @else if(model.qy_qygm=="5"){
+      10000以上
+      @}     
+                     </span></h5>
+		  			<p> 
+                        <span class="fl_span fl"> 
+                            @for(forss in strutil.split(user.zw_zwld,",")){
+		@if(forss=="0"){
+		<span>五险一金</span> 
+		@}
+		@else if(forss=="1"){
+		 <span>节日福利</span>
+		@}
+		@else if(forss=="2"){
+		 <span>带薪年假</span>
+		@}
+		@else if(forss=="3"){
+		 <span>现金补贴</span>
+		@}
+		@} 
+                        </span> 
+                        <i class="rq_tit fr">${user.zw_fbsj}</i> 
+                    </p>
+		  			<span class="fr btn_tit gsxx_btn"> 
+		  			 
+                        <a class="sczw_btn yellow"
+                        @if(session.tbZhInfo_loginSession !=null){
+		  				 onclick="zwsclist('${user.zw_id}');"
+		  				 @}
+		  			 	@else {
+		  			 onclick="jinggao('${ctxPath}/gjrc/zgjgw')";
+		  				 @}
+                        ><img src="${resPath}/syrc/images/jlzx_con_47.png" >收藏职位</a> 
+                        <a class="sqzw_btn"
+                          @if(session.tbZhInfo_loginSession !=null){
+		  				 onclick="sqzwlist('${user.zw_id}');"
+		  				 @}
+		  			 	@else {
+		  			 onclick="jinggao('${ctxPath}/gjrc/zgjgw')";
+		  				 @}
+                        >申请职位</a> 
+                    </span> 
+                </dt>
+              @}
+            </dl>
+            <!--分页位置-->
+        </div>
+        <script type="text/javascript">
+			$("..gjrcb_cont dt").hover(function(){
+				$(this).children('.gsxx_btn').fadeIn(300);
+			},function(){
+				$(this).children('.gsxx_btn').fadeOut(300);
+			});
+			function zwsclist(zw_id){
+		$.ajax({
+				url:"${ctxPath}/cms/resume/zwsc",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{zw_id:zw_id},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+				alert(data.message);
+		 		}
+				}); 
+  }
+			
+			function sqzwlist(ZW_ID){
+			$.ajax({
+				url:"${ctxPath}/cms/resume/wdscsqzw",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{zwId:ZW_ID},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+				alert(data.message);
+		 		}
+				});
+			}
+			
+			function xq(id){
+			window.open('${ctxPath}/qyzx/gwXq?zw_id='+id);
+			
+			}
+		</script> 
+		<script type="text/javascript">
+ function jinggao(url){
+    alert("对不起！您还未登录，请您先登录");
+    var  test='${ctxPath}/system/reception/nologin';
+     mypost(test,{"url":url});  
+ }
+
+
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+
+
+</script>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}

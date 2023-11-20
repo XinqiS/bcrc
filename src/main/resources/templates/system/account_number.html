@@ -1,0 +1,104 @@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="${ctxPath}/system/user/accountNumber" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+        <div class="bjui-searchBar">
+            <label>账号：</label><input type="text"  value="${info.zh_user!}" name="zh_user" class="form-control" size="10">&nbsp;
+            <label>用户类别:</label>
+            <select name="zh_sf" data-toggle="selectpicker">
+                @if(isEmpty(info.zh_sf)){
+                <option value="" selected>所有</option>
+                <option value="1">企业</option>
+                <option value="0">个人</option>
+                @}else if(info.zh_sf == 0){
+                <option value="">所有</option>
+                <option value="1">企业</option>
+                <option value="0" selected>个人</option>
+                @}else if(info.zh_sf == 1){
+                <option value="">所有</option>
+                <option value="1" selected>企业</option>
+                <option value="0">个人</option>
+                @}
+            </select>&nbsp;
+            <button type="submit" class="btn-default" data-icon="search">查询</button>&nbsp;
+            <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo">清空查询</a>
+            &nbsp;
+            <a href="${ctxPath}/system/user/editAccount" class="btn btn-green" data-icon="plus" data-toggle="dialog" data-maxable="false" data-resizable="true"  data-width="650" data-height="550" data-id="add-admin-user"  data-title="新增">新增</a>
+       <!--     <div class="pull-right">
+                &lt;!&ndash;<button type="button" class="btn-blue" data-url="ajaxDone2.html?id={#bjui-selected}" data-toggle="doajax" data-confirm-msg="确定要删除选中项吗？" data-icon="remove" title="可以在控制台(network)查看被删除ID">删除选中行</button>&nbsp;&ndash;&gt;
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                    <ul class="dropdown-menu right" role="menu">
+                        <li><a href="${ctxPath}/system/user/excel?1.xls" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">当前页</span></a></li>
+                        &lt;!&ndash;<li class="divider"></li>&ndash;&gt;
+                        <li><a href="${ctxPath}/system/user/deleteAccount" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="userId" data-group="ids">删除选中</a></li>
+                        &lt;!&ndash;<li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>&ndash;&gt;
+                    </ul>
+                </div>
+            </div>-->
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true">
+        <thead>
+            <tr>
+                <th align="center"  width="50">账号</th>
+               <!-- <th align="center"  width="50">密码</th>-->
+                <th align="center"  width="50">类别</th>
+                <th align="center" width="26" ><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
+                <th align="center"  width="60">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+        @for(zh in model.list){
+            <tr>
+                <td align="center">${zh.zh_user!,xss}</td>
+               <!-- <td align="center">${zh.zh_pwd!,xss}</td>-->
+                <td align="center">${zh.zh_sf == 0 ? '个人':'企业'}</td>
+             <td  align="center"><input type="checkbox" name="ids" data-toggle="icheck" value="${zh.zh_id!}"></td>
+            <td  align="center">
+                    <a href="${ctxPath}/system/user/editAccount?zh_id=${zh.zh_id!}" class="btn btn-green"  data-toggle="dialog" data-maxable="false" data-resizable="false"  data-width="650" data-height="550" data-id="edit-admin-user"  data-title="编辑">编辑</a>
+                   <!-- <a href="${ctxPath}/system/user/deleteAccount?zh_id=${zh.zh_id!}" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确定要删除该行信息吗？">删</a>-->
+                    <a href="javascript:void(0);" class="btn btn-red" onclick="shanchu(this)">
+                        <input type="hidden" value="${zh.zh_id}">
+                        删</a>
+                </td>
+            </tr>
+        @}
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30" data-page-current="1">
+    </div>
+</div>
+
+<script>
+    function shanchu(zhiid){
+        var  json={};
+        json.zh_id=$(zhiid).children("input").val();
+        $.ajax({
+            url: "${ctxPath}/system/user/deleteAccount",   //请求的url地址
+            dataType: "json",   //返回格式为json
+            data: json,    //参数值
+            type: "post",   //请求方式
+            success: function (data) {
+                alert(data.message);
+                $("#pagerForm").submit();
+            }
+        });
+    }
+</script>

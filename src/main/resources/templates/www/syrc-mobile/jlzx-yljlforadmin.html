@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>创建简历</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<style type="text/css">
+	#xnzw{
+		margin-left: 33px;
+	}
+	
+</style>
+</head>
+
+<body style="background: #f6f6f5 ;">
+<div xmlns="" id="pageContent" class="fixtop">
+<div class="top">
+<a class="back" href="javascript:history.go(-1)"></a>					
+			简历预览
+		</div>
+<div class="jbox xebox">
+<div class="x">
+<div class="e e0"><strong class="tit">基本信息</strong></div>
+<p class="st head"><span>${jlinfo.jianliXm!}</span><br>${jlinfo.jianliJzd!}  | 
+@if(jlinfo.jianliXb!=null){
+    <script>document.write(dicContainer.getDicItemName('100',${jlinfo.jianliXb!}));</script>
+@}
+
+ | ${jlinfo.jianliCsrq!} | ${jlinfo.jianliKsgz!}
+    @if(jlinfo.jianliXb==0){
+    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+    <img src="${resPath}/bcrc/images/man.png" width="50" height="61" alt="头像">
+    @}else{
+    <img src="${jlinfo.jianliTx!}" width="50" height="61" alt="头像">
+
+    @ }
+    @}else if(jlinfo.jianliXb==1){
+    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+    <img src="${resPath}/bcrc/images/woman.png" width="50" height="61" alt="头像">
+    @}else{
+    <img src="${jlinfo.jianliTx!}" width="50" height="61" alt="头像">
+
+    @ }
+    @}else{
+    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+    <img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+    @}else{
+    <img src="${jlinfo.jianliTx!}" width="50" height="61" alt="头像">
+
+    @ }
+    @}
+</p>
+<p class="tx"><label>出生日期</label><span>${csrq!}</span></p>
+<p class="tx"><label>手机号</label>${jlinfo.jianliSj!}</p>
+<p class="tx"><label>求职状态</label>
+ @if(jlinfo.jianliQzzt!=null){
+         <script>
+              document.write(dicContainer.getDicItemName('qzzt',${jlinfo.jianliQzzt!}));
+         </script>
+@}
+
+</p>
+<p class="tx"><label>邮箱</label><span>${jlinfo.jianliYx!}</span></p>
+<p class="tx"><label>目前年收入</label><span>
+@if(qzyx!=null&&qzyx.qzyxNsr!=null){
+	${qzyx.qzyxNsr!}
+@}
+
+万元</span></p>
+<p class="tx"><label>户口</label><span>${jlinfo.jianliHk!}</span></p>
+<p class="tx"><label>婚姻状况</label><span>
+	<script> document.write(dicContainer.getDicItemName('hyzt', ${jlinfo.jianliHyzt!}));</script>
+
+</span></p>
+<p class="tx"><label>政治面貌</label><span>
+<script> document.write(dicContainer.getDicItemName('106', ${jlinfo.jianliZzmm!}));</script>
+
+</span></p>
+</div>
+<div class="x">
+<div class="e e1"><strong class="tit">求职意向</strong></div>
+<p class="tx"><label>到岗时间</label>
+@if(isNotEmpty(qzyx.qzyxDgsj)){
+           <script>document.write(dicContainer.getDicItemName('dgsj', ${qzyx.qzyxGzlx!}));</script>
+@}
+
+</p>
+<p class="tx"><label>工作性质</label>
+@if(isNotEmpty(qzyx.qzyxGzlx)){
+           <script>document.write(dicContainer.getDicItemName('gzlx', ${qzyx.qzyxGzlx!}));</script>
+@}
+</p>
+<p class="tx"><label>期望行业</label>${qzyx.qzyxHy!}</p>
+<p class="tx"><label>目标地点</label><span>${qzyx.qzyxDd!}</span></p>
+<p class="tx"><label>期望薪资</label>${qzyx.qzyxQwxz!} </p>
+<p class="tx"><label>职能/职位</label>${qzyx.qzyxZn!} /
+<span class="tag">&nbsp;&nbsp;${qzyx.qzyxZw!}</span></p>
+<p class="tx"><label>自我评价</label><span>${qzyx.qzyxZwpj!}</span></p>
+</div>
+<div class="x x2">
+<div class="e e2"><strong class="tit">工作经验</strong></div>
+
+ @if(isNotEmpty(gzjyLists)){
+       @for(gzjy in gzjyLists){
+<div class="bn">
+<p class="st">${gzjy.gzjyKssj!}~${gzjy.gzjyJssj!}</p>
+<p class="st">${gzjy.gzjyGs!}</p>
+<p class="st"><span>${gzjy.gzjyBm!}| ${gzjy.gzjyZn}</span></p>
+<p class="tx2"><span>${gzjy.gzjyHy!}</span>
+						| <span>${gzjy.gzjyLzyy!}</span>
+						| <span>${gzjy.gzjyXsrs!}</span></p>
+<div class="tx2">
+<label>工作描述</label><div>${gzjy.gzjyGzms!}</div>
+</div>
+</div>
+    @}
+@}
+
+</div>
+<div class="x x2">
+<div class="e e3"><strong class="tit">教育经历</strong></div>
+
+  @if(isNotEmpty(jyjlLists)){
+                      @for(jyjl in jyjlLists){
+<div class="bn">
+<p class="st">${jyjl.jyjlKssj!}~<span>${jyjl.jyjlJssj!}</span></p>
+<p class="st"><span>${jyjl.jyjlXx!}</span></p>
+<div class="tx2"><span><span>${jyjl.jyjlZy!}</span> | <span>${jyjl.Xl!}</span></span></div>
+<div class="tx2">
+<label>专业描述</label><div>${jyjl.jyjlZyms!}</div>
+</div>
+</div>
+  @}
+@}
+</div>
+<div class="x x2">
+<div class="e e6"><strong class="tit">在校情况</strong></div>
+ 
+<div class="bn">
+<p class="st s2">校内荣誉</p>
+ @if(isNotEmpty(xnryList)){
+                    @for(xnry  in   xnryList){
+<p class="tx"><label style="color:#555;">${xnry.xnrySj!}</label><span>${xnry.xnryJx!}</span>
+						| <span>${xnry.xnryJb!}</span></p>
+						 @}
+@}
+</div>
+
+
+<div class="bn">
+<p class="st s2">校内职务</p>
+ @if(isNotEmpty(xnzwList)){
+                              @for(xnzw  in   xnzwList){
+<p class="tx t2"><label>${xnzw.xnzwKssj!}~<span>${xnzw.xnzwJssj!}</span></label><span id="xnzw">${xnzw.xnzwZw!}</span></p>
+<div class="tx2">
+<label>职务描述</label><div>${xnzw.xnzwZwms!}</div>
+</div>
+	@}
+@}
+</div>
+</div>
+<div class="x">
+<div class="e e7"><strong class="tit">技能特长</strong></div>
+
+
+<p class="x_p">${qzyx.qzyxJntc!}</p>
+
+</div>
+</div>
+</div>
+
+	
+
+
+</body>
+</html>

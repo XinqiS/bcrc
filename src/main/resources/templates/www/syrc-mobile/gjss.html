@@ -1,0 +1,306 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>高级搜索</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjhtml.css" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjbase.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css" />
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+	//		$_CONFIG['domain'] = '//m.51job.com/';
+	//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+	//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+	//		$_CONFIG['template'] = 'resume/jobintent';
+	$_CONFIG['islogin'] = '1';
+	$_CONFIG['jobarea'] = '240700';
+	$_CONFIG['jobareaname'] = '松原';
+	$_CONFIG['ip'] = '36.48.27.149';
+	$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+	function sousuo() {
+		var gzlx=-1;
+		var yxfw=-1;
+		var jjlx=-1;
+		var xl=-1;
+		var gznx=-1;
+		if($("#gzlx").text()=='请选择'){
+			gzlx=-1;
+		}else if($("#gzlx").text()=='全职'){
+			gzlx=0;
+		}else if($("#gzlx").text()=='兼职'){
+			gzlx=1;
+		}else if($("#gzlx").text()=='实习'){
+			gzlx=2;
+		}
+		if($("#jjlx").text()=='请选择'){
+			jjlx=-1;
+		}else if($("#jjlx").text()=='国有经济'){
+			jjlx=0;
+		}else if($("#jjlx").text()=='集体经济'){
+			jjlx=1;
+		}else if($("#jjlx").text()=='私营经济'){
+			jjlx=2;
+		}else if($("#jjlx").text()=='个体经济'){
+			jjlx=3;
+		}else if($("#jjlx").text()=='联营经济'){
+			jjlx=4;
+		}else if($("#jjlx").text()=='股份制'){
+			jjlx=5;
+		}else if($("#jjlx").text()=='外商投资'){
+			jjlx=6;
+		}else if($("#jjlx").text()=='港澳台投资'){
+			jjlx=7;
+		}else if($("#jjlx").text()=='其他经济类'){
+			jjlx=8;
+		}
+		if($("#gznx").text()=='请选择'){
+			gznx=-1;
+		}else if($("#gznx").text()=='经验不限'){
+			gznx=0;
+		}else if($("#gznx").text()=='无经验'){
+			gznx=1;
+		}else if($("#gznx").text()=='1年以下'){
+			gznx=2;
+		}else if($("#gznx").text()=='1-3年'){
+			gznx=3;
+		}else if($("#gznx").text()=='3-5年'){
+			gznx=4;
+		}else if($("#gznx").text()=='5-10年'){
+			gznx=5;
+		}else if($("#gznx").text()=='10年以上'){
+			gznx=6;
+		}
+		if($("#xl").text()=='请选择'){
+			xl=-1;
+		}else if($("#xl").text()=='学历不限'){
+			xl=0;
+		}else if($("#xl").text()=='本科'){
+			xl=1;
+		}else if($("#xl").text()=='硕士'){
+			xl=2;
+		}else if($("#xl").text()=='博士'){
+			xl=3;
+		}else if($("#xl").text()=='大专'){
+			xl=4;
+		}else if($("#xl").text()=='中技'){
+			xl=5;
+		}else if($("#xl").text()=='中专'){
+			xl=6;
+		}else if($("#xl").text()=='高中以下'){
+			xl=7;
+		}
+		if($("#yxfw").text()=='请选择'){
+			yxfw=-1;
+		}else if($("#yxfw").text()=='1k以下'){
+			yxfw=0;
+		}else if($("#yxfw").text()=='1-2k'){
+			yxfw=1;
+		}else if($("#yxfw").text()=='2-4k'){
+			yxfw=2;
+		}else if($("#yxfw").text()=='4-6k'){
+			yxfw=3;
+		}else if($("#yxfw").text()=='6-8k'){
+			yxfw=4;
+		}else if($("#yxfw").text()=='8-10k'){
+			yxfw=5;
+		}else if($("#yxfw").text()=='10-15k'){
+			yxfw=6;
+		}else if($("#yxfw").text()=='15k-20k'){
+			yxfw=7;
+		}else if($("#yxfw").text()=='20k-30k'){
+			yxfw=8;
+		}else if($("#yxfw").text()=='30k-50k'){
+			yxfw=9;
+		}else if($("#yxfw").text()=='50k-70k'){
+			yxfw=10;
+		}else if($("#yxfw").text()=='70k-100k'){
+			yxfw=11;
+		}else if($("#yxfw").text()=='100k以上'){
+			yxfw=12;
+		}
+		var zn="";
+		var hy="";
+		var zw_zwlb = $('#funtypename').text();
+		var qy_sshy = $('#indtypename').text();
+		if(zw_zwlb!="不限" && zw_zwlb!="请选择"){
+			zn=zw_zwlb;
+		}
+		if(qy_sshy!="不限" && qy_sshy!="请选择"){
+			hy=qy_sshy;
+		}
+		var qy_jjlx = jjlx;
+		var zw_gznx = gznx;
+		var zw_yxfw = yxfw;
+		var zw_zdxl = xl;
+		var zw_gzxz = gzlx;
+		var url = "${ctxPath}/gjss/selectExample";
+		mypost(url, {
+			"zw_zwlb" : zn,
+			"qy_sshy" : hy,
+			"qy_jjlx" : qy_jjlx,
+			"zw_gznx" : zw_gznx,
+			"zw_yxfw" : zw_yxfw,
+			"zw_zdxl" : zw_zdxl,
+			"zw_gzxz" : zw_gzxz
+		});
+	}
+
+	function mypost(url, params) {
+		// 创建form
+		var temp_form = document.createElement("form");
+		// 设置form
+		temp_form.action = url;
+		temp_form.target = "_self";
+		temp_form.method = "post";
+		temp_form.style.display = "none";
+		// 处理需要传递的参数
+		for (var x in params) {
+			var opt = document.createElement("textarea");
+			opt.name = x;
+			opt.value = params[x];
+			temp_form.appendChild(opt);
+		}
+		document.body.appendChild(temp_form);
+		// 提交表单     
+		temp_form.submit();
+	}
+</script>
+</head>
+<body style="background: #f6f6f5 ;">
+	<div id="pageContent" class="fixtop">
+		<div class="top">
+			<a href="javascript:history.go(-1)" class="back"></a> 高级搜索
+		</div>
+		<div class="sbox">
+
+			<a href="javascript:void(0)" class="e"> <label>职能类别</label>
+				<div id="funtypename" class="txt c_default"
+					onclick="setFuntypePage(this,1)">不限</div> <input type="hidden"
+				id="funtype" value="">
+				<p class="error" style="display:none;" id="err_funtype">
+					<span></span>
+				</p>
+			</a> <a href="javascript:void(0)" class="e"> <label>行业类别</label> <!-- <div class="txt c_default">请选择</div> -->
+				<div href="javascript:void(0)" id="indtypename"
+					class="txt c_default" onclick="setIndtypePage(this,1);">不限</div> <input
+				type="hidden" id="indtype" value="">
+			</a> <a href="javascript:void(0)" class="e"> <label>经济类型</label>
+				<div class="selt">
+					<span class="sval" id="jjlx">请选择</span> <select id="cotype">
+						<option value="-1">请选择</option>
+                                <option value="0">国有经济</option>
+                                <option value="1">集体经济</option>
+                                <option value="2">私营经济</option>
+                                <option value="3">个体经济</option>
+                                <option value="4">联营经济</option>
+                                <option value="5">股份制</option>
+                                <option value="6">外商投资</option>
+                                <option value="7">港澳台投资</option>
+                                <option value="8">其他经济类</option>
+					</select>
+				</div>
+			</a> <a href="javascript:void(0)" class="e"> <label>工作年限</label>
+				<div class="selt">
+					<span class="sval" id="gznx">请选择</span> <select>
+						<option value="-1">请选择</option>
+						<option value="0">经验不限</option>
+						<option value="1">无经验</option>
+						<option value="2">1年以下</option>
+						<option value="3">1-3年</option>
+						<option value="4">3-5年</option>
+						<option value="5">5-10年</option>
+						<option value="6">10年以上</option>
+					</select>
+				</div>
+			</a> <a href="javascript:void(0)" class="e"> <label>月薪范围</label>
+				<div class="selt">
+					<span class="sval" id="yxfw">请选择</span> <select>
+						<option value="-1">请选择</option>
+						<option value="0">1k-</option>
+						<option value="1">1k-2k</option>
+						<option value="2">2k-4k</option>
+						<option value="3">4k-6k</option>
+						<option value="4">6k-8k</option>
+						<option value="5">8k-10k</option>
+						<option value="6">10k-15k</option>
+						<option value="7">15k-20k</option>
+						<option value="8">20k-30k</option>
+						<option value="9">30k-50k</option>
+						<option value="10">50k-70k</option>
+						<option value="11">70k-100k</option>
+						<option value="12">100k+</option>
+					</select>
+				</div>
+			</a> <a href="javascript:void(0)" class="e"> <label>学历要求</label>
+				<div class="selt">
+					<span class="sval" id="xl">请选择</span> <select>
+					    <option value="-1">请选择</option>
+						<option value="0">学历不限</option>
+						<option value="1">本科</option>
+						<option value="2">硕士</option>
+						<option value="3">博士</option>
+						<option value="4">大专</option>
+						<option value="5">中技</option>
+						<option value="6">中专</option>
+						<option value="7">高中以下</option>
+					</select>
+				</div>
+			</a> <a href="javascript:void(0)" class="e"> <label>工作性质</label>
+				<div class="selt">
+					<span class="sval" id="gzxz">请选择</span> <select id="jobterm">
+						<option value="-1">请选择</option>
+						<option value="0">全职</option>
+						<option value="1">兼职</option>
+						<option value="2">实习</option>
+					</select>
+				</div>
+			</a>
+
+
+			<center class="btnbox">
+				<button class="btn"  onclick="sousuo();">搜索</button>
+				<input type="hidden" id="userid" value="398719117" />
+			</center>
+		</div>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/base.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/fun.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/resume.js">
+	</script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/indtype.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/funtype.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/popindtype.js"></script>
+		<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script>
+		<div id="shadow" style="display:none"></div>
+</body>
+</html>

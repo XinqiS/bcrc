@@ -1,0 +1,31 @@
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/dbtUser/save" id="j_ad_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="id" value="${dbtUser.id!}">
+        <input type="hidden" name="dbtName" id="j_username" value="${dbt.dbtName!,xss}" size="15" placeholder="代表团名称" data-rule="required;" >
+        <input type="hidden" name="dbtId" id="j_username" value="${dbt.dbtId!,xss}" size="15" placeholder="代表团名称" data-rule="required;" >
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    <label for="j_username" class="control-label x85">成员名称：</label>
+                    <input type="text" name="cyName" id="j_username" value="${dbtUser.cyName!,xss}" size="15" placeholder="成员名称" data-rule="required;" >
+                </td>
+                <td>
+                    <label for="j_username" class="control-label x85">成员性别：</label>
+                    <input type="text" name="cySex" id="j_username" value="${dbtUser.cySex!,xss}" size="15" placeholder="成员性别" data-rule="required;" >
+                </td>
+                <td>
+                    <label for="j_username" class="control-label x85">成员职务：</label>
+                    <input type="text" name="cyJob" id="j_username" value="${dbtUser.cyJob!,xss}" size="15" placeholder="成员职务" data-rule="required;" >
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+    </ul>
+</div>

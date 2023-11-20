@@ -1,0 +1,98 @@
+
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/system/user/register" id="j_client_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false"  size="20">
+        <input TYPE="hidden" name="zh_id" value="${zh.zh_id!}">
+        <div class="form-group">
+            <label for="zh_user" class="control-label x85">邮箱 ：</label>
+            <input type="text" name="zh_user" id="zh_user" onchange="yx()" value="${zh.zh_user!,xss}" data-rule="required;"  maxlength="20">
+        </div>
+
+        <hr style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group">
+            <label for="zh_pwd" class="control-label x85">密码：</label>
+            <input type="password" name="zh_pwd" id="zh_pwd" onchange="mm()" value="${zh.zh_pwd!,xss}"  data-rule="required"  maxlength="10">
+        </div>
+        <hr style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        @if(isEmpty(zh)){
+        <div class="form-group">
+            <label for="j_password2" class="control-label x85">确认密码：</label>
+    <!--        <input type="text" id="j_password2"  data-rule="确认密码: match(zh_pwd);" onchange=""  size="20">-->
+            <input type="password" id="j_password2"  onchange="qrmm()"  maxlength="10">
+        </div>
+        @}
+        <hr style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group">
+            <label for="zh_sf" class="control-label x85"  data-toggle="selectpicker">用户类别：</label>
+            <select name="zh_sf" id="zh_sf"  data-rule="required"  data-toggle="selectpicker">
+                @if(isEmpty(zh.zh_sf)){
+                <option value="1">企业</option>
+                <option value="0">个人</option>
+                @}else if(zh.zh_sf == 0){
+                <option value="1">企业</option>
+                <option value="0" selected>个人</option>
+                @}else if(zh.zh_sf == 1){
+                <option value="1" selected>企业</option>
+                <option value="0">个人</option>
+                @}
+            </select>
+        </div>
+    </form>
+    </div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close" data-icon="close">关闭</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+    </ul>
+</div>
+<script>
+
+    function mm() {
+        var reg= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+        if(!reg.test($('#zh_pwd').val())){
+            alert('密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）');
+            $('#zh_pwd').val("");
+            return false;
+
+        }
+    }
+function qrmm(){
+        var zh_pwd=$("#zh_pwd").val();
+        var j_password2=$("#j_password2").val();
+        if(zh_pwd!=j_password2){
+            alert('请保持两次填写的密码一致');
+            $('#j_password2').val("");
+            return;
+        }
+}
+
+    function yx() {
+        var em = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (!em.test($('#zh_user').val())) {
+            alert('邮箱填写有误,请重新输入');
+            $('#zh_user').val("");
+            return false;
+
+        }
+        var formData = new FormData();
+        formData.append('zh_user', $('#zh_user').val());
+        $.ajax({
+            url: "${ctxPath}/system/user/zwscor",   //请求的url地址
+            dataType: "json",   //返回格式为json
+            data: formData,    //参数值
+            type: "post",   //请求方式
+            crossDomain: true,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if(data.type=="1"){
+
+                }else{
+                    alert("当前用户已存在，清更换邮箱！");
+                    $('#zh_user').val("");
+                }
+            }
+        });
+    }
+
+</script>

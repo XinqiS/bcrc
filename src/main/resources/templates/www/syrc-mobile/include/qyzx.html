@@ -1,0 +1,48 @@
+
+<li id="qyxxgl"><a class="qyxxgl"
+                   @if(isEmpty(qyInfo.qy_qymc)){
+                   href="${ctxPath}/qyzx/goToQyzxQyxxxgJbxx"
+                   @}else{
+                   href="${ctxPath}/qyzx/goToyprclg1"
+                   @}
+>公司资料</a></li>
+<li id="fbzwgl"><a class="fbzwgl"
+                   @if(session.QypztSession == 1){
+                   href="${ctxPath}/qyzx/goToQyzxZjgw"
+                   @}else{
+                   href="javascript:void(0)" onclick="qyjinggao();"
+                   @}
+>发布招聘信息</a></li>
+
+<li id="lwpqfw"><a class="lwpqfw"
+                   @if(session.QypztSession == 1){
+                   href="${ctxPath}/qyzx/goToQyzxFbzwgl"
+                   @}else{
+                   href="javascript:void(0)" onclick="qyjinggao();"
+                   @}
+>发布职位管理</a></li>
+<li id="rczpfw"><a class="rczpfw"
+                   @if(session.QypztSession == 1){
+                   href="${ctxPath}/qyzx/goToQyzxYprcgl"
+                   @}else{
+                   href="javascript:void(0)" onclick="qyjinggao();"
+                   @}
+>应聘人才管理</a></li>
+<li id="yprcgl"><a class="yprcgl"
+                   @if(isEmpty(qyInfo.qy_qymc)){
+                   href="${ctxPath}/qyzx/goToQyzxQyxxxgJbxx"
+                   @}else{
+                   href="${ctxPath}/qyzx/goToXgmm"
+                   @}
+                   >修改密码</a></li>
+<li><a class="tcdl" href="${ctxPath}/system/reception/logOut">退出登录</a></li>
+<input type="hidden" id="categoryId" value="${categoryId!}">
+<script>
+    $(function () {
+        let id = $("#categoryId").val();
+        $("#"+id).addClass("on");
+    });
+    function qyjinggao(){
+        alert("您的企业信息还未通过审核或未提交  请耐心等待");
+    }
+</script>

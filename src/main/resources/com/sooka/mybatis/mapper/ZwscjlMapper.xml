@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.ZwscjlMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Zwscjl" >
+    <id column="ZWSCJL_ID" property="zwscjlId" jdbcType="VARCHAR" />
+    <result column="ZW_ID" property="zwId" jdbcType="VARCHAR" />
+    <result column="JIANLI_ID" property="jianliId" jdbcType="VARCHAR" />
+    <result column="ZWSCJL_SJ" property="zwscjlSj" jdbcType="VARCHAR" />
+    <result column="ZH_ID" property="zhId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ZWSCJL_ID, ZW_ID, JIANLI_ID, ZWSCJL_SJ
+  </sql>
+   <select id="findZwscjlByZhId" parameterType="java.util.Map"  resultType="java.util.Map">
+  		SELECT
+			ll.ZWSCJL_ID,ll.ZWSCJL_SJ,gw.ZW_ID,qy.QY_ID,qy.QY_QYMC,
+			gw.ZW_ZWMC,
+			gw.ZW_GZDZ,
+			
+			CASE gw.ZW_YXFW 
+		         WHEN '0' THEN '1k以下' 
+		         WHEN '1' THEN '1k-2k' 
+		         WHEN '2' THEN '2k-4k' 
+		         WHEN '3' THEN '4k-6k' 
+		         WHEN '4' THEN '6k-8k' 
+		         WHEN '5' THEN '8k-10k' 
+		         WHEN '6' THEN '10k-15k' 
+		         WHEN '7' THEN '15k-20k' 
+		         WHEN '8' THEN '20-30' 
+		         WHEN '9' THEN '30k-50k' 
+		         WHEN '10' THEN '50k-70k' 
+		         WHEN '11' THEN '70k-100k' 
+		     ELSE '100k以上' END   as xz
+		
+		FROM
+		tb_zwscjl ll
+		LEFT JOIN tb_gw_info gw ON ll.ZW_ID = gw.ZW_ID
+		LEFT JOIN tb_qy_info qy ON gw.QY_ID = qy.QY_ID 
+		WHERE  ll.ZH_ID = #{ZH_ID}
+  </select>
+</mapper>

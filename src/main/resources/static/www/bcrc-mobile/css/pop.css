@@ -1,0 +1,152 @@
+/*通用提示框*/
+.popDialog,.popLoad,.popOther{position:fixed;width:100%;color:#444;top:30%;left:0;z-index:10;
+	-webkit-animation:animations 1s forwards;-moz-animation:animations 1s forwards;animation:animations 1s forwards;
+}
+@-webkit-keyframes animations{
+    0%{-webkit-transform:translateY(0);opacity:0}
+    100%{-webkit-transform:translateY(-30px);opacity:1}
+}
+@-moz-keyframes animations{
+    0%{-moz-transform:translateY(0);opacity:0}
+    100%{-moz-transform:translateY(-30px);opacity:1}
+}
+@keyframes animations{
+    0%{transform:translateY(0);opacity:0}
+    100%{transform:translateY(-30px);opacity:1}
+}
+.popDialog .in{width:80%;margin:0 auto;background-color:#fff;
+	-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px;border-radius:5px}
+.popDialog .title{position:relative;line-height:48px;text-indent:21px;overflow:hidden}
+.popDialog .title:after{position:absolute;width:100%;height:1px;content:'\00a0';bottom:0;left:0;background-color:#eae8eb}
+.popDialog .cn{font-size:16px;text-align:center;padding:45px}
+.popDialog .op{height:50px;line-height:50px;text-align:center;border-top:1px solid #eae8eb}
+.popDialog .op span{float:left;width: 49%;color:#777;}
+.popDialog .op span:last-child{color:#177ff6;border-left:1px solid #eae8eb}
+.popDialog .op.o2 span{width:100%;color:#177ff6;border-left:0 none}
+
+/*带关闭按钮提示框*/
+.popMsg .in,.popLoad .in{position:relative;width:80%;line-height:20px;margin:0 auto;background-color:#fff;
+	-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px;border-radius:5px}
+.popMsg .cn,.popLoad .cn{font-size:16px;text-align:center;padding:45px}
+.popMsg .close,.popLoad .close,.popOther .close{position:absolute;width:24px;height:24px;top:5px;right:5px;border:1px solid #868686;
+	-webkit-border-radius:100%;-moz-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;border-radius:100%}
+.popMsg .close:before,.popMsg .close:after,.popLoad .close:before,.popLoad .close:after,.popOther .close:before,.popOther .close:after{position:absolute;width:14px;height:2px;content:'\00a0';top:50%;left:50%;margin:-1px 0 0 -7px;background-color:#868686}
+.popMsg .close:before,.popLoad .close:before,.popOther .close:before{
+	-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);-ms-transform:rotate(45deg);transform:rotate(45deg)}
+.popMsg .close:after,.popLoad .close:after,.popOther .close:after{
+	-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);-ms-transform:rotate(-45deg);transform:rotate(-45deg)}
+
+/*自动消失*/
+.popMsg{position:fixed;width:100%;color:#444;opacity:0;top:30%;left:0;z-index:10}
+.popMsg.on{-webkit-animation:autoshow 3s forwards;-moz-animation:autoshow 3s forwards;animation:autoshow 3s forwards}
+@-webkit-keyframes autoshow{
+    0%{-webkit-transform:translateY(0);opacity:0}
+    25%{-webkit-transform:translateY(-30px);opacity:1}
+    75%{-webkit-transform:translateY(-30px);opacity:1}
+    100%{-webkit-transform:translateY(0);opacity:0}
+
+}
+@-moz-keyframes autoshow{
+    0%{-moz-transform:translateY(0);opacity:0}
+    25%{-moz-transform:translateY(-30px);opacity:1}
+    75%{-moz-transform:translateY(-30px);opacity:1}
+	100%{-moz-transform:translateY(0);opacity:0}
+
+}
+@keyframes autoshow{
+    0%{transform:translateY(0);opacity:0}
+    25%{transform:translateY(-30px);opacity:1}
+    75%{transform:translateY(-30px);opacity:1}
+	100%{transform:translateY(0);opacity:0}
+
+}
+
+/*loading&&警告*/
+.popLoad img,.popDialog img{width:20px;height:20px;vertical-align:top;margin-right:10px}
+
+/*简历弹窗*/
+.popOther.popTop{top:12%}
+.popOther .in{width:80%;margin:0 auto;background-color:#fff;
+	-webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px;border-radius:5px}
+.popOther .title{position:relative;line-height:48px;text-indent:21px;overflow:hidden}
+.popOther .title:after{position:absolute;width:100%;height:1px;content:'\00a0';bottom:0;left:0;background-color:#eae8eb}
+.popOther .cn{font-size:16px;text-align:center;padding:45px}
+.popOther .cn.c2{font-size:14px;text-align:left;padding:16px 28px}
+.popOther .cn.c3{font-size:14px;text-align:left;padding:10px 0}
+.popOther .op{height:50px;line-height:50px;text-align:center;border-top:1px solid #eae8eb}
+.popOther .op span{float:left;width: 49%;color:#777;}
+.popOther .op span:last-child{color: #016bc2;border-left:1px solid #eae8eb;}
+.popOther .op.o2 span{width:100%;color:#0b72d8;border-left:0 none}
+.popOther .c_orange{font-size:15px;color: #0956f8;}
+.popOther .close{top:11px;right:21px}
+.popE .e{position:relative;line-height:20px;margin-bottom:10px;padding-left:32px}
+.popE .e:last-child{margin-bottom:0}
+.popE .e label{position:absolute;width:22px;height:22px;top:0;left:0;background:url(icon_radio.png) no-repeat;
+    -webkit-background-size:75px auto;-moz-background-size:75px auto;-o-background-size:75px auto;-ms-background-size:75px auto;background-size:75px auto}
+.popE .e.on label{background-position:-25px 0}
+.popE.p2{display:flex;min-height:86px;justify-content:center;flex-direction:column}
+.popE.p2 .e{font-size:16px;height:22px;line-height:22px;padding-left:42px}
+.popE.p2 .e label{left:10px}
+.popE.p2 .e .txt{float:left;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.popE.p2 .e.short{padding-right:60px}
+.popE.p2 .e.short:after{position:absolute;content:'(不完整)';color:#0956f8;top:0}
+.inp{font-size:16px;color:#444;padding:10px 18px;background-color:#ececee;
+	-webkit-border-radius:5px;-moz-border-radius:5px;-ms-border-radius:5px;-o-border-radius:5px;border-radius:5px}
+.inp input{width:100%;background-color:transparent}
+.note{line-height:16px;font-size:12px;color:#868686;padding-top:10px}
+.error{line-height:20px;font-size:12px;color:#F00;text-align:left}
+.error:before{display:inline-block;width:15px;height:20px;content:'\00a0';margin-right:5px;background:url(icon_err.png) center no-repeat;
+    -webkit-background-size:15px;-moz-background-size:15px;-ms-background-size:15px;-o-background-size:15px;background-size:15px}
+
+.popNote{position:fixed;width:80%;text-align:center;left:10%;z-index:2;visibility:0;opacity:0;
+    -webkit-transition:visibility 1s,opacity 1s ease-in-out;-moz-transition:visibility 1s,opacity 1s ease-in-out;-o-transition:visibility 1s,opacity 1s ease-in-out;transition:visibility 1s,opacity 1s  ease-in-out}
+.popNote.on{visibility:1;opacity:1}
+.popNote span{display:inline-block;line-height:24px;color:#fff;vertical-align:middle;padding:10px 20px;background-color:rgba(0,0,0,.7);
+    -webkit-border-radius:5px;-moz-border-radius:5px;-o-border-radius:5px;-ms-border-radius:5px;border-radius:5px}
+.resumeShow{height:100%;position:relative;overflow:hidden}
+#changersmname.changeName{position:absolute}
+
+/*职位申请成功弹窗*/
+.popD{font-size:12px;text-align:center}
+.popD h3{font-size:16px}
+.popD .wechat img{vertical-align:middle}
+.popD .wechat a{color:#0000cc;text-decoration:underline}
+
+.popF .t_more{position:relative;font-size:12px;height:40px;line-height:50px;padding:0 21px}
+.popF .t_more:before{content:'';position:absolute;height:1px;content:'\00a0';right:11px;bottom:0;left:11px;background-color:#e6e6e6}
+.popF .items .e{padding:6px 21px}
+.popF .items .e em{top:6px}
+.popF .items .e i{top:30px}
+
+/* 投递成功弹窗 */
+.iapply{position:relative;padding-bottom:14px}
+.iapply svg{position:absolute;top:35%;left:50%;width:80px;height:80px;margin:-40px 0 0 -40px}
+.iapply svg .st0{fill:#FFEBD5}
+.iapply .icon{position:relative;width:50px;height:50px;margin:0 auto}
+.iapply .icon:before,.iapply .icon:after{content:'';position:absolute;left:0;top:0;width:100%;height:100%;
+    -webkit-border-radius:100%;-o-border-radius:100%;-ms-border-radius:100%;-moz-border-radius:100%;border-radius:100%}
+.iapply .icon:before{background-color:#a1c3f9;
+    -webkit-animation: ball-scale linear 1.75s;-moz-animation: ball-scale linear 1.75s;-o-animation: ball-scale linear 1.75s;animation: ball-scale linear 1.75s forwards;}
+.iapply .icon:after{background-image:linear-gradient(to bottom right,#076fd3,#084daa)}
+.iapply .icon .bin{position:relative;top:50%;z-index:2;width:50%;height:25%;overflow:hidden;margin:0 auto;
+    -webkit-transform:translateY(-70%) rotate(-45deg);-o-transform:translateY(-70%) rotate(-45deg);-ms-transform:translateY(-70%) rotate(-45deg);-moz-transform:translateY(-70%) rotate(-45deg);transform:translateY(-70%) rotate(-45deg)}
+.iapply .icon .bin:before,.iapply .icon .bin:after{content:'';position:absolute;background:#fff;
+    -webkit-border-radius:4px;-o-border-radius:4px;-ms-border-radius:4px;-moz-border-radius:4px;border-radius:4px}
+.iapply .icon .bin:before{width:4px;height:100%;left:0;
+    -webkit-animation:dgLeft 0.5s linear both;-o-animation:dgLeft 0.5s linear both;-ms-animation:dgLeft 0.5s linear both;-moz-animation:dgLeft 0.5s linear both;animation:dgLeft 0.5s linear both}
+.iapply .icon .bin:after{width:100%;height:4px;bottom:0;
+    -webkit-animation:dgRight 0.5s linear 0.5s both;-o-animation:dgRight 0.5s linear 0.5s both;-ms-animation:dgRight 0.5s linear 0.5s both;-moz-animation:dgRight 0.5s linear 0.5s both;animation:dgRight 0.5s linear 0.5s both}
+.a_success{line-height:28px;font-size:19px;letter-spacing:1px;color:#444;text-align:center}
+.a_success:after{content:"7天内不能重复投递";display:block;line-height:20px;font-size:13px;color:#a3a3a3}
+@-webkit-keyframes ball-scale {100% {-webkit-transform: scale(1.2);-ms-transform: scale(1.2);-o-transform: scale(1.2);transform: scale(1.2);opacity: 0.5}}
+@-moz-keyframes ball-scale {100% {-webkit-transform: scale(1.2);-ms-transform: scale(1.2);-o-transform: scale(1.2);transform: scale(1.2);opacity: 0.5}}
+@-o-keyframes ball-scale {100% {-webkit-transform: scale(1.2);-ms-transform: scale(1.2);-o-transform: scale(1.2);transform: scale(1.2);opacity: 0.5}}
+@keyframes ball-scale {100% {-webkit-transform: scale(1.2);-ms-transform: scale(1.2);-o-transform: scale(1.2);transform: scale(1.2);opacity: 0.5}} 
+@-webkit-keyframes dgLeft{0%{top:-100%}100%{top:0%}}
+@-moz-keyframes dgLeft{0%{top:-100%}100%{top:0%}}
+@-o-keyframes dgLeft{0%{top:-100%}100%{top:0%}}
+@keyframes dgLeft{0%{top:-100%}100%{top:0%}}
+@-webkit-keyframes dgRight{0%{left:-100%}100%{left:0%}}
+@-moz-keyframes dgRight{0%{left:-100%}100%{left:0%}}
+@-o-keyframes dgRight{0%{left:-100%}100%{left:0%}}
+@keyframes dgRight{0%{left:-100%}100%{left:0%}}

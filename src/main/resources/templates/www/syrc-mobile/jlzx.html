@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+    <script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+<script type="text/javascript">
+	function jlDel(id){
+		if(confirm("确定删除该简历么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/delete",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{id:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findUserResume"
+			 		}
+					}); 
+		 }
+  }
+</script>
+</head>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+    <div  class="wz_cont_in">
+        <div class="touxiangbox">
+            <div class="touxiang ckjj">
+                <a class="fl">
+                    @if(jlinfo.jianliXb==0){
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/man.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}else if(jlinfo.jianliXb==1){
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}else{
+                    @if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+                    <img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+                    @}else{
+                    <img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+                    @ }
+                    @}
+                </a>
+                <div class="fl">
+                    <span>${jlinfo.jianliXm}</span>
+                    <p><span>${jlinfo.jianliJzd}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliCsrq}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliKsgz}</span></p>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="con_left">
+                <!--简历中心   开始-->
+                <div class="all_title"><a><span>查看简历</span></a></div>
+                @for(bb in model!){
+                <dl class="jlzx_table">
+                    <dd>
+                        <span>${bb.jlBbName!,xss}</span>
+                        <p style="text-align: left;margin: 0 0 0 5%;float: left;">${bb.jlBbMrtdzt==0?"未设置":"默认简历",xss}</p>
+                        @if(bb.jlBbMrtdzt==0){
+                        <a href="${ctxPath}/cms/resume/editJlbanbenMRtdzt?id=${bb.jlBbId!}&jianliId=${bb.jianliId!}" style="color: #027cd7;margin: 0 1%;display: block;float: right;"><span class="sfmr " style="color:#027cd7" >默认简历</span></a>
+                        @}
+                    </dd>
+                    <dt>
+                        <a class="btn_bj btn_a" href="${ctxPath}/cms/resume/goEditResume?id=${bb.jlBbId!}"><img src="${resPath}/bcrc-mobile/images/jlzx_con_46.png"/>编辑</a>
+                        <a class="btn_sc btn_a" href="javascript:void(0)" onclick="jlDel('${bb.jlBbId!}');"><img src="${resPath}/bcrc-mobile/images/jlzx_con_11.png"/>删除</a>
+                    </dt>
+                </dl>
+                @}
+                <a id="addrsm" style="width: 80%;line-height: 3em;display: block;background: #027cd7;color: #fff;text-align: center;border-radius: 5px;margin: 0 auto;" href="${ctxPath}/cms/resume/goCreateResume">+ 创建简历</a>
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

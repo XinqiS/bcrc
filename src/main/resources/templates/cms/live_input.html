@@ -1,0 +1,96 @@
+<style>
+
+    td {
+        border-top: 1px solid #ddd;
+        line-height: 25px;
+        padding: 5px 5px 5px 7px;
+    }
+    .point{
+        color: #0099CC;
+        font-weight: bold;
+    }
+</style>
+<script type="text/javascript">
+
+    //选择事件
+    function P_NodeCheck(e, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj(treeId),
+            nodes = zTree.getCheckedNodes(true)
+        var ids = '', names = ''
+
+        for (var i = 0; i < nodes.length; i++) {
+            ids   += ','+ nodes[i].id
+            names += ','+ nodes[i].name
+        }
+        if (ids.length > 0) {
+            ids = ids.substr(1)
+        }
+        $("#permissionId").val(ids);
+    }
+    //单击事件
+    function P_NodeClick(event, treeId, treeNode) {
+        var zTree = $.fn.zTree.getZTreeObj(treeId)
+
+        zTree.checkNode(treeNode, !treeNode.checked, true, true)
+
+        event.preventDefault()
+    } 
+    </script>
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/cms/live/update" id="j_client_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="content_id" value="${live.content_id!}">
+        <input TYPE="hidden" name="id" value="${live.id!}">
+        <table cellspacing="1" cellpadding="6" border="0" width="100%">
+            <tbody>
+            <tr class="point" >
+                <td colspan="3"><a></a></td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakName" class="control-label x85">发言人姓名：</label>
+                    <input type="text" name="speakName" id="j_speakName" value="${live.speakName!,xss}" placeholder="请填写发言人姓名！" data-rule="required" size="20" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_speakContent" class="control-label x85">发言内容：</label>
+                    <TEXTAREA id="j_speakContent" placeholder="请填写发言内容！" name="speakContent"  rows="4" cols="30" data-rule="required" >${live.speakContent!,xss}</TEXTAREA>
+                </td>
+            </tr>
+            <tr>
+                <td>
+	            <label for="nav" class="control-label x85">人员类型：</label>
+	            @if((!isEmpty(live.userType)&&live.userType==0)||isEmpty(live.userType)){
+	            <input   type="radio" name="userType" value="0" checked="checked"> 主持人 </input>
+	            <input   type="radio" name="userType" value="1">嘉宾</input>
+	            @}else{
+	            <input   type="radio" name="userType" value="0">主持人</input>
+	            <input   type="radio" name="userType" value="1" checked="checked">嘉宾 </input>
+	            @}
+   				</td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="j_sort" class="control-label x85">排序号：</label>
+                    <input type="text" name="sort" id="j_sort" value="${live.sort!,xss}" placeholder="请填写排序号！" data-rule="required" size="20" >
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        @if(isEmpty(live.id)){
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+        @}else{
+        <li><button onclick="del(this)" type="button" class="btn-close" data-icon="close">删除</button></li>
+        <li><button type="submit" class="btn-default"  data-icon="save">更新</button></li>
+        @}
+    </ul>
+</div>
+<script>
+    function del(obj) {
+        $(obj).bjuiajax('doAjax', {url:'${ctxPath}/cms/live/delete?id=${live.id!}',confirmMsg:'确定要删除该行信息吗？'});
+    }
+</script>

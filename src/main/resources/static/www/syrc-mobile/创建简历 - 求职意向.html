@@ -1,0 +1,140 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>求职意向</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="images/sy_sjbase.css"  />
+<link rel="stylesheet" href="images/cover.css"  />
+<link rel="stylesheet" href="images/resume.css"  />
+<link rel="stylesheet" href="images/pop.css"  />
+<script type="text/javascript" src="images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="images/basic.js" ></script>
+<script type="text/javascript" src="images/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+</head>
+<body style="background: #f6f6f5 ;">
+<div id="pageContent" class="fixtop">
+  <div class="top"> <a href="创建简历.html" class="back" ></a> 求职意向 </div>
+  <div class="sbox"> <a href="javascript:void(0)" class="e">
+    <label><em>*</em>地点</label>
+    <div id="areaname" class="txt" onclick="areaPopDeal.showAreaPop(this,'multi');">东莞</div>
+    <input type="hidden" id="area" value="030800">
+    <p class="error" style="display:none;" id="err_area"><span></span></p>
+    </a> <a href="javascript:void(0)" class="e">
+    <label><em>*</em>职能</label>
+    <div id="funtypename" class="txt c_default" onclick="setFuntypePage(this,1)">请选择</div>
+    <input type="hidden" id="funtype" value="">
+    <p class="error" style="display:none;" id="err_funtype"><span></span></p>
+    </a>
+    <div class="e">
+      <label><em>*</em>职位</label>
+      <input type="text" class="txt inputblur" id="position" placeholder="请输入职位名称" name="Job" oninput="simpleAssociationforintent('Job')" value=""  maxlength="25">
+      <p class="error" style="display:none;" id="err_position"><span></span></p>
+      <div class="job_ass" style="display:none;"> </div>
+    </div>
+   
+    <div class="e lb_w">
+      <label><em>*</em>期望薪资</label>
+    
+      <input type="text" class="txt long xx" id="sal3" maxlength="7" placeholder="请输入薪资" >
+     
+      <p type="hidden" id="sal"></p>
+      <p class="error" style="display:none;" id="err_sal"><span></span></p>
+    </div>
+    <div class="custom lb_w" id="customizesalary" style="display:none;">
+      <div class="iptb">
+        <p class="ipt">
+          <input type="text" maxlength="7" class="txt c_tdefault" id="sal_min" value="" placeholder="薪资下限">
+        </p>
+        <span class="slash">-</span>
+        <p class="ipt">
+          <input type="text" maxlength="7" class="txt c_tdefault" id="sal_max" value="" placeholder="薪资上限">
+        </p>
+        元
+        <p class="error" style="display:none;" id="err_customizesalary"><span></span></p>
+      </div>
+      <div class="warn">建议您薪资上限不超过下限数值的50%</div>
+    </div>
+    <a href="javascript:void(0)" class="e">
+    <label>工作类型</label>
+    <div class="selt"> <span class="sval">全职</span>
+      <select id="jobterm">
+        <option value="0" selected>全职</option>
+        <option value="1">兼职</option>
+        <option value="2">实习</option>
+        <option value="3">全/兼职</option>
+      </select>
+    </div>
+    </a> <a href="javascript:void(0)" class="e">
+    <label>行业</label>
+    <!-- <div class="txt c_default">请选择</div> -->
+    <div href="javascript:void(0)" id="indtypename" class="txt c_default" onclick="setIndtypePage(this,1);">请选择</div>
+    <input type="hidden" id="indtype" value="">
+    </a> <a href="javascript:void(0)" class="e">
+    <label>到岗时间</label>
+    <div class="selt"> <span class="sval">待定</span>
+      <select id="entrytime">
+        <option value="1">随时</option>
+        <option value="2">1周内</option>
+        <option value="3">1个月内</option>
+        <option value="4">3个月内</option>
+        <option value="5" selected>待定</option>
+      </select>
+    </div>
+    </a>
+    <div class="e e_ta">
+      <label>自我评价</label>
+      <div class="ptxa">
+        <textarea maxlength="2000" id="intro" class="inputblur" placeholder="请简单的介绍自己，说明自己最大的优势，让企业看到你的闪光点，限1000中文字"></textarea>
+        <div class="gray">0/1000</div>
+      </div>
+      <p class="error" style="display:none;" id="err_intro"><span></span></p>
+    </div>
+   <div class="e e_ta">
+			<label>个人标签（不超过10个，用空格隔开）</label>
+			<div class="ptxa noNum">
+				<textarea maxlength="1000" id="resumekey" class="inputblur" placeholder="请输入代表您行业、特长的关键词，例如：销售 懂英语 可出差，每个词不超过12个中文字"></textarea>
+			</div>
+			<p class="error" style="display:none;" id="err_resumekey"><span></span></p>
+		</div>
+  </div>
+  <center class="btnbox">
+    <button class="btn" id="saveresumefour">保存</button>
+    <input type="hidden" id="userid" value="398719117"/>
+  </center>
+</div>
+<script type="text/javascript" src="images/base.js"></script> 
+<script type="text/javascript" src="images/fun.js"></script> 
+<script type="text/javascript" src="images/d_jobarea.js"></script> 
+<script type="text/javascript" src="images/popjobarea.js"></script> 
+<script type="text/javascript" src="images/resume.js">
+	</script>
+	<script type="text/javascript" src="images/indtype.js"></script>
+	<script type="text/javascript" src="images/funtype.js"></script>
+	<script type="text/javascript" src="images/popfuntype.js"></script>
+	<script type="text/javascript" src="images/popindtype.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

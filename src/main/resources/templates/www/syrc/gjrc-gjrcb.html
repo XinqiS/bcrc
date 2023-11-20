@@ -1,0 +1,79 @@
+
+@includeFileTemplate("/www/syrc/include/gjrc-head.html",{"current":"index"}){}
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/gjrc_04.png" width="170" height="49"></h1>
+        <ul>
+        	<li><a  href="${frontPath!}/4/1020.html">加入高级人才库</a></li>
+            <li><a href="${ctxPath}/gjrc/gjrcb">高级人才榜</a></li>
+            <li><a href="${frontPath!}/4/1015.html">猎头服务</a></li>
+          	<li><a href="${ctxPath}/gjrc/zgjgw">中高级岗位</a></li>
+            <li><a href="${frontPath!}/4/1009.html">中高级招聘会</a></li>
+            <li><a href="${frontPath!}/4/1022.html">小型见面会</a></li>
+            <li><a href="${frontPath!}/4/1009.html">频道首页</a></li>
+        </ul>
+    </div>
+ <div class="main">
+    	
+    	<div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>高级人才榜</a></div>
+            <dl class="gjrcb_cont">
+            @for(lists in model.list){
+            	<dd>
+                	<span class="pm one fl">${listsLP.index}</span>
+                    <div class="ryxx fr">
+                    	<a target="on" href="${ctxPath}/cms/resume/previewResumeByAdmin?id=${lists.jl_bb_id}&zh_id=${lists.zh_id!}">
+                        	<h3 class="fl">${lists.jianli_xm}</h3>
+                            <div class="jbxx fl"><span>${lists.jianli_csrq}岁</span><span>
+                            @if(lists.jianli_xb==0){
+                           		 男
+                            @}else if(lists.jianli_xb==1){
+								女                            
+                            @}
+                            </span><span>
+                            @if(lists.jyjl_xl==0){ 
+                         		  初中及以下
+                            @}else if(lists.jyjl_xl==1){ 
+                         		  高中
+                            @}
+                            @else if(lists.jyjl_xl==2){ 
+                         		  中专
+                            @}
+                            @else if(lists.jyjl_xl==3){ 
+                         		大专
+                            @}
+                            @else if(lists.jyjl_xl==4){ 
+                         		本科
+                            @}
+                            @else if(lists.jyjl_xl==5){ 
+                         		硕士
+                            @}
+                            @else if(lists.jyjl_xl==6){ 
+                         		博士
+                            @}
+                            @else if(lists.jyjl_xl==7){ 
+                         		MBA
+                            @}
+                            </span><span>${lists.jyjl_xx}
+                            
+                            @if(lists.jyjl_zy !=null){
+                            (${lists.jyjl_zy})
+                            @}
+                            </span></div>
+                            <div class="clear"></div>
+                            <p>${strutil.length(lists.qzyx_jntc!)>55?strutil.subStringTo(lists.qzyx_jntc!,0,55)+"...":lists.qzyx_jntc!}</p>
+                        </a>
+                    </div>
+                </dd>
+              @}
+            <!--分页位置-->
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+    	
+    	
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}

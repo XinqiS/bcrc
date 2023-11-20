@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlxnzwMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlxnzw" >
+    <id column="XNZW_ID" property="xnzwId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="XNZW_KSSJ" property="xnzwKssj" jdbcType="VARCHAR" />
+    <result column="XNZW_JSSJ" property="xnzwJssj" jdbcType="VARCHAR" />
+    <result column="XNZW_ZW" property="xnzwZw" jdbcType="VARCHAR" />
+    <result column="XNZW_ZWMS" property="xnzwZwms" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    XNZW_ID, JL_BB_ID, XNZW_KSSJ, XNZW_JSSJ, XNZW_ZW,XNZW_ZWMS
+  </sql>
+</mapper>

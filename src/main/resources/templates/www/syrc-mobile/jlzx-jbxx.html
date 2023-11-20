@@ -1,0 +1,741 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet"
+		  href="${resPath}/syrc-mobile/images/sy_sjhtml.css" />
+	<link rel="stylesheet"
+		  href="${resPath}/syrc-mobile/images/sy_sjbase.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/swiper.min.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css" />
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+	//$_CONFIG['domain'] = '//m.51job.com/';
+	//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+	//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+	//$_CONFIG['template'] = 'resume/baseinfo';
+	$_CONFIG['islogin'] = '1';
+	$_CONFIG['jobarea'] = '030800';
+	$_CONFIG['jobareaname'] = '东莞';
+	$_CONFIG['ip'] = '36.48.27.149';
+	$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function printFileInfo(target){
+	var myarr=[];
+    var fileSize = 0;
+    if ( !target.files) {
+        var filePath = target.value;
+        var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+        var file = fileSystem.GetFile (filePath);
+        fileSize = file.Size;
+    } else {
+        fileSize = target.files[0].size;
+    }
+    var size = fileSize / 1024;
+    if(size>10240){
+        window.wxc.xcConfirm("附件不能大于10M!", "error");
+        target.value="";
+        return
+    }
+    var picFile = document.getElementById('myfile');
+    var files = picFile.files;
+    for(var i=0; i<files.length; i++){
+        var file = files[i];
+        myarr.push(file)
+    }
+    var formData = new FormData();
+    $.each(myarr,function(i,file){
+        formData.append('myfile',file);
+
+    });
+    $.ajax({
+        url : "updateJianliTx",
+        type : 'POST',
+        dataType: 'json',
+        data : formData,
+        crossDomain: true,
+        cache: false,
+        processData: false,
+        contentType: false,
+        success : function(responseStr) {
+        	//$("#jianliTx").val(responseStr.fileUrl);
+        	$("#tx").attr("src",responseStr.fileUrl);
+        },
+    });
+}
+function saveInfo(){
+	var  json={};
+	if($("#jianliId").val()!=undefined){
+		json.jianliId=$("#jianliId").val();
+	}
+	if($("#zhId").val()!=undefined){
+		json.zhId=$("#zhId").val();
+	}
+	/* if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	} */
+	if(isNull($("#cname").val())){
+		alert("姓名不能为空！！！");
+		return false;
+	}
+	if(isNull($("#bday").text())){
+		alert("出生日期不能为空！！！");
+		return false;
+	}
+	if(isNull($("#ksgz").text())){
+		alert("开始工作不能为空！！！");
+		return false;
+	}else{
+		var myDate = new Date();
+	    var tYear = myDate.getFullYear();
+	    if(parseInt($("#ksgz").val())>parseInt(tYear)){
+	    	alert("开始工作年份不能大于当前年份！！！");
+	    	return false;
+	    }
+
+	}
+	if(isNull($("#mobilephone").val())){
+		alert("手机不能为空！！！");
+		return false;
+	}else if(!checkMobile($("#mobilephone").val())){
+    	alert('联系电话格式不正确！');
+        return false;
+    }
+	if(isNull($("#jobareaname").text())){
+		alert("居住地不能为空！！！");
+		return false;
+	}
+	var qzzt=parseInt($("#qzzt1").val());
+    var hyzt=parseInt($("#hyzt1").val());
+    var zzmm=parseInt($("#zzmm1").val());
+    var zjlx=parseInt($("#zjlx1").val());
+    var lxfs=parseInt($("#lxfs1").val());
+	if($("#qzzt").text()=='目前正在找工作'){
+		qzzt=0;
+	}else if($("#qzzt").text()=='观望有好机会会考虑'){
+		qzzt=1;
+	}else if($("#qzzt").text()=='我目前不想换工作'){
+		qzzt=2;
+	}
+	
+	if($("#hyzt").text()=='已婚'){
+		hyzt=0;
+	}else if($("#hyzt").text()=='未婚'){
+		hyzt=1;
+	}else if($("#hyzt").text()=='保密'){
+		hyzt=2;
+	}
+	
+	if($("#zzmm").text()=='中共党员'){
+		zzmm=0;
+	}else if($("#zzmm").text()=='共青团员'){
+		zzmm=1;
+	}else if($("#zzmm").text()=='无党派民主人士'){
+		zzmm=2;
+	}else if($("#zzmm").text()=='普通群众'){
+		zzmm=3;
+	}else if($("#zzmm").text()=='其他'){
+		zzmm=4;
+	}
+	
+	if($("#zjlx").text()=='身份证'){
+		zjlx=0;
+	}else if($("#zjlx").text()=='护照'){
+		zjlx=1;
+	}else if($("#zjlx").text()=='军人证'){
+		zjlx=2;
+	}else if($("#zjlx").text()=='港澳居民来往内地通行证'){
+		zjlx=3;
+	}else if($("#zjlx").text()=='外国人永久居留身份证'){
+		zjlx=4;
+	}else if($("#zjlx").text()=='其它'){
+		zjlx=5;
+	}
+	
+	if($("#lxfs").text()=='家庭电话'){
+		lxfs=0;
+	}else if($("#lxfs").text()=='公司电话'){
+		lxfs=1;
+	}else if($("#lxfs").text()=='微信'){
+		lxfs=2;
+	}else if($("#lxfs").text()=='QQ号'){
+		lxfs=3;
+	}
+
+	if(!isNull($("#idcard").val())){
+		if(zjlx==0){
+			var pass=IdentityCodeValid($("#idcard").val());
+			if(pass!="1"){
+				alert( "您输入的身份证号码不正确，请重新输入！");
+				return false;
+			}
+		}
+	}
+	$.each($('#sex span'),function(){
+        var sex = $(this).attr('class');
+        	if(sex =="rdo on"){
+				json.jianliXb=$(this).attr('value');
+        	}
+    });
+	json.jianliXm=$("#cname").val();
+	json.jianliCsrq=$("#bday").text();
+	json.jianliKsgz=$("#ksgz").text();
+	json.jianliSj=$("#mobilephone").val();
+	json.jianliJzd=$("#jobareaname").text();
+	json.jianliQzzt=qzzt;
+	json.jianliHyzt=hyzt;
+	json.jianliZjlx=zjlx;
+	json.jianliZzmm=zzmm;
+	json.jianliQtfalx=lxfs;
+	json.jianliSg=$("#stature").val();
+	json.jianliYb=$("#yb").val();
+	json.jianliYx=$("#cemail").val();
+	json.jianliQtfshm=$("#qthm").val();
+	json.jianliJtzz=$("#address").val();
+	json.jianliTx=$("#tx").attr("src");
+	json.jianliZjhm=$("#idcard").val();
+	json.jianliHk=$("#hukouname").text();
+	$.ajax({
+	      type: "POST",
+	      async:false,
+	      url: "saveUserConsumeInfo",
+	      data: json,
+	      dataType: "json",
+	      success: function(data){
+	      	   alert(data.message);
+	      	   if($("#jlBbId").val()!=undefined){
+					 window.location.href="${ctxPath}/cms/resume/goEditResume?id="+$("#jlBbId").val();
+				}else{
+					window.location.href="${ctxPath}/cms/resume/goCreateResume";
+				}
+	    	  
+	    	  
+	      }
+	});
+	
+      
+}
+</script>
+</head>
+<style>
+	.cover {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 99;
+	}
+
+</style>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/cms/resume/goEditResume?id=${session.jlbbIdSession}"><span>基本情况</span></a></div>
+
+				<div class="sbox" ng-controller="appCtrl">
+					<section  class="upbox clearbox e user">
+						<label>头像</label>
+						<div class="upimg max add">
+							@if(jlinfo.jianliTx!=null){
+							<img id="tx" src="${jlinfo.jianliTx!}" width="38" height="46" alt="头像">
+							@}else{
+							<img id="tx" src="${resPath}/syrc-mobile/images/man.png" width="38" height="46"
+								 alt="头像">
+							@}
+						</div>
+
+						<div class="max cmax add" id="upload_button">
+							<input id="myfile" type="file" accept="image/*"
+								   onchange="printFileInfo(this)">
+						</div>
+					</section>
+
+					<div class="e">
+						<label><em>*</em>姓名</label>
+						<input type="text" class="txt inputblur" id="cname" maxlength="20" value="${jlinfo.jianliXm}" placeholder="（必填）请输入姓名" />
+					</div>
+
+					<div class="e">
+						<label><em>*</em>性别</label>
+						<div class="rdob" id="sex">
+							@if(isNotEmpty(jlinfo.jianliXb)){
+							@if(jlinfo.jianliXb==1){
+							<span class="rdo" value="0">男</span> <span class="rdo on" value="1">女</span>
+							@}else{
+							<span class="rdo on" value="0">男</span> <span class="rdo" value="1">女</span>
+							@}
+							@}else{
+							<span class="rdo" value="0">男</span><span class="rdo on" value="1">女</span>
+							@}
+						</div>
+					</div>
+					<a href="javascript:void(0)" class="e"
+					   onclick="calendar( 'date' , [0,70] , 'bday' );"> <label><em>*</em>出生日期</label>
+						<div class="selt">
+					<span class="sval" id="bday">
+						@if(isNotEmpty(jlinfo.jianliCsrq)){
+						${jlinfo.jianliCsrq!}
+						@}else{
+						2019-01-01
+						 @}
+						 </span>
+							<p class="error" style="display:none;" id="err_bday">
+								<span></span>
+							</p>
+						</div></a>
+
+					<div href="javascript:void(0)" class="e">
+						<label><em>*</em>手机号</label>
+						<input type="text" class="txt inputblur" id="mobilephone" maxlength="20"
+							   value="${jlinfo.jianliSj!}" placeholder="（必填）请输入手机号">
+					</div>
+
+					<div class="e">
+						<label><em>*</em>求职状态</label>
+						<div class="selt">
+							<span class="sval" id="qzzt">
+								@if(isNotEmpty(jlinfo.jianliQzzt)){
+						<input type="hidden" id="qzzt1" value="${jlinfo.jianliQzzt}"/>
+						<script>document.write(dicContainer.getDicItemName('qzzt', ${jlinfo.jianliQzzt}))</script>
+					@}else{
+						<input type="hidden" id="qzzt1" value="0"/>
+					@}
+							</span>
+							<select id="situation">
+								<script >
+									document.write(dicContainer["qzzt"].toString());
+								</script>
+							</select>
+						</div>
+					</div>
+
+					<a href="javascript:void(0)" class="e">
+						<label><em>*</em>居住地</label>
+						<div class="txt" onclick="areaPopDeal.showAreaPop(this,'livingarea');" id="jobareaname">${jlinfo.jianliJzd!}</div>
+						<input type="hidden" id="jobarea" value="240202"/>
+					</a>
+
+					<div class="e">
+						<label><em>*</em>开始工作年份</label>
+						<div class="selt">
+							<span class="sval" id="ksgz">${jlinfo.jianliKsgz!}</span>
+							<select id="workyear">
+								<option value="1946">1946</option>
+								<option value="1947">1947</option>
+								<option value="1948">1948</option>
+								<option value="1949">1949</option>
+								<option value="1950">1950</option>
+								<option value="1951">1951</option>
+								<option value="1952">1952</option>
+								<option value="1953">1953</option>
+								<option value="1954">1954</option>
+								<option value="1955">1955</option>
+								<option value="1956">1956</option>
+								<option value="1957">1957</option>
+								<option value="1958">1958</option>
+								<option value="1959">1959</option>
+								<option value="1960">1960</option>
+								<option value="1961">1961</option>
+								<option value="1962">1962</option>
+								<option value="1963">1963</option>
+								<option value="1964">1964</option>
+								<option value="1965">1965</option>
+								<option value="1966">1966</option>
+								<option value="1967">1967</option>
+								<option value="1968">1968</option>
+								<option value="1969">1969</option>
+								<option value="1970">1970</option>
+								<option value="1971">1971</option>
+								<option value="1972">1972</option>
+								<option value="1973">1973</option>
+								<option value="1974">1974</option>
+								<option value="1975">1975</option>
+								<option value="1976">1976</option>
+								<option value="1977">1977</option>
+								<option value="1978">1978</option>
+								<option value="1979">1979</option>
+								<option value="1980">1980</option>
+								<option value="1981">1981</option>
+								<option value="1982">1982</option>
+								<option value="1983">1983</option>
+								<option value="1984">1984</option>
+								<option value="1985">1985</option>
+								<option value="1986">1986</option>
+								<option value="1987">1987</option>
+								<option value="1988">1988</option>
+								<option value="1989">1989</option>
+								<option value="1990">1990</option>
+								<option value="1991">1991</option>
+								<option value="1992">1992</option>
+								<option value="1993">1993</option>
+								<option value="1994">1994</option>
+								<option value="1995">1995</option>
+								<option value="1996">1996</option>
+								<option value="1997">1997</option>
+								<option value="1998">1998</option>
+								<option value="1999">1999</option>
+								<option value="2000">2000</option>
+								<option value="2001">2001</option>
+								<option value="2002">2002</option>
+								<option value="2003">2003</option>
+								<option value="2004">2004</option>
+								<option value="2005">2005</option>
+								<option value="2006">2006</option>
+								<option value="2007">2007</option>
+								<option value="2008">2008</option>
+								<option value="2009">2009</option>
+								<option value="2010">2010</option>
+								<option value="2011">2011</option>
+								<option value="2012">2012</option>
+								<option value="2013">2013</option>
+								<option value="2014">2014</option>
+								<option value="2015">2015</option>
+								<option value="2016">2016</option>
+								<option value="2017">2017</option>
+								<option value="2018">2018</option>
+								<option value="2019">2019</option>
+								<option value="2020">2020</option>
+								<option value="2021">2021</option>
+								<option value="2022">2022</option>
+							</select>
+						</div>
+					</div>
+					<div class="e">
+						<label>政治面貌</label>
+						<div class="selt">
+					<span class="sval" id="zzmm">
+						@if(isNotEmpty(jlinfo.jianliZzmm)){
+						<input type="hidden" id="zzmm1" value="${jlinfo.jianliZzmm}"/>
+						<script>document.write(dicContainer.getDicItemName('106', ${jlinfo.jianliZzmm}))</script>
+					@}else{
+						<input type="hidden" id="zzmm1" value="0"/>
+					@}
+
+					</span><select id="zhengzhi">
+							<script >
+								document.write(dicContainer["106"].toString());
+							</script>
+						</select>
+						</div>
+					</div>
+					<script>
+						$("#zhengzhi").change(function(){
+							var zhengzhival=$("#zhengzhi").val();
+							var zhengzhitext=$("#zhengzhi").find("option:selected").text();
+							$('#zzmm').text(zhengzhitext);
+							$('#zzmm1').val(zhengzhival);
+						});
+					</script>
+					<div class="e">
+						<label>证件类型</label>
+						<div class="selt">
+					<span class="sval" id="zjlx">
+						@if(isNotEmpty(jlinfo.jianliZjlx)){
+						<input type="hidden" id="zjlx1" value="${jlinfo.jianliZjlx}"/>
+						<script>document.write(dicContainer.getDicItemName('zjlx', ${jlinfo.jianliZjlx}))</script>
+					@}else{
+						<input type="hidden" id="zjlx1" value="0"/>
+					@}
+
+					</span><select id="idtype">
+							<script >
+								document.write(dicContainer["zjlx"].toString());
+							</script>
+						</select>
+						</div>
+					</div>
+
+					<div class="e">
+						<label>证件号</label>
+						<p class="ipt">
+							<input type="text" id="idcard" class="txt inputblur"
+								   placeholder="请输入证件号" maxlength="25" value="${jlinfo.jianliZjhm}" />
+						<p class="error" style="display:none;" id="err_idcard">
+							<span></span>
+						</p>
+					</div>
+
+					<div href="javascript:void(0)"  class="e">
+						<label>邮箱</label>
+						<input type="text" class="txt inputblur" id="cemail" maxlength="20" value="${jlinfo.jianliYx}" placeholder="请输入邮箱地址">
+						<p class="error" style="display:none;" id="err_cemail"><span></span></p>
+					</div>
+
+					<a href="javascript:void(0)" class="e">
+						<label>国籍/户口</label>
+						<div class="txt" id="hukouname" class="lkt at bb" onclick="areaPopDeal.showAreaPop(this,'hukou');" >${jlinfo.jianliHk}</div>
+						<input type="hidden" id="hukou" value="080300"/>
+					</a>
+
+					<div class="e eb">
+						<label>婚姻状况</label>
+						<div class="selt">
+							<span class="sval" id="hyzt">
+								@if(isNotEmpty(jlinfo.jianliHyzt)){
+						<input type="hidden" id="hyzt1" value="${jlinfo.jianliHyzt}"/>
+						<script>document.write(dicContainer.getDicItemName('hyzt', ${jlinfo.jianliHyzt}))</script>
+					@}else{
+						<input type="hidden" id="hyzt1" value="0"/>
+					@}
+
+							</span>
+							<select id='marriage'>
+								<script >
+									document.write(dicContainer["hyzt"].toString());
+								</script>
+							</select>
+						</div>
+					</div>
+
+					<div class="e">
+						<label>家庭住址</label>
+						<p class="ipt"><input id='address' type="text" class="txt inputblur" placeholder="请输入" value="${jlinfo.jianliJtzz}" maxlength="50"/></p>
+					</div>
+
+					<div class="e e_g">
+						<label>身高</label>
+						<div class="tbox">
+							<input type="text" id='stature' class="txt inputblur" maxlength="3" placeholder="请输入" value="${jlinfo.jianliSg}">
+							<span class="wy">CM</span>
+						</div>
+						<p class="error" style="display:none;" id="err_stature"><span></span></p>
+					</div>
+					<div class="e">
+						<label>邮编</label>
+						<p class="ipt">
+							<input type="text" id='yb' class="txt inputblur" maxlength="6"
+								   placeholder="请输入" value="${jlinfo.jianliYb}"></p>
+
+						<p class="error" style="display:none;" id="err_yb">
+							<span></span>
+						</p>
+					</div>
+				</div>
+
+				<center class="btnbox">
+					<button class="btn" onclick="saveInfo()">保存</button>
+					<input type="hidden" id="rsmid" value="398719117"/>
+					@if(isNotEmpty(jlinfo.jianliId)){
+					<input type="hidden" name="jianliId"
+						   id="jianliId" value="${jlinfo.jianliId}">
+					<input type="hidden" name="zhId"
+						   id="zhId" value="${jlinfo.zhId}">
+
+					@}
+					@if(isNotEmpty(jlBbId)){
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+					@}
+				</center>
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/fun.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/d_jobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/popjobarea.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/myaccount.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/resume.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/swiper.min.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/exif.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/transform.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/alloy_finger.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/to.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc-mobile/js/uploadhead.js"></script>
+<script type="text/javascript">
+	var time        = '1572572412018';
+	var pagecode    = '30199';
+	var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+	var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+	/**************************************************************************
+	 身份号码排列顺序从左至右依次为：六位数字地址码，八位数字出生日期码，三位数字顺序码和一位数字校验码。
+	 地址码表示编码对象常住户口所在县(市、旗、区)的行政区划代码。
+	 出生日期码表示编码对象出生的年、月、日，其中年份用四位数字表示，年、月、日之间不用分隔符。
+	 顺序码表示同一地址码所标识的区域范围内，对同年、月、日出生的人员编定的顺序号。
+	 顺序码的奇数分给男性，偶数分给女性。
+	 校验码是根据前面十七位数字码，按照ISO 7064:1983.MOD 11-2校验码计算出来的检验码。
+	 15位校验规则 6位地址编码+6位出生日期+3位顺序号
+	 18位校验规则 6位地址编码+8位出生日期+3位顺序号+1位校验位
+	 校验位规则     公式:∑(ai×Wi)(mod 11)……………………………………(1)
+	 公式(1)中：
+	 i----表示号码字符从右至左包括校验码在内的位置序号；
+	 ai----表示第i位置上的号码字符值；
+	 Wi----示第i位置上的加权因子，其数值依据公式Wi=2^(n-1）(mod 11)计算得出。
+	 i 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+	 Wi 7 9 10 5 8 4 2 1 6 3 7 9 10 5 8 4 2 1
+	 ****************************************************************************/
+
+	/**
+	 * 身份证城市代码列表
+	 */
+	var aIdentityCode_City = { // 城市代码列表
+		11 : "北京",12 : "天津",13 : "河北",14 : "山西",15 : "内蒙古",21 : "辽宁",22 : "吉林",
+		23 : "黑龙江 ",31 : "上海",32 : "江苏",33 : "浙江",34 : "安徽",35 : "福建",36 : "江西",
+		37 : "山东",41 : "河南",42 : "湖北 ",43 : "湖南",44 : "广东",45 : "广西",46 : "海南",
+		50 : "重庆",51 : "四川",52 : "贵州",53 : "云南",54 : "西藏 ",61 : "陕西",62 : "甘肃",
+		63 : "青海",64 : "宁夏",65 : "新疆",71 : "台湾",81 : "香港",82 : "澳门",91 : "国外 "
+	};
+
+	//检查号码是否符合规范，包括长度，类型
+	function IdentityCode_isCardNo(card) {
+		//身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X
+		var reg = /(^\d{15}$)|(^\d{17}(\d|X)$)/; // 正则表达式
+		if (reg.test(card) === false) {
+			return false;
+		}
+		return true;
+	};
+
+	//取身份证前两位，校验省份
+	function IdentityCode_checkProvince(card) {
+		var province = card.substr(0, 2);
+		if (aIdentityCode_City[province] == undefined) {
+			return false;
+		}
+		return true;
+	};
+
+	//检查生日是否正确，15位以'19'年份来进行补齐。
+	function IdentityCode_checkBirthday(card) {
+		var len = card.length;
+		//身份证15位时，次序为省（3位）市（3位）年（2位）月（2位）日（2位）校验位（3位），皆为数字
+		if (len == '15') {
+			var re_fifteen = /^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/;
+			var arr_data = card.match(re_fifteen); // 正则取号码内所含出年月日数据
+			var year = arr_data[2];
+			var month = arr_data[3];
+			var day = arr_data[4];
+			var birthday = new Date('19' + year + '/' + month + '/' + day);
+			return IdentityCode_verifyBirthday('19' + year, month, day, birthday);
+		}
+		//身份证18位时，次序为省（3位）市（3位）年（4位）月（2位）日（2位）校验位（4位），校验位末尾可能为X
+		if (len == '18') {
+			var re_eighteen = /^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/;
+			var arr_data = card.match(re_eighteen); // 正则取号码内所含出年月日数据
+			var year = arr_data[2];
+			var month = arr_data[3];
+			var day = arr_data[4];
+			var birthday = new Date(year + '/' + month + '/' + day);
+			return IdentityCode_verifyBirthday(year, month, day, birthday);
+		}
+		return false;
+	};
+
+	//校验日期 ，15位以'19'年份来进行补齐。
+	function IdentityCode_verifyBirthday(year, month, day, birthday) {
+		var now = new Date();
+		var now_year = now.getFullYear();
+		//年月日是否合理
+		if (birthday.getFullYear() == year
+				&& (birthday.getMonth() + 1) == month
+				&& birthday.getDate() == day) {
+			//判断年份的范围（3岁到150岁之间)
+			var time = now_year - year;
+			if (time >= 3 && time <= 150) {
+				return true;
+			}
+			return false;
+		}
+		return false;
+	};
+
+	//校验位的检测
+	function IdentityCode_checkParity(card) {
+		card = IdentityCode_changeFivteenToEighteen(card); // 15位转18位
+		var len = card.length;
+		if (len == '18') {
+			var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+			var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+			var cardTemp = 0, i, valnum;
+			for (i = 0; i < 17; i++) {
+				cardTemp += card.substr(i, 1) * arrInt[i];
+			}
+			valnum = arrCh[cardTemp % 11];
+			if (valnum == card.substr(17, 1)) {
+				return true;
+			}
+			return false;
+		}
+		return false;
+	};
+
+	//15位转18位身份证号
+	function IdentityCode_changeFivteenToEighteen(card) {
+		if (card.length == '15') {
+			var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+			var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
+			var cardTemp = 0, i;
+			card = card.substr(0, 6) + '19' + card.substr(6, card.length - 6);
+			for (i = 0; i < 17; i++) {
+				cardTemp += card.substr(i, 1) * arrInt[i];
+			}
+			card += arrCh[cardTemp % 11];
+			return card;
+		}
+		return card;
+	};
+
+	/**
+	 * 身份证号码检验主入口
+	 * 符合规则则返回性别：0|女生 1|男生
+	 * 不符合规则弹出提示错误
+	 */
+	function IdentityCodeValid(card) {
+
+		var pass = "1";
+		//是否为空
+		if (pass && card === '')
+			pass = "2";
+		//校验长度，类型
+		if (pass && IdentityCode_isCardNo(card) === false)
+			pass = "3";
+		//检查省份
+		if (pass && IdentityCode_checkProvince(card) === false)
+			pass = "4";
+		//校验生日
+		if (pass && IdentityCode_checkBirthday(card) === false)
+			pass = "5";
+		//检验位的检测
+		if (pass && IdentityCode_checkParity(card) === false)
+			pass = "6";
+
+		//   var iCard = IdentityCode_changeFivteenToEighteen(card);
+		//if (parseInt(iCard.charAt(16)) % 2 == 0) {
+		//     sex = "0"; // 女生
+		// } else {
+		//      sex = "1"; // 男生
+		// }
+		//   return sex;
+		return pass;
+
+
+	}
+
+</script>
+
+</body>
+</html>

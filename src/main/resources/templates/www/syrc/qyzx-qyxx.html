@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+
+
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+
+<!--内容开始-->
+<div class="contentbox">
+	<!--当前位置开始-->
+    <p class="rsj_dqwzbox">当前位置：<a href="${frontPath!}/4">首页</a>>>企业信息</p>
+    <div class="clear"></div>
+	<div class="all_title"><i></i><a>企业列表</a></div>
+	<ul class="img_list clearfix">
+		@for(qy in model){
+        <li>
+        	<a target="_blank" href="${ctxPath}/qyzx/qyXq?qy_id=${qy.qy_id!}"><img src="${qy.qy_file_logo!}"/></a>
+            <p><a target="_blank" href="${ctxPath}/qyzx/qyXq?qy_id=${qy.qy_id}">${qy.qy_qymc!}</a></p>
+        </li>
+       @}
+    </ul>
+  <div id="pagination" class="pagination"></div>
+			<script>
+
+			        var datatotal = '${total}';
+			        var pageAmount = '${pagesize}';
+			        var pagenum = '${pagenum}';
+			
+			        pageTotal=Math.ceil(datatotal/pageAmount);
+			
+			        if(pageTotal>5){
+			            pageSize=5
+			        }else{
+			            pageSize=pageTotal
+			        }
+			
+			        window.onload = function () {
+			            new myPagination({
+			                id: 'pagination',
+			                curPage:pagenum, //初始页码
+			                pageTotal: pageTotal, //总页数
+			                pageAmount: pageAmount,  //每页多少条
+			                dataTotal: datatotal, //总共多少条数据
+			                getPage: function (page) {
+			                    window.location.href ='${ctxPath}/qyzx/findQyList?pageCurrent='+page;
+			
+			                }
+			            })
+			
+			        }
+			    </script>
+			
+</div>
+<!--内容结束-->
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+
+
+</body>
+</html>

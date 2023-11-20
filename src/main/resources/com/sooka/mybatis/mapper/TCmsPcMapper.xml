@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sooka.mybatis.mapper.TCmsPcMapper">
+    <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.TCmsPc">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="pc_name" jdbcType="VARCHAR" property="pc_name" />
+        <result column="pc_url" jdbcType="VARCHAR" property="pc_url" />
+        <result column="pc_state" jdbcType="VARCHAR" property="pc_state" />
+        <result column="pc_file" jdbcType="VARCHAR" property="pc_file" />
+        <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    </resultMap>
+
+    <select id="selectPc" parameterType="com.sooka.mybatis.model.TCmsPc" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        t_cms_pc where pc_state=0
+
+    </select>
+
+
+
+</mapper>

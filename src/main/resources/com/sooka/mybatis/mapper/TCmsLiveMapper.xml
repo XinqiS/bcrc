@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sooka.mybatis.mapper.TCmsLiveMapper">
+    <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.TCmsLive">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="content_id" jdbcType="INTEGER" property="content_id" />
+        <result column="speakName" jdbcType="VARCHAR" property="speakName" />
+        <result column="speakContent" jdbcType="LONGVARCHAR" property="speakContent" />
+        <result column="speakDate" jdbcType="TIMESTAMP" property="speakDate" />
+        <result column="sort" jdbcType="INTEGER" property="sort" />
+        <result column="userType" jdbcType="INTEGER" property="userType" />
+    </resultMap>
+    <select id="selectByCondition" parameterType="com.sooka.mybatis.model.TCmsLive" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        t_cms_content_live
+        <trim prefix="WHERE ("  suffix=")" prefixOverrides="AND|OR">
+           	<if test="content_id!=null and content_id!=''">
+                content_id = #{content_id,jdbcType=VARCHAR}
+            </if>
+            <if test="speakName!=null and speakName!=''">
+                and speakName like CONCAT('%',#{speakName,jdbcType=VARCHAR},'%')
+            </if>
+        </trim>
+        <choose>
+            <when test="orderField!=null and orderField!='' and orderDirection!=null and orderDirection!='' ">
+                order by ${orderField} ${orderDirection}
+            </when>
+            <otherwise>
+                order by sort desc
+            </otherwise>
+        </choose>
+    </select>
+    <select id="selectForTag" parameterType="com.sooka.mybatis.model.TCmsLive" resultMap="BaseResultMap">
+        SELECT
+        *
+        FROM
+        t_cms_content_live
+        <trim prefix="WHERE ("  suffix=")" prefixOverrides="AND|OR">
+           	<if test="content_id!=null and content_id!=''">
+                content_id = #{content_id,jdbcType=VARCHAR}
+            </if>
+            <if test="speakName!=null and speakName!=''">
+                and speakName like CONCAT('%',#{speakName,jdbcType=VARCHAR},'%')
+            </if>
+        </trim>
+       
+                order by sort desc
+          
+    </select>
+    <select id="selectMaxSort" parameterType="com.sooka.mybatis.model.TCmsLive" resultType="Integer">
+    	select max(sort)+1 maxSort from t_cms_content_live where content_id=#{content_id,jdbcType=VARCHAR}
+    </select>
+</mapper>

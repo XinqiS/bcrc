@@ -1,0 +1,105 @@
+
+
+.header{
+	width:100%;
+	height:auto;
+	}
+.header img{
+	width:100%;
+	height:100%;
+	}
+
+.content{
+	width:94%;
+	margin:20px auto;
+	}
+
+.title{ 
+	width:100%;
+	background:url(../images/bcrczt_06.png) repeat-x;
+	height: 3em;
+    background-size: auto 100%;
+	}
+.title span{
+	background:url(../images/bcrczt_04.png) no-repeat;
+	padding: 0 0 0 7%;
+    height: 3em;
+    line-height: 3em;
+    display: block;
+    background-size: auto 100%;
+	}
+.title span a{
+	background:#fff;
+	padding: 1px 2px;
+    font-size: 1.1em;
+    font-weight: bold;
+	color:#111;
+	}
+
+.all_list{ 
+	margin:10px 0;
+	}
+.all_list li{
+	line-height:40px;
+	font-size:16px;
+	overflow:hidden;
+	}
+.all_list li a{
+	float:left; 
+	color:#333; 
+	background:url(../images/bcrczt_10.png) no-repeat left center; 
+	padding:0 0 0 15px;
+	white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	width: 66%;
+	}
+.all_list li a:hover{
+	color:#000;
+	}
+.all_list li em{
+	float:right; 
+	color:#888;
+	}
+
+
+.footer{ background:url(../images/bcrczt_13.png) no-repeat; background-size:100% 100%; padding:3% 0;margin: 20px 0 0 0;border-top: solid 10px #f0332b;}
+.footer_in{ width:100%; overflow:hidden; margin:0 auto;}
+.footer_in a img{}
+.footer_in a{ display:block; width: 100%; margin: 20px 0 0 0; text-align: center;}
+.footer_in div{ width: 100%; text-align: center;}
+.footer_in div p{ font-size:1em; line-height:2em; color:#333;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

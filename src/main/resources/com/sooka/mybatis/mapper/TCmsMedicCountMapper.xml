@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sooka.mybatis.mapper.TCmsMedicCountMapper">
+    <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.TCmsMediaCount">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="callConunt" jdbcType="INTEGER" property="callConunt" />
+        <result column="callDate" jdbcType="TIMESTAMP" property="callDate" />
+        <result column="zl" jdbcType="VARCHAR" property="zl" />
+    </resultMap>
+
+
+    <select id="selectByYear"  parameterType="com.sooka.mybatis.model.TCmsMediaCount" resultMap="BaseResultMap">
+     select  * from  ( select  * from  t_cms_mediacount  where  year(callDate)=#{callYear})
+      t_cms_mediacount  where  month (callDate)=#{callMonth}
+  	</select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.sooka.mybatis.model.TCmsMediaCount">
+    insert into t_cms_mediacount (callConunt,callDate
+      )
+    values (#{callConunt,jdbcType=INTEGER}, #{callDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+</mapper>

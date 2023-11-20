@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlxnryMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlxnry" >
+    <id column="XNRY_ID" property="xnryId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="XNRY_SJ" property="xnrySj" jdbcType="VARCHAR" />
+    <result column="XNRY_JX" property="xnryJx" jdbcType="VARCHAR" />
+    <result column="XNRY_JB" property="xnryJb" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    XNRY_ID, JL_BB_ID, XNRY_SJ, XNRY_JX, XNRY_JB
+  </sql>
+</mapper>

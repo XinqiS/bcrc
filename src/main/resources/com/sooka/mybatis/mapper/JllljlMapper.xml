@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JllljlMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jllljl" >
+    <id column="JLLL_ID" property="jlllId" jdbcType="VARCHAR" />
+    <result column="QY_ID" property="qyId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="JLLL_SJ" property="jlllSj" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JLLL_ID, QY_ID, JL_BB_ID, JLLL_SJ
+  </sql>
+  <select id="findJllljlByZhId" parameterType="java.util.Map"  resultType="java.util.Map">
+  		SELECT
+			ll.JLLL_ID,qy.QY_ID,qy.QY_QYMC,qy.QY_XXDZ,qy.QY_SSHY,qy.QY_QYGM
+			
+		
+		FROM
+		tb_jllljl ll
+		LEFT JOIN tb_qy_info qy ON ll.QY_ID = qy.QY_ID 
+		WHERE  ll.JL_BB_ID in (select JL_BB_ID from tb_jl_banben where JIANLI_ID = (select JIANLI_ID from tb_jl_info where ZH_ID= #{ZH_ID} ))     
+  </select>
+</mapper>

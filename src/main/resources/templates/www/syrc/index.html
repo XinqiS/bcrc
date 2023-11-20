@@ -1,0 +1,682 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-index.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-index1360.css">
+    <script src="${resPath}/bcrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/bcrc/js/TL_Tab.js"></script>
+    <script src="${resPath}/bcrc/js/TL_PC_Slider.js"></script>
+
+
+</head>
+
+<body onload="grdlsuccess(); " >
+<div style="position: fixed;right: 10px; top:30%; z-index: 999; width: 200px;">
+<#topc_list size="4"  var="bean" titleLen="10">
+@if(isEmpty(bean.pc_url)){
+<a   href="javascript:void(0)" ><img style=" width: 100%; height: auto;" src="${bean.pc_file!}"></a>
+@}else{
+<a  target="_blank" href="${bean.pc_url!}" ><img style=" width: 100%; height: auto;" src="${bean.pc_file!}"></a>
+@}
+</#topc_list>
+</div>
+<div class="contentbig">
+    <!--header begin-->
+    @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+    <!--内容开始-->
+    <div class="wz_cont">
+        <!--重要通知-->
+        <div class="notice">
+        	<span>
+            	<a href="${frontPath!}/${site.siteId!}/1045.html"><img src="${resPath}/bcrc/images/bcrc-index_07 (3).png"/>
+                <img src="${resPath}/bcrc/images/bcrc-index_07 (2).png"/></a>
+            </span>
+            <#cms_content_list siteId="${site.siteId}" categoryId="1045" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="1" titleLen="30" var="bean">
+            <h1><a href="${bean.url!}" title="${bean.title!}">${bean.title!}</a></h1>
+            </#cms_content_list>
+        </div>
+    <div class="clear"></div>
+    <!--新闻登录-->
+    <div class="news_login">
+        <div class="news_left">
+            <!--*****图片轮播开始*****-->
+            <div class="ly_01_01 fl">
+                <div class="ly_01_01_box">
+                    <a class="df_prev" href="javascript:void(0)"></a>
+                    <a class="df_next" href="javascript:void(0)"></a>
+                    <h6></h6>
+                    <ol></ol>
+                    <ul>
+                        <#cms_content_list siteId="${site.siteId}" categoryId="1041" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="4" titleLen="24" var="bean">
+                        <li>
+                            <p><a href="${bean.url!}"><img src="${bean.thumb!}" /></a></p>
+                            <h3><a href="${bean.url!}" title="${bean.title!}">${bean.title!}</a></h3>
+                        </li>
+                    </#cms_content_list>
+                    </ul>
+                    <script type="text/javascript">
+                        $(function(){
+                            $(".ly_01_01").TL_PC_Slider({
+                                tab : ".ly_01_01_box ol",
+                                box : ".ly_01_01_box ul",
+                                type : "TL_Display",
+                                auto_play: true,
+                                page: true,
+                                actions: "tl_hover",//tl_click 点击发生
+                                timer: 800,//持续时间
+                                speed: 3000
+                            });
+                        });
+                    </script>
+                </div>
+            </div>
+            <!--*****图片轮播结束*****-->
+            <div class="jy_news">
+                <div class="all_title"><a href="${frontPath!}/${site.siteId!}/1042.html"><span>就业动态</span></a></div>
+                <ul class="all_list">
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1042" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="8" titleLen="15" var="bean">
+                     <li> <a  href="${bean.url!}" title="${bean.title!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                    </#cms_content_list>
+                </ul>
+            </div>
+        </div>
+        <div class="loginbox">
+            <!--登录选项卡开始-->
+            <div class="login_in">
+                <div class="login_title clearfix" id="qh"> <span style="cursor: pointer;">个人登录</span> <span style="cursor: pointer;">企业登录</span></div>
+                <div class="clear"></div>
+                <div class="login_cont" id="gr">
+                    <div class="name">
+                        <img src="${resPath}/bcrc/images/bcrc-index_20.png"/>
+                        <input type="text" id="zh_user" placeholder="请输入用户名"/>
+                    </div>
+                    <div class="name">
+                        <img src="${resPath}/bcrc/images/bcrc-index_25.png"/>
+                        <input type="password" id="zh_pwd" placeholder="请输入密码"/>
+                    </div>
+                    <a class="wjmm" target="_blank"  href="${ctxPath}/system/reception/gotowjmm1">忘记密码?</a>
+                    <div class="clear"></div>
+                    <div class="login_but"><input type="button" style="cursor: pointer;" value="登录" onclick="grdl();"/><a href="${ctxPath}/system/reception/gotogrzc">个人注册</a></div>
+                </div>
+                <div class="login_cont" id="qy">
+                    <div class="name">
+                        <img src="${resPath}/bcrc/images/bcrc-index_20.png"/>
+                        <input type="text" id="zh_user_qy" placeholder="请输入用户名"/>
+                    </div>
+                    <div class="name">
+                        <img src="${resPath}/bcrc/images/bcrc-index_25.png"/>
+                        <input type="password" id="zh_pwd_qy" placeholder="请输入密码"/>
+                    </div>
+                    <a class="wjmm" target="_blank"  href="${ctxPath}/system/reception/gotowjmm1">忘记密码?</a>
+                    <div class="clear"></div>
+                    <div class="login_but"><input type="button" style="cursor: pointer;" value="登录" onclick="qydl();"/><a href="${ctxPath}/system/reception/gotoqyzc">企业注册</a></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <script type="text/javascript">
+                $(function(){
+                    $(this).TL_Tab ({
+                        tab : ".login_in .login_title span",
+                        box : ".login_cont",
+                        events : "over",// over
+                        num : 1,
+                        speed : 10
+                    });
+                });
+                function grdlsuccess(){
+                    if('${session.tbZhInfo_loginSession.zh_sf!}' == '0'){
+                        $("#qy").children().remove();
+                        $("#gr").children().remove();
+                        $("#qh").remove();
+                        $.ajax({
+                            url:"${ctxPath}/cms/resume/getGrInfo",   //请求的url地址
+                            dataType:"json",   //返回格式为json
+                            data:{},    //参数值
+                            type:"post",   //请求方式
+                            success:function(data){
+                                var tx;
+                                if(isNull(data.jlinfo.jianliXb)){
+                                    if(isNull(data.jlinfo.jianliTx) || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/man.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+                                }else if(data.jlinfo.jianliXb==1){
+                                    if(isNull(data.jlinfo.jianliTx) || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/woman.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+
+                                }else if(data.jlinfo.jianliXb==0){
+                                    if(isNull(data.jlinfo.jianliTx) || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/man.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+                                }else{
+                                    tx="${resPath}/bcrc/images/man.png";
+                                }
+                                $("#gr").append(' <div class="login_after GR" >'
+                                     +' <div class="GR_pic"><img id="jlzxtxtp" src="${resPath}/bcrc/images/bcrc-index_14.png"/></div>'
+                                     +' <p><span id="jianliXm"></span><a target="_blank" href="${ctxPath}/cms/resume/findUserResume">【简历中心】</a></p>'
+                                    +' <div class="clear"></div>'
+                                    + '<ul>'
+                                    + '<li><a target="_blank" href="${ctxPath}/cms/resume/findWdscList"><img src="${resPath}/bcrc/images/bcrc-index_15-26.png"/>我的收藏</a></li>'
+                                    + ' <li><a target="_blank" href="${ctxPath}/cms/resume/findWdsqList"><img src="${resPath}/bcrc/images/bcrc-index_07-21.png"/>我的申请</a></li>'
+                                    + '<li><a target="_blank" href="${ctxPath}/cms/resume/goToXgmm"><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>'
+                                    + '</ul>'
+                                    + '<lable><a href="${ctxPath}/system/reception/logOut" tittle="退出登录">退出登录</a></lable>'
+                                    + '</div>');
+                                $("#jlzxtxtp").attr("src",tx);
+                               if(!isNull(data.jlinfo.jianliXm)){
+                                   $("#jianliXm").text(data.jlinfo.jianliXm);
+                               }
+                            }
+                        });
+                    }
+
+
+
+
+                    if('${session.tbZhInfo_loginSession.zh_sf!}' == '1'){
+                        $.ajax({
+                            url:"${ctxPath}/system/reception/loginsuccess",   //请求的url地址
+                            dataType:"json",   //返回格式为json
+                            data:{"id":'${session.tbZhInfo_loginSession.zh_id!}'},    //参数值
+                            type:"post",   //请求方式
+                            success:function(data){
+                                var qyNotNull='${session.QypztSession}';
+                                $("#qy").children().remove();
+                                $("#gr").children().remove();
+                                $("#qh").remove();
+                                $("#gr").append(' <div class="login_after QY" >'
+                                    +' <div class="GR_pic"><img id="imgQy" src="${resPath}/bcrc/images/weidengluqiyelogo.png"/></div>'
+                                    +' <p><span><a id="gs">企业名称</a></span></p>'
+                                    +' <div class="clear"></div>'
+                                    +'<ul>'
+                                    +' <li id="gongsiziliao"><a target="_blank" href="${ctxPath}/qyzx/goToyprclg"><img src="${resPath}/bcrc/images/gszl.png"/>公司资料</a></li>'
+                                    +'<li id="fabuzhaopin"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/fbxx.png"/>发布招聘信息</a></li>'
+                                    +'<li id="fabuzhiwei"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/sszw.png"/>发布职位管理</a></li>'
+                                    +'<li id="yinfpinrencai"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/rcfw.png"/>应聘人才管理</a></li>'
+                                    +'<li ><a target="_blank" href="${ctxPath}/qyzx/goToXgmm"><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>'
+                                    +'</ul>'
+                                    +'<lable><a href="${ctxPath}/system/reception/logOut" tittle="退出登录" >退出登录</a></lable>'
+                                    +'</div>');
+
+
+
+                                if(data.zw_id==''||qyNotNull=='000'){
+                                    jQuery("#gs").html("");
+                                }else {
+                                    jQuery("#gs").html('<a href="${ctxPath}/qyzx/goToyprclg" target="open">'+data.zw_id+'</a>');
+                                    $("#fabuzhaopin").children("a").attr("href","${ctxPath}/qyzx/goToQyzxZjgw");
+                                    $("#fabuzhiwei").children("a").attr("href","${ctxPath}/qyzx/goToQyzxFbzwgl");
+                                    $("#yinfpinrencai").children("a").attr("href","${ctxPath}/qyzx/goToQyzxYprcgl");
+                                    jQuery("#yjsjl").html(data.tdjl_tdzt);
+                                    jQuery("#msyq").html(data.tdjl_mszt) ;
+
+
+                                    if(data.tdjl_time !=null&&data.tdjl_time !=""){
+                                        $("#imgQy").attr("src",data.tdjl_time);
+                                    }
+                                }
+                                if(data.msg=='error'){
+                                    $("#gongsiziliao").children("a").attr("href","${ctxPath}/qyzx/goToQyzxQyxxxgJbxx");
+                                    $("#fabuzhaopin").children("a").attr("target","");
+                                    $("#fabuzhiwei").children("a").attr("target","");
+                                    $("#yinfpinrencai").children("a").attr("target","");
+                                    $("#fabuzhaopin").children("a").attr("style","color: #bfbfbf;");
+                                    $("#fabuzhiwei").children("a").attr("style","color: #bfbfbf;");
+                                    $("#yinfpinrencai").children("a").attr("style","color: #bfbfbf;");
+                                }
+                            }
+                        });
+                    }
+                }
+                function isNull(str) {
+                    if (str == "")
+                        return true;
+                    var regu = "^[ ]+$";
+                    var re = new RegExp(regu);
+                    return re.test(str);
+                }
+                function  grdl(){
+                    var zh_user=$('#zh_user').val();
+                    var zh_pwd=$('#zh_pwd').val();
+
+                    if(zh_user==''){
+                        alert("用户名不能为空");
+                        $("#zh_user").val("");
+                        return;
+                    }
+                    if(zh_pwd==''){
+                        alert("密码不能为空");
+                        $("#zh_pwd").val("");
+                        return;
+                    }
+                    $.ajax({
+                        url:"${ctxPath}/system/reception/signin",   //请求的url地址
+                        dataType:"json",   //返回格式为json
+                        data:{"zh_user":zh_user,"zh_pwd":zh_pwd,"type":"gr"},    //参数值
+                        type:"post",   //请求方式
+                        success:function(data){
+                            if(data.flag==0){
+                                $("#gr").children().remove();
+                                $("#qh").remove();
+                                var tx;
+                                if(isNull(data.jlinfo.jianliXb)){
+                                    if(isNull(data.jlinfo.jianliTx)  || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/man.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+                                }else if(data.jlinfo.jianliXb==1){
+                                    if(isNull(data.jlinfo.jianliTx) || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/woman.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+
+                                }else if(data.jlinfo.jianliXb==0){
+                                    if(isNull(data.jlinfo.jianliTx) || data.jlinfo.jianliTx=="null"){
+                                        tx="${resPath}/bcrc/images/man.png";
+                                    }else{
+                                        tx=data.jlinfo.jianliTx;
+                                    }
+                                }else{
+                                    tx="${resPath}/bcrc/images/man.png";
+                                }
+                                $("#gr").append(' <div class="login_after GR" >'
+                                    +' <div class="GR_pic"><img id="jlzxtxtp" src="${resPath}/bcrc/images/bcrc-index_14.png"/></div>'
+                                    +' <p><span id="jianliXm1"></span><a target="_blank" href="${ctxPath}/cms/resume/findUserResume">【简历中心】</a></p>'
+                                    +' <div class="clear"></div>'
+                                    + '<ul>'
+                                    + '<li><a target="_blank" href="${ctxPath}/cms/resume/findWdscList"><img src="${resPath}/bcrc/images/bcrc-index_15-26.png"/>我的收藏</a></li>'
+                                    + ' <li><a target="_blank" href="${ctxPath}/cms/resume/findWdsqList"><img src="${resPath}/bcrc/images/bcrc-index_07-21.png"/>我的申请</a></li>'
+                                    + '<li><a target="_blank" href="${ctxPath}/cms/resume/goToXgmm"><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>'
+                                    + '</ul>'
+                                    + '<lable><a href="${ctxPath}/system/reception/logOut" tittle="退出登录">退出登录</a></lable>'
+                                    + '</div>');
+                                if(!isNull(data.jlinfo.jianliXm)){
+                                    $("#jianliXm1").text(data.jlinfo.jianliXm);
+                                }
+
+                                $("#jlzxtxtp").attr("src",tx);
+
+                            }
+                            else if(data.flag==1){
+                                alert(" 此账号非个人账号 请使用个人账号登录");
+                                $("#zh_user").val("");
+                                $("#zh_pwd").val("");
+                            }
+                            else if(data.flag==2){
+                                alert("您输入的帐号或密码有误,重新登录或尝试找回密码");
+                                $("#zh_user").val("");
+                                $("#zh_pwd").val("");
+                            }
+                        }
+                    });
+                }
+                function qydl(){
+                    var zh_user=$('#zh_user_qy').val();
+                    var zh_pwd=$('#zh_pwd_qy').val();
+                    if(zh_user==''){
+                        alert("用户名不能为空");
+                        return;
+                    }
+                    if(zh_pwd==''){
+                        alert("密码不能为空");
+                        return;
+                    }
+                    $.ajax({
+                        url:"${ctxPath}/system/reception/signin",   //请求的url地址
+                        dataType:"json",   //返回格式为json
+                        data:{"zh_user":zh_user,"zh_pwd":zh_pwd,"type":"yq"},    //参数值
+                        type:"post",   //请求方式
+                        success:function(data){
+                            if(data.flag==0){
+                                $("#zh_user_qy").val("");
+                                $("#zh_pwd_qy").val("");
+                                alert(" 此账号非企业账号 请使用企业账号登录");
+                            }
+                            else if(data.flag==1){
+                                $.ajax({
+                                    url:"${ctxPath}/system/reception/loginsuccess",   //请求的url地址
+                                    dataType:"json",   //返回格式为json
+                                    type:"post",   //请求方式
+                                    success:function(data){
+                                        $("#qy").children().remove();
+                                        $("#qh").remove();
+                                        $("#qy").append(' <div class="login_after QY" >'
+                                            +' <div class="GR_pic"><img id="imgQy" src="${resPath}/bcrc/images/weidengluqiyelogo.png"/></div>'
+                                            +' <p><span><a id="gs">企业名称</a></span></p>'
+                                            +' <div class="clear"></div>'
+                                             +'<ul>'
+                                             +' <li id="gongsiziliaoId"><a target="_blank" href="${ctxPath}/qyzx/goToyprclg"><img src="${resPath}/bcrc/images/gszl.png"/>公司资料</a></li>'
+                                            +'<li id="fabuzhaopin"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/fbxx.png"/>发布招聘信息</a></li>'
+                                            +'<li id="fabuzhiwei"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/sszw.png"/>发布职位管理</a></li>'
+                                            +'<li id="yinfpinrencai"><a target="_blank" href="javascript:void(0);"><img src="${resPath}/bcrc/images/rcfw.png"/>应聘人才管理</a></li>'
+                                            +'<li><a target="_blank" href="${ctxPath}/qyzx/goToXgmm"><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>'
+                                            +'</ul>'
+                                            +'<lable><a href="${ctxPath}/system/reception/logOut" tittle="退出登录" >退出登录</a></lable>'
+                                            +'</div>');
+
+                                        if(data.msg=='error'){
+                                            $("#gongsiziliaoId").children("a").attr("href","${ctxPath}/qyzx/goToQyzxQyxxxgJbxx");
+                                            $("#fabuzhaopin").children("a").attr("target","");
+                                            $("#fabuzhiwei").children("a").attr("target","");
+                                            $("#yinfpinrencai").children("a").attr("target","");
+                                            $("#fabuzhaopin").children("a").attr("style","color: #bfbfbf;");
+                                            $("#fabuzhiwei").children("a").attr("style","color: #bfbfbf;");
+                                            $("#yinfpinrencai").children("a").attr("style","color: #bfbfbf;");
+                                            jQuery("#gs").html("");
+
+                                        }else {
+                                            jQuery("#gs").html('<a href="${ctxPath}/qyzx/goToyprclg" target="open">'+data.zw_id+'</a>');
+                                            $("#fabuzhaopin").children("a").attr("href","${ctxPath}/qyzx/goToQyzxZjgw");
+                                            $("#fabuzhiwei").children("a").attr("href","${ctxPath}/qyzx/goToQyzxFbzwgl");
+                                            $("#yinfpinrencai").children("a").attr("href","${ctxPath}/qyzx/goToQyzxYprcgl");
+                                            jQuery("#yjsjl").html(data.tdjl_tdzt);
+                                            jQuery("#msyq").html(data.tdjl_mszt) ;
+                                            if(data.tdjl_time !=null&&data.tdjl_time !=""){
+                                                $("#imgQy").attr("src",data.tdjl_time);
+                                            }
+                                        }
+
+                                    }
+                                });
+                            }
+                            else if(data.flag==2){
+                                $("#zh_user_qy").val("");
+                                $("#zh_pwd_qy").val("");
+                                alert("您输入的帐号或密码有误,重新登录或尝试找回密码");
+                            }
+                        }
+                    });
+                }
+            </script>
+            <!--登录选项卡结束-->
+            <!--个人登录后开始-->
+           <!-- <div class="login_after GR" style=" display:none;">
+                <div class="GR_pic"><img src="${resPath}/bcrc/images/bcrc-index_14.png"/></div>
+                <p><span>李凤祥</span><a>【简历中心】</a></p>
+                <div class="clear"></div>
+                <ul>
+                    <li><a><img src="${resPath}/bcrc/images/bcrc-index_15-26.png"/>我的收藏</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/bcrc-index_07-21.png"/>我的申请</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>
+                </ul>
+                <lable>退出登录</lable>
+            </div>-->
+            <!--个人登录后结束-->
+            <!--企业登录后开始-->
+            <!--<div class="login_after QY" style=" display:none;">
+                <div class="GR_pic"><img src="${resPath}/bcrc/images/bcrc-index_14.png"/></div>
+                <p><span>企业名称企业名称企业名称企业名称</span></p>
+                <div class="clear"></div>
+                <ul>
+                    <li><a><img src="${resPath}/bcrc/images/gszl.png"/>公司资料</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/fbxx.png"/>发布招聘信息</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/sszw.png"/>发布职位管理</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/rcfw.png"/>应聘人才管理</a></li>
+                    <li><a><img src="${resPath}/bcrc/images/bcrc-index_17-29.png"/>修改密码</a></li>
+                </ul>
+                <lable>退出登录</lable>
+            </div>-->
+            <!--企业登录后结束-->
+        </div>
+    </div>
+    <div class="clear"></div>
+    <!--*****专题轮播开始*****-->
+    <div class="ztzl">
+        <div class="ztzl_box">
+            <a class="df_prev" href="javascript:void(0)"></a>
+            <a class="df_next" href="javascript:void(0)"></a>
+            <ol></ol>
+            <ul>
+                <li>
+                    <p><a href="https://www.jlrc.com.cn/ww/wwbaindexhz.html"><img src="${resPath}/bcrc/images/bcrc-index_35.png" /></a></p>
+                </li>
+                <li>
+                    <p><a href="${frontPath!}/4/1045.html"><img src="${resPath}/bcrc/images/wwbaindex.jpg" /></a></p>
+                </li>
+
+            </ul>
+            <script type="text/javascript">
+                $(function(){
+                    $(".ztzl").TL_PC_Slider({
+                        tab : ".ztzl_box ol",
+                        box : ".ztzl_box ul",
+                        type : "TL_Display",
+                        auto_play: true,
+                        page: true,
+                        actions: "tl_hover",//tl_click 点击发生
+                        timer: 800,//持续时间
+                        speed: 3000
+                    });
+                });
+            </script>
+        </div>
+    </div>
+    <!--*****专题轮播结束*****-->
+    <div class="listbig">
+        <!--登录选项卡开始-->
+        <div class="news_tab">
+            <div class="news_tab_title clearfix"> <a href="${frontPath!}/${site.siteId!}/1043.html"><span>政策法规</span></a> <a href="${frontPath!}/${site.siteId!}/1044.html"><span>活动专区</span></a></div>
+            <div class="clear"></div>
+            <div class="news_tab_cont">
+                <ul class="all_list">
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1043" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="28" var="bean">
+                     <li> <a  href="${bean.url!}" title="${bean.title!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                    </#cms_content_list>
+                </ul>
+            </div>
+            <div class="news_tab_cont">
+                <ul class="all_list">
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1044" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="28" var="bean">
+                    <li> <a  href="${bean.url!}" title="${bean.title!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                </#cms_content_list>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                $(this).TL_Tab ({
+                    tab : ".news_tab .news_tab_title a",
+                    box : ".news_tab_cont",
+                    events : "over",// over
+                    num : 1,
+                    speed : 10
+                });
+            });
+        </script>
+        <!--登录选项卡开始-->
+        <div class="news_tab_01">
+            <div class="news_tab_title_01 clearfix"> <a href="${frontPath!}/${site.siteId!}/1056.html"><span>校园信息</span></a> <a href="${frontPath!}/${site.siteId!}/1049.html"><span>创业政策</span></a></div>
+            <div class="clear"></div>
+            <div class="news_tab_cont_01">
+                <ul class="all_list">
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1056" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="28" var="bean">
+                    <li> <a  href="${bean.url!}" title="${bean.title!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                </#cms_content_list>
+
+                </ul>
+            </div>
+            <div class="news_tab_cont_01">
+                <ul class="all_list">
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1049" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="28" var="bean">
+                    <li> <a  href="${bean.url!}" title="${bean.title!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                </#cms_content_list>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function(){
+                $(this).TL_Tab ({
+                    tab : ".news_tab_01 .news_tab_title_01 a",
+                    box : ".news_tab_cont_01",
+                    events : "over",// over
+                    num : 1,
+                    speed : 10
+                });
+            });
+        </script>
+    </div>
+    <div class="clear"></div>
+    <!--招聘信息-->
+    <div class="zpxx">
+
+        <div class="zpxx_title">
+            <div class="zpxx_title_in"><i></i><span>招聘信息</span><i></i></div>
+            <a href="${ctxPath}/gjss/selectExample?mc=&zw_gzxz=0">更多+</a>
+        </div>
+        <div class="clear"></div>
+        <ul class="zpgw">
+            <#gw_info_list  size="12"  var="bean"  gzxz="0">
+            <li>
+                <a href="${ctxPath}/qyzx/qyXq?qy_id=${bean.qy_id!}" >
+                    <span TITLE="${bean.zw_zwmc!}">${strutil.length(bean.zw_zwmc!)>9?strutil.subStringTo(bean.zw_zwmc!,0,9)+"...":bean.zw_zwmc!}</span>
+                    <em>
+                        @if(bean.zw_yxfw==0){
+                        1000元以下
+                        @}else if(bean.zw_yxfw==1){
+                        1000-2000元
+                        @}else if(bean.zw_yxfw==2){
+                        2000-4000元
+                        @}else if(bean.zw_yxfw==3){
+                        4000-6000元
+                        @}else if(bean.zw_yxfw==4){
+                        6000-8000元
+                        @}else if(bean.zw_yxfw==5){
+                        8000-1000元
+                        @}else if(bean.zw_yxfw==6){
+                        10000-15000元
+                        @}else if(bean.zw_yxfw==7){
+                        15000-20000元
+                        @}else if(bean.zw_yxfw==8){
+                        20000-30000元
+                        @}else if(bean.zw_yxfw==9){
+                        30000-50000元
+                        @}else if(bean.zw_yxfw==10){
+                        50000-50000元
+                        @}else if(bean.zw_yxfw==11){
+                        70000-100000元
+                        @}else if(bean.zw_yxfw==12){
+                        100000元以上
+                        @}
+                    </em>
+                    <div class="clear"></div>
+                    <p>${bean.qy_qymc!}</p>
+                    <i>${bean.qy_xxdz!}</i>
+                </a>
+                <div class="clear"></div>
+            </li>
+            </#gw_info_list>
+        </ul>
+    </div>
+    <div class="clear"></div>
+
+    <!--招聘信息-->
+    <div class="zpxx">
+    <a href="${frontPath!}/4/1080.html"><img src="${resPath}/bcrc/images/bwjxgwjy.jpg" style="width:100%; height:auto;"/></a>
+        <!-- <div class="zpxx_title">
+             <div class="zpxx_title_in"><i></i><span style="width: 360px;">就业见习岗位信息发布/见习人员招募</span><i></i></div>
+             <a href="${ctxPath}/gjss/selectExample?mc=&zw_gzxz=3">更多+</a>
+         </div>
+         <div class="clear"></div>
+         <ul class="zpgw">
+             <#gw_info_list  size="8"  var="bean"  gzxz="3">
+             <li>
+                 <a href="${ctxPath}/qyzx/qyXq?qy_id=${bean.qy_id!}" >
+                     <span TITLE="${bean.zw_zwmc!}">${strutil.length(bean.zw_zwmc!)>9?strutil.subStringTo(bean.zw_zwmc!,0,9)+"...":bean.zw_zwmc!}</span>
+                     <em>
+                         @if(bean.zw_yxfw==0){
+                         1000元以下
+                         @}else if(bean.zw_yxfw==1){
+                         1000-2000元
+                         @}else if(bean.zw_yxfw==2){
+                         2000-4000元
+                         @}else if(bean.zw_yxfw==3){
+                         4000-6000元
+                         @}else if(bean.zw_yxfw==4){
+                         6000-8000元
+                         @}else if(bean.zw_yxfw==5){
+                         8000-1000元
+                         @}else if(bean.zw_yxfw==6){
+                         10000-15000元
+                         @}else if(bean.zw_yxfw==7){
+                         15000-20000元
+                         @}else if(bean.zw_yxfw==8){
+                         20000-30000元
+                         @}else if(bean.zw_yxfw==9){
+                         30000-50000元
+                         @}else if(bean.zw_yxfw==10){
+                         50000-50000元
+                         @}else if(bean.zw_yxfw==11){
+                         70000-100000元
+                         @}else if(bean.zw_yxfw==12){
+                         100000元以上
+                         @}
+                     </em>
+                     <div class="clear"></div>
+                     <p>${bean.qy_qymc!}</p>
+                     <i>${bean.qy_xxdz!}</i>
+                 </a>
+                 <div class="clear"></div>
+             </li>
+         </#gw_info_list>
+         </ul>-->
+     </div>
+     <div class="clear"></div>
+     <!--求职信息-->
+    <div class="zpxx">
+        <div class="zpxx_title">
+            <div class="zpxx_title_in"><i></i><span>求职信息</span><i></i></div>
+            <a href="${ctxPath}/qyzx/searchTalents">更多+</a>
+        </div>
+        <div class="clear"></div>
+        <ul class="zpgw qzxx">
+            <#zw_td_list size="12"  var="bean" titleLen="10">
+            <li>
+               <!-- <a href="${ctxPath}/cms/resume/yljlforqy?tdjlId=${bean.JIANLI_ID}&id=${bean.JL_BB_ID}&zh_id=${bean.ZH_ID}">-->
+                <a href="${ctxPath}/cms/resume/previewResume?id=${bean.JL_BB_ID}&zh_id=${bean.ZH_ID}">
+                    <div class="qzxx_jbxx">
+                        <span>${bean.JIANLI_XM!}</span>
+                        @if(isNotEmpty(bean.JYJL_XL) && bean.JYJL_XL !="null"){
+                            <em>${bean.JYJL_XL}</em>
+                        @}else{
+                        <em></em>
+                        @}
+                        @if(bean.JIANLI_XB=="0"){
+                        <em>男</em>
+                        @}else{
+                        <em>女</em>
+                        @}
+                    </div>
+                    <div class="clear"></div>
+                    <p>${bean.JYJL_ZY!}</p>
+                    <i>${bean.JL_BB_TIME!}</i>
+                </a>
+                <div class="clear"></div>
+            </li>
+            </#zw_td_list>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <!--相关链接-->
+
+    @includeFileTemplate("/www/syrc/include/link.html",{"current":"index"}){}
+</div>
+<!--内容结束-->
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+<!--底部结束-->
+</div>
+</body>
+</html>

@@ -1,0 +1,99 @@
+@includeFileTemplate("/www/syrc/include/zypx-header.html"){}
+    
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/zypx_04.png" width="171" height="48"></h1>
+        <ul>
+        	<li><a href="${frontPath!}/${site.siteId}/1026.html">资料下载</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1024/12280.html">招生简章</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1025/12281.html">政策解读</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1027.html">专家团队</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1023.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	<div class="ly_01_01 fl">
+          <div class="ly_01_01_box">
+            <a class="df_prev" href="javascript:void(0)"></a>
+            <a class="df_next" href="javascript:void(0)"></a>
+            <ol></ol>
+            <ul>
+            <#cms_content_list siteId="${site.siteId}" categoryId="1030" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="5" titleLen="20" var="bean">
+              <li>
+                <p><a href="#"><img src="${bean.file!}" /></a></p>
+              </li>
+               </#cms_content_list>
+              
+              
+            </ul>
+            <script type="text/javascript">
+                $(function(){
+                    $(".ly_01_01").TL_PC_Slider({
+                        tab : ".ly_01_01_box ol",
+                        box : ".ly_01_01_box ul",
+                        type : "TL_Display",
+                        auto_play: true,
+                        page: true,
+                        actions: "tl_hover",//tl_click 点击发生
+                        timer: 800,//持续时间
+                        speed: 3000
+                    });
+                });
+            </script>
+          </div>
+        </div>
+    	<div class="cypx fr">
+        	<div class="all_title gjrc"><i></i><a>松原人才市场创业培训</a></div>
+            <p>松原人才市场创业培训为应届毕业生免费提供创业培训，免费提供教材</p>
+            <p>&nbsp;</p>
+            <span>培训时间：另行通知</span>
+            <span>培训内容：创业培训</span>
+            <a class="zxbm" 
+          @if(session.tbZhInfo_loginSession !=null){
+          target="_blank"   href="${ctxPath}/cms/zxbm/input"
+          @}else {
+          href="javascript:void(0)" onclick="jinggao('${resPath}/syrc/zxbm.html');"
+          @}
+            
+             >在线报名</a>
+        </div>
+    
+    <script type="text/javascript">
+    function jinggao(url){
+   alert("对不起！您还未登录，请您先登录");
+  window.location.href="${ctxPath}/system/reception/nologin?url="+url;
+   }
+    </script>
+    	<div class="pxnr fr">
+        	<div class="all_title gjrc"><i></i><a>培训内容</a></div>
+            <div class="pxnr_in">
+                <dl class="zypx fl">
+                	<dd>职业技能鉴定</dd>
+                	<#cms_content_list siteId="${site.siteId}" categoryId="1028" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="22" var="bean">
+                    <dt><a href="${bean.url}">${bean.title!}</a>
+                    ${bean.temp!}<em>${bean.inputdate,dateFormat="yyyy年MM月dd日"}</em></dt>
+                     </#cms_content_list>
+                </dl>
+                <div class="fengexian fl"></div>
+                <dl class="zypx fr">
+                	<dd>企业内训</dd>
+                    <#cms_content_list siteId="${site.siteId}" categoryId="1029" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="22" var="bean">
+                    <dt><a href="${bean.url}">${bean.title!}</a> ${bean.temp!}<em>${bean.inputdate,dateFormat="yyyy年MM月dd日"}</em></dt>
+                     </#cms_content_list>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/syyc-footer.html"){}
+

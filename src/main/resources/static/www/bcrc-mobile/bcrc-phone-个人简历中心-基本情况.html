@@ -1,0 +1,432 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="Expires" content="0" />
+<meta name="renderer" content="webkit" />
+<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+<title>白城市公共人才创业就业服务平台</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-phone-body.css">
+<link rel="stylesheet" type="text/css" href="css/bcrc-phone-page.css">
+<link rel="stylesheet" href="css/sy_sjbase.css"  />
+<link rel="stylesheet" href="css/swiper.min.css"  />
+<link rel="stylesheet" href="css/cover.css"  /><!--地区选择-->
+<link rel="stylesheet" type="text/css" href="css/resume.css"  />
+<script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="js/basic.js" ></script>
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		//$_CONFIG['domain'] = '//m.51job.com/';
+		//$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		//$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		//$_CONFIG['template'] = 'resume/baseinfo';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '长春';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+
+</head>
+
+<body>
+<div class="contentbig grzxcont">
+	<div class="index_login"><a>个人中心</a></div>
+	<!--top开始-->
+	<div class="nav">
+        <ul>
+        	<li><a>网站首页</a></li>
+            <li>
+            	<a>就业信息</a>
+                <div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+            <li>
+            	<a>就业指导</a>
+            	<div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+            <li><a>求职信息</a></li>
+            <li><a>招聘信息</a></li>
+            <li>
+            	<a>就业资讯</a>
+            	<div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+            <li>
+            	<a>办事指南</a>
+            	<div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+            <li>
+            	<a>创业园地</a>
+            	<div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+            <li>
+            	<a>关于我们</a>
+            	<div class="child_nav">
+                	<a>白城市就业信息</a>
+                    <a>洮南市就业信息</a>
+                    <a>大安市就业信息</a>
+                    <a>通榆县就业信息</a>
+                    <a>镇赉县就业信息</a>
+                </div>
+            </li>
+        </ul>
+        <div class="show_nav">
+            <img src="images/mobile_menu.png"/>
+        </div>
+        <script>
+        $(document).ready(function(){
+						   
+			// 手机版导航显示
+			$('.show_nav').click(function () {
+				$('.nav ul').slideToggle();
+			})
+			
+		});
+        </script>
+    </div>
+    <div class="clear"></div>
+    
+    <!--top结束-->
+    <!--内容开始-->
+    <div class="wz_cont grzx_in">
+    	<div  class="wz_cont_in">
+            <div class="touxiangbox">
+                <div class="con_left">
+                    <div class="all_title"><a><span>基本情况</span></a></div>
+                    
+                    <div class="sbox" ng-controller="appCtrl">
+                        <section  class="upbox clearbox e user">
+                        	<label>头像</label>
+                            <div class="upimg max add">
+                            	<img src="images/man.png" width="38" height="46" alt="头像">
+                            </div>
+                
+                            <div class="max cmax add" id="upload_button">
+                                <input id="file" type="file" accept="image/*" onchange="selectFileImage(this.files[0])">
+                            </div>
+                        </section>
+                
+                        <div class="e">	
+                            <label><em>*</em>姓名</label>
+                            <input type="text" class="txt inputblur" id="cname" maxlength="20" value="王一" placeholder="（必填）请输入姓名" />			<p class="error" style="display:none;" id="err_cname"><span></span></p>
+                        </div>
+                
+                        <div class="e">
+                            <label><em>*</em>性别</label>
+                            <div class="rdob" id="sex">			
+                                <span class="rdo on" value="0">男</span><span class="rdo" value="1">女</span>
+                            </div>
+                        </div>
+                
+                        <a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [-10,70] , 'bday' );">		
+                            <label><em>*</em>出生日期</label>			
+                            <div class="selt">
+                            	<span class="sval" id="bday">1990-07-18</span>
+                            	<p class="error" style="display:none;" id="err_bday">
+                            		<span></span>
+                            	</p>
+                            </div>
+                        </a>					
+                
+                        <div href="javascript:void(0)" class="e">
+                            <label><em>*</em>手机号</label>
+                            <input type="text" class="txt inputblur" id="mobilephone" maxlength="20" value="15956568585" placeholder="（必填）请输入手机号">			
+                            <p class="error" style="display:none;" id="err_mobilephone"><span></span></p>	
+                        </div>
+                
+                        <div class="e">
+                            <label><em>*</em>求职状态</label>
+                            <div class="selt">
+                                <span class="sval">目前正在找工作</span>
+                                <select id="situation">
+                                    <option value="0" selected>目前正在找工作</option>
+                                    <option value="3">观望有好机会会考虑</option>
+                                    <option value="4">我目前不想换工作</option>
+                                </select>
+                            </div>
+                        </div>	
+                
+                        <a href="javascript:void(0)" class="e">
+                            <label><em>*</em>居住地</label>
+                            <div class="txt" onclick="areaPopDeal.showAreaPop(this,'livingarea');" id="jobareaname">南关区</div>
+                            <input type="hidden" id="jobarea" value="240202"/>
+                        </a>
+                
+                        <div class="e">
+                            <label><em>*</em>开始工作年份</label>
+                            <div class="selt">
+                                <span class="sval">2011年</span>				
+                                <select id="workyear">
+                                    <option value="1975" >1975年</option>
+                                    <option value="1976" >1976年</option>
+                                    <option value="1977" >1977年</option>
+                                    <option value="1978" >1978年</option>
+                                    <option value="1979" >1979年</option>
+                                    <option value="1980" >1980年</option>
+                                    <option value="1981" >1981年</option>
+                                    <option value="1982" >1982年</option>
+                                    <option value="1983" >1983年</option>
+                                    <option value="1984" >1984年</option>
+                                    <option value="1985" >1985年</option>
+                                    <option value="1986" >1986年</option>
+                                    <option value="1987" >1987年</option>
+                                    <option value="1988" >1988年</option>
+                                    <option value="1989" >1989年</option>
+                                    <option value="1990" >1990年</option>
+                                    <option value="1991" >1991年</option>
+                                    <option value="1992" >1992年</option>
+                                    <option value="1993" >1993年</option>
+                                    <option value="1994" >1994年</option>
+                                    <option value="1995" >1995年</option>
+                                    <option value="1996" >1996年</option>
+                                    <option value="1997" >1997年</option>
+                                    <option value="1998" >1998年</option>
+                                    <option value="1999" >1999年</option>
+                                    <option value="2000" >2000年</option>
+                                    <option value="2001" >2001年</option>
+                                    <option value="2002" >2002年</option>
+                                    <option value="2003" >2003年</option>
+                                    <option value="2004" >2004年</option>
+                                    <option value="2005" >2005年</option>
+                                    <option value="2006" >2006年</option>
+                                    <option value="2007" >2007年</option>
+                                    <option value="2008" >2008年</option>
+                                    <option value="2009" >2009年</option>
+                                    <option value="2010" >2010年</option>
+                                    <option value="2011" >2011年</option>
+                                    <option value="2012" >2012年</option>
+                                    <option value="2013" >2013年</option>
+                                    <option value="2014" >2014年</option>
+                                    <option value="2015" >2015年</option>
+                                    <option value="2016" >2016年</option>
+                                    <option value="2017" >2017年</option>
+                                    <option value="2018" >2018年</option>
+                                    <option value="2019" >2019年</option>
+                                    <option value="0">暂无工作经验</option>
+                                </select>
+                            </div>
+                        </div>
+                
+                        <div class="e">
+                            <label>证件类型</label>
+                            <div class="selt">
+                                <span class="sval">身份证</span>
+                                <select id="idtype">
+                                    <option value="0">身份证</option>
+                                    <option value="1">护照</option>
+                                    <option value="2">军人证</option>
+                                    <option value="4">港澳居民来往内地通行证</option>
+                                    <option value="5">外国人永久居留身份证</option>
+                                    <option value="3">其它</option>
+                                </select>
+                            </div>
+                        </div>
+                
+                        <div class="e">		
+                            <label>证件号</label>
+                            <p class="ipt">
+                            	<input type="text" id="idcard" class="txt inputblur" placeholder="请输入证件号" maxlength="25" value="" />
+                            </p>
+                            <p class="error" style="display:none;" id="err_idcard"><span></span></p>
+                        </div>
+                
+                        <div href="javascript:void(0)"  class="e">
+                            <label>邮箱</label>
+                            <input type="text" class="txt inputblur" id="cemail" maxlength="20" value="407115856@qq.com" placeholder="请输入邮箱地址">
+                            <p class="error" style="display:none;" id="err_cemail"><span></span></p>
+                        </div>	
+                
+                        <a href="javascript:void(0)" class="e">
+                            <label>国籍/户口</label>
+                            <div class="txt" id="hukouname" class="lkt at bb" onclick="areaPopDeal.showAreaPop(this,'hukou');" >宁波</div>
+                            <input type="hidden" id="hukou" value="080300"/>
+                        </a>
+                
+                        <div class="e eb">
+                            <label>婚姻状况</label>
+                            <div class="selt">
+                                <span class="sval">未婚</span>
+                                <select id='marriage'>
+                                    <option value="0" selected>未婚</option>
+                                    <option value="1">已婚</option>
+                                    <option value="2">保密</option>
+                                </select>
+                            </div>
+                        </div>
+                
+                        <div class="e">
+                            <label>家庭住址</label>
+                            <p class="ipt"><input id='address' type="text" class="txt inputblur" placeholder="请输入" value="" maxlength="50"/></p>
+                            <p class="error" style="display:none;" id="err_address"><span></span></p>
+                        </div>
+                
+                        <div class="e e_g">
+                            <label>身高</label>
+                            <div class="tbox">
+                                <input type="text" id='stature' class="txt inputblur" maxlength="3" placeholder="请输入" value="">
+                                <span class="wy">CM</span>
+                            </div>
+                            <p class="error" style="display:none;" id="err_stature"><span></span></p>
+                        </div>
+                    </div>
+                
+                    <center class="btnbox">
+                        <button class="btn" onclick="saveResumeOne()">保存</button>
+                        <input type="hidden" id="rsmid" value="398719117"/>
+                    </center>
+                    
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容结束-->
+    <!--底部开始-->
+     <div class="footer">
+     	<div class="footer_in">
+        	<a><img src="images/blue.png"/></a>
+            <div>
+            	<p>主办：吉林省白城市暨洮北区人才交流中心&nbsp;&nbsp;&nbsp;技术支持：长春首佳科技有限公司</p>
+				<p>地址：白城市中兴东大路2-21号&nbsp;&nbsp;&nbsp;邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：347660</p>
+				<p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+            </div>
+        </div>
+     </div>
+    <!--底部结束-->
+</div>
+<script type="text/javascript" src="js/fun.js"></script>
+<script type="text/javascript" src="js/d_jobarea.js"></script>
+<script type="text/javascript" src="js/popjobarea.js"></script>
+<script type="text/javascript" src="js/myaccount.js"></script>
+<script type="text/javascript" src="js/resume.js"></script>
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<script type="text/javascript" src="js/exif.js"></script>
+<script type="text/javascript" src="js/transform.js"></script>
+<script type="text/javascript" src="js/alloy_finger.js"></script>
+<script type="text/javascript" src="js/to.js"></script>
+<script type="text/javascript" src="js/uploadhead.js"></script>
+<script type="text/javascript">
+    var time        = '1572572412018';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script>
+<!-- 修改页面 -->
+<div class= "changeinfo" style="display: none">
+	<div class="top">
+		<a href="javascript:void(0);" class="back close"></a>
+		注册资料修改
+	</div>
+
+	<!-- 手机号修改 -->
+	<div class="ff phone" style="display: none">
+		<div class="in">
+			<div class="hd mk1">
+				<span class="bb phone_change switchpage">手机号绑定</span>
+				<span class="bb email_change switchpage">邮箱更换</span>
+			</div>
+			<div class="fn">
+				<div class="i i1">
+					<input type='hidden' id='mp_verifystatus' value="3">
+					<div class="it">
+						<input type="text" class="userNum" id="viewNum" value="+86" readonly ><input type="hidden" value="CN" id="nation"/> 
+                        <input type="hidden" id="old_phone" value="15948700252">
+                        <input type="hidden" id="mpcountry" value="CN">						
+						<select id="countryNum">
+							<option value="+86" value1 = "CN" selected>中国大陆+86</option>
+                            <option value="+852" value1 = "HK">中国香港+852</option>
+                            <option value="+853" value1 = "MO">中国澳门+853</option>
+                            <option value="+886" value1 = "TW">中国台湾+886</option>
+                            <option value="+60" value1 = "MY">马来西亚+60</option>
+                            <option value="+65" value1 = "SG">新加坡+65</option>
+                            <option value="+81" value1 = "JP">日本+81</option>
+                            <option value="+82" value1 = "KR">韩国+82</option>
+                            <option value="+1" value1 = "US">美国+1</option><option value="+1" value1 = "CA">加拿大+1</option><option value="+61" value1 = "AU">澳大利亚+61</option><option value="+64" value1 = "NZ">新西兰+64</option><option value="+355" value1 = "AL">阿尔巴尼亚+355</option><option value="+213" value1 = "DZ">阿尔及利亚+213</option><option value="+93" value1 = "AF">阿富汗+93</option><option value="+54" value1 = "AR">阿根廷+54</option><option value="+1907" value1 = "AK">阿拉斯加+1907</option><option value="+971" value1 = "AE">阿联酋+971</option><option value="+297" value1 = "AW">阿鲁巴岛+297</option><option value="+968" value1 = "OM">阿曼+968</option><option value="+994" value1 = "AZ">阿塞拜疆+994</option><option value="+247" value1 = "AC">阿森松岛+247</option><option value="+20" value1 = "EG">埃及+20</option><option value="+251" value1 = "ET">埃塞俄比亚+251</option><option value="+353" value1 = "IE">爱尔兰+353</option><option value="+372" value1 = "EE">爱沙尼亚+372</option><option value="+376" value1 = "AD">安道尔共和国+376</option><option value="+244" value1 = "AO">安哥拉+244</option><option value="+43" value1 = "AT">奥地利+43</option><option value="+92" value1 = "PK">巴基斯坦+92</option><option value="+595" value1 = "PY">巴拉圭+595</option><option value="+970" value1 = "BL">巴勒斯坦+970</option><option value="+973" value1 = "BH">巴林+973</option><option value="+507" value1 = "PA">巴拿马+507</option><option value="+55" value1 = "BR">巴西+55</option><option value="+441" value1 = "BM">百慕大群岛+441</option><option value="+359" value1 = "BG">保加利亚+359</option><option value="+229" value1 = "BJ">贝宁+229</option><option value="+32" value1 = "BE">比利时+32</option><option value="+354" value1 = "IS">冰岛+354</option><option value="+387" value1 = "BA">波黑+387</option><option value="+48" value1 = "PL">波兰+48</option><option value="+591" value1 = "BO">玻利维亚+591</option><option value="+501" value1 = "BZ">伯利兹+501</option><option value="+267" value1 = "BW">博茨瓦纳+267</option><option value="+975" value1 = "BT">不丹+975</option><option value="+226" value1 = "BF">布基拉法索+226</option><option value="+257" value1 = "BI">布隆迪+257</option><option value="+850" value1 = "KP">朝鲜+850</option><option value="+240" value1 = "GQ">赤道几内亚+240</option><option value="+45" value1 = "DK">丹麦+45</option><option value="+49" value1 = "DE">德国+49</option><option value="+670" value1 = "TL">东帝汶+670</option><option value="+684" value1 = "AS">东萨摩亚+684</option><option value="+228" value1 = "TG">多哥+228</option><option value="+7" value1 = "BY">俄罗斯+7</option><option value="+593" value1 = "EC">厄瓜多尔+593</option><option value="+291" value1 = "ER">厄立特里亚+291</option><option value="+33" value1 = "FR">法国+33</option><option value="+298" value1 = "FO">法罗群岛+298</option><option value="+594" value1 = "GF">法属圭亚那+594</option><option value="+396" value1 = "VA">梵蒂冈+396</option><option value="+63" value1 = "PH">菲律宾+63</option><option value="+679" value1 = "FJ">斐济+679</option><option value="+358" value1 = "FI">芬兰+358</option><option value="+238" value1 = "CV">佛得角+238</option><option value="+500" value1 = "FK">福克兰群岛+500</option><option value="+220" value1 = "GM">冈比亚+220</option><option value="+242" value1 = "CG">刚果+242</option><option value="+57" value1 = "CO">哥伦比亚+57</option><option value="+506" value1 = "CR">哥斯达黎加+506</option><option value="+299" value1 = "GL">格陵兰岛+299</option><option value="+53" value1 = "CU">古巴+53</option><option value="+590" value1 = "GP">瓜德罗普+590</option><option value="+671" value1 = "GU">关岛+671</option><option value="+592" value1 = "GY">圭亚那+592</option><option value="+7" value1 = "KZ">哈萨克斯坦+7</option><option value="+509" value1 = "HT">海地+509</option><option value="+31" value1 = "NL">荷兰+31</option><option value="+504" value1 = "HN">洪都拉斯+504</option><option value="+686" value1 = "KI">基里巴斯+686</option><option value="+253" value1 = "DJ">吉布提+253</option><option value="+996" value1 = "KG">吉尔吉斯斯坦+996</option><option value="+224" value1 = "GN">几内亚+224</option><option value="+245" value1 = "GW">几内亚比绍+245</option><option value="+233" value1 = "GH">加纳+233</option><option value="+241" value1 = "GA">加蓬+241</option><option value="+855" value1 = "KH">柬埔寨+855</option><option value="+420" value1 = "CZ">捷克+420</option><option value="+263" value1 = "ZW">津巴布韦+263</option><option value="+237" value1 = "CM">喀麦隆+237</option><option value="+974" value1 = "QA">卡塔尔+974</option><option value="+682" value1 = "CK">科克群岛+682</option><option value="+269" value1 = "KM">科摩罗+269</option><option value="+225" value1 = "KT">科特迪瓦+225</option><option value="+965" value1 = "KW">科威特+965</option><option value="+385" value1 = "HR">克罗地亚+385</option><option value="+254" value1 = "KE">肯尼亚+254</option><option value="+371" value1 = "LV">拉脱维亚+371</option><option value="+266" value1 = "LS">莱索托+266</option><option value="+856" value1 = "LA">老挝+856</option><option value="+961" value1 = "LB">黎巴嫩+961</option><option value="+370" value1 = "LT">立陶宛+370</option><option value="+231" value1 = "LR">利比里亚+231</option><option value="+218" value1 = "LY">利比亚+218</option><option value="+423" value1 = "LI">列支敦士登+423</option><option value="+262" value1 = "RE">留尼汪岛+262</option><option value="+352" value1 = "LU">卢森堡+352</option><option value="+250" value1 = "RW">卢旺达+250</option><option value="+40" value1 = "RO">罗马尼亚+40</option><option value="+261" value1 = "MG">马达加斯加+261</option><option value="+960" value1 = "MV">马尔代夫+960</option><option value="+356" value1 = "MT">马耳他+356</option><option value="+265" value1 = "MW">马拉维+265</option><option value="+223" value1 = "ML">马里+223</option><option value="+389" value1 = "MKD">马其顿+389</option><option value="+596" value1 = "MTQ">马提尼克+596</option><option value="+230" value1 = "MU">毛里求斯+230</option><option value="+222" value1 = "MR">毛里塔尼亚+222</option><option value="+976" value1 = "MN">蒙古+976</option><option value="+880" value1 = "BD">孟加拉国+880</option><option value="+51" value1 = "PE">秘鲁+51</option><option value="+95" value1 = "MM">缅甸+95</option><option value="+373" value1 = "MD">摩尔多瓦+373</option><option value="+212" value1 = "MA">摩洛哥+212</option><option value="+377" value1 = "MC">摩纳哥+377</option><option value="+258" value1 = "MZ">莫桑比克+258</option><option value="+52" value1 = "MX">墨西哥+52</option><option value="+264" value1 = "NA">纳米比亚+264</option><option value="+27" value1 = "ZA">南非+27</option><option value="+381" value1 = "YU">南斯拉夫+381</option><option value="+674" value1 = "NR">瑙鲁+674</option><option value="+977" value1 = "NP">尼泊尔+977</option><option value="+505" value1 = "NI">尼加拉瓜+505</option><option value="+227" value1 = "NE">尼日尔+227</option><option value="+234" value1 = "NG">尼日利亚+234</option><option value="+683" value1 = "NU">纽埃岛+683</option><option value="+47" value1 = "NO">挪威+47</option><option value="+6723" value1 = "NF">诺福克岛+6723</option><option value="+351" value1 = "PT">葡萄牙+351</option><option value="+239" value1 = "ST">圣多美和普林西比+239</option><option value="+995" value1 = "GE">乔治亚+995</option><option value="+46" value1 = "SE">瑞典+46</option><option value="+41" value1 = "CH">瑞士+41</option><option value="+503" value1 = "SV">萨尔瓦多+503</option><option value="+232" value1 = "SL">塞拉利昂+232</option><option value="+221" value1 = "SN">塞内加尔+221</option><option value="+357" value1 = "CY">塞浦路斯+357</option><option value="+248" value1 = "SC">塞舌尔+248</option><option value="+966" value1 = "SA">沙特阿拉伯+966</option><option value="+508" value1 = "PM">圣彼埃尔+508</option><option value="+290" value1 = "SH">圣赫勒拿+290</option><option value="+223" value1 = "SM">圣马力诺+223</option><option value="+94" value1 = "LK">斯里兰卡+94</option><option value="+421" value1 = "SK">斯洛伐克+421</option><option value="+386" value1 = "SI">斯洛文尼亚+386</option><option value="+268" value1 = "SZ">斯威士兰+268</option><option value="+249" value1 = "SD">苏丹+249</option><option value="+597" value1 = "SR">苏里南+597</option><option value="+677" value1 = "SB">所罗门群岛+677</option><option value="+252" value1 = "SO">索马里+252</option><option value="+7" value1 = "TJ">塔吉克斯坦+7</option><option value="+66" value1 = "TH">泰国+66</option><option value="+255" value1 = "TZ">坦桑尼亚+255</option><option value="+676" value1 = "TO">汤加+676</option><option value="+216" value1 = "TN">突尼斯+216</option><option value="+688" value1 = "TV">图瓦卢+688</option><option value="+90" value1 = "TR">土耳其+90</option><option value="+993" value1 = "TM">土库曼斯坦+993</option><option value="+678" value1 = "VU">瓦努阿图+678</option><option value="+502" value1 = "GT">危地马拉+502</option><option value="+58" value1 = "VE">委内瑞拉+58</option><option value="+673" value1 = "BN">文莱+673</option><option value="+256" value1 = "UG">乌干达+256</option><option value="+380" value1 = "UA">乌克兰+380</option><option value="+598" value1 = "UY">乌拉圭+598</option><option value="+998" value1 = "UZ">乌兹别克斯坦+998</option><option value="+34" value1 = "ES">西班牙+34</option><option value="+685" value1 = "WS">西萨摩亚+685</option><option value="+30" value1 = "GR">希腊+30</option><option value="+36" value1 = "HU">匈牙利+36</option><option value="+963" value1 = "SY">叙利亚+963</option><option value="+374" value1 = "AM">亚美尼亚+374</option><option value="+967" value1 = "YE">也门+967</option><option value="+964" value1 = "IQ">伊拉克+964</option><option value="+98" value1 = "IR">伊朗+98</option><option value="+972" value1 = "IL">以色列+972</option><option value="+39" value1 = "IT">意大利+39</option><option value="+91" value1 = "IN">印度+91</option><option value="+62" value1 = "ID">印度尼西亚+62</option><option value="+44" value1 = "GB">英国+44</option><option value="+962" value1 = "JO">约旦+962</option><option value="+84" value1 = "VN">越南+84</option><option value="+260" value1 = "ZM">赞比亚+260</option><option value="+243" value1 = "ZR">扎伊尔+243</option><option value="+235" value1 = "TD">乍得+235</option><option value="+350" value1 = "GI">直布罗陀+350</option><option value="+56" value1 = "CL">智利+56</option><option value="+236" value1 = "CF">中非+236</option>						</select>
+					</div>
+					<div class="txt">
+						<input type="text" placeholder="请输入手机号" value="15948700252" maxlength="20" id="new_phone"/> 
+					</div>
+				</div>
+				<div class="i i2">
+					<div class="txt">
+						<input type="text" placeholder="请输入验证码" id="smscode" maxlength="6"/>
+					</div>
+					<span class="yzm">发送验证码</span>
+				</div>
+			</div>
+		</div>
+		<div class="center"><button class="btn">保存</button></div>
+	</div>
+	
+	<!-- 邮箱修改 -->
+	<div class="ff email" style="display: none">
+		<div class="in">
+			<div class="hd mk2">
+				<span class="bb phone_change switchpage">手机号绑定</span>
+				<span class="bb email_change switchpage">邮箱更换</span>
+			</div>
+			<div class="fn" id="emailcontent">
+				<div class="i" id="ioldemail"><div class="txt"><input type="text" placeholder="3431877856@qq.com"  class="old_email" disabled value="3431877856@qq.com"/></div></div>		
+
+				<div class="i">
+					<div class="txt"><input type="text" placeholder="请输入新的邮箱" class="new_email" maxlength="100" /></div>
+				</div>
+				<div class="i">
+					<div class="txt"><input type="password" placeholder="请输入密码" class="old_pwd"/></div>
+				</div>
+			</div>
+		</div>
+		<p class="hit">温馨提示：简历与登录邮箱将同步修改哦！</p>
+		<div class="center"><button class="btn">保存</button></div>
+	</div>		
+</div>	
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

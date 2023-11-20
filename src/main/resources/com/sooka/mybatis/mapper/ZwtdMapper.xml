@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.ZwtdMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Zwtdjl" >
+    <id column="TDJL_ID" property="tdjlId" jdbcType="VARCHAR" />
+    <result column="ZW_ID" property="zwId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="TDJL_TIME" property="tdjlTime" jdbcType="VARCHAR" />
+    <result column="TDJL_TDZT" property="tdjlTdzt" jdbcType="INTEGER" />
+    <result column="TDJL_MSZT" property="tdjlMszt" jdbcType="INTEGER" />
+    <result column="TDJL_YQSJ" property="tdjlYqsj" jdbcType="VARCHAR" />
+    <result column="ZH_ID" property="zhId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    TDJL_ID, ZW_ID, JL_BB_ID, TDJL_TIME, TDJL_TDZT, TDJL_MSZT, TDJL_YQSJ
+  </sql>
+    <select id="findZwtdjlByZhId" parameterType="java.util.Map"  resultType="java.util.Map">
+  		SELECT
+			ll.TDJL_ID,gw.ZW_ID,qy.QY_ID,qy.QY_QYMC,bb.JL_BB_NAME,ll.TDJL_TIME,
+			gw.ZW_ZWMC,
+			gw.ZW_GZDZ,
+			CASE ll.TDJL_TDZT 
+		         WHEN '0' THEN '投递成功'
+		    ELSE '已邀请' END   as tdzt,
+		    
+			CASE gw.ZW_YXFW 
+		         WHEN '0' THEN '1k以下' 
+		         WHEN '1' THEN '1k-2k' 
+		         WHEN '2' THEN '2k-4k' 
+		         WHEN '3' THEN '4k-6k' 
+		         WHEN '4' THEN '6k-8k' 
+		         WHEN '5' THEN '8k-10k' 
+		         WHEN '6' THEN '10k-15k' 
+		         WHEN '7' THEN '15k-20k' 
+		         WHEN '8' THEN '20-30' 
+		         WHEN '9' THEN '30k-50k' 
+		         WHEN '10' THEN '50k-70k' 
+		         WHEN '11' THEN '70k-100k' 
+		     ELSE '100k以上' END   as xz
+		
+		FROM
+		tb_zwtdjl ll
+		LEFT JOIN tb_jl_banben bb ON ll.JL_BB_ID =bb.JL_BB_ID
+		LEFT JOIN tb_gw_info gw ON ll.ZW_ID = gw.ZW_ID
+		LEFT JOIN tb_qy_info qy ON gw.QY_ID = qy.QY_ID 
+		WHERE  ll.ZH_ID = #{ZH_ID}
+  </select>
+	<select id="findZwtdjlByZhIdAll" parameterType="java.util.Map"  resultType="java.util.Map">
+		SELECT
+		bb.JIANLI_ID,
+		bb.JL_BB_ID,
+		info.ZH_ID,
+		bb.JL_BB_NAME,
+		jyjl.JYJL_XX,
+		qzyx.QZYX_QWXZ,
+		qzyx.QZYX_DD,
+		qzyx.QZYX_ZN,
+		qzyx.QZYX_ZW,
+		qzyx.QZYX_HY,
+		qzyx.QZYX_GRBQ,
+		qzyx.QZYX_ZWPJ,
+		info.JIANLI_KSGZ,
+		CASE jyjl.JYJL_XL WHEN 0 THEN '初中及以下'
+		WHEN 1 THEN '高中'
+		WHEN 2 THEN '中专'
+		WHEN 3 THEN '大专'
+		WHEN 4 THEN '本科'
+		WHEN 5 THEN '硕士'
+		WHEN 6 THEN '博士'
+		WHEN 7 THEN '硕士'
+		ELSE 'null' END JYJL_XL,
+		jyjl.JYJL_ZY,
+		info.JIANLI_XM,
+		bb.JL_BB_TIME,
+		CASE info.JIANLI_XB
+		WHEN '0' THEN '男'
+		else '女' END  as JIANLI_XB,
+		jyjl.JYJL_XX
+		FROM tb_jl_info info
+		LEFT JOIN tb_jl_banben bb ON info.JIANLI_ID =bb.JIANLI_ID
+		LEFT JOIN tb_jl_jyjl jyjl ON bb.JL_BB_ID =jyjl.JL_BB_ID
+		LEFT JOIN tb_jl_qzyx qzyx ON bb.JL_BB_ID =qzyx.JL_BB_ID
+		where 1=1 and bb.JL_BB_MRTDZT='1'
+		<if test="cshy!=null">
+			and qzyx.QZYX_ZN like CONCAT ('%',#{cshy,jdbcType=VARCHAR},'%')
+		</if>
+		<if test="xb!=null">
+			and info.JIANLI_XB = #{xb}
+		</if>
+		<if test="gznx!=null">
+			and info.JIANLI_KSGZ  &lt; #{gznx}
+		</if>
+		<if test='xl !=null and xl !="" '>
+			<if test='xl1 !=null and xl1 !="" '>
+				and jyjl.JYJL_XL  between #{xl} and #{xl1}
+			</if>
+		</if>
+	</select>
+
+
+	<select id="searchTalents" parameterType="java.util.Map"  resultType="java.util.Map">
+		select * from (select DATE_FORMAT(j.JYJL_KSSJ, '%Y年%m月')JYJL_KSSJ,DATE_FORMAT(j.JYJL_JSSJ, '%Y年%m月')JYJL_JSSJ,j.JYJL_XX,j.JYJL_ZY,b.JIANLI_XM,b.JIANLI_XB,b.JIANLI_JZD,b.ZH_ID,
+		(	CASE j.JYJL_XL WHEN 0 THEN '初中及以下'
+				WHEN 1 THEN '高中'
+				WHEN 2 THEN '中专'
+				WHEN 3 THEN '大专'
+				WHEN 4 THEN '本科'
+				WHEN 5 THEN '硕士'
+				WHEN 6 THEN '博士'
+				WHEN 7 THEN '硕士'
+		ELSE 'null' END
+		) JYJL_XL,b.JL_BB_MRTDZT,DATE_FORMAT(b.JL_BB_TIME, '%Y年%m月%d日')JL_BB_TIME,
+		b.age,b.JIANLI_ID,b.JL_BB_ID,b.GZJY_KSSJ,b.GZJY_JSSJ,b.GZJY_GS,b.GZJY_ZW  from TB_JL_JYJL j LEFT JOIN
+				  (select i.JIANLI_TX,i.JIANLI_XM,i.JIANLI_XB,i.JIANLI_JZD,i.ZH_ID,a.JIANLI_ID,a.JL_BB_ID,a.GZJY_KSSJ,a.GZJY_JSSJ,a.GZJY_GS,a.GZJY_ZW,a.JL_BB_MRTDZT,
+				  		(YEAR(NOW())-YEAR(i.JIANLI_CSRQ)-1) + ( DATE_FORMAT(i.JIANLI_CSRQ, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') ) AS age,
+						DATE_FORMAT(a.JL_BB_TIME, '%Y年%m月%d日')JL_BB_TIME
+				  from TB_JL_INFO i LEFT JOIN (
+											select g.GZJY_ZN,b.JIANLI_ID,g.JL_BB_ID,g.GZJY_KSSJ,g.GZJY_JSSJ,g.GZJY_GS,g.GZJY_ZW,b.JL_BB_MRTDZT,
+											DATE_FORMAT(b.JL_BB_TIME, '%Y年%m月%d日')JL_BB_TIME
+											from TB_JL_GZJY g  left join TB_JL_BANBEN b on b.JL_BB_ID = g.JL_BB_ID
+
+											<if test='cshy!=null and cshy!="" '>
+												where g.GZJY_ZN = #{cshy}
+											</if>
+
+											) a on i.JIANLI_ID = a.JIANLI_ID
+				<trim prefix="WHERE" prefixOverrides="AND|OR">
+
+				</trim>
+		)b on j.JL_BB_ID = b.JL_BB_ID
+		<if test='xl !=null and xl !="" '>
+			<if test='xl1 !=null and xl1 !="" '>
+				where j.JYJL_XL between #{xl} and #{xl1}
+			</if>
+		</if>
+		)c where c.JL_BB_ID and c.JL_BB_MRTDZT =1is not null
+  	</select>
+
+
+	<select id="searchTalentsAll" parameterType="java.util.Map"  resultType="java.util.Map">
+		select j.JYJL_KSSJ,j.JYJL_JSSJ,j.JYJL_XX,j.JYJL_ZY,i.JIANLI_TX,i.JIANLI_XM,i.JIANLI_XB,i.JIANLI_JZD,i.ZH_ID,
+		DATE_FORMAT(b.JL_BB_TIME, '%Y年%m月%d日')JL_BB_TIME,
+		(YEAR(NOW())-YEAR(i.JIANLI_CSRQ)-1) + ( DATE_FORMAT(i.JIANLI_CSRQ, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') ) AS age,
+			(CASE j.JYJL_XL WHEN 0 THEN '初中及以下'
+							WHEN 1 THEN '高中'
+							WHEN 2 THEN '中专'
+							WHEN 3 THEN '大专'
+							WHEN 4 THEN '本科'
+							WHEN 5 THEN '硕士'
+							WHEN 6 THEN '博士'
+							WHEN 7 THEN '硕士'
+							ELSE 'null' END) JYJL_XL,b.JIANLI_ID,b.JL_BB_ID,g.GZJY_KSSJ,g.GZJY_JSSJ,g.GZJY_GS,g.GZJY_ZW
+ 		from tb_jl_banben b LEFT JOIN tb_jl_info i ON b.JIANLI_ID = i.JIANLI_ID
+		LEFT JOIN (select a.* from tb_jl_jyjl a INNER JOIN (select JYJL_ID,JL_BB_ID, JYJL_XX,MAX(JYJL_XL) JYLJ_XL from tb_jl_jyjl GROUP BY JL_BB_ID)b on a.JYJL_ID = b.JYJL_ID
+					)j on b.JL_BB_ID = j.JL_BB_ID
+		LEFT JOIN (select w.* from tb_jl_gzjy w INNER JOIN (select GZJY_ID,JL_BB_ID, MAX(GZJY_JSSJ) GZJY_JSSJ from tb_jl_gzjy GROUP BY JL_BB_ID) e on w.GZJY_ID = e.GZJY_ID) g on g.JL_BB_ID = b.JL_BB_ID
+		where b.JL_BB_MRTDZT =1
+		<if test='cshy!=null and cshy!="" '>
+			and g.GZJY_ZN = #{cshy}
+		</if>
+		<if test='nl !=null and nl !="" '>
+			<if test='nl1 !=null and nl1 !="" '>
+				and ((YEAR(NOW())-YEAR(i.JIANLI_CSRQ)-1) + ( DATE_FORMAT(i.JIANLI_CSRQ, '%m%d') &lt;= DATE_FORMAT(NOW(), '%m%d') ))BETWEEN #{nl} and #{nl1}
+			</if>
+		</if>
+		<if test='xb !=null and xb !=""'>
+			and  i.JIANLI_XB = #{xb}
+		</if>
+		<if test='gznx !=null and gznx !="" '>
+			<if test='gznx1 !=null and gznx1 !="" '>
+				and ((YEAR(NOW())-YEAR(g.GZJY_KSSJ)+1)) between #{gznx} and #{gznx1}
+			</if>
+		</if>
+
+		<if test='xl !=null and xl !="" '>
+			<if test='xl1 !=null and xl1 !="" '>
+				and j.JYJL_XL between #{xl} and #{xl1}
+			</if>
+		</if>
+	order by b.JL_BB_TIME desc
+	</select>
+
+</mapper>

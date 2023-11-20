@@ -1,0 +1,112 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js" ></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/school';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+		
+function saveJntc(){
+	if(isNull($("#traindescribe").val())){
+		alert("技能特长不能为空！！！");
+		return false;
+	}
+	var  json={};
+	if($("#qzyxId").val()!=undefined){
+		json.qzyxId=$("#qzyxId").val();
+	}
+	if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	}
+	json.qzyxJntc=$("#traindescribe").val();
+	$.ajax({
+      type: "POST",
+      async:false,
+      url: "saveUserQzyx",
+      data:json,
+      dataType: "json",
+      success: function(data){
+      		alert(data.message);
+      		window.location.href="${ctxPath}/cms/resume/goEditResume?id="+data.qzyx.jlBbId;
+      }
+	});
+}
+</script>
+</head>
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a  href="${ctxPath}/cms/resume/goEditResume?id=${session.jlbbIdSession}"><span>技能特长</span></a></div>
+
+				<div id="pageContent" class="fixtop qzyx">
+
+					<div class="sbox">
+
+						<div class="e e_ta eb">
+							<label>技能描述</label>
+							<div class="ptxa">
+								<textarea id="traindescribe" placeholder="可以描述技能特长" maxlength="500" class="inputblur">${qzyx.qzyxJntc!}</textarea>
+							</div>
+							<p class="error" id="err_traindescribe" style="display:none;"><span>请输入技能特长</span></p>
+						</div>
+					</div>
+					<center class="btnbox">
+						<button class="btn saveschoolhonour" click-data="1" onclick="saveJntc();">保存</button>
+					</center>
+					@if(isNotEmpty(qzyx.qzyxId)){
+					<input type="hidden" name="qzyxId" id="qzyxId" value="${qzyx.qzyxId}">
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${qzyx.jlBbId}">
+					@}
+					@if(isNotEmpty(jlBbId)){
+					<input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+					@}
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+	<input type="hidden" id="userid" value="398719117">		
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/school.js"></script> 
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

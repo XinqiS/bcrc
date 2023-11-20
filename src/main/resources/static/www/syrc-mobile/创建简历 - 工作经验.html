@@ -1,0 +1,201 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>工作经验</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+
+<link rel="stylesheet"  href="images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="images/sy_sjbase.css"  />
+<link rel="stylesheet" href="images/cover.css"  />
+<link rel="stylesheet" href="images/resume.css"  />
+<link rel="stylesheet" href="images/pop.css"  />
+<link rel="stylesheet" href="images/swiper.min.css"  />
+<script type="text/javascript" src="images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="images/basic.js" ></script>
+<script type="text/javascript" src="images/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+</head>
+<body>
+<div id="pageContent" class="fixtop">
+	<div class="top">
+		<a href="创建简历.html" class="back"></a>
+		创建工作经验	</div>
+	<div class="sbox">
+		<div class="e">
+			<label><em>*</em>公司名称</label>
+			<input type="text" id="coname" class="txt inputblur" value="" placeholder="请输入公司名称" name="Company" oninput="simpleAssociation('Company')"  maxlength="25"  />
+			<p class="error" id="err_coname" style="display:none;"><span></span></p>
+			<div class="asslist bb" style="display:none;">
+				<div class="Company cn">
+
+				</div>
+			</div>
+		</div>
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [0,70] , 'entrytime' );">
+			<label><em>*</em>入职时间</label>
+			<div class="selt">
+			<span id="entrytime" class="sval c_default">请选择</span>			<p class="error" id="err_entrytime" style="display:none;"><span></span></p>	
+			</div>
+		</a>
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [0,70] , 'leavetime' , '1' );">
+			<label><em>*</em>离职时间</label>
+			<div class="selt">
+			<span id="leavetime" class="sval">至今</span>			
+			</div>
+			<p class="error" id="err_leavetime" style="display:none;"><span></span></p>
+		</a>
+
+		<a href="javascript:void(0)" class="e">
+			<label><em>*</em>职能</label>
+			<div class="txt c_default" id="funtypename" onclick="setFuntypePage();" placeholder="请输入职位名称">请选择</div>			<input type="hidden" id="funtype" value=""/>
+			<p class="error" style="display:none;" id="err_funtypename"><span></span></p>
+		</a>
+
+		<div class="e">
+			<label><em>*</em>职位名称</label>
+			<input type="text" id="position" value="" class="txt inputblur" placeholder="请输入职位名称" name="Job" oninput="simpleAssociation('Job')"  maxlength="35"/>
+			<p class="error" style="display:none;" id="err_position"><span></span></p>
+			<div class="asslist bb" style="display:none;">
+				<div class="Job cn">
+
+				</div>
+			</div>
+		</div>
+
+		<div class="e">
+			<label>部门</label>
+			<input type="text" id="department" class="txt inputblur" placeholder="请输入部门" maxlength="25" value="" />
+		</div>
+
+		<a href="javascript:void(0)" class="e">
+			<label>公司规模</label>
+			<div class="selt">
+				<span class="sval c_default">请选择公司规模</span>				<select id="cosize">
+					<option value="">请选择</option>
+					<option value="1">少于50人</option><option value="2">50-150人</option><option value="3">150-500人</option><option value="4">500-1000人</option><option value="5">1000-5000人</option><option value="6">5000-10000人</option><option value="7">10000人以上</option>				</select>
+			</div>
+		</a>
+
+		<a href="javascript:void(0)" class="e">
+			<label>公司性质</label>
+			<div class="selt">
+				<span class="sval c_default">请选择</span>					<select id="cotype">
+						<option value="">请选择公司性质</option>
+						<option value="01">外资（欧美）</option><option value="02">外资（非欧美）</option><option value="03">合资</option><option value="05">国企</option><option value="06">民营公司</option><option value="13">上市公司</option><option value="14">创业公司</option><option value="07">外企代表处</option><option value="09">政府机关</option><option value="10">事业单位</option><option value="11">非营利组织</option>					</select>
+			</div>
+		</a>
+		<a href="javascript:void(0)" class="e">
+			<label>行业</label>
+			<div class="txt c_default" id="indtypename" onclick="setIndtypePage(this,0);">请选择</div>			<input type="hidden" id="indtype" value="">
+		</a>
+
+		<div class="e">
+			<label>工作类型</label>
+			<div class="rdob" id="worktype">
+				<span class="rdo on" value="0">全职</span><span class="rdo" value="1">兼职</span>			</div>
+		</div>
+
+		<div class="e e_ta">
+			<label><em>*</em>工作描述</label>
+			<div class="ptxa">				
+				<textarea id="workdesc" class="inputblur" placeholder="可以描述您的职责范围、工作任务以及取得的成绩等（必填）" maxlength="2000"></textarea>
+				<div class="gray">
+				0/1000</div>
+			</div>
+			<p class="error" style="display:none;" id="err_workdesc"><span></span></p>
+		</div>
+
+		<div class="e e2" onclick="showSenior(this)">
+			<label>高级人才附加信息</label>
+			<div class="tbox">
+				<span class="arr2"></span>
+			</div>
+		</div>
+
+		<div class="custom" id="highworkinfo" style="display:none">
+			<div class="e">
+				<label>汇报对象</label>
+				<input type="text" id="reportboss" class="txt inputblur" placeholder="请输入汇报对象" maxlength="25" value="" />
+				<p class="error" style="display:none;" id="err_reportboss"><span></span></p>
+			</div>
+			<div class="e">
+				<label>下属人数</label>
+				<input type="text" id="reportperson" class="txt inputblur" placeholder="请输入下属人数"  maxlength="5" value="" />
+				<p class="error" style="display:none;" id="err_reportperson"><span></span></p>
+			</div>
+
+			<div class="e">
+				<label>海外工作</label>
+				<div class="rdob" id="overseawork">
+					<span class="rdo" value="1">是</span><span class="rdo on" value="0">否</span>				</div>
+			</div>
+
+			<div class="e e_ta">
+				<label>离职原因</label>
+				<div class="ptxa">
+					<textarea id="leavereason" class="inputblur" maxlength="200" placeholder="请输入离职原因"></textarea>
+					<div class="gray">0/100</div>
+				</div>
+				<p class="error" style="display:none;" id="err_leavereason"><span></span></p>
+			</div>
+
+			<div class="e e_ta">
+				<label>主要业绩</label>
+				<div class="ptxa">
+						<textarea id="score" class="inputblur" maxlength="2000" placeholder="请输入主要业绩"></textarea>
+					<div class="gray">0/1000</div>
+				</div>
+				<p class="error" style="display:none;" id="err_score"><span></span></p>
+			</div>
+		</div>
+
+	</div>
+	<center class="btnbox">
+		<button class="btn" onclick="saveResumeThree()">保存</button>
+		<input type="hidden"name="userid" id="userid" value="398719117">
+		<input type="hidden" id="workid" value="">
+	</center>
+</div>		
+<script type="text/javascript" src="images/base.js"></script> 
+<script type="text/javascript" src="images/fun.js"></script> 
+<script type="text/javascript" src="images/d_jobarea.js"></script> 
+<script type="text/javascript" src="images/popjobarea.js"></script> 
+<script type="text/javascript" src="images/resume.js"></script>
+	<script type="text/javascript" src="images/indtype.js"></script>
+	<script type="text/javascript" src="images/funtype.js"></script>
+	<script type="text/javascript" src="images/popfuntype.js"></script>
+	<script type="text/javascript" src="images/popindtype.js"></script> 
+	<script type="text/javascript" src="images/major.js"></script> 
+	<script type="text/javascript" src="images/swiper.min.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+<script>
+	(function() {
+	  var hm = document.createElement("img");
+	  hm.src = "//trace.51jingying.com/logRecord.php?" + param + "&vt=" + new Date().getTime() + "&logType=pageView";
+	})();
+
+</script>
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

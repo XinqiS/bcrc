@@ -1,0 +1,89 @@
+
+body{ background:#e7f0fb;}
+.contentbig{ background:url(../images/bcrc-index_01.png) no-repeat left top; background-size:100% auto;z-index:1;position: relative;}
+/*导航*/
+.nav{ width:100%;margin:0 auto;}
+.nav ul{ width:100%; display:none;position: absolute;top:36px;left: 0;z-index: 15;background:url(../images/bcrc-index-6_03.png) repeat;}
+.nav ul li{ width:100%; margin:3% 1%;text-align:left; white-space:nowrap;padding:0 0 15px 0;}
+.nav ul li a{ font-size:1.1em; color:#333; padding:8px 20px; border-radius:5px;}
+.nav ul li .child_nav{ width:100%; text-align:center; overflow:hidden; display:none;padding: 3% 0;}
+.nav ul li .child_nav a{ font-size:.8em; color:#333; margin:0 2%; text-align:left; display:block; float:left;}
+.nav ul li:hover a{ background:url(../images/bg_nav_ch_20191009.png) no-repeat center bottom; background-size:auto auto;}
+.nav ul li:hover .child_nav{ display:block;}
+.nav ul li:hover .child_nav a{ background:none;}
+.logo{ width: 80%;
+    margin: 0 auto;
+    padding: 10% 0 4% 0;}
+.logo img{ width:100%; height:auto;}
+
+/***********************通知公告tab*******************************/
+.searchbox{ width:90%; margin:0 auto;}
+.searchbox .search_title{ width:100%;}
+.searchbox .search_title span{display:block;float: left;font-size:1em;color:#333;padding:0 5%; text-align:center; line-height:2.5em; border-top-left-radius:5px; border-top-right-radius:5px;}
+.searchbox .search_title span.df_on{ color:#1c5bb8; background:url(../images/bcrc-index-6_03.png) repeat;}
+.searchbox .search_cont{ width:100%;}
+.searchTEXT{ width:71%; height:3em; border-top-left-radius:5px; border-bottom-left-radius:5px; border:none; background:#fff; float:left;}
+.searchBUT{ width: 28%;
+    height: 2.5em;
+    background: url(../images/ICON.png) no-repeat 83% center #007eac;
+    float: left;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: none;
+    font-size: 1em;
+    color: #fff;
+    padding: 0 6% 0 0;
+    background-size: 19% auto;}
+
+.wz_cont{ width: 94%;
+    margin: 4% auto 0 auto;
+    background: #fff;
+    padding: 2% 1%;}
+
+.index_login{ position:absolute;left: 10px; top: 10px; width: 100%; color:#fff;}
+.index_login a{ margin:0 2%; font-size:1em; color:#fff;}
+
+
+.all_title{ width:100%; height:45px; background:url(../images/bcrc-index_43.png) repeat-x left bottom;}
+.all_title a{ display:block; font-size:1.2em; color:#00aaff; background:url(../images/bcrc-index_41.png) repeat-x left bottom; line-height:45px; width:50%; text-align:center; font-weight:bold;float: left;}
+.all_title a span{ display:block; background:url(../images/bcrc-index_39.png) no-repeat center bottom; line-height:45px;}
+.all_list li.dotted{ border-bottom:dotted 1px #ccc; margin:8px 0;}
+
+.all_list,serachcont{ width:100%; margin:10px 0 0 0;}
+.all_list li{ line-height:34px; overflow:hidden; font-size:16px;}
+.all_list li a{background:url(../images/bcrc-index_49.png) no-repeat left center;color:#333;float:left;padding:0 0 0 18px;width: 58%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.all_list li em{ float:right; color:#a09f9f;}
+.all_list li i{float:right; color:#9bcbdc; margin:0 0 0 15px;}
+.serachcont h3{ line-height:34px; overflow:hidden; font-size:16px;}
+.serachcont h3 a{background:url(../images/bcrc-index_49.png) no-repeat left center;color:#333;float:left;padding:0 0 0 18px;width: 58%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.serachcont h3 em,.serachcont h3 span{ float:right; color:#a09f9f;}
+
+
+
+.footer{ background:url(../images/bcrc-index_07.png) no-repeat; background-size:100% 100%; padding:3% 0;margin: 20px 0 0 0;}
+.footer_in{ width:100%; overflow:hidden; margin:0 auto;}
+.footer_in a img{}
+.footer_in a{ display:block; width: 100%; margin: 20px 0 0 0; text-align: center;}
+.footer_in div{ width: 100%; text-align: center;}
+.footer_in div p{ font-size:.9em; line-height:2em; color:#fff;}
+
+.red {
+    color: #C70509!important;
+}
+.green {
+    color: #269604!important;
+}
+
+.show_nav {
+	position: absolute;
+	right: 10px;
+	top:5px;
+	padding-left: 20px;
+	display: block;
+	z-index:9999;
+}
+
+
+
+
+

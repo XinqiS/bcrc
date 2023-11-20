@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlbanbenMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlbanben" >
+    <id column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="JIANLI_ID" property="jianliId" jdbcType="VARCHAR" />
+    <result column="JL_BB_NAME" property="jlBbName" jdbcType="VARCHAR" />
+    <result column="JL_BB_TIME" property="jlBbTime" jdbcType="VARCHAR" />
+    <result column="JL_BB_MRTDZT" property="jlBbMrtdzt" jdbcType="INTEGER" />
+    
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JL_BB_ID, JIANLI_ID, JL_BB_NAME, JL_BB_TIME
+  </sql>
+  <delete id="del_grrelation" statementType="CALLABLE" parameterType="String">
+  
+  		call del_grrel(#{gr_zh_id,mode=IN,jdbcType=VARCHAR})
+  </delete>
+   <delete id="del_qyrelation" statementType="CALLABLE" parameterType="String">
+  
+  		call del_qyrel(#{qy_zh_id,mode=IN,jdbcType=VARCHAR})
+  </delete>
+</mapper>

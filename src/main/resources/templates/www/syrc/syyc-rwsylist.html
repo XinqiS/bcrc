@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syyc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syyc-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+</head>
+<style>
+    .fy .pag li a {width: auto;float: none;color: #333;}
+    .fy .pag {
+        text-align: center;
+        height: 20px;
+        line-height: 20px;
+        clear: both;
+        float: none;
+        padding: 0px;
+    }
+    .fy .pag li {
+        text-align: center;
+        margin: 0px 2px;
+        padding: 0px 8px;
+        height: 20px;
+        line-height: 20px;
+        text-decoration: none;
+        display: inline-block;
+        border: 1px solid #09b5c0;
+        width: auto;
+    }
+    .fy .pag .current {
+       background-color: #09b5c0;
+    }
+</style>
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/syyc_06.png" width="171" height="48"></h1>
+        <ul>
+        <li><a href="${frontPath!}/${site.siteId}/1005.html">联系我们</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1007.html">引才政策</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1008.html">人文松原</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1006.html"">松原经济</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1003.html">参会单位</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1001.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	<div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>人文松原</a></div>
+            <div class="yczc_list">
+                <ul class="all_list">
+                <#cms_content_list siteId="${site.siteId}" categoryId="1008" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="10" titleLen="20" var="bean">
+                    <li><a href="${bean.url}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+                    <li class="dashed"></li>
+                              </#cms_content_list>
+                </ul>
+                   <!--分页位置-->
+                   <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+</script>
+<!--内容结束-->
+
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+
+
+</body>
+</html>

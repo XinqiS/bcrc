@@ -1,0 +1,103 @@
+<script type="text/javascript">
+    //上传图片完成回调
+    function lbt_upload_success(file, data,$upload) {
+        var json = $.parseJSON(data)
+        if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+            $upload.next().val(json.filename).next().html('<img src="'+ json.filename +'" width="80" />')
+        }
+    }
+    //删除回调
+    $('#lbt').on('afterdelete.bjui.tabledit', function(e) {
+        var $tbody = $(e.relatedTarget)
+        console.log('你删除了一条数据，还有['+ $tbody.find('> tr').length +']条数据！')
+    })
+</script>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="${ctxPath}/cms/lbt" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+        <div class="bjui-searchBar">
+           <button type="button" class="btn-green" data-toggle="tableditadd" data-target="#lbt" data-num="1" data-icon="plus">添加</button>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <form id="lbt_form" class="pageForm" data-toggle="validate" method="post">
+        <table id="lbt" class="table table-bordered table-hover table-top" data-toggle="tabledit" data-initnum="0" data-action="${ctxPath}/cms/lbt/save" data-single-noindex="true">
+            <thead>
+            <tr style="text-align: center">
+                <th align="center" title="No"></th>
+                <th align="center" title="标题">
+                    <input type="text" name="title" data-rule="required"  size="5">
+                </th>
+                <th align="center" title="缩略图">
+                    <div id="fileInput-[#index#]"
+                         data-toggle="upload"
+                         data-uploader="${ctxPath}/uploads"
+                         data-file-size-limit="1024000000"
+                         data-file-type-exts="*.jpg;*.png;*.gif;"
+                         data-multi="false"
+                         data-on-upload-success="lbt_upload_success"></div>
+                    <input type="hidden" name="img"><span class="pic-box"></span>
+                </th>
+                <th align="center" title="视频文件">
+                    <div id="filesInput-[#index#]"
+                         data-toggle="upload"
+                         data-uploader="${ctxPath}/uploads"
+                         data-file-size-limit="1024000000"
+                         data-file-type-exts="*.mp4;*.wmv;*.avi;"
+                         data-multi="false"
+                         data-on-upload-success="lbt_upload_success"></div>
+                    <input type="hidden" name="video"><span class="pic-box"></span>
+                </th>
+                <th  align="center" title="操作" data-addtool="false" width="100">
+                    <a href="javascript:;" class="btn btn-green" data-toggle="dosave">保存</a>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(lbt in model.list){
+            <tr data-id="${lbt.lbt_id!}">
+                <td align="center" data-noedit="true">${lbt.lbt_id!}</td>
+                <td align="center">${lbt.title!}</td>
+                <td align="center">
+                    @if(isNotEmpty(lbt.img)){
+                    <span class="pic-box" style="margin-top:10px;">
+                    <img src="${lbt.img!}" height="25" width="80">
+                    </span>
+                    @}
+                </td>
+                <td align="center">
+                    @if(isNotEmpty(lbt.video)){
+                    <span class="pic-box" style="margin-top:10px;">
+                    <img src="${lbt.video!}" height="25" width="80">
+                    </span>
+                    @}
+                </td>
+                <td align="center" data-noedit="true">
+                    <button type="button" class="btn-green" data-toggle="doedit">编辑</button>
+                    <a href="${ctxPath}/cms/lbt/delete?ids=${lbt.lbt_id!}" class="btn btn-red row-del" data-confirm-msg="确定要删除该行信息吗？">删除</a>
+                </td>
+            </tr>
+            @}
+
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30" data-page-current="1">
+    </div>
+</div>

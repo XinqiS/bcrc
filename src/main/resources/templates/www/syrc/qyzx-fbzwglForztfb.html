@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/qyzx_js .js"></script>
+</head>
+
+<body >
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="contentbox er_con">
+    <div class=" clearfix">
+		<div class="con_left fl">
+			<h4>企业中心</h4>
+					<ul class="left_nav">
+				<li ><a class="qyxxgl" href="${ctxPath}/qyzx/goToyprclg">企业信息管理</a></li>
+				<li class="on"><a class="fbzwgl"
+				@if(session.QypztSession == 1){
+				 href="${ctxPath}/qyzx/goToQyzxFbzwgl"
+				@}else{
+				href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/goToQyzxFbzwgl');"
+				@}
+				>发布职位管理</a></li>
+				<li><a class="yprcgl"
+				@if(session.QypztSession == 1){
+				href="${ctxPath}/qyzx/goToQyzxYprcgl"
+				@}else{
+				href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/goToQyzxYprcgl');"
+				@}
+				 >应聘人才管理  </a></li>
+				@includeFileTemplate("/www/syrc/include/qyzx-eightOtherLeftMeun.html",{"current":"index"}){}
+				</ul>
+				<a class="btn_ssrc"
+				@if(session.QypztSession == 1){
+				 href="${ctxPath}/qyzx/searchTalents"
+				@}else{
+				href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/searchTalents');"
+				@}
+				>搜索人才</a>
+				</div>
+		<div class="con_right fr">
+<!--			发布职位管理   开始-->
+			<div class="er_tit">
+				<span>发布职位管理</span>
+				<a class="qyzx_xzgw er_tit_a" href="${ctxPath}/qyzx/goToQyzxZjgw">新增岗位</a>
+			</div>
+			<div class="qygl_con">
+			<div class="tab_tit1 con_tit">
+				<span onclick="tzym();" ztym2>正在发布岗位</span>
+				<span class="on" onclick="tzym2();">暂停发布岗位</span>
+			</div>
+			<table class="con_table tab_table1">
+				<thead>
+					<th width="200">岗位名称</th>
+					<th width="100">招聘人数</th>
+					<th width="100">收藏次数</th>
+					<th width="200">发布日期</th>
+					<th width="200">更新日期</th>
+					<th width="200">状态</th>
+					<th width="250">操作</th>
+				</thead>
+				@for(user in model2.list){
+				<tr>
+					<td>${user.zw_zwmc}</td>
+					<td>${user.zw_zprs}</td>
+					<td>${user.zw_gznx}</td>
+					<td>${user.zw_fbsj}</td>
+					<td>${user.zw_gxrq}</td>
+					<td class="gray">已暂停</td>
+					<td>
+					<a class="btn_bj btn_a" href="javascript:void(0)" onclick="bianji('${user.zw_id}');"><img src="${resPath}/syrc/images/jlzx_con_46.png"/>编辑</a>
+						<a class="btn_zt btn_a" href="${ctxPath}/qyzx/updatefb?zw_id=${user.zw_id}"><img src="${resPath}/syrc/images/jlzx_con_zt.png"/>发布</a>
+					</td>
+				</tr>
+				@}
+				<tr>
+					<td colspan="6">
+					<div id="pagination" class="pagination"></div>
+				</td>
+				</tr>
+			</table>
+				</div>
+				<script type="text/javascript">
+		
+				
+				  var datatotal = '${model2.total}';
+			        var pageAmount =5;
+			        var pagenum = '${model2.pageNum}';
+			
+			        pageTotal=Math.ceil(datatotal/pageAmount);
+			
+			        if(pageTotal>5){
+			            pageSize=5
+			        }else{
+			            pageSize=pageTotal
+			        }
+			
+			        window.onload = function () {
+			            new myPagination({
+			                id: 'pagination',
+			                curPage:pagenum, //初始页码
+			                pageTotal: pageTotal, //总页数
+			                pageAmount: pageAmount,  //每页多少条
+			                dataTotal: datatotal, //总共多少条数据
+			                getPage: function (page) {
+			                    window.location.href ='${ctxPath}/qyzx/goToQyzxFbzwglForztfb?pageNum2='+page;
+			
+			                }
+			            })
+			
+			        }
+					function tzym(){
+				window.location.href="${ctxPath}/qyzx/goToQyzxFbzwgl";
+				}
+				function tzym2(){
+				window.location.href="${ctxPath}/qyzx/goToQyzxFbzwglForztfb";
+				}
+					function bianji(id){
+				  var  test='${ctxPath}/qyzx/selectOne?zw_id='+id;
+				   var url=location.href;
+   					  mypost(test,{"url":url});
+				}
+				
+				function mypost(url, params) {
+					var temp_form = document.createElement("form");
+					temp_form .action = url;     
+					temp_form .target = "_self";
+					temp_form .method = "post";     
+					temp_form .style.display = "none";
+					for (var x in params) {
+					    var opt = document.createElement("textarea");     
+					    opt.name = x;     
+					    opt.value = params[x];     
+					    temp_form .appendChild(opt);     
+					 }     
+					  document.body.appendChild(temp_form);
+					 temp_form .submit();    
+				}
+				
+				</script>
+<!--			发布职位管理   结束-->
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}

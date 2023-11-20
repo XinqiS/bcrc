@@ -1,0 +1,167 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+</head>
+<body  >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="touxiang ckjj">
+				<a class="fl">
+					@if(jlinfo.jianliXb==0){
+					@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+					<img src="${resPath}/bcrc/images/man.png" width="68" height="83" alt="头像">
+					@}else{
+					<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+					@ }
+					@}else if(jlinfo.jianliXb==1){
+					@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+					<img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+					@}else{
+					<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+					@ }
+					@}else{
+					@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+					<img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+					@}else{
+					<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+					@ }
+					@}
+				<div class="fl">
+					<span>${jlinfo.jianliXm}</span>
+					<p><span>${jlinfo.jianliJzd}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliCsrq}</span>&nbsp;|&nbsp;<span>${jlinfo.jianliKsgz}</span></p>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="con_left">
+				<!--简历中心   开始-->
+				<div class="all_title"><a><span>修改密码</span></a></div>
+				<table class="jbxx_table">
+					<tr>
+						<td class="td_tit">
+							<i class="red">*</i>当前密码：
+						</td>
+						<td>
+							<input type="password" id="jmm" name="jmm" onchange="dqmm()" maxlength="20" value="" placeholder="请输入当前密码，6-16位字母/数字/符号组合" />
+							<p class="error" style="display:none;" id="err_jmm"><span></span></p>
+						</td>
+					</tr>
+					<tr>
+						<td class="td_tit">
+							<i class="red">*</i>新密码：
+						</td>
+						<td>
+							<input type="password" class="txt inputblur"id="zh_pwd" name="zh_pwd" maxlength="20" value="" placeholder="请输入密码，6-16位字母/数字/符号组合" />
+							<p class="error" style="display:none;" id="err_zh_pwd"><span></span></p>
+
+
+						</td>
+					</tr>
+					<tr>
+						<td class="td_tit">
+							<i class="red">*</i>重复新密码：
+						</td>
+						<td>
+							<input type="password" class="txt inputblur" id="zh_pwds" name="zh_pwds" maxlength="20" value="" placeholder="请输入和上面相同的密码" />
+							<p class="error" style="display:none;" id="err_zh_pwds"><span></span></p>
+
+						</td>
+					</tr>
+
+
+				</table>
+				<a class="qr_btn" onclick="save()">保存修改</a>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+</body>
+<script>
+	function save(){
+		var jmm = $('#jmm').val();
+		var zh_pwd=$('#zh_pwd').val();
+		var zh_pwds=$('#zh_pwds').val();
+		var num= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+		if (jmm == "") {
+			alert('还没有填写当前密码');
+			return;
+		} else if (!num.test(jmm)) {
+			alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+			return;
+		}
+
+		if(zh_pwd==""){
+			alert('还没有填写密码');
+			$('#zh_pwd').val("");
+			return;
+		} else if(!num.test(zh_pwd)){
+			alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+			$('#zh_pwd').val("");
+			return;
+		}
+
+		if (zh_pwds == "") {
+			alert('还没有填写确认密码');
+			$('#zh_pwds').val("");
+			return;
+		}else if (zh_pwd != zh_pwds) {
+			alert('请保持两次填写的密码一致');
+			$('#zh_pwds').val("");
+			return;
+		}
+		var formData = new FormData();
+		formData.append('jmm',jmm);
+		formData.append('zh_pwd',zh_pwd);
+		$.ajax({
+			url:"${ctxPath}/system/reception/selectPassword",   //请求的url地址
+			dataType:"json",   //返回格式为json
+			data:formData,    //参数值
+			type:"post",   //请求方式
+			crossDomain: true,
+			cache: false,
+			processData: false,
+			contentType: false,
+			success : function(data) {
+				if(data.msg=='error'){
+					alert("当前密码错误，请重新输入");
+					$('#jmm').val("");
+				}else{
+					$.ajax({
+						url:"${ctxPath}/system/reception/updatePassword",   //请求的url地址
+						dataType:"json",   //返回格式为json
+						data:formData,    //参数值
+						type:"post",   //请求方式
+						crossDomain: true,
+						cache: false,
+						processData: false,
+						contentType: false,
+						success : function(responseStr) {
+							alert("修改成功，请重新登录");
+							window.location.href="${ctxPath}/system/reception/logOut";
+						},
+					});
+				}
+			},
+		});
+
+	}
+</script>
+</html>

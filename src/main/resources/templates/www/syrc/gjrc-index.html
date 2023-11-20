@@ -1,0 +1,87 @@
+@includeFileTemplate("/www/syrc/include/gjrc-head.html",{"current":"index"}){}
+
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/gjrc_04.png" width="170" height="49"></h1>
+        <ul>
+        	<li><a href="${frontPath!}/${site.siteId}/1020.html">加入高级人才库</a></li>
+          	 <li><a href="${ctxPath}/gjrc/gjrcb">高级人才榜</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1015.html">猎头服务</a></li>
+            <li><a href="${ctxPath}/gjrc/zgjgw">中高级岗位</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">中高级招聘会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1022.html">小型见面会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">频道首页</a></li>
+        </ul>
+    </div>
+    
+    <div class="main">
+    	<div class="main_left fl">
+    	<#cms_category_list  siteId="4" categoryId="1009" isNav="0" var="bean">
+    	   @if(bean.categoryId==1012){
+        	<h3 class="gygjrc">${bean.categoryName!}</h3>
+            <div class="gygjrc_cont">
+          
+            	<p> ${strutil.length(bean.content!)>60?strutil.subStringTo(bean.content!,0,60)+"...":bean.content!}
+            	<a href="${bean.url!}">更多</a>
+            	</p>
+                
+                <div class="clear"></div>
+            </div>
+            
+                 @}else if(bean.categoryId==1013){
+            <h3 class="gygjrc">${bean.categoryName!}</h3>
+            <div class="gygjrc_cont">
+            	<p>
+            	${strutil.length(bean.content!)>60?strutil.subStringTo(bean.content!,0,60)+"...":bean.content!}
+            	<a href="${bean.url!}">更多</a>
+            	</p>
+                
+                <div class="clear"></div>
+            </div>
+        </div>
+     @   }
+      </#cms_category_list>
+    	<div class="main_right fr">
+        	<div class="all_title gjrc"><i></i><a>中高级招聘会</a></div>
+            <div class="zjzph_cont">
+                <table class="">
+                 <#cms_content_list siteId="${site.siteId}" categoryId="1011" orderBy="2" isHot="0" hasChild="1" isRecommend="0" size="6" titleLen="20" var="bean">
+                     
+                    <tr>
+                     <td width="20%" align="left" valign="middle"><p>大型现场招聘会</p></td> 
+
+                        <td width="55%" align="center" valign="middle"><a href="${bean.url}">${bean.title!}</a></td>
+                        <td width="25%" align="right" valign="middle"><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></td>
+
+                       
+                    </tr>
+                     </#cms_content_list>
+                </table>
+            </div>
+                       <!--分页位置-->
+                   <div id="fy" name="fy" class="fy">
+        <ul class="pag">
+            <#cms_pagination siteId="${site.siteId}" categoryId="${category.categoryId}" page="${page}" moreNum="6"  var="page" >
+            <li>${page.first}</li>
+            @for(change in page.changePage){
+            @if(!change.isLink){
+            @if(change.isMore){
+            <li>${change.value!}</li>
+            @}else{
+            <li class="current">${change.value!}</li>
+            @}
+            @}else{
+            <li> ${change.url!}</li>
+            @}
+            @}
+            <li>${page.next}</li>
+        </#cms_pagination>
+        </ul>
+    </div>
+        </div>
+    </div>
+</div>
+
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}

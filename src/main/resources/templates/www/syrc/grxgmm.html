@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+	<script type="text/javascript"  src="${resPath}/bcrc/js/TL_Tab.js"></script>
+
+</head>
+<body >
+<div class="contentbig">
+	<!--头部开始-->
+	@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+	<!--头部结束-->
+	<!--内容开始-->
+	<div class="wz_cont">
+		<div  class="wz_cont_in">
+			<div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>个人中心</div>
+			<div class=" clearfix">
+				<div class="con_left fl">
+					<h4><img src="${resPath}/bcrc/images/grzx_03.png"/></h4>
+					<ul class="left_nav">
+						@includeFileTemplate("/www/syrc/include/grzx-eightOtherLeftMeun.html",{"current":"index"}){}
+					</ul>
+				</div>
+				<div class="con_right fr">
+					<!--简历中心   开始-->
+					<div class="all_title"><a><span>修改密码</span></a></div>
+					<table class="jbxx_table">
+						<tr>
+							<td class="td_tit">
+								<i class="red">*</i>当前密码：
+							</td>
+							<td>
+								<input type="password" id="jmm" name="jmm" onchange="dqmm()" maxlength="20" value="" placeholder="请输入当前密码，6-16位字母/数字/符号组合" />
+								<p class="error" style="display:none;" id="err_jmm"><span></span></p>
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tit">
+								<i class="red">*</i>新密码：
+							</td>
+							<td>
+								<input type="password" class="txt inputblur"id="zh_pwd" name="zh_pwd" maxlength="20" value="" placeholder="请输入密码，6-16位字母/数字/符号组合" />
+								<p class="error" style="display:none;" id="err_zh_pwd"><span></span></p>
+
+							</td>
+						</tr>
+						<tr>
+							<td class="td_tit">
+								<i class="red">*</i>重复新密码：
+							</td>
+							<td>
+								<input type="password" class="txt inputblur" id="zh_pwds" name="zh_pwds" maxlength="20" value="" placeholder="请输入和上面相同的密码" />
+								<p class="error" style="display:none;" id="err_zh_pwds"><span></span></p>
+							</td>
+						</tr>
+
+
+					</table>
+					<a class="qr_btn" onclick="save()">保存修改</a>
+					<input type="hidden" id="rsmid" value="398719117"/>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--内容结束-->
+
+
+
+<script>
+    function save(){
+        var jmm = $('#jmm').val();
+        var zh_pwd=$('#zh_pwd').val();
+        var zh_pwds=$('#zh_pwds').val();
+        var num= /^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,}$/;
+        if (jmm == "") {
+            alert('还没有填写当前密码');
+            return;
+        } else if (!num.test(jmm)) {
+            alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+            return;
+        }
+
+        if(zh_pwd==""){
+            alert('还没有填写密码');
+            $('#zh_pwd').val("");
+            return;
+        } else if(!num.test(zh_pwd)){
+            alert("密码格式不正确 请填写正确的密码格式 ：数字+字母 （不小于六位）");
+            $('#zh_pwd').val("");
+            return;
+        }
+
+        if (zh_pwds == "") {
+            alert('还没有填写确认密码');
+            $('#zh_pwds').val("");
+            return;
+        }else if (zh_pwd != zh_pwds) {
+            alert('请保持两次填写的密码一致');
+            $('#zh_pwds').val("");
+            return;
+        }
+        var formData = new FormData();
+        formData.append('jmm',jmm);
+        formData.append('zh_pwd',zh_pwd);
+        $.ajax({
+            url:"${ctxPath}/system/reception/selectPassword",   //请求的url地址
+            dataType:"json",   //返回格式为json
+            data:formData,    //参数值
+            type:"post",   //请求方式
+            crossDomain: true,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function(data) {
+                if(data.msg=='error'){
+                    alert("当前密码错误，请重新输入");
+                    $('#jmm').val("");
+                }else{
+                    $.ajax({
+                        url:"${ctxPath}/system/reception/updatePassword",   //请求的url地址
+                        dataType:"json",   //返回格式为json
+                        data:formData,    //参数值
+                        type:"post",   //请求方式
+                        crossDomain: true,
+                        cache: false,
+                        processData: false,
+                        contentType: false,
+                        success : function(responseStr) {
+                            alert("修改成功，请重新登录");
+                            window.location.href="${ctxPath}/system/reception/logOut";
+                        },
+                    });
+				}
+            },
+        });
+
+        }
+</script>
+
+	<!--footer begin-->
+	@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+	<!--footer end-->
+</div>
+</body>
+</html>

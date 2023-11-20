@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>高级搜索</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_jzd.css">
+<script src="js/jquery-1.7.2.min.js"></script>
+<script src="js/jlzx_js.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+<div class="header">
+  <div class="logo fl"><img src="images/sy-index_03.png" width="390" height="79"></div>
+  <ul class="nav fr">
+    <li class="zypx_on"><a class="zypx">职业培训</a></li>
+    <li><a class="gjrc">高级人才</a></li>
+    <li><a class="xczp">现场招聘</a></li>
+    <li><a class="wlzp">网络招聘</a></li>
+    <li><a class="syyc">松原引才</a></li>
+    <li><a class="xzsy">网站首页</a></li>
+  </ul>
+</div>
+<!--头部结束--> 
+
+<!--内容开始-->
+<div class="contentbox er_con">
+
+  <div class="er_div2 clearfix">
+	  	<p class="rsj_dqwzbox">当前位置：<a>首页</a>&gt;&gt;<a>高级搜索</a></p>
+    <table class="jbxx_table">
+		  	<tbody>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					职能类别：
+				</td>
+				<td>
+					<div class="sh"><div class="txt pointer" float-on="false" id="work_func_div"><input id="work_func_input" placeholder="填写/选择" class="ef cursor" type="text" value="" pre_value=""> <span class="ic i_block pointer" id="work_func_click" onclick="work_func_click(this)"></span><div class="ul u3" id="work_func_list"> </div></div><input id="work_func" type="hidden" value="" pre_code=""> </div>
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					行业类别：
+				</td>
+				<td>
+					<div class="sh"><div class="txt pointer" float-on="false" id="int_expectindustry_div"><input placeholder="填写/选择" class="ef cursor" id="int_expectindustry_input" type="text" maxlength="24"> <span class="ic i_block pointer" onclick="work_industry_click(this)" id="int_expectindustry_click"></span><div class="ul u3" id="int_expectindustry_list"></div></div><input id="int_expectindustry" type="hidden" value=""></div>
+					
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					经济类型：
+				</td>
+				<td>
+					<select>
+						<option>请选择</option>
+						<option>国有经济</option>
+						<option>集体经济</option>
+						<option>私营经济</option>
+						<option>个体经济</option>
+						<option>联营经济</option>
+						<option>股份制</option>
+						<option>外商投资</option>
+						<option>港澳台投资</option>
+						<option>其他经济类</option>
+					</select>
+					
+				</td>
+			  </tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>工作年限：
+				</td>
+				<td>
+					<select>
+						<option>请选择</option>
+						<option>无经验</option>
+						<option>1-3年</option>
+						<option>3-5年</option>
+						<option>5-10年</option>
+						<option>10年以上</option>
+					</select>
+				</td>
+			  </tr>
+		   <tr>
+		  	 		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>月薪范围：
+				</td>
+				<td>
+					<select>
+						<option>请选择</option>
+						<option>2千以下</option>
+						<option>2千-3千</option>
+						<option>3-4.5千</option>
+						<option>4.5-6千</option>
+						<option>6-8千</option>
+						<option>0.8-1万</option>
+						<option>1-1.5万</option>
+						<option>1.5-2万</option>
+						<option>2-3万</option>
+						<option>3-4万</option>
+						<option>4-5万</option>
+						<option>5万以上</option>
+					</select>
+				</td>
+			  </tr>
+		   <tr>
+		   <tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>学历要求：
+				</td>
+				<td>
+					<select ><option>学历不限</option><option>初中及以下</option><option>高中</option><option>中专</option><option>大专</option><option>本科</option><option>硕士</option><option>博士</option><option>MBA</option></select>
+				</td>
+			  </tr>
+		   <tr>
+		  	<tr>
+				<td class="td_tit" valign="top">
+					<i class="red"></i>工作性质：
+				</td>
+				<td>
+					<select>
+						<option>全职</option>
+						<option>兼职</option>
+						<option>实习</option>
+					</select>
+				</td>
+			  </tr>
+		 
+			
+
+
+				 
+			
+		  </tbody></table>
+	  <a class="qr_btn">搜索</a>
+</div>
+	</div>
+<!--内容结束--> 
+
+<!--底部开始-->
+<div class="footerbox">
+  <table>
+    <tr>
+      <td align="center" valign="top"><img src="images/sy-index_82.png" width="38" height="38"/> <a>关于我们</a></td>
+      <td align="center" valign="top"><img src="images/sy-index_84.png" width="38" height="38"/> <a>法律申明</a></td>
+      <td align="center" valign="top"><img src="images/sy-index_86.png" width="38" height="38"/> <a>帮助中心</a></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><p>版权所有松原人才市场 吉ICP备12002825号-2 增值电信业务经营许可证号：吉B2-20150082号</p></td>
+    </tr>
+    <tr>
+      <td colspan="3" align="center"><p>技术支持：长春首佳科技有限公司</p></td>
+    </tr>
+  </table>
+</div>
+<!--底部结束-->
+
+
+<!--遮盖层 -->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<div id="base_area_layer" class="layer_class" init="true" >
+<iframe  scrolling="auto"   width="100%" height="100%" frameborder="0" id="iframe" src="1.html" ></iframe>
+</div>
+<input type="hidden"  id="work_func">
+<!--遮盖层-->
+</body>
+</html>

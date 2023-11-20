@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="Expires" content="0" />
+	<meta name="renderer" content="webkit" />
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<title>${siteTitle!}</title>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+</head>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="touxiang ckjj">
+				<a class="fl" href="javascript:void(0)">
+					@if(isEmpty(qyInfo.qy_file_logo)||qyInfo.qy_file_logo=="null"){
+					<img src="${resPath}/bcrc/images/weidengluqiyelogo.png" style="width: 100%;height: 100%;" alt="公司loggo"/>
+					@}else{
+					<img src="${qyInfo.qy_file_logo}" style="width: 100%;height: 100%;" alt="公司loggo"/>
+					@}
+				</a>
+				<div class="fl">
+					<span>${qyInfo.qy_qymc}</span>
+					<p class="qy_yyzz"><img src="${resPath}/bcrc-mobile/images/qyzx_icon_28.png"/>${qyInfo.qy_lxr}&nbsp;&nbsp;&nbsp;&nbsp;${qyInfo.qy_lxdh}</p>
+				</div>
+			</div>
+			<div class="clear"></div>
+			<div class="con_left">
+				<!--简历中心   开始-->
+				<div class="all_title">
+					<a onclick="tzym()"><span>发布岗位管理</span></a>
+					<!--<a class="qy_tit" onclick="tzym2()"><span>暂停发布岗位</span></a>-->
+				</div>
+				@for(user in model.list){
+				<dl class="wdsc_table">
+					<dd class="gwzl">
+						<em>${user.zw_zwmc}</em>
+						<em>招聘人数：${user.zw_zprs}</em>
+						<em>${strutil.subStringTo(user.zw_fbsc,0,10)}</em>
+					</dd>
+					<dd>
+						<span class="fl">收藏次数:${user.zw_gznx}</span>
+						<span class="fr">更新日期：${user.zw_gxrq}</span>
+					</dd>
+					<dt>
+						<a class="btn_bj btn_a"  href="${ctxPath}/qyzx/selectOne?zw_id=${user.zw_id}"><img src="${resPath}/syrc-mobile/images/jlzx_con_46.png"/>编辑</a>
+						<a class="btn_sc btn_a" onclick="return confirm('确定将此记录删除?');" href="${ctxPath}/qyzx/gwDeleteById?zw_id=${user.zw_id}"><img src="${resPath}/syrc-mobile/images/jlzx_con_11.png"/>删除</a>
+					</dt>
+				</dl>
+				@}
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+
+    <script type="text/javascript">
+    function tzym(){
+	window.location.href="${ctxPath}/qyzx/goToQyzxFbzwgl";
+	}
+	function tzym2(){
+	window.location.href="${ctxPath}/qyzx/goToQyzxFbzwglForztfb";
+	}
+		function shanchu(zw_id){
+				var gnl=confirm("你真的确定要删除吗?"); 
+					if (gnl==true){ 
+					window.location.href="${ctxPath}/qyzx/gwDeleteById?zw_id="+zw_id;
+					return true; 
+					} 
+					else{ 
+					return false; 
+					} 
+				}
+				
+				function bianji(id){
+				  var  test='${ctxPath}/qyzx/selectOne?zw_id='+id;
+				   var url=location.href;
+   					  mypost(test,{"url":url});
+				}
+				
+				function mypost(url, params) {
+					var temp_form = document.createElement("form");
+					temp_form .action = url;     
+					temp_form .target = "_self";
+					temp_form .method = "post";     
+					temp_form .style.display = "none";
+					for (var x in params) {
+					    var opt = document.createElement("textarea");     
+					    opt.name = x;     
+					    opt.value = params[x];     
+					    temp_form .appendChild(opt);     
+					 }     
+					  document.body.appendChild(temp_form);
+					 temp_form .submit();    
+				}
+				
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+	
+    <!--企业中间   开始-->
+    <div id="pageContent">
+		<a id="addrsm" class="btn_add2" href="${ctxPath}/qyzx/goToQyzxZjgw">+ 新增岗位</a>
+		<div class="qy_tita">
+		<a class="qy_tit" onclick="tzym();">正在发布岗位</a>
+		<a class="qy_tit on" onclick="tzym2();">暂停发布岗位</a>
+		</div>
+   		
+		<ul class="qy_table qy_tab">
+		@for(user in model2.list){
+			<li>
+				<h2><a href="javascrpit:void(0)">${user.zw_zwmc}</a><span>发布日期：${user.zw_fbsj}</span></h2>
+				<p><i>招聘人数：${user.zw_zprs}</i><span>更新日期：${user.zw_gxrq}</span></p>
+				<p class="qy_pan"><i>已暂停</i><a class="btn_bj btn_a" href="${ctxPath}/qyzx/selectOne?zw_id=${user.zw_id}" >
+				<img src="${resPath}/syrc-mobile/images/jlzx_con_46.png">编辑</a>
+					<a class="btn_zt btn_a" href="${ctxPath}/qyzx/updatefb?zw_id=${user.zw_id}">
+					<img src="${resPath}/syrc/images/jlzx_con_zt.png">发布</a>
+					
+				</p>
+			</li>
+			@}
+		</ul>
+   		
+		
+    <!--企业中间   结束--> 
+    </div>
+    <!--底部导航  开始-->
+	<div id="pageFooter">
+    <!-- <div class="btab">
+<div class="t_in"> <a class="i1" href="${frontPath!}/4">首页</a> <a class="i2" href="${frontPath!}/4/1001.html">松原引才</a> <a class="i3" href="${ctxPath!}/gjss/selectExample">网络招聘</a> <a class="i4" href="${frontPath!}/4/1009.html">高级人才</a> <a class="i5 on" href="${frontPath!}/4/1023.html">职业培训</a> </div>
+    </div> -->
+    <!--底部导航  结束-->
+    <script type="text/javascript">
+    function tzym(){
+	window.location.href="${ctxPath}/qyzx/goToQyzxFbzwgl";
+	}
+	function tzym2(){
+	window.location.href="${ctxPath}/qyzx/goToQyzxFbzwglForztfb";
+	}
+				
+    </script> 
+    
+  </div>
+    @includeFileTemplate("/www/syrc-mobile/include/qyzx-footer.html",{"current":"index"}){}

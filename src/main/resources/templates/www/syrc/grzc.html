@@ -1,0 +1,45 @@
+
+@includeFileTemplate("/www/syrc/include/mm-header.html"){}
+<!--内容开始-->
+
+<div class="logo"><img src="${resPath}/bcrc/images/bcrc-index_03.png"/></div>
+<div class="clearfix">
+	<div class="dl_left"><img src="${resPath}/bcrc/images/login_06.png"/></div>
+	<div class="dl_right">
+		<h1><img src="${resPath}/bcrc/images/login_09.png"/></h1>
+		<ul class="dl_cont">
+			<li>
+				<span>*邮箱：</span>
+				<input type="text" placeholder="请输入邮箱，它将用于登录和找回密码" id="zh_user"  name="zh_user" onblur="youxiang();"/>
+				<i id="ys1"></i>
+				<div class="clear"></div>
+				<em>！注：邮箱用于找回密码。</em>
+			</li>
+			<li>
+				<span>*密码：</span>
+				<input  type="password" placeholder="请输入密码，6-16位字母/数字/符号组合" id="zh_pwd" name="zh_pwd" onblur="mima();"/>
+				<i id="ys2"></i>
+			</li>
+			<li>
+				<span>*确认密码：</span>
+				<input  type="password" placeholder="请输入和上面相同的密码" id="zh_pwds" name="zh_pwds" onblur="mima2();"/>
+				<i id="ys3"></i>
+
+			</li>
+			<li>
+				<span>*验证码：</span>
+				<input type="text" placeholder="不区分大小写，点击图片可刷新"   id="yzm" onblur="yanzm();" class="yzm_text"/>
+				<img class="yzm" id="captcha_img"  src="${ctxPath}/verify" onclick="changeCode();" alt="点击更换" title="点击更换">
+				<i id="ys4"></i>
+			</li>
+			<li>
+				<input type="hidden" value="0" id="tset">
+				<span>&nbsp;</span>
+				<label style="color: #fff;"><input type="checkbox" style="width: 20px;height: 20px;"  id="yd"/>我已经完整阅读<a target="_blank" href="${resPath}/syrc/jlzx-xyhzc.html">《新用户注册协议》</a></label>
+			</li>
+			<a onclick="zhuce()" style="color: #fff;" href="javascript:void(0);"><li class="login_but">注册</li></a>
+		</ul>
+	</div>
+</div>
+</div>
+@includeFileTemplate("/www/syrc/include/mmzc-footer.html",{"current":"index"}){}

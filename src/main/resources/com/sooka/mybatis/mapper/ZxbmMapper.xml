@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.ZxbmMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Zxbm" >
+    <id column="ZXBM_ID" property="zxbmId" jdbcType="VARCHAR" />
+    <result column="ZXBM_KCMC" property="zxbmKcmc" jdbcType="VARCHAR" />
+    <result column="ZXBM_DWMC" property="zxbmDwmc" jdbcType="VARCHAR" />
+    <result column="ZXBM_DWXZ" property="zxbmDwxz" jdbcType="VARCHAR" />
+    <result column="ZXBM_QYRS" property="zxbmQyrs" jdbcType="VARCHAR" />
+    <result column="ZXBM_NYYE" property="zxbmNyye" jdbcType="VARCHAR" />
+    <result column="ZXBM_ZZC" property="zxbmZzc" jdbcType="VARCHAR" />
+    <result column="ZXBM_SZDQ" property="zxbmSzdq" jdbcType="VARCHAR" />
+    <result column="ZXBM_SSHY" property="zxbmSshy" jdbcType="VARCHAR" />
+    <result column="ZXBM_BGDH" property="zxbmBgdh" jdbcType="VARCHAR" />
+    <result column="ZXBM_CZ" property="zxbmCz" jdbcType="VARCHAR" />
+    <result column="ZXBM_SJ" property="zxbmSj" jdbcType="VARCHAR" />
+    <result column="ZXBM_YX" property="zxbmYx" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ZXBM_ID, ZXBM_KCMC, ZXBM_DWMC, ZXBM_DWXZ, ZXBM_QYRS, ZXBM_NYYE, ZXBM_ZZC, ZXBM_SZDQ, 
+    ZXBM_SSHY, ZXBM_BGDH, ZXBM_CZ, ZXBM_SJ, ZXBM_YX
+  </sql>
+</mapper>

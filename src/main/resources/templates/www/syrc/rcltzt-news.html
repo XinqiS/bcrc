@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/rcltzt-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/rcltzt-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+<div class="header">
+	<div class="fhsy"><a target="_blank" href="${frontPath!}/4">返回网站首页</a></div>
+	<div class="logo"><img src="${resPath}/syrc/images/rcltzt-index_06.png" width="1012" height="271"/></div>
+</div>
+<!--头部结束-->
+<div class="contentbox">
+	<!--当前位置开始-->
+	<p class="rsj_dqwzbox">
+    <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+                ${bean.baseURL}
+            >>
+    @for(location in bean.locations){
+    ${location.categoryName}
+    @if(!locationLP.last){
+    >>
+    @}
+    @}
+	</#cms_site_pos>
+	</p>
+    <div class="clear"></div>
+    <div class="sycon_bg">
+        <div class="sycon_leftwh news_cont">
+        	<div class="news_title">
+                <h1 class="sywzy_h2">${content.title}</h1>
+                <div class="wxx_neirong_times">
+                  <div class="sywzy_xbt wxx_neirong_timecent"> 
+                    <span>发布时间：${content.inputdate,dateFormat="YYYY年MM月dd日"}</span> <span>信息来源：${content.author}</span> 
+                  </div>
+                </div>
+            </div>
+            
+            <p class="sy_wz">${content.content!}</p>
+        </div>
+    </div>
+        
+    
+    
+    
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+
+</body>
+</html>

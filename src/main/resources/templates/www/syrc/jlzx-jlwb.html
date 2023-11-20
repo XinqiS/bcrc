@@ -1,0 +1,705 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-body.css">
+<link rel="stylesheet" type="text/css" href="css/syrc-page.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_css1.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_form.css">
+<link rel="stylesheet" type="text/css" href="css/cjjl_jzd.css">
+<script type="text/javascript" src="js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="js/jlzx_js.js"></script>
+</head>
+
+<body>
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束--> 
+
+<!--内容开始-->
+<div class="contentbox er_con">
+  <div class=" clearfix">
+    <div class="con_left cjjl_nav fl">
+      <h4>编辑简历</h4>
+      <div class="nav_body left_nav"> <a href="#Basic" class="" id="base_index"><span class="left a"></span>基本信息<span id="base_complete" class="right y"></span></a> <a href="#Career" id="intention_index"><span class="left b"></span>求职意向<span id="intention_complete" class="right n"></span></a> <a href="#Work" id="work_index"><span class="left c"></span>工作经验<span id="work_complete" class="right n"></span></a> <a href="#Education" id="education_index"><span class="left e"></span>教育经历<span id="education_complete" class="right n"></span></a> <a href="#Graduate" id="school_index"><span class="left f"></span>在校情况<span id="school_complete" class="right n"></span></a> <a href="#Skills" class="" id="skill_index"><span class="left g"></span>技能特长<span id="skill_complete" class="right n"></span></a> </div>
+      <a class="btn_yljl">预览简历</a> </div>
+    <div class="con_right fr"> 
+      <!--			创建简历   开始-->
+      <div class="er_tit"> <span>编辑简历</span> <a class="jlzx_jlzx er_tit_a">简历中心</a></div>
+      <div class="column Fm" id="maincontent">
+        <div class="box mk top_wrap" id="basedetail">
+          <div class="head" id="Basic">
+            <div class="face"> <img src="images/man.png" width="85" height="104" alt="头像"> </div>
+            <div class="name ">王一</div>
+            <p class="at">现居住长春-南关区 │ 8年工作经验 │ 男 │ 29 岁 (1990/07/18) │ 目前正在找工作</p>
+            <div class="tab"> <span class="email icons at" title="3431877856@qq.com">3431877856@qq.com</span> <span class="tel icons">15948700252</span> </div>
+            <div class="abox">
+              <div class="mbox" onclick="showMoreClickEvent(this)"> <span class="icons">更多展开</span> <em class="icons"></em> </div>
+              <div class="all">
+                <div class="e e2 ef">
+                  <label>户口/国籍</label>
+                  <i>：</i>
+                  <div>宁波</div>
+                </div>
+                <div class="e e2">
+                  <label>婚姻状态</label>
+                  <i>：</i>
+                  <div>未婚</div>
+                </div>
+                <div class="e e2">
+                  <label>政治面貌</label>
+                  <i>：</i>
+                  <div>中共党员</div>
+                </div>
+                <div class="clear"></div>
+              </div>
+            </div>
+          </div>
+          <span class="ed_icon_blue icons" id="xxxx_btn" ></span> </div>
+		  <div class="box m1 top_wrap" id="salary">
+         <div class="hd">
+    <strong class="icons"><em class="e0 icons"></em>目前年收入</strong>
+    <span class="f16">500万元</span>
+    <span class="f12">（包含基本工资、补贴、奖金、股权收益等）</span>
+</div>
+			
+          <span class="ed_icon_blue icons" onclick="salary_editButtonClick(this)" id="salary_edit" ></span> </div>
+        <div class="box mk top_wrap" id="intention">
+          <div class="hd"> <strong class="icons" id="Career"><em class="e1 icons"></em>求职意向</strong> </div>
+          <div  class="bh_div2">
+           <div style="">
+    <div class="bd">
+        <div class="con">
+
+            <div class="e e3">
+                <label>期望薪资</label><i>：</i>
+                <div>2万以下元/年</div>
+            </div>
+            <div class="e e3">
+                <label>地点</label><i>：</i>
+                <div>
+<span class="ong">长春</span>                </div>
+            </div>
+            <div class="e e3 ef">
+                <label>职能/职位</label><i>：</i>
+                <div>
+<span class="ong">UI设计师/顾问</span><span class="ong">&nbsp;&nbsp;UI美工设计</span>                </div>
+            </div>
+            <div class="e e3">
+                <label>行业</label><i>：</i>
+                <div>
+<span class="ong">互联网/电子商务</span>                </div>
+            </div>
+            <div class="e e2">
+                <label>工作类型</label><i>：</i>
+                <div>全职</div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+</div>
+          </div>
+          <span class="ed_icon_blue icons" id="intention_edit"  onclick="intention_editButtonClick(this)" ></span> </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Work"><em class="e2 icons"></em>工作经验 </strong><a id="work_new" onclick="workButtonClick(this);"  class="add icons">新增工作</a> </div>
+          <div id="work">
+           <div class="bd" id="work_view_300888378">
+    <div class="con edit ebox">
+        <div class="sp">
+            <span>2013/1-至今</span>
+            <strong class="w280 at" title="长春首佳科技有限公司">长春首佳科技有限公司</strong>
+            <strong class="fbox">
+                <span class="zhi at" title="UI设计师/顾问">UI设计师/顾问</span>
+                <em>
+                                </em>
+            </strong>
+        </div>
+        <p class="pp at" title="互联网/电子商务  |  民营公司  |  技术部">
+            互联网/电子商务  |  民营公司  |  技术部        </p>
+        <div class="e">
+            <label>工作描述</label><i>：</i>
+            <div>
+                网站设计与开发工作            </div>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="work_edit_300888378" onclick="editButtonClick(this)"></em><em class="del icons" id="work_delete_300888378" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+			  <div class="bd" id="work_view_301353330">
+    <div class="con edit ebox">
+        <div class="sp">
+            <span>2010/3-至今</span>
+            <strong class="w280 at" title="吉林大药房药业股份有限公司">吉林大药房药业股份有限公司</strong>
+            <strong class="fbox">
+                <span class="zhi at" title="其他">其他</span>
+                <em>
+                                </em>
+            </strong>
+        </div>
+        <p class="pp at" title="医疗设备/器械  |  50-150人  |  民营公司  |  人事部">
+            医疗设备/器械  |  50-150人  |  民营公司  |  人事部        </p>
+        <div class="e">
+            <label>工作描述</label><i>：</i>
+            <div>
+                人事部工作描述            </div>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="work_edit_301353330" onclick="editButtonClick(this)"></em><em class="del icons" id="work_delete_301353330" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+			  
+			  <div class="bd" id="work_view_301353415">
+    <div class="con edit ebox">
+        <div class="sp">
+            <span>2010/1-2011/2</span>
+            <strong class="w280 at" title="吉林电视台">吉林电视台</strong>
+            <strong class="fbox jian hai">
+                <span class="zhi at" title="技术总监/经理">技术总监/经理</span>
+                <em>
+                (兼职)<i>海外经历</i>                </em>
+            </strong>
+        </div>
+        <p class="pp at" title="计算机服务(系统、数据服务、维修)  |  50-150人  |  合资  |  技术部">
+            计算机服务(系统、数据服务、维修)  |  50-150人  |  合资  |  技术部        </p>
+        <div class="e">
+            <label>工作描述</label><i>：</i>
+            <div>
+                技术总监职位描述            </div>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="work_edit_301353415" onclick="editButtonClick(this)"></em><em class="del icons" id="work_delete_301353415" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+			  
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Education"><em class="e4 icons"></em>教育经历 </strong><a id="education_new"  onclick="EducationButtonClick(this);" class="add icons">新增教育</a> </div>
+          <div id="education">
+           <div class="bd">
+    <div class="con edit" id="education_view_178993151">
+        <div class="sp">
+            <span>2010/3-2015/7</span>
+            <strong class="fbox hai">
+                <span class="at" title="长春十三中">长春十三中</span>
+<input type="hidden" id="education_verify_178993151" value="0"><em><i>海外经历</i></em>            </strong>
+            <span class="cl3 w140 at">高中</span>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="education_edit_178993151" onclick="editButtonClick(this)"></em><em class="del icons" id="education_delete_178993151" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+			  <div class="bd">
+    <div class="con edit" id="education_view_178692305">
+        <div class="sp">
+            <span>2009/8-2012/7</span>
+            <strong class="fbox">
+                <span class="at" title="青岛科技大学">青岛科技大学</span>
+<input type="hidden" id="education_verify_178692305" value="0"><em></em>            </strong>
+            <strong class="w140 at" title="计算机科学与技术">计算机科学与技术</strong>
+            <span class="cl3 w140 at">本科</span>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="education_edit_178692305" onclick="editButtonClick(this)"></em><em class="del icons" id="education_delete_178692305" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"><strong class="icons" id="Graduate"><em class="e5 icons"></em>在校情况 </strong><a id="schoolaward_new"  onclick="schoolaward_newButtonClick(this);" class="add icons">新增校况</a></div>
+          <div id="Graduate_div" >
+            <div class="tit"> <span>校内荣誉</span></div>
+            <div id="schoolaward">
+              <div class="bd" id="schoolaward_view_70604153">
+    <div class="con edit">
+        <div class="sp">
+            <span>2011/2</span>
+            <strong class="w180 at" title="校园奖学金">校园奖学金</strong>
+            <span class="cl3 w295 at" title="二级">二级</span>
+        </div>
+        <span class="ed_icon"><em class="edi icons" id="schoolaward_edit_70604153" onclick="editButtonClick(this)"></em><em class="del icons" id="schoolaward_delete_70604153" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+				<div class="bd" id="schoolaward_view_70604143">
+    <div class="con edit">
+        <div class="sp">
+            <span>2010/3</span>
+            <strong class="w180 at" title="校园奖学金">校园奖学金</strong>
+        </div>
+        <span class="ed_icon"><em class="edi icons" id="schoolaward_edit_70604143" onclick="editButtonClick(this)"></em><em class="del icons" id="schoolaward_delete_70604143" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+            </div>
+            <div class="tit"> <span>校内职务</span></div>
+            <div id="schooljob">
+             <div class="bd" id="schooljob_view_58578024">
+    <div class="con edit">
+        <div class="sp">
+            <span>2011/2-2013/1</span>
+            <strong class="w490 at" title="团支书">团支书</strong>
+        </div>
+        <div class="e">
+            <label>职务描述</label><i>：</i>
+            <div>班级团支书</div>
+        </div>
+        <div class="clear"></div>
+        <span class="ed_icon"><em class="edi icons" id="schooljob_edit_58578024" onclick="editButtonClick(this)"></em><em class="del icons" id="schooljob_delete_58578024" onclick="deleteButtonClick(this)"></em></span>
+    </div>
+</div>
+            </div>
+          </div>
+        </div>
+        <div class="box mk">
+          <div class="hd"> <strong class="icons" id="Skills"><em class="e6 icons"></em>技能特长 </strong><span class="f12">（包含IT技能、语言能力、证书、成绩、培训经历）</span> <a id="skilllanguage_new" onclick="skilllanguage_newButtonClick(this);" class="add icons">新增特长</a></div>
+          <div id="Skills_div">
+           <p style="padding:5px 10px;">包含IT技能、语言能力、证书、成绩、培训经历</p>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+      
+      <!--			创建简历   结束--> 
+    </div>
+  </div>
+</div>
+<!--内容结束--> 
+
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束--> 
+<!--居住地弹出-->
+<div id="base_area_layer" class="layer_class" init="true" >
+  <div id="base_area_click_init" class="panel_lnp panel_py panel_ct con_m">
+    <h2 id="base_area_click_top">
+      <p id="base_area_click_top_message">选择地区</p>
+      <a class="base_area_click_close" href="javascript:void(0);"  onClick="close_i(this)"><i></i></a></h2>
+    <div id="base_area_click_center" class="panel_selt">
+      <ul id="base_area_click_center_left" class="sbar">
+        <li  class="on tab_dz" >热门城市<em></em></li>
+        <li  class="tab_dz" >A B C<em></em></li>
+        <li  class="tab_dz">D E F G<em></em></li>
+        <li   class="tab_dz">H I<em></em></li>
+        <li   class="tab_dz">J K<em></em></li>
+        <li   class="tab_dz">L M N<em></em></li>
+        <li   class="tab_dz"  class="tab_dz">
+        O P Q R<em></em>
+        </li>
+        <li   class="tab_dz">S T U<em></em></li>
+        <li   class="tab_dz">V W X<em></em></li>
+        <li   class="tab_dz">Y Z<em></em></li>
+        <li   class="tab_dz">所有省份(含港澳台)<em></em></li>
+        <li   class="tab_dz">国外<em></em></li>
+      </ul>
+      <div id="base_area_click_center_right" class="con">
+        <div  class=" tab_dzdiv de d3">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_010000" data-value="010000" data-navigation="000000" class="">北京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_020000" data-value="020000" data-navigation="000000" class="">上海</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030200" data-value="030200" data-navigation="000000" class="">广州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_040000" data-value="040000" data-navigation="000000" class="">深圳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_180200" data-value="180200" data-navigation="000000" class="">武汉</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_200200" data-value="200200" data-navigation="000000" class="">西安</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080200" data-value="080200" data-navigation="000000" class="">杭州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070200" data-value="070200" data-navigation="000000" class="">南京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_090200" data-value="090200" data-navigation="000000" class="">成都</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_060000" data-value="060000" data-navigation="000000" class="">重庆</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030800" data-value="030800" data-navigation="000000" class="">东莞</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230300" data-value="230300" data-navigation="000000" class="">大连</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230200" data-value="230200" data-navigation="000000" class="">沈阳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070300" data-value="070300" data-navigation="000000" class="">苏州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_250200" data-value="250200" data-navigation="000000" class="">昆明</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_190200" data-value="190200" data-navigation="000000" class="">长沙</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_150200" data-value="150200" data-navigation="000000" class="">合肥</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080300" data-value="080300" data-navigation="000000" class="">宁波</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_170200" data-value="170200" data-navigation="000000" class="">郑州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_050000" data-value="050000" data-navigation="000000" class="">天津</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120300" data-value="120300" data-navigation="000000" class="">青岛</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120200" data-value="120200" data-navigation="000000" class="">济南</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_220200" data-value="220200" data-navigation="000000" class="">哈尔滨</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_240200" data-value="240200" data-navigation="000000" class="">长春</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_110200" data-value="110200" data-navigation="000000" class="">福州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_010000" data-value="010000" data-navigation="000000" class="">北京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_020000" data-value="020000" data-navigation="000000" class="">上海</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030200" data-value="030200" data-navigation="000000" class="">广州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_040000" data-value="040000" data-navigation="000000" class="">深圳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_180200" data-value="180200" data-navigation="000000" class="">武汉</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_200200" data-value="200200" data-navigation="000000" class="">西安</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080200" data-value="080200" data-navigation="000000" class="">杭州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070200" data-value="070200" data-navigation="000000" class="">南京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_090200" data-value="090200" data-navigation="000000" class="">成都</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_060000" data-value="060000" data-navigation="000000" class="">重庆</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030800" data-value="030800" data-navigation="000000" class="">东莞</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230300" data-value="230300" data-navigation="000000" class="">大连</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230200" data-value="230200" data-navigation="000000" class="">沈阳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070300" data-value="070300" data-navigation="000000" class="">苏州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_250200" data-value="250200" data-navigation="000000" class="">昆明</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_190200" data-value="190200" data-navigation="000000" class="">长沙</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_150200" data-value="150200" data-navigation="000000" class="">合肥</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080300" data-value="080300" data-navigation="000000" class="">宁波</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_170200" data-value="170200" data-navigation="000000" class="">郑州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_050000" data-value="050000" data-navigation="000000" class="">天津</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120300" data-value="120300" data-navigation="000000" class="">青岛</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120200" data-value="120200" data-navigation="000000" class="">济南</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_220200" data-value="220200" data-navigation="000000" class="">哈尔滨</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_240200" data-value="240200" data-navigation="000000" class="">长春</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_110200" data-value="110200" data-navigation="000000" class="">福州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_010000" data-value="010000" data-navigation="000000" class="">北京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_020000" data-value="020000" data-navigation="000000" class="">上海</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030200" data-value="030200" data-navigation="000000" class="">广州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_040000" data-value="040000" data-navigation="000000" class="">深圳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_180200" data-value="180200" data-navigation="000000" class="">武汉</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_200200" data-value="200200" data-navigation="000000" class="">西安</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080200" data-value="080200" data-navigation="000000" class="">杭州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070200" data-value="070200" data-navigation="000000" class="">南京</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_090200" data-value="090200" data-navigation="000000" class="">成都</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_060000" data-value="060000" data-navigation="000000" class="">重庆</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_030800" data-value="030800" data-navigation="000000" class="">东莞</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230300" data-value="230300" data-navigation="000000" class="">大连</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_230200" data-value="230200" data-navigation="000000" class="">沈阳</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_070300" data-value="070300" data-navigation="000000" class="">苏州</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_250200" data-value="250200" data-navigation="000000" class="">昆明</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_190200" data-value="190200" data-navigation="000000" class="">长沙</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_150200" data-value="150200" data-navigation="000000" class="">合肥</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_080300" data-value="080300" data-navigation="000000" class="">宁波</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_170200" data-value="170200" data-navigation="000000" class="">郑州</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_050000" data-value="050000" data-navigation="000000" class="">天津</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120300" data-value="120300" data-navigation="000000" class="">青岛</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_120200" data-value="120200" data-navigation="000000" class="">济南</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_220200" data-value="220200" data-navigation="000000" class="">哈尔滨</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_240200" data-value="240200" data-navigation="000000" class="">长春</em></td>
+                <td class="js_more" name="0"><em id="base_area_click_center_right_list_category_000000_110200" data-value="110200" data-navigation="000000" class="">福州</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="declear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!--居住地弹出--> 
+
+<!--行业-->
+
+<div id="int_expectindustry_multiple_under_layer_id"  class="layer_class" init="true" >
+  <div id="int_expectindustry_click_init" class="panel_lnp panel_py panel_ct2 con_l">
+    <h2 id="int_expectindustry_click_top">
+      <p id="int_expectindustry_click_top_message">选择行业<span class="sp">（最多只能选择<strong>5</strong>项）</span></p>
+      <a class="int_expectindustry_click_close"  onClick="close_i(this)" href="javascript:void(0);"><i></i></a></h2>
+    <div id="int_expectindustry_click_multiple" class="panel_tags mk element_hide">
+      <div class="tin" id="int_expectindustry_click_multiple_selected"></div>
+      <p id="int_expectindustry_click_multiple_error" class="error element_hide">最多只能选择5项</p>
+    </div>
+    <div id="int_expectindustry_click_center" class="panel_selt">
+      <ul id="int_expectindustry_click_center_left" class="sbar tab_hydiv">
+        <li id="int_expectindustry_click_center_left_each_01" class="on " data-value="01">计算机/互联网/通信/电子<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_41" class="" data-value="41">会计/金融/银行/保险<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_04" class="" data-value="04">贸易/消费/制造/营运<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_08" class="" data-value="08">制药/医疗<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_12" class="" data-value="12">广告/媒体<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_26" class="" data-value="26">房地产/建筑<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_34" class="" data-value="34">专业服务/教育/培训<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_11" class="" data-value="11">服务业<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_21" class="" data-value="21">物流/运输<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_19" class="" data-value="19">能源/原材料<em></em></li>
+        <li id="int_expectindustry_click_center_left_each_28" class="" data-value="28">政府/非营利组织/其他<em></em></li>
+      </ul>
+      <div id="int_expectindustry_click_center_right" class="con">
+        <div id="int_expectindustry_click_center_right_list_01" class="int_expectindustry_click_center_right_list tab_hytable de d3">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_01" data-value="01" data-navigation="01" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_37" data-value="37" data-navigation="01" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_38" data-value="38" data-navigation="01" class="">计算机服务(系统、数据服务、维修)</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_31" data-value="31" data-navigation="01" class="">通信/电信/网络设备</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_39" data-value="39" data-navigation="01" class="">通信/电信运营、增值服务</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_32" data-value="32" data-navigation="01" class="">互联网/电子商务</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_40" data-value="40" data-navigation="01" class="">网络游戏</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_02" data-value="02" data-navigation="01" class="">电子技术/半导体/集成电路</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_35" data-value="35" data-navigation="01" class="">仪器仪表/工业自动化</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_01" data-value="01" data-navigation="01" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_37" data-value="37" data-navigation="01" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_38" data-value="38" data-navigation="01" class="">计算机服务(系统、数据服务、维修)</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_31" data-value="31" data-navigation="01" class="">通信/电信/网络设备</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_39" data-value="39" data-navigation="01" class="">通信/电信运营、增值服务</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_32" data-value="32" data-navigation="01" class="">互联网/电子商务</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_40" data-value="40" data-navigation="01" class="">网络游戏</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_02" data-value="02" data-navigation="01" class="">电子技术/半导体/集成电路</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_35" data-value="35" data-navigation="01" class="">仪器仪表/工业自动化</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_01" data-value="01" data-navigation="01" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_37" data-value="37" data-navigation="01" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_38" data-value="38" data-navigation="01" class="">计算机服务(系统、数据服务、维修)</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_31" data-value="31" data-navigation="01" class="">通信/电信/网络设备</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_39" data-value="39" data-navigation="01" class="">通信/电信运营、增值服务</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_32" data-value="32" data-navigation="01" class="">互联网/电子商务</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_40" data-value="40" data-navigation="01" class="">网络游戏</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_02" data-value="02" data-navigation="01" class="">电子技术/半导体/集成电路</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_35" data-value="35" data-navigation="01" class="">仪器仪表/工业自动化</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_01" data-value="01" data-navigation="01" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_37" data-value="37" data-navigation="01" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_38" data-value="38" data-navigation="01" class="">计算机服务(系统、数据服务、维修)</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_40" data-value="40" data-navigation="01" class="">网络游戏</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_02" data-value="02" data-navigation="01" class="">电子技术/半导体/集成电路</em></td>
+                <td class="js_more" name="0"><em id="int_expectindustry_click_center_right_list_category_01_35" data-value="35" data-navigation="01" class="">仪器仪表/工业自动化</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="declear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+   
+  </div>
+</div>
+<!--行业--> 
+
+<!--职能-->
+<div id="work_func_layer" class="layer_class" init="true" >
+  <div id="work_func_click_init" class="panel_lnp panel_py panel_ct2 con_l">
+    <h2 id="work_func_click_top">
+      <p id="work_func_click_top_message">选择职能</p>
+      <a class="work_func_click_close"  onClick="close_i(this)" href="javascript:void(0);"><i></i></a></h2>
+    <div id="work_func_click_center" class="panel_selt">
+      <ul id="work_func_click_center_left" class="sbar tab_zndiv">
+        <li id="work_func_click_center_left_each_0100" class="on" data-value="0100">计算机/互联网/通信/电子<em></em></li>
+        <li id="work_func_click_center_left_each_0200" class="" data-value="0200">销售/客服/技术支持<em></em></li>
+        <li id="work_func_click_center_left_each_0400" class="" data-value="0400">会计/金融/银行/保险<em></em></li>
+        <li id="work_func_click_center_left_each_3500" class="" data-value="3500">生产/营运/采购/物流<em></em></li>
+        <li id="work_func_click_center_left_each_4100" class="" data-value="4100">生物/制药/医疗/护理<em></em></li>
+        <li id="work_func_click_center_left_each_4200" class="" data-value="4200">广告/市场/媒体/艺术<em></em></li>
+        <li id="work_func_click_center_left_each_2100" class="" data-value="2100">建筑/房地产<em></em></li>
+        <li id="work_func_click_center_left_each_0600" class="" data-value="0600">人事/行政/高级管理<em></em></li>
+        <li id="work_func_click_center_left_each_1400" class="" data-value="1400">咨询/法律/教育/科研<em></em></li>
+        <li id="work_func_click_center_left_each_4800" class="" data-value="4800">服务业<em></em></li>
+        <li id="work_func_click_center_left_each_1500" class="" data-value="1500">公务员/翻译/其他<em></em></li>
+      </ul>
+      <div id="work_func_click_center_right" class="con zn_table">
+        <div id="work_func_click_center_right_list_0100" class="work_func_click_center_right_list de d3" style="display: block;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_0100" data-value="0100" data-navigation="0100" class="">计算机软件</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2400" data-value="2400" data-navigation="0100" class="">计算机硬件</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2500" data-value="2500" data-navigation="0100" class="">互联网/电子商务/网游</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_6100" data-value="6100" data-navigation="0100" class="">网店淘宝</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2600" data-value="2600" data-navigation="0100" class="">IT-管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2700" data-value="2700" data-navigation="0100" class="">IT-品管、技术支持及其它</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2800" data-value="2800" data-navigation="0100" class="">通信技术开发及应用</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0100_2900" data-value="2900" data-navigation="0100" class="">电子/电器/半导体/仪器仪表</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0600" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_0600" data-value="0600" data-navigation="0600" class="">人力资源</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_0700" data-value="0700" data-navigation="0600" class="">高级管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0600_2300" data-value="2300" data-navigation="0600" class="">行政/后勤</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_1500" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1500" data-value="1500" data-navigation="1500" class="">公务员</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_2000" data-value="2000" data-navigation="1500" class="">翻译</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1600" data-value="1600" data-navigation="1500" class="">在校学生</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1700" data-value="1700" data-navigation="1500" class="">储备干部/培训生/实习生</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5300" data-value="5300" data-navigation="1500" class="">兼职</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_1900" data-value="1900" data-navigation="1500" class="">其他</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5600" data-value="5600" data-navigation="1500" class="">环保</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1500_5800" data-value="5800" data-navigation="1500" class="">农/林/牧/渔</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4800" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_4800" data-value="4800" data-navigation="4800" class="">餐饮服务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_4900" data-value="4900" data-navigation="4800" class="">酒店旅游</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5000" data-value="5000" data-navigation="4800" class="">美容保健</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_6400" data-value="6400" data-navigation="4800" class="">运动健身</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_6500" data-value="6500" data-navigation="4800" class="">休闲娱乐</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5100" data-value="5100" data-navigation="4800" class="">百货零售</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_1800" data-value="1800" data-navigation="4800" class="">交通运输服务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4800_5200" data-value="5200" data-navigation="4800" class="">家政保洁</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_1400" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1400" data-value="1400" data-navigation="1400" class="">咨询/顾问</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1100" data-value="1100" data-navigation="1400" class="">律师/法务/合规</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1200" data-value="1200" data-navigation="1400" class="">教师</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_5700" data-value="5700" data-navigation="1400" class="">培训</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_1400_1000" data-value="1000" data-navigation="1400" class="">科研</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4200" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4200" data-value="4200" data-navigation="4200" class="">广告</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4300" data-value="4300" data-navigation="4200" class="">公关/媒介</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_0300" data-value="0300" data-navigation="4200" class="">市场/营销</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4400" data-value="4400" data-navigation="4200" class="">影视/媒体</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_4500" data-value="4500" data-navigation="4200" class="">编辑出版</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4200_0900" data-value="0900" data-navigation="4200" class="">艺术/设计</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_3500" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3500" data-value="3500" data-navigation="3500" class="">生产/营运</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3600" data-value="3600" data-navigation="3500" class="">质量安全</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_0500" data-value="0500" data-navigation="3500" class="">工程/机械/能源</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_5400" data-value="5400" data-navigation="3500" class="">汽车制造</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3700" data-value="3700" data-navigation="3500" class="">技工普工</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_6200" data-value="6200" data-navigation="3500" class="">机械机床</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3800" data-value="3800" data-navigation="3500" class="">服装/纺织/皮革</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_6300" data-value="6300" data-navigation="3500" class="">印刷包装</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_3900" data-value="3900" data-navigation="3500" class="">采购</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_4000" data-value="4000" data-navigation="3500" class="">贸易</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_0800" data-value="0800" data-navigation="3500" class="">物流/仓储</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_3500_5900" data-value="5900" data-navigation="3500" class="">汽车销售与服务</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_4100" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_4100" data-value="4100" data-navigation="4100" class="">生物/制药/医疗器械</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_5500" data-value="5500" data-navigation="4100" class="">化工</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_4100_1300" data-value="1300" data-navigation="4100" class="">医院/医疗/护理</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0400" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_0400" data-value="0400" data-navigation="0400" class="">财务/审计/税务</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_3300" data-value="3300" data-navigation="0400" class="">金融/证券/期货/投资</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_2200" data-value="2200" data-navigation="0400" class="">银行</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0400_3400" data-value="3400" data-navigation="0400" class="">保险</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div id="work_func_click_center_right_list_0200" class="work_func_click_center_right_list de d3" style="display: none;">
+          <table>
+            <tbody>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_0200" data-value="0200" data-navigation="0200" class="">销售管理</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3000" data-value="3000" data-navigation="0200" class="">销售人员</em></td>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3100" data-value="3100" data-navigation="0200" class="">销售行政及商务</em></td>
+              </tr>
+              <tr>
+                <td class="js_more" name="0"><em id="work_func_click_center_right_list_category_0200_3200" data-value="3200" data-navigation="0200" class="">客服及支持</em></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="declear"></div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>
+<!--职能--> 
+
+<!--遮盖层-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<!--遮盖层-->
+</body>
+</html>

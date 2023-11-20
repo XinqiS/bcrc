@@ -1,0 +1,50 @@
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+	
+	
+    <!--企业中间   开始-->
+    <div id="pageContent">
+		<div class="qy_tita1">
+		<a class="qy_tit" onclick="tzym();">已接收的简历</a>
+		<a class="qy_tit on"  onclick="tzym2();">面试邀请</a>
+		
+		</div>
+			<ul class="qy_table qy_tab1">
+			@for(user in model.list){
+			<li>
+	
+				<h2><a href="javascript:void(0)" onclick="ms('${user.JL_BB_ID}','${user.zh_id}');">${user.jianli_xm}</a><span>邀请时间：${user.tdjl_yqsj}</span></h2>
+				<h2><i>面试地点：${user.zw_gzdz}</i></h2>
+			
+				<p class="qy_pan"><i class="green">已接受</i>
+					<a class="btn_sc btn_a" href="javascript:if(confirm('确认删除吗?'))window.location='${ctxPath}/qyzx/deleteByPrimiryKeyForMsyq?tdjl_id=${user.tdjl_id}'"><img src="${resPath}/syrc-mobile/images/jlzx_con_11.png">删除</a>
+				</p>
+			</li>
+			@}
+		</ul>
+		<script type="text/javascript">
+		
+		
+		function ms(a,b){
+		window.location.href="${ctxPath}/cms/resume/previewResumeForAdmin?id="+a+"&zh_id="+b;
+		}
+		</script>
+    <!--企业中间   结束--> 
+    </div>
+    <!--底部导航  开始-->
+	<div id="pageFooter">
+   <!--  <div class="btab">
+<div class="t_in"> <a class="i1" href="${frontPath!}/4">首页</a> <a class="i2" href="${frontPath!}/4/1001.html">松原引才</a> <a class="i3" href="${ctxPath!}/gjss/selectExample">网络招聘</a> <a class="i4" href="${frontPath!}/4/1009.html">高级人才</a> <a class="i5 on" href="${frontPath!}/4/1023.html">职业培训</a> </div>
+    </div> -->
+    <!--底部导航  结束--> 
+    
+  </div>
+  </div>
+  <script type="text/javascript">
+				function tzym(){
+				window.location.href="${ctxPath}/qyzx/goToQyzxYprcgl";
+				}
+				function tzym2(){
+				window.location.href="${ctxPath}/qyzx/goToQyzxYprcglForMsyq";
+				}
+</script>
+   @includeFileTemplate("/www/syrc-mobile/include/qyzx-footer.html",{"current":"index"}){}

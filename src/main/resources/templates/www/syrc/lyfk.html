@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/zypx-index.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+</head>
+
+<body>
+<!--header begin-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--header end-->
+
+
+<!--内容开始-->
+<form method="post" action="${ctxPath}/cms/lyfk/update" id="form">
+<div class="gjrc_contentbox">
+    <div class="main">
+    	<div class="all_title"><i></i><a>留言反馈</a></div>
+    	<div class="main_right_in">
+            <div class="zxbm_bd">
+            	<p>特别提醒：本表格所有栏目均为必填项，请仔细填写</p>
+            	<table>
+                    <tr>
+                    	<td width="15%" align="right"><span>类别：</span></td>
+                        <td>
+                        	<select name="lyfkLb" id="lyfkLb">
+                            	<script >
+									document.write(dicContainer["101"].toString());
+									var c='';
+									if(c!=''){
+										$("#lyfkLb").find("option[value = '"+c+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select></td>
+                        <td width="15%" align="right" nowrap="nowrap"><span>电子邮箱：</span></td>
+                        <td><input type="text" name="lyfkYx"  maxlength="20" id="lyfkYx"/></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td width="15%" align="right"><span>电话：</span></td>
+                        <td><input type="text" name="lyfkDh" maxlength="20" id="lyfkDh"/></td>
+                        <td width="15%" align="right"><span>QQ：</span></td>
+                        <td><input type="text" name="lyfkQq" maxlength="20" id="lyfkQq"/></td>
+                        
+                    </tr>
+                    <tr>
+                    	<td width="15%" align="right"><i>*</i><span>标题：</span></td>
+                        <td colspan="3"><input type="text" maxlength="100" name="lyfkBt" id="lyfkBt" class="lybt fl"/></td>
+                    </tr>
+                    <tr>
+                    	<td width="15%" align="right" nowrap="nowrap"><i>*</i><span>留言内容：</span></td>
+                        <td colspan="3"><textarea name="lyfkNr"  id="lyfkNr" ></textarea></td>
+                    </tr>
+                    <tr>
+                    	<td width="15%" align="right" nowrap="nowrap"><i>*</i><span>验证码：</span></td>
+                        <td colspan="3"><input type="text" class="fl" name="verifyCode"> <span class="input-group-addon code" id="basic-addon-code"><img  id="captcha_img"  src="${ctxPath}/verify" onclick="changeCode();" alt="点击更换" title="点击更换" class="m"></span></td>
+                    </tr>
+                    <tr>
+                    	<td colspan="4" align="center"><input type="button" value="提交" class="tj_but" onclick="save();"/></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+<script type="text/javascript">
+	$(function(){
+		var right_hei = $('.main_right_in').height();
+		$('.small_nav').height(right_hei+50);
+		});
+	function save() {
+		   if(isNull($('#lyfkLb').val())){
+                alert('类别不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkBt').val())){
+                alert('标题不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkNr').val())){
+                alert('内容不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkQq').val())){
+                alert('qq不能为空');
+                return false;
+            }
+             if(isNull($('#lyfkDh').val())){
+                alert('手机不能为空');
+                return false;
+            }else if(!checkMobile($('#lyfkDh').val())){
+            	alert('手机格式不正确！');
+                return false;
+            }
+            if(isNull($('#lyfkYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#lyfkYx').val())){
+            	 alert('邮箱格式不正确！');
+                 return false;
+            }
+		$.post($("#form").attr("action"), $("#form").serialize(), function(data) {
+			alert(data.message);
+		}, "json");
+	} 
+	function changeCode(){
+    $("#captcha_img").attr("src", "${ctxPath}/verify?t="+ (new Date().getTime()));
+}
+</script>
+<!--内容结束-->
+
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+
+</body>
+</html>

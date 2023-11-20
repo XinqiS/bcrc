@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>教育经历</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no,uc-fitscreen=yes">
+<link rel="stylesheet"  href="images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="images/sy_sjbase.css"  />
+<link rel="stylesheet" href="images/cover.css"  />
+<link rel="stylesheet" href="images/swiper.min.css"  />
+<link rel="stylesheet" href="images/search.css"  />
+<link rel="stylesheet" href="images/resume.css"  />
+<link rel="stylesheet" href="images/pop.css"  />
+<script type="text/javascript" src="images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="images/basic.js" ></script>
+<script type="text/javascript" src="images/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+</script>
+</head>
+<body style="background: #f6f6f5 ;">
+<div id="pageContent" class="fixtop">
+	<div class="top">
+		<a href="创建简历.html" class="back"></a>
+		创建教育经历	</div>
+	<div class="sbox">
+		<div class="e">
+			<label><em>*</em>学校</label>
+			<input type="text" id="schoolname" class="txt inputblur" name="School" placeholder="请输入学校名称" oninput="simpleAssociation('School')" maxlength="25" value="">
+			<p class="error" style="display:none;" id="err_schoolname"><span></span></p>
+			<div class="asslist bb" style="display:none;">
+				<div class="School cn">
+
+				</div>
+			</div>
+		</div>
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [0,70] , 'entrancetime' );">
+			<label><em>*</em>入学时间</label>
+			<div class="selt">
+			<span id="entrancetime" class="sval">2009-09</span>			<p class="error" id="err_entrancetime" style="display:none;"><span></span></p>	
+			</div>
+		</a>
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [5,70] , 'graduationtime');">
+			<label><em>*</em>毕业时间</label>
+			<div class="selt">
+			<span id="graduationtime" class="sval">2013-07</span>			
+			</div>
+			<p class="error" id="err_graduationtime" style="display:none;"><span></span></p>
+		</a>		
+
+		<div class="e">
+			<label><em>*</em>学历</label>
+			<div class="rt">
+				<div class="rdob">
+					<span class="rdo on" id="isfulltime">全日制</span>
+				</div>
+				<div class="selt"><span class="sval">本科</span><select id="degree" onchange="showMajor()"><option value="1">初中及以下</option><option value="2">高中</option><option value="3">中技</option><option value="4">中专</option><option value="5">大专</option><option value="6" selected="">本科</option><option value="7">硕士</option><option value="-1">MBA</option><option value="8">博士</option>				</select></div>
+			</div>
+		</div>
+
+		<a href="javascript:void(0)" class="e">
+						<label><em class="zhuanye" style="display:block;">*</em>专业</label>
+			<div class="txt c_default" onclick="setMajorPage();" id="majorname">请选择</div>			<input type="hidden" id="major" value="">
+			<p class="error" style="display:none;" id="err_majorname"><span></span></p>
+		</a>
+
+		<input type="hidden" id="majordesc" class="txt inputblur" name="Major" maxlength="25" value="">
+
+		<div class="e">
+			<label>海外学习</label>
+			<div class="rdob" id="isoversea">
+				<span class="rdo" value="1">是</span><span class="rdo on" value="0">否</span>			</div>
+		</div>
+
+		<div class="e e_ta">
+			<label>专业描述</label>
+			<div class="ptxa">
+				<textarea id="describe" class="inputblur" maxlength="2000" placeholder="填写您所学专业包括课程、毕业设计等"></textarea>
+				<div class="gray">0/1000</div>
+			</div>
+			<p class="error" style="display:none;" id="err_describe"><span></span></p>
+		</div>
+	</div>
+
+	<center class="btnbox">
+		<button class="btn" id="saveresumetwo">保存</button>
+		<input type="hidden" id="userid" value="398719117">
+		<input type="hidden" id="eduid" value="">
+		<input type="hidden" id="isverify" value="0">
+	</center>
+
+</div>
+<script type="text/javascript" src="images/base.js"></script> 
+<script type="text/javascript" src="images/fun.js"></script> 
+<script type="text/javascript" src="images/d_jobarea.js"></script> 
+<script type="text/javascript" src="images/popjobarea.js"></script> 
+<script type="text/javascript" src="images/resume.js">
+	</script>
+	<script type="text/javascript" src="images/major.js"></script> 
+	<script type="text/javascript" src="images/swiper.min.js"></script> 
+	<script type="text/javascript" src="images/popmajor.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_PC_Slider.js"></script>
+    <script type="text/javascript"  src="${resPath}/bcrc-mobile/js/TL_Tab.js"></script>
+
+</head>
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont">
+    <div  class="wz_cont_in">
+        <div class="dqwz">
+            <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+            当前位置：
+            ${bean.baseURL}
+            >>
+            @for(location in bean.locations){
+            ${location.categoryName}
+            @if(!locationLP.last){
+            >>
+            @}
+            @}
+        </#cms_site_pos>
+    </div>
+
+    <div class="sycon_bg">
+        <div class="sycon_leftwh news_cont">
+            <div class="news_title">
+                <h1 class="sywzy_h2">${category.categoryName}</h1>
+                <div class="wxx_neirong_times">
+                </div>
+            </div>
+
+            <div class="sy_wz">
+                <p>${category.content!}</p>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<!--footer 开始-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

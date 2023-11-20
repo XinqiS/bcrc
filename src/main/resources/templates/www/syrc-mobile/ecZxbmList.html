@@ -1,0 +1,59 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+    <script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+    <script src="${resPath}/syrc-mobile/images/basic.js"></script>
+    <script src="${resPath}/syrc/js/myPagination.js"></script>
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+</head>
+<body>
+<div id="pageWp" class="bb" >
+    <div id="pageTop" >
+        <!--	top  头部  开始-->
+        <div class="sy_header"> <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz">
+ 	@includeFileTemplate("/www/syrc-mobile/include/dlzc.html",{"current":"index"}){}
+    </span> </div>
+        <!--	top  头部  结束-->
+    </div>
+<!--企业中间   开始-->
+<div id="pageContent">
+    <div class="qy_tita">
+        <a class="qy_tit on">报名列表</a>
+    </div>
+    <ul class="qy_table qy_tab">
+        @for(zxbm in model.list){
+            <li>
+                <h2><a href="#">${zxbm.name!,xss}</a><span>${zxbm.tel}</span></h2>
+                <h2><i>${zxbm.nation}</i><i>${zxbm.sex == 0 ? '女' : '男'}</i>
+                    <i>
+                        @if(zxbm.education=='0'){
+                        <span>高中</span>
+                        @}else if(zxbm.education=='1'){
+                        <span>大专</span>
+                        @}else if(zxbm.education=='2'){
+                        <span>本科</span>
+                        @}
+                    </i>
+                    <i>${zxbm.wentToSchool}</i>
+                </h2>
+                <a class="btn_bj2 btn_a" href="${ctxPath}/ecZxbm/zxbm/detail/${zxbm.id}">查看</a>
+                <div style="clear:both;" ></div>
+            </li>
+        @}
+    </ul>
+    <!--企业中间   结束-->
+</div>
+<!--底部导航  开始-->
+<div id="pageFooter">
+    <!--底部导航  结束-->
+    <script type="text/javascript">
+    </script>
+</div>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-footer.html",{"current":"index"}){}

@@ -1,0 +1,469 @@
+<style>
+    .measure-input {
+        background: transparent url("${ctxPath}/static/images/ruler.gif") repeat-x scroll 0 bottom
+    }
+
+    .mutiUpload {
+        max-width: 510px;
+        height: auto;
+        font-size: 18px;
+        margin-left: 90px;
+        margin-top: -10px;
+    }
+
+    .mutiUpload div {
+        line-height: 1.8;
+    }
+
+    .mutiUpload p {
+        font-size: 20px;
+    }
+
+    .bjui-pageContent {
+        margin: 0 auto;
+    }
+</style>
+<script type="text/javascript">
+    function thumb_upload_success(file, data) {
+        var json = $.parseJSON(data)
+        $(this).bjuiajax('ajaxDone', json)
+        if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+            $('#qy_file_zz').val(json.filename).trigger('validate')
+            $('#j_custom_pic').val(json.filename)
+            $('#j_custom_span_pic').html('<img src="' + json.filename + '"  style="margin: 10px 0 0 0" WIDTH="200" HEIGHT="120"/>')
+        }
+    }
+
+    function upload_success(file, data) {
+        var json = $.parseJSON(data)
+        $(this).bjuiajax('ajaxDone', json)
+        if (json[BJUI.keys.statusCode] == BJUI.statusCode.ok) {
+            $('#qy_file_logo').val(json.filename).trigger('validate')
+            $('#j_custom_p').val(json.filename)
+            $('#j_custom_span_p').html('<img src="' + json.filename + '"  style="margin: 10px 0 0 0" WIDTH="200" HEIGHT="120"/>')
+        }
+    }
+
+</script>
+
+<div class="bjui-pageContent" style="width: 1025px;height: 510px">
+    <form method="post" action="${ctxPath}/cms/enterprise/update" id="j_model_form" data-toggle="validate"
+          data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="qy_id" value="${content.qy_id!}">
+        <input TYPE="hidden" name="userId" value="${session.SysUser.userId!}">
+        <input TYPE="hidden" name="siteId" value="${session.SysUser.siteId!}">
+
+        <div class="form-group tc">
+            <label for="zh_id" class="control-label x85"><span style="color: red">*</span>企业账号：</label>
+            <select id="zh_id" name="zh_id" style="width: 500px;height: 25px;" onchange="change(this.value)"
+                    data-rule="required;">
+                <option value="">请选择企业账号</option>
+
+                @for(zh in zhList){
+                @if(!isEmpty(content.zh_id) && content.zh_id==zh.zh_id){
+                <option value="${zh.zh_id!}" selected="selected">${zh.zh_user!}</option>
+                @}else{
+                <option value="${zh.zh_id!}">${zh.zh_user!}</option>
+                @}
+
+                @}
+
+            </select>
+        </div>
+        <hr style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_qymc" class="control-label x85"><span style="color: red">*</span>企业名称：</label>
+            <input type="text" name="qy_qymc" id="qy_qymc" class="input-nm" style="width: 500px;" maxlength="20"
+                   value="${content.qy_qymc!,xss}" data-rule="required;" placeholder="请填写企业名称" size="50">
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+
+            <label class="control-label x85">LOGO：</label>
+            <div style="display: inline-block; vertical-align: middle;">
+                <div id="qy_file_logo" data-toggle="upload" data-uploader="${ctxPath}/uploads"
+                     data-file-size-limit="1024000000"
+                     data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                     data-multi="false"
+                     data-on-upload-success="upload_success"
+                     data-icon="cloud-upload"></div>
+                <input type="hidden" name="qy_file_logo" value="${content.qy_file_logo!}" id="j_custom_p">
+                <span id="j_custom_span_p">
+                    @if(isNotEmpty(content.qy_file_logo)){
+                    <IMG WIDTH="200" HEIGHT="120" style="margin: 10px 0 0 0" src="${content.qy_file_logo!}">
+                    @}
+                </span>
+            </div>
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+
+            <label class="control-label x85">营业执照：</label>
+            <div style="display: inline-block; vertical-align: middle;">
+                <div id="qy_file_zz" data-toggle="upload" data-uploader="${ctxPath}/uploads"
+                     data-file-size-limit="1024000000"
+                     data-file-type-exts="*.jpg;*.png;*.gif;*.mpg"
+                     data-multi="false"
+                     data-on-upload-success="thumb_upload_success"
+                     data-icon="cloud-upload"></div>
+                <input type="hidden" name="qy_file_zz" value="${content.qy_file_zz!}" id="j_custom_pic">
+                <span id="j_custom_span_pic">
+                    @if(isNotEmpty(content.qy_file_zz)){
+                    <IMG WIDTH="200" HEIGHT="120" style="margin: 10px 0 0 0" src="${content.qy_file_zz!}">
+                    @}
+                </span>
+            </div>
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc" style=" position: relative; ">
+            <label class="control-label x85"><span style="color: red">*</span>所属行业：</label>
+            <input type="text" name="qy_sshy" id="int_hy_input" class="input-nm" value="${content.qy_sshy!,xss}"
+                   data-rule="required;" placeholder="请填写所属行业" size="50">
+            <!--  <span class="ic i_block pointer" id="indtype_click1" onclick="work_industry_click(1)" style="cursor: pointer;">选择</span>-->
+            <input id="btn_IndustryID" type="button" onclick="IndustrySelect('int_hy_input')"
+                   style=" position: absolute; left: 57%; top: 8px; "/>
+        </div>
+
+
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_jjlx" class="control-label x85"><span style="color: red">*</span>企业类型：</label>
+            <select name="qy_jjlx" id="qy_jjlx" style="width: 500px;height: 25px;" data-rule="required;">
+                <option value="0">国有企业</option>
+                <option value="1">集体企业</option>
+                <option value="2">私营企业</option>
+                <option value="3">个体企业</option>
+                <option value="4">联营企业</option>
+                <option value="5">股份制企业</option>
+                <option value="6">外商投资企业</option>
+                <option value="7">港澳台投资企业</option>
+                <option value="8">其他企业</option>
+            </select>
+        </div>
+
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_qygm" class="control-label x85"><span style="color: red">*</span>企业规模：</label>
+            <select name="qy_qygm" id="qy_qygm" style="width: 500px;height: 25px;" data-rule="required;">
+                <option value="0">20人以下</option>
+                <option value="1">20-99人</option>
+                <option value="2">100-499人</option>
+                <option value="3">500-999人</option>
+                <option value="4">1000-9999人</option>
+                <option value="5">10000人以上</option>
+            </select>
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_qyjl" class="control-label x85">企业简历：</label>
+            <textarea id="qy_qyjl" name="qy_qyjl" placeholder="请填写企业简历" maxlength="500"
+                      style="height: 200px;resize:none;" cols="50">${content.qy_qyjl!,xss}</textarea>
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_qyfl1" class="control-label x85">企业福利：</label>
+
+            <label><input type="checkbox" id="qy_qyfl1" name="qy_qyfl" value="1"/>五险一金</label>
+            <label><input type="checkbox" id="qy_qyfl2" name="qy_qyfl" value="2"/>节日福利</label>
+            <label><input type="checkbox" id="qy_qyfl3" name="qy_qyfl" value="3"/>带薪年假</label>
+            <label><input type="checkbox" id="qy_qyf14" name="qy_qyfl" value="4"/>现金补贴</label>
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_qywz" class="control-label x85">企业网址：</label>
+            <input type="text" name="qy_qywz" id="qy_qywz" value="${content.qy_qywz!,xss}" maxlength="20"
+                   class="input-nm" placeholder="请填写企业网址" size="50">
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_lxr" class="control-label x85"><span style="color: red">*</span>联系人：</label>
+            <input type="text" name="qy_lxr" id="qy_lxr" value="${content.qy_lxr!,xss}" maxlength="5" class="input-nm"
+                   data-rule="required;" placeholder="请填写联系人" size="50">
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_lxdh" class="control-label x85"><span style="color: red">*</span>联系电话：</label>
+            <input type="text" name="qy_lxdh" id="qy_lxdh" value="${content.qy_lxdh!,xss}" onchange="lxdhyz()" maxlength="20"
+                   class="input-nm" data-rule="required;" placeholder="请填写联系电话" >
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_yx" class="control-label x85"><span style="color: red">*</span>邮编：</label>
+            <input type="text" name="qy_yx" id="qy_yx" onchange="yx()" value="${content.qy_yx!,xss}" class="input-nm"
+                   data-rule="required;" placeholder="请填写邮政编码" size="50">
+        </div>
+        <hr class="tc" style="margin-top: 3px!important;padding-top: 3px;margin-bottom: 3px!important;">
+        <div class="form-group tc">
+            <label for="qy_xxdz" class="control-label x85"><span style="color: red">*</span>详细地址：</label>
+            <input type="text" name="qy_xxdz" id="qy_xxdz" value="${content.qy_xxdz!,xss}" maxlength="50"
+                   class="input-nm" data-rule="required;" placeholder="请填写详细地址" size="50">
+        </div>
+    </form>
+
+</div>
+
+<div class="bjui-pageFooter" style="">
+    <ul>
+        <li>
+            <!--<button onclick="chognzhiqy()"   class="btn btn-blue" data-icon="pencil"> 重置</button>-->
+            <input onclick="chognzhiqy()" type="button" class="btn btn-blue" data-icon="pencil" value="重置">
+        </li>
+        <li>
+            <button type="submit" class="btn btn-green" data-icon="send"> 保存发布</button>
+        </li>
+    </ul>
+</div>
+
+<!--<div class="bjui-pageFooter">
+ <ul>
+        <li><button type="submit" class="btn-default" style=" margin-right: 565px;" data-icon="save">保存</button></li>
+    </ul>
+</div>-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<div id="base_area_layer" class="layer_class" init="true">
+    <iframe scrolling="auto" width="100%" height="100%" frameborder="0" id="iframe"></iframe>
+</div>
+<input type="hidden" id="work_func">
+<input type="hidden" id="count" value="5">
+<script>
+
+
+
+    function isNull(str) {
+        if (str == "")
+            return true;
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    }
+    function isNumber(str)
+    {
+        var reg = /^\d+$/;
+        if (reg.test(str))
+            return true;
+        else
+            return false;
+    }
+    function isTelephone(s){
+        var reg=/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+        if(!reg.test(s))
+            return   false;
+        return   true ;
+
+    }
+    function checkMobile(s) {
+        var regu = /^[1][0-9][0-9]{9}$/;
+        var re = new RegExp(regu);
+        if (re.test(s)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function lxdhyz(){
+        var qy_lxdh    =$('#qy_lxdh').val();
+        if(isNull(qy_lxdh)){
+            alert("联系电话不能为空，清填写！");
+            return false;
+        }else if(checkMobile(qy_lxdh) || isTelephone(qy_lxdh) || (isNumber(qy_lxdh) && qy_lxdh.length<=8) ){
+
+        }else{
+            alert("联系电话格式不对，清填写手机号或区号加电话号或电话号！");
+            $('#qy_lxdh').val("");
+            return false;
+        }
+    }
+
+    function chognzhiqy() {
+       if(isNull("${content.qy_qymc!,xss}")){
+           $("#qy_qymc").val("");
+       }else{
+           $("#qy_qymc").val("${content.qy_qymc!,xss}");
+       }
+       if(isNull("${zhinfo.zh_id!}")){
+           $("#zh_id").val("");
+       }else{
+           $("#zh_id").val("${zhinfo.zh_id!}");
+       }
+       if(isNull("${content.qy_sshy!,xss}")){
+           $("#int_hy_input").val("");
+       }else{
+           $("#int_hy_input").val("${content.qy_sshy!,xss}");
+       }
+       if(isNull("${content.qy_jjlx!}")){
+           $("#qy_jjlx").val("0");
+       }else{
+           $("#qy_jjlx").find("option[value='${content.qy_jjlx!}']").attr("selected", 'selected');
+       }
+        if(isNull("${content.qy_qygm!}")){
+            $("#qy_qygm").val("0");
+        }else{
+            $("#qy_qygm").find("option[value='${content.qy_qygm!}']").attr("selected", 'selected');
+        }
+        if(isNull("${content.qy_qyfl!}")){
+            var boxObj = $("input:checkbox[name='qy_qyfl']");  //获取所有的复选框
+            boxObj[0].checked = false;
+            boxObj[1].checked = false;
+            boxObj[2].checked = false;
+            boxObj[3].checked = false;
+        }else{
+            var boxObj1 = $("input:checkbox[name='qy_qyfl']");
+            boxObj1[0].checked = false;
+            boxObj1[1].checked = false;
+            boxObj1[2].checked = false;
+            boxObj1[3].checked = false;
+            var boxObj = $("input:checkbox[name='qy_qyfl']");  //获取所有的复选框
+            var expresslist = '${content.qy_qyfl!}'; //用el表达式获取在控制层存放的复选框的值为字符串类型
+            var express = expresslist.split(','); //去掉它们之间的分割符“，”
+            for (i = 0; i < boxObj.length; i++) {
+                for (j = 0; j < express.length; j++) {
+                    if (boxObj[i].value == express[j])  //如果值与修改前的值相等
+                    {
+                        boxObj[i].checked = true;
+                        break;
+                    }
+                }
+            }
+
+        }
+        if(isNull("${content.qy_qywz!,xss}")){
+            $("#qy_qywz").val("");
+        }else{
+            $("#qy_qywz").val("${content.qy_qywz!,xss}");
+        }
+        if(isNull("${content.qy_lxr!,xss}")){
+            $("#qy_lxr").val("");
+        }else{
+            $("#qy_lxr").val("${content.qy_lxr!,xss}");
+        }
+       if(isNull("${content.qy_lxdh!,xss}")){
+           $("#qy_lxdh").val("");
+       }else{
+           $("#qy_lxdh").val("${content.qy_lxdh!,xss}");
+       }
+       if(isNull("${content.qy_yx!,xss}")){
+           $("#qy_yx").val("");
+       }else{
+           $("#qy_yx").val("${content.qy_yx!,xss}");
+       }
+       if(isNull("${content.qy_xxdz!,xss}")){
+           $("#qy_xxdz").val("");
+       }else{
+           $("#qy_xxdz").val("${content.qy_xxdz!,xss}");
+       }
+       if(isNull("${content.qy_file_logo!}")){
+           $("#j_custom_p").val("");
+           $("#j_custom_span_p").text("");
+       }else{
+           $('#j_custom_p').val("${content.qy_file_logo!}");
+           $('#j_custom_span_p').html('<img src="${content.qy_file_logo!}"  style="margin: 10px 0 0 0" WIDTH="200" HEIGHT="120"/>');
+       }
+       if(isNull("${content.qy_file_zz!}")){
+           $('#j_custom_pic').val("");
+           $('#j_custom_span_pic').text("");
+       }else{
+           $('#j_custom_pic').val("${content.qy_file_zz!}")
+           $('#j_custom_span_pic').html('<img src="${content.qy_file_zz!}"  style="margin: 10px 0 0 0" WIDTH="200" HEIGHT="120"/>')
+       }
+    }
+
+    $(function () {
+        $("#qy_jjlx").find("option[value='${content.qy_jjlx!}']").attr("selected", 'selected');
+        $("#qy_qygm").find("option[value='${content.qy_qygm!}']").attr("selected", 'selected');
+        var boxObj = $("input:checkbox[name='qy_qyfl']");  //获取所有的复选框
+        var expresslist = '${content.qy_qyfl!}'; //用el表达式获取在控制层存放的复选框的值为字符串类型
+        var express = expresslist.split(','); //去掉它们之间的分割符“，”
+        for (i = 0; i < boxObj.length; i++) {
+            for (j = 0; j < express.length; j++) {
+                if (boxObj[i].value == express[j])  //如果值与修改前的值相等
+                {
+                    boxObj[i].checked = true;
+                    break;
+                }
+            }
+        }
+    });
+
+    function yx() {
+        var qy_yx=$('#qy_yx').val();
+        var re= /^[1-9][0-9]{5}$/;
+        if(qy_yx==''){
+            alert("请填写邮箱");
+            return;
+        }else if(!re.test(qy_yx)){
+            alert('邮政编码格式不正确,请重新输入');
+            $('#qy_yx').val("");
+            return false;
+
+        }
+    }
+
+    function change(zh_id) {
+        var formData = new FormData();
+        formData.append('zh_id', zh_id);
+        $.ajax({
+            url: "${ctxPath}/cms/enterprise/selectZhId",   //请求的url地址
+            dataType: "json",   //返回格式为json
+            data: formData,    //参数值
+            type: "post",   //请求方式
+            crossDomain: true,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (data != null) {
+                    alert("当前账号已添加企业，请重新选择");
+                    $("#zh_id").val(null).trigger("change");
+                }
+            },
+        });
+
+    }
+
+</script>
+
+<!--行业选择开始-->
+
+<script type="text/javascript">
+    // 是否在数组内
+    function in_array(needle, haystack) {
+        if (typeof needle == 'string' || typeof needle == 'number') {
+            for (var i in haystack) {
+                if (haystack[i] == needle) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+</script>
+
+<!--行业-->
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/drag.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/funtype_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/major_arr.js"></script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_funch.js"></script>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/css.css"/>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/alpha.css"/>
+<!--行业结束-->
+<!--<input id="btn_IndustryID" type="button" value="请选择行业" onclick="IndustrySelect('btn_IndustryID')" />-->
+<!-- alpha div -->
+<div id="maskLayer" style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+    <div id="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag">
+        <h3 id="drag_h"></h3>
+        <div id="drag_con"></div><!-- drag_con end -->
+    </div>
+</div><!-- maskLayer end -->
+</div>
+<!-- alpha div end -->
+<div id="sublist" style="display:none"></div>
+<style>
+    #drag {
+        top: 30px !important;
+        left: 50px !important;
+    }
+</style>
+<!--行业选择  结束-->

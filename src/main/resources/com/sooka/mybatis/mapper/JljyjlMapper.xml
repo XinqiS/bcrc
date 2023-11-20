@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JljyjlMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jljyjl" >
+    <id column="JYJL_ID" property="jyjlId" jdbcType="VARCHAR" />
+    <result column="JL_BB_ID" property="jlBbId" jdbcType="VARCHAR" />
+    <result column="JYJL_KSSJ" property="jyjlKssj" jdbcType="VARCHAR" />
+    <result column="JYJL_JSSJ" property="jyjlJssj" jdbcType="VARCHAR" />
+    <result column="JYJL_XX" property="jyjlXx" jdbcType="VARCHAR" />
+    <result column="JYJL_XL" property="jyjlXl" jdbcType="INTEGER" />
+    <result column="XL" property="xl" jdbcType="VARCHAR" />
+    <result column="JYJL_ZY" property="jyjlZy" jdbcType="VARCHAR" />
+    <result column="JYJL_QRZ" property="jyjlQrz" jdbcType="INTEGER" />
+    <result column="JYJL_HWJL" property="jyjlHwjl" jdbcType="INTEGER" />
+    <result column="JYJL_ZYMS" property="jyjlZyms" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JYJL_ID, JL_BB_ID, JYJL_KSSJ, JYJL_JSSJ, JYJL_XX, JYJL_XL, JYJL_ZY, JYJL_QRZ, JYJL_HWJL,JYJL_ZYMS
+  </sql>
+ 
+</mapper>

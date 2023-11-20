@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+@includeFileTemplate("/www/syrc-mobile/include/gjrc-header.html",{"current":"index"}){}
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+   @includeFileTemplate("/www/syrc-mobile/include/gjrc-title.html",{"current":"index"}){}
+  <!--	top  头部  结束--> 
+   <!--简历nav 开始-->
+  <div class="jl_nav gjrcnav"> 
+  <a class="fl" href="${frontPath!}/4/1009.html">高级人才首页</a> 
+      <a class="hea_xl fr"></a>
+      <!--下拉-->
+      @includeFileTemplate("/www/syrc-mobile/include/gjrc-ul.html",{"current":"index"}){}
+        <!--下拉 end-->
+  </div>
+  <div class="clear"></div>
+  <!--简历nav 结束-->
+</div>
+  <div id="pageContent" style=" margin: -15px 0 0px 0 !important;">
+  
+    <div class="mod">
+      <div class="new_l" value="397738433"> 
+      
+          <div class="news_cont">
+          	<h2>  ${content.title}</h2>
+          	<div class="news_xxly">
+          	<span>发布时间：${content.inputdate,dateFormat="YYYY年MM月dd日"}</span> <span>信息来源：${content.author}</span> 
+            </div>
+			<hr>
+            <p class="sy_wz">
+                　      　${content.content!}
+            </p>
+        </div>
+          
+          
+      </div>
+    </div>
+    
+    
+    
+  </div>
+</div>
+   @includeFileTemplate("/www/syrc-mobile/include/gjrc-footer.html",{"current":"index"}){}
+	
+		
+</body>
+</html>

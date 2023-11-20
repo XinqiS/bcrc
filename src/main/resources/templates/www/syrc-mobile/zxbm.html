@@ -1,0 +1,254 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>在线报名</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script src="${resPath}/syrc/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function save() {
+		if(isNull($('#zxbmKcmc').val())){
+                alert('课程名称不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmDwmc').val())){
+                alert('单位名称不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmDwxz').val())){
+                alert('单位性质不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmQyrs').val())){
+                alert('企业人数不能为空');
+                return false;
+            }else if(!isNumber($('#zxbmQyrs').val())){
+            	alert('企业人数必须为数字！');
+                return false;
+            }
+            if(isNull($('#zxbmNyye').val())){
+                alert('年营业额不能为空');
+                return false;
+            }else if(!validateResult($('#zxbmNyye').val(),10,2)){
+            	alert('年营业额不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmZzc').val())){
+                alert('总资产不能为空');
+                return false;
+            }else if(!validateResult($('#zxbmZzc').val(),10,2)){
+            	alert('总资产不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmSzdq').val())){
+                alert('所在地区不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmSshy').val())){
+                alert('所属行业不能为空');
+                return false;
+            }
+            if(isNull($('#zxbmBgdh').val())){
+                alert('办公电话不能为空');
+                return false;
+            }else if(!isTelephone($('#zxbmBgdh').val())){
+            	alert('办公电话格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmCz').val())){
+                alert('传真不能为空');
+                return false;
+            }else if(!isTelephone($('#zxbmCz').val())){
+            	alert('传真格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmSj').val())){
+                alert('手机不能为空');
+                return false;
+            }else if(!checkMobile($('#zxbmSj').val())){
+            	alert('手机格式不正确！');
+                return false;
+            }
+            if(isNull($('#zxbmYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#zxbmYx').val())){
+            	 alert('邮箱格式不正确！');
+                 return false;
+            }
+		$.post($("#form").attr("action"), $("#form").serialize(), function(data) {
+			alert(data.message);
+		}, "json");
+	}
+</script>
+
+
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+  <span class="location"><font style="font-size: 0.6rem;color: #747474;font-weight: bold"><a href="${frontPath!}/4">返回首页</a> </font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz"><a href="${ctxPath}/system/reception/nologin">个人登录</a></span> </div>
+  <!--	top  头部  结束--> 
+  
+  
+</div>
+<form method="post" action="${ctxPath}/cms/zxbm/update" id="form">
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2">在线报名</div>
+      <div class="aox">
+        
+        <div class="zxbm_bd">
+            	<p>特别提醒：本表格所有栏目均为必填项，请仔细填写</p>
+            	<table>
+                	<tr>
+                    	<td align="left"><span>课程名称</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" maxlength="200" name="zxbmKcmc" class="ckmc" id="zxbmKcmc"/></td>
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>单位名称</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" maxlength="200" name="zxbmDwmc" class="ckmc" id="zxbmDwmc"/></td>
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>单位性质</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" maxlength="10" name="zxbmDwxz" id="zxbmDwxz"/></td>
+                    </tr>
+                    <tr>
+                        <td align="left"><span>企业人数</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" maxlength="10" name="zxbmQyrs" id="zxbmQyrs"/></td>
+                        
+                    </tr>
+                    
+                    <tr>
+                    	<td align="left"><span>年营业额</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmNyye" maxlength="20" id="zxbmNyye"/></td>
+                    </tr>
+                    <tr>
+                        <td align="left"><span>总资产</span></td>
+                    </tr>
+                    <tr>    
+                        <td><input type="text" name="zxbmZzc" maxlength="20" id="zxbmZzc"/></td>
+                        
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>所在地区</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmSzdq" maxlength="20" id="zxbmSzdq"/></td>
+                    </tr>
+                    <tr>
+                        <td align="left"><span>所属行业</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmSshy" maxlength="20" id="zxbmSshy"/></td>
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>办公电话</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmBgdh" maxlength="20" id="zxbmBgdh"/></td>
+                    </tr>
+                    <tr>
+                        <td align="left"><span>传真</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmCz" maxlength="20" id="zxbmCz"/></td>
+                        
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>手机</span></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="zxbmSj" maxlength="20" id="zxbmSj"/></td>
+                    </tr>
+                    <tr>
+                    	<td align="left"><span>邮箱</span></td>
+                   	</tr>
+                    <tr>
+                        <td><input type="text" name="zxbmYx" maxlength="20" id="zxbmYx"/></td>
+                    </tr>
+                    <tr>
+                    	<td colspan="4" align="center"><input type="button" value="提交" class="tj_but" onclick="save();"/></td>
+                    </tr>
+                </table>
+            </div>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+  </div>
+  </form>
+</div>
+
+<!--footer 开始-->
+	 @includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+	
+<!--footer 结束-->
+
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+<script src="${resPath}/syrc-mobile/images/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/TL_PC_Slider.js"></script>
+		<script type="text/javascript">
+    var time        = '1572657494575';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+			
+	</script>
+	<div id="shadow" style="display:none"></div>
+	
+	
+		
+</body>
+</html>

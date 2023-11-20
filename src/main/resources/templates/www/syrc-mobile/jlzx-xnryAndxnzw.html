@@ -1,0 +1,156 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjhtml.css" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjbase.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css" />
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+	//		$_CONFIG['domain'] = '//m.51job.com/';
+	//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+	//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+	$_CONFIG['template'] = 'resume/school';
+	$_CONFIG['islogin'] = '1';
+	$_CONFIG['jobarea'] = '030800';
+	$_CONFIG['jobareaname'] = '东莞';
+	$_CONFIG['ip'] = '36.48.27.149';
+	$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+//校内职务删除方法
+function xnzwDel(dataID,jlbbId){
+	if(confirm("确定删除该条校内职务么？")){
+		$.ajax({
+	      type: "POST",
+	      async:false,
+	      url: "deleteXnzwById",
+	      data:{ids:dataID},
+	      dataType: "json",
+	      success: function(data){
+	      	window.location.href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId?jlBbId="+jlbbId;
+	      }
+		});
+	}
+}
+//校内职务删除方法
+function xnryDel(dataID,jlbbId){
+	if(confirm("确定删除该条校内荣誉么？")){
+		$.ajax({
+	      type: "POST",
+	      async:false,
+	      url: "deleteXnryById",
+	      data:{ids:dataID},
+	      dataType: "json",
+	      success: function(data){
+	      	window.location.href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId?jlBbId="+jlbbId;
+	      }
+		});
+	}
+}
+</script>
+</head>
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/cms/resume/goEditResume?id=${session.jlbbIdSession}"><span>在校情况</span></a></div>
+				<div class="jnav">
+					<p class="n">校内荣誉</p>
+					<p class="n">校内职务</p>
+				</div>
+				<div id="pageContent" class="fixtop qzyx rpbox" style="display:none">
+
+					<div class="rbox">
+						@if(isNotEmpty(xnryList)){
+						@for(xnry  in   xnryList){
+						<div class="e" id="workexp_302460225">
+							<strong>${xnry.xnryJx!}</strong>
+							<label>${xnry.xnryJb}</label>
+							<i>${xnry.xnrySj!}</i>
+							<div class="tab">
+								<a href="${ctxPath}/cms/resume/findXnryByIdForSj?id=${xnry.xnryId!}"><center >编辑</center></a>
+								<a href="javascript:void(0);" onclick="xnryDel('${xnry.xnryId!}','${xnry.jlBbId!}');"><center >删除</center></a>
+							</div>
+						</div>
+						@}
+						@}
+
+					</div>
+					@if(isNotEmpty(jlBbId)){
+					<a class="btn_add add_honour" href="${ctxPath}/cms/resume/addXnryForSj?jlBbId=${jlBbId}" style="">+
+						添加校内荣誉</a>
+					@}else{
+					<a class="btn_add add_honour" href="${ctxPath}/cms/resume/addXnryForSj" style="">+
+						添加校内荣誉</a>
+					@}
+
+				</div>
+
+				<div  class="fixtop qzyx rpbox" style="display:none">
+
+					<div class="rbox">
+						@if(isNotEmpty(xnzwList)){
+						@for(xnzw  in   xnzwList){
+						<div class="e" >
+							<strong>${xnzw.xnzwZw!}</strong>
+							<label></label>
+							<i>${xnzw.xnzwKssj!}-${xnzw.xnzwJssj!}</i>
+							<div class="tab">
+								<a href="${ctxPath}/cms/resume/findXnzwByIdForSj?id=${xnzw.xnzwId!}"><center >编辑</center></a>
+								<a href="javascript:void(0);" onclick="xnzwDel('${xnzw.xnzwId!}','${xnzw.jlBbId!}');"><center >删除</center></a>
+							</div>
+						</div>
+						@}
+						@}
+
+					</div>
+					@if(isNotEmpty(jlBbId)){
+					<a class="btn_add add_job" style="" href="${ctxPath}/cms/resume/addXnzwForSj?jlBbId=${jlBbId}">+
+						添加校内职务</a>
+					@}else{
+					<a class="btn_add add_job" style="" href="${ctxPath}/cms/resume/addXnzwForSj">+
+						添加校内职务</a>
+					@}
+
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+		<input type="hidden" id="userid" value="398719117">
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/base.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/fun.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+		<script type="text/javascript"
+			src="${resPath}/syrc-mobile/images/school.js"></script>
+		<div id="shadow" style="display:none"></div>
+</body>
+</html>

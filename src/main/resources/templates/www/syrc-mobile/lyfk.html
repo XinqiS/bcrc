@@ -1,0 +1,198 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>留言反馈</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/list.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/detail.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/syrc-gjrc.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc-mobile/images/syrc-base.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+		$_CONFIG['domain'] = '//m.51job.com/';
+		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+		$_CONFIG['template'] = 'resume/myresume';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '030800';
+		$_CONFIG['jobareaname'] = '东莞';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function save() {
+		   if(isNull($('#lyfkLb').val())){
+                alert('类别不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkBt').val())){
+                alert('标题不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkNr').val())){
+                alert('内容不能为空');
+                return false;
+            }
+            if(isNull($('#lyfkQq').val())){
+                alert('qq不能为空');
+                return false;
+            }
+             if(isNull($('#lyfkDh').val())){
+                alert('手机不能为空');
+                return false;
+            }else if(!checkMobile($('#lyfkDh').val())){
+            	alert('手机格式不正确！');
+                return false;
+            }
+            if(isNull($('#lyfkYx').val())){
+                alert('邮箱不能为空');
+                return false;
+            }else if(!checkEmail($('#lyfkYx').val())){
+            	 alert('邮箱格式不正确！');
+                 return false;
+            }
+		$.post($("#form").attr("action"), $("#form").serialize(), function(data) {
+			alert(data.message);
+		}, "json");
+	} 
+	function changeCode(){
+    $("#captcha_img").attr("src", "${ctxPath}/verify?t="+ (new Date().getTime()));
+}
+</script>
+
+
+</head>
+<body style=" overflow-y:auto;">
+<div id="pageWp" class="bb">
+<div id="pageTop" > 
+  <!--	top  头部  开始-->
+  <div class="sy_header">
+  <span class="location"><font style="font-size: 0.6rem;color: #747474;font-weight: bold"><a href="${frontPath!}/4">返回首页</a> </font></span> 
+  <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz"><a href="${ctxPath}/system/reception/nologin">个人登录</a></span> </div>
+  <!--	top  头部  结束--> 
+  
+  
+</div>
+<form method="post" action="${ctxPath}/cms/lyfk/update" id="form">
+<div id="pageContent">
+	
+    
+    <div class="mod">
+      <div class="t t2">留言反馈</div>
+      <div class="aox">
+        
+        <div class="zxbm_bd">
+            <p>特别提醒：本表格所有栏目均为必填项，请仔细填写</p>
+            <table>
+                
+                <tr>
+                    <td align="left"><span>类别：</span></td>
+                </tr>
+                <tr>
+                    <td>
+                       <select name="lyfkLb" id="lyfkLb">
+                            	<script >
+									document.write(dicContainer["101"].toString());
+									var c='';
+									if(c!=''){
+										$("#lyfkLb").find("option[value = '"+c+"']").attr("selected","selected"); 
+									}
+								</script>
+                            </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="left" nowrap="nowrap"><span>电子邮箱：</span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="lyfkYx"  maxlength="20" id="lyfkYx"/></td>
+                    
+                </tr>
+                
+                <tr>
+                    <td align="left"><span>电话：</span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="lyfkDh" maxlength="20" id="lyfkDh"/></td>
+                </tr>
+                <tr>
+                    <td align="left"><span>QQ：</span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="lyfkQq" maxlength="20" id="lyfkQq"/></td>
+                    
+                </tr>
+                <tr>
+                    <td align="left"><i>*</i><span>标题：</span></td>
+                </tr>
+                <tr>
+                    <td><input type="text" maxlength="100" name="lyfkBt" id="lyfkBt" class="lybt fl"/></td>
+                </tr>
+                <tr>
+                    <td align="left" nowrap="nowrap"><i>*</i><span>留言内容：</span></td>
+                </tr>
+                <tr>
+                    <td><textarea name="lyfkNr"  id="lyfkNr" ></textarea></td>
+                </tr>
+                <tr>
+                    <td align="left" nowrap="nowrap"><i>*</i><span>验证码：</span></td>
+                </tr>
+                <tr>
+               
+                    <td><input type="text" class="fl" name="verifyCode" style=" width:35%;"> <span class="input-group-addon code" id="basic-addon-code">
+                <img style="margin-top: -10px;height: 130%;" id="captcha_img"  src="${ctxPath}/verify" onclick="changeCode();" alt="点击更换" title="点击更换" class="m"></span></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="button" value="提交" class="tj_but" onclick="save();"/></td>
+                </tr>
+            </table>
+        </div>
+        
+        
+      </div>
+    </div>
+    
+    
+    
+    
+  </div>
+  </form>
+</div>
+
+<!--footer 开始-->
+ @includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+<!--footer 结束-->
+
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+<script src="${resPath}/syrc-mobile/images/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/TL_PC_Slider.js"></script>
+		<script type="text/javascript">
+    var time        = '1572657494575';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+			
+	</script>
+	<div id="shadow" style="display:none"></div>
+	
+	
+		
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/syrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+    <script src="${resPath}/syrc/js/myPagination.js"></script>
+    <script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+</head>
+
+<body>
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+
+
+<!--内容开始-->
+<div class="contentbox er_con">
+    <div class=" clearfix">
+        <div class="con_left fl">
+            <h4>企业中心</h4>
+            <ul class="left_nav">
+                <li ><a class="qyxxgl" href="${ctxPath}/qyzx/goToyprclg">企业信息管理</a></li>
+                <li ><a class="fbzwgl"
+                        @if(session.QypztSession == 1){
+                        href="${ctxPath}/qyzx/goToQyzxFbzwgl"
+                        @}else{
+                        href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/goToQyzxFbzwgl');"
+                        @}
+                >发布职位管理</a></li>
+                <li><a class="yprcgl"
+                      @if(session.QypztSession == 1){
+                      href="${ctxPath}/qyzx/goToQyzxYprcgl"
+                      @}else{
+                      href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/goToQyzxFbzwgl');"
+                      @}
+                >应聘人才管理  </a></li>
+                @includeFileTemplate("/www/syrc/include/qyzx-eightOtherLeftMeun.html",{"current":"index"}){}
+            </ul>
+            <a class="btn_ssrc"
+               @if(session.QypztSession == 1){
+               href="${ctxPath}/qyzx/searchTalents"
+               @}else{
+               href="javascript:void(0)" onclick="jinggao('${ctxPath}/qyzx/goToQyzxFbzwgl');"
+               @}
+            >搜索人才</a>
+        </div>
+        <div class="con_right fr">
+            <!--			发布职位管理   开始-->
+            <div class="er_tit">
+                <span>${categoryName}</span>
+                <a class="qyzx_xzgw er_tit_a" href="${ctxPath}/qyzx/goToQyzxEightOtherCategorysContentInput?categoryId=${pojo.categoryId}">添加信息</a>
+            </div>
+            <div class="qygl_con">
+                <div class="tab_tit2 con_tit">
+                    <span onclick="tzym();" class="on">${categoryName}</span>
+                </div>
+                <table class="con_table tab_table2">
+                    <thead>
+                    <th width="300">标题</th>
+                    <th width="100">浏览</th>
+                    <th width="100">发布日期</th>
+                    <th width="100">状态</th>
+                    <th width="300">操作</th>
+                    </thead>
+                    @for(content in model.list){
+                    <tr>
+                        <td>
+                            <a style="font-weight: 500;color:#4A8CDB" href="${ctxPath}/ecZxbm/zxbm/list/${content.contentId}" target="_blank">
+                                ${strutil.length(content.title!)>15?strutil.subStringTo(content.title!,0,15)+"...":content.title!}
+                            </a>
+                        </td>
+                        <td>${content.viewNum!,xss}</td>
+                        <td>${content.inputdate!"N/A",dateFormat="yyyy-MM-dd"}</td>
+                        <td>
+                            @if(content.status==2){
+                            <span style="font-weight: 500;color:#4A8CDB"> 待审核</span>
+                            @}else if(content.status==1){
+                            <span style="font-weight: 500;color:green"> 发布</span>
+                            @}
+                        </td>
+                        <td>
+                            @if(content.status==2){
+                                <a class="btn_bj btn_a" href="${ctxPath}/qyzx/goToQyzxEightOtherCategorysContentInput?categoryId=${pojo.categoryId}&contentId=${content.contentId}">
+                                    <img src="${resPath}/syrc/images/jlzx_con_46.png"/>编辑
+                                </a>
+                            @}
+                            <a class="btn_sc btn_a" onclick="recovery('${content.contentId}')">
+                                <img src="${resPath}/syrc/images/jlzx_con_11.png"/>删除
+                            </a>
+                        </td>
+                    </tr>
+                    @}
+                    <tr>
+                        <td colspan="8">
+                            <div id="pagination" class="pagination"></div>
+                        </td>
+                    </tr>
+                </table>
+                <script type="text/javascript">
+                    var datatotal = '${model.total}';
+                    var pageAmount =10;
+                    var pagenum = '${model.pageNum}';
+
+                    pageTotal=Math.ceil(datatotal/pageAmount);
+
+                    if(pageTotal>10){
+                        pageSize=10
+                    }else{
+                        pageSize=pageTotal
+                    }
+
+                    window.onload = function () {
+                        new myPagination({
+                            id: 'pagination',
+                            curPage:pagenum, //初始页码
+                            pageTotal: pageTotal, //总页数
+                            pageAmount: pageAmount,  //每页多少条
+                            dataTotal: datatotal, //总共多少条数据
+                            getPage: function (page) {
+                                window.location.href ='${ctxPath}/qyzx/goToQyzxEightOtherCategorys/${qyInfo.qy_id}/${pojo.categoryId}?pageNum='+page;
+
+                            }
+                        })
+
+                    }
+
+                    function recovery(contentId){
+                        if(confirm("你真的确定要删除吗?")){
+                            $.post("${ctxPath}/qyzx/recovery/"+contentId,function(res){
+                                let json = JSON.parse(res);
+                                if(json.statusCode == "300"){
+                                    alert("系统错误，删除失败！");
+                                }
+                                location.reload();
+                            });
+                        }
+                    }
+
+                </script>
+
+            </div>
+
+        </div>
+        <!--			应聘人才管理   结束-->
+    </div>
+</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+<!--邀请人才弹出框-->
+<div class="yqrc_div">
+    <p>成功邀请面试</p>
+    <a class="yq_qd">确定</a>
+</div>
+<!--邀请人才弹出框-->
+<!--遮盖层-->
+<div id="layer_back_drop" class="layer_back_drop_class" style=""></div>
+<!--遮盖层-->
+

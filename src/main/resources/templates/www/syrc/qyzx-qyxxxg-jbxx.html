@@ -1,0 +1,394 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/common.1017570d.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/wangluosousuo.css">
+    <script type="text/javascript" src="${resPath}/bcrc/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript"  src="${resPath}/bcrc/js/TL_Tab.js"></script>
+    <script src="${resPath}/syrc/js/qyzx_js .js"></script>
+    <script type="text/javascript" src="${resPath}/syrc/js/pointtrack.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/jquery.placeholder.min.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/trackData.js"></script>
+
+    <!--行业选贼
+    <script language="javascript" src="${resPath}/syrc/js/gangweixuanze.js"></script>
+    <script language="javascript" src="${resPath}/syrc/js/searchResult.92340277.js"></script>-->
+    <!--行业-->
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/drag.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/funtype_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_arr.js"></script>
+    <script type="text/javascript" src="${resPath}/bcrc/cssjs/major_arr.js"></script>
+
+</head>
+<style>
+
+</style>
+<body onload="update();">
+<div class="contentbig">
+    <!--头部开始-->
+    @includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+    <!--头部结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+        <div  class="wz_cont_in">
+            <div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>编辑企业信息</div>
+            <div class=" clearfix">
+                <div class="con_left fl">
+                    <h4><img src="${resPath}/bcrc/images/qyzx_03.png"/></h4>
+                    <ul class="left_nav">
+                        @includeFileTemplate("/www/syrc/include/qyzx-eightOtherLeftMeun.html",{"current":"index"}){}
+                    </ul>
+                </div>
+                <div class="con_right fr">
+                    <div class="all_title"><a href="${ctxPath}/qyzx/goToQyzxQyxxxgJbxx"><span>基本信息</span></a><a href="${ctxPath}/qyzx/goToLogoxg"><span>logo上传</span></a></div>
+                    <table class="jbxx_table">
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>企业名称：</td>
+                            <td><input type="text" maxlength="20" placeholder="请输入企业名称" name="qy_qymc" id="qy_qymc" value="${qyInfo.qy_qymc!}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit" valign="top">营业执照：</td>
+                            <td> <a class="xx_logo" id="sc">
+                                @if(isNotEmpty(qyInfo.qy_file_zz)){
+                                <img src="${qyInfo.qy_file_zz!}" style="width: 100%;height: 100%"/>
+                                @}else{
+                                上传
+                                <img src="" />
+                                @}
+                            </a>
+                                <input style='display:none;' type="file"  id="myfile"  name="myfile" onchange="printFileInfo(this)" accept='image/*' multiple="multiple"/>
+                            </td>
+                            </tr>
+
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>所属行业：</td>
+                            <td>
+                                <div class="txt pointer" float-on="false" id="work_func_div">
+                                    <input id="int_hy_input" style="width:94%" placeholder="填写/选择" class="ef cursor" value="${qyInfo.qy_sshy!}" type="text">
+                                    <input id="btn_IndustryID" type="button"  onclick="IndustrySelect('int_hy_input')" />
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>企业类型：</td>
+                            <td>
+                                <select id="qy_jjlx">
+                                    <option value="0">国有企业</option>
+                                    <option value="1">集体企业</option>
+                                    <option value="2">私营企业</option>
+                                    <option value="3">个体企业</option>
+                                    <option value="4">联营企业</option>
+                                    <option value="5">股份制企业</option>
+                                    <option value="6">外商投资企业</option>
+                                    <option value="7">港澳台投资企业</option>
+                                    <option value="8">其他企业</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>企业规模：</td>
+                            <td>
+                                <select id="qy_qygm">
+                                    <option value="0">20人以下</option>
+                                    <option value="1">20-99人</option>
+                                    <option value="2">100-499人</option>
+                                    <option value="3">500-999人</option>
+                                    <option value="4">1000-9999人</option>
+                                    <option value="5">10000人以上</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit" valign="top"><i class="red"></i>企业简介：</td>
+                            <td><textarea id="qy_qyjl" maxlength="500" style="resize: none">${qyInfo.qy_qyjl!}</textarea></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red"></i>企业福利：</td>
+                            <td>
+                                <label><input type="checkbox" id="qy_qyfl" name="qy_qyfl" value="1"/>五险一金</label>
+                                <label><input type="checkbox" id="qy_qyf2" name="qy_qyfl" value="2"/>节日福利</label>
+                                <label><input type="checkbox" id="qy_qyf3" name="qy_qyfl" value="3"/>带薪年假</label>
+                                <label><input type="checkbox" id="qy_qyf4" name="qy_qyfl" value="4"/>现金补贴</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red"></i>企业网址：</td>
+                            <td><input type="text"  maxlength="100"placeholder="请输入企业网址" id="qy_qywz" value="${qyInfo.qy_qywz!}"/></td>
+                        </tr>
+                    </table>
+                    <div class="all_title"><a><span>联系方式</span></a></div>
+                    <table class="jbxx_table">
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>联系人：</td>
+                            <td><input type="text" maxlength="10" placeholder="请输入联系人姓名" id="qy_lxr" value="${qyInfo.qy_lxr!}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>联系电话：</td>
+                            <td>
+                                <input type="text" placeholder="请输入联系人电话" style="width:71%" maxlength="20"  id="qy_lxdh" value="${qyInfo.qy_lxdh!}" />
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>邮编：</td>
+                            <td><input type="text"  maxlength="10" placeholder="请输入邮政编码" id="qy_yx" value="${qyInfo.qy_yx!}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="td_tit"><i class="red">*</i>详细地址：</td>
+                            <td><input type="text" maxlength="50" placeholder="请输入公司详细地址" id="qy_xxdz" value="${qyInfo.qy_xxdz!}"/></td>
+                        </tr>
+                    </table>
+                    <a class="qr_btn" onclick="submit();">保存</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--内容结束-->
+
+
+
+<script type="text/javascript">
+
+    function update() {
+        var qy_id = '${qyInfo.qy_id!}';
+        if (qy_id == '') {
+        } else {
+            $("#qy_jjlx").find("option[value='${qyInfo.qy_jjlx!}']").attr("selected", 'selected');
+            $("#qy_qygm").find("option[value='${qyInfo.qy_qygm!}']").attr("selected", 'selected');
+            var boxObj = $("input:checkbox[name='qy_qyfl']");  //获取所有的复选框
+            var expresslist = '${qyInfo.qy_qyfl!}'; //用el表达式获取在控制层存放的复选框的值为字符串类型
+            var express = expresslist.split(','); //去掉它们之间的分割符“，”
+            for (i = 0; i < boxObj.length; i++) {
+                for (j = 0; j < express.length; j++) {
+                    if (boxObj[i].value == express[j])  //如果值与修改前的值相等
+                    {
+                        boxObj[i].checked = true;
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
+    $("#sc").click(function () {
+        $("#myfile").click();
+    });
+    var myarr=[];
+    function printFileInfo(target){
+        $("#sc").html('<img src="'+ URL.createObjectURL(target.files[0]) +'"  WIDTH="200" HEIGHT="240"/>')
+        var fileSize = 0;
+        if ( !target.files) {
+            var filePath = target.value;
+            var fileSystem = new ActiveXObject("Scripting.FileSystemObject");
+            var file = fileSystem.GetFile (filePath);
+            fileSize = file.Size;
+        } else {
+            fileSize = target.files[0].size;
+        }
+        var size = fileSize / 1024;
+        if(size>10240){
+            window.wxc.xcConfirm("附件不能大于10M!", "error");
+            target.value="";
+            return
+        }
+        var picFile = document.getElementById('myfile');
+        var files = picFile.files;
+        for(var i=0; i<files.length; i++){
+            var file = files[i];
+            myarr.push(file)
+        }
+    }
+
+    function isNull(str) {
+        if (str == "")
+            return true;
+        var regu = "^[ ]+$";
+        var re = new RegExp(regu);
+        return re.test(str);
+    }
+    function isNumber(str)
+    {
+        var reg = /^\d+$/;
+        if (reg.test(str))
+            return true;
+        else
+            return false;
+    }
+    function isTelephone(s){
+        var reg=/^((0\d{2,3})-)?(\d{7,8})(-(\d{3,}))?$/;
+        if(!reg.test(s))
+            return   false;
+        return   true ;
+
+    }
+    function checkMobile(s) {
+        var regu = /^[1][0-9][0-9]{9}$/;
+        var re = new RegExp(regu);
+        if (re.test(s)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    function submit() {
+        var url = '${ctxPath}/qyzx/UpdateOrInsertQyxx';//数据地址
+        var em = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        var MyzzTest=/^1[3456789]\d{9}$/;
+        var qy_qymc    =$('#qy_qymc').val();
+        var qy_file_zz =$('#sc').html();
+        var qy_sshy    =$('#int_hy_input').val();
+        var qy_jjlx    =$('#qy_jjlx').val();
+        var qy_qygm    =$('#qy_qygm').val();
+        var qy_qyjl    =$('#qy_qyjl').val();
+        var qy_qywz    =$('#qy_qywz').val();
+        var qy_lxr     =$('#qy_lxr').val();
+        var qy_yx      =$('#qy_yx').val();
+        var qy_xxdz    =$('#qy_xxdz').val();
+        var qy_lxdh    =$('#qy_lxdh').val();
+        var qy_qyfl    = "";
+        $('input[name="qy_qyfl"]:checked').each(function(){
+            if(qy_qyfl == "")
+                qy_qyfl = $(this).val();
+            else
+                qy_qyfl+=","+$(this).val();
+        });
+        alert(qy_qyfl);
+        if(qy_qymc==''){
+            alert("请填写企业名称");
+            return;
+        }
+        if(isNull(qy_lxdh)){
+            alert("联系电话不能为空，清填写！");
+            return false;
+        }else if(checkMobile(qy_lxdh) || isTelephone(qy_lxdh) || (isNumber(qy_lxdh) && qy_lxdh.length<=8) ){
+
+    	}else{
+            alert("联系电话格式不对，清填写手机号或区号加电话号或电话号！");
+            return false;
+        }
+
+         if(qy_file_zz==''){
+               alert("请上传营业执照")
+               return;
+           }
+        if(qy_sshy==''){
+            alert("请填写所属行业");
+            return;
+        }
+        if(qy_jjlx==''){
+            alert("请选择企业类型")
+            return;
+        }
+        if(qy_qygm==''){
+            alert("请选择企业规模");
+            return;
+        }
+        if(qy_lxr==''){
+            alert("请填写联系人");
+            return;
+        }
+        var re= /^[1-9][0-9]{5}$/;
+        if(qy_yx==''){
+            alert("请填写邮箱");
+            return;
+        }else if(!re.test(qy_yx)){
+            alert('邮政编码格式不正确,请重新输入');
+            $('#qy_yx').val("");
+            return false;
+
+        }
+        if(qy_xxdz==''){
+            alert("请填写详细地址");
+            return;
+        }
+
+        var formData = new FormData();
+        $.each(myarr,function(i,file){
+            formData.append('myfile',file);
+
+        });
+        //将file放入formdata中
+        formData.append('qy_qymc',qy_qymc);
+        formData.append('qy_sshy', qy_sshy);
+        formData.append('qy_qyfl', qy_qyfl);
+        formData.append('qy_jjlx',qy_jjlx);
+        formData.append('qy_qygm',qy_qygm);
+        formData.append('qy_qyjl',qy_qyjl);
+        formData.append('qy_qywz',qy_qywz);
+        formData.append('qy_lxr', qy_lxr);
+        formData.append('qy_lxdh',qy_lxdh);
+        formData.append('qy_yx',  qy_yx);
+        formData.append('qy_xxdz',qy_xxdz);
+        $.ajax({
+            url : url,
+            type : 'POST',
+            dataType: 'json',
+            data : formData,
+            crossDomain: true,
+            cache: false,
+            processData: false,
+            contentType: false,
+            success : function(responseStr) {
+                alert("修改成功，管理员将在24小时内进行审核，请耐心等待。");
+                window.location.href="${ctxPath}/qyzx/goToyprclg";
+            },
+        });
+
+    }
+
+
+
+</script>
+<script type="text/javascript">
+    function jinggao(){
+        alert("您的企业信息还未通过审核或未提交  请耐心等待");
+    }
+</script>
+
+
+
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+
+</div>
+<!--行业选择开始-->
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/css.css" />
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/cssjs/alpha.css" />
+<script type="text/javascript">
+    // 是否在数组内
+    function in_array(needle, haystack) {
+        if(typeof needle == 'string' || typeof needle == 'number') {
+            for(var i in haystack) {
+                if(haystack[i] == needle) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+</script>
+<script type="text/javascript" src="${resPath}/bcrc/cssjs/industry_func.js"></script>
+
+<!--<input id="btn_IndustryID" type="button" value="请选择行业" onclick="IndustrySelect('btn_IndustryID')" />-->
+<!-- alpha div -->
+<div id="maskLayer" style="display:none">
+    <iframe id="maskLayer_iframe" frameBorder=0 scrolling=no style="filter:alpha(opacity=50)"></iframe>
+    <div id="alphadiv" style="filter:alpha(opacity=50);-moz-opacity:0.5;opacity:0.5"></div>
+    <div id="drag">
+        <h3 id="drag_h"></h3>
+        <div id="drag_con"></div>
+    </div>
+</div>
+</div>
+<!-- alpha div end -->
+<div id="sublist" style="display:none"></div>
+<!--行业选择  结束-->
+
+</body>
+</html>

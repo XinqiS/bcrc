@@ -1,0 +1,120 @@
+
+
+.header{
+	width:100%;
+	height:auto;
+	}
+.header img{
+	width:100%;
+	height:100%;
+	}
+
+.content{
+	width:1200px;
+	margin:20px auto;
+	}
+
+.title{ 
+	width:100%;
+	background:url(../images/bcrczt_06.png) repeat-x;
+	height:74px;
+	}
+.title span{
+	background:url(../images/bcrczt_04.png) no-repeat;
+	padding:0 0 0 40px;
+	height:74px;
+	line-height:74px;
+	display:block;
+	}
+.title span a{
+	background:#fff;
+	padding:8px 20px;
+	font-size:22px;
+	font-weight:bold;
+	color:#111;
+	}
+
+.all_list{ 
+	margin:10px 0;
+	}
+.all_list li{
+	line-height:40px;
+	font-size:16px;
+	overflow:hidden;
+	}
+.all_list li a{
+	float:left; 
+	color:#333; 
+	background:url(../images/bcrczt_10.png) no-repeat left center; 
+	padding:0 0 0 15px;
+	}
+.all_list li a:hover{
+	color:#000;
+	}
+.all_list li em{
+	float:right; 
+	color:#888;
+	}
+
+
+.footer{
+	background:url(../images/bcrczt_13.png) no-repeat;
+	background-size:100% 100%;
+	padding:3% 0;
+	margin: 20px 0 0 0;
+	border-top:solid 10px #f13a29;
+	}
+.footer_in{
+	width:800px;
+	overflow:hidden;
+	margin:0 auto;
+	}
+.footer_in a img{
+	float:left;
+	}
+.footer_in a{
+	display:block;
+	width:15%;
+	float:left;
+	margin:20px 0 0 0;
+	}
+.footer_in div{
+	width:70%;
+	float:left;
+	}
+.footer_in div p{
+	font-size:16px;
+	line-height:40px;
+	color:#333;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

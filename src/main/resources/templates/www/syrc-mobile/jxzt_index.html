@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>${siteTitle!}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${resPath}/jxzt/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/jxzt/css/pczt-sj-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/jxzt/css/pczt-sj-index.css">
+    <script src="${resPath}/bcrc/js/jquery-1.7.2.min.js"></script>
+</head>
+
+<body>
+<div class="header"><img src="${resPath}/jxzt/images/bcrczt_01.png"/></div>
+
+<div class="content">
+    <div class="cont_left">
+        <div class="title"><span><a href="${frontPath!}/4/1081.html">见习服务经办机构清单</a></span></div>
+        <ul class="all_list">
+            <#cms_content_list siteId="${site.siteId}" categoryId="1081" orderBy="2" isHot="0" hasChild="1" isRecommend="0" titleLen="50" size="5"  var="bean">
+            <li><a href="${bean.url!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+            </#cms_content_list>
+        </ul>
+    </div>
+    <div class="cont_left">
+        <div class="title"><span><a href="${frontPath!}/4/1082.html">就业见习政策解读</a></span></div>
+        <ul class="all_list">
+            <#cms_content_list siteId="${site.siteId}" categoryId="1082" orderBy="2" isHot="0" hasChild="1" isRecommend="0" titleLen="50" size="5"  var="bean">
+            <li><a href="${bean.url!}">${bean.title!}</a><em>${bean.inputdate,dateFormat="YYYY年MM月dd日"}</em></li>
+        </#cms_content_list>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    <div class="title"><span><a href="${ctxPath}/gjss/selectExample?mc=&zw_gzxz=3">就业见习岗位信息发布/见习人员招募</a></span></div>
+    <ul class="zpgw">
+        <#gw_info_list  size="8"  var="bean"  gzxz="3">
+        <li>
+            <a href="${ctxPath}/qyzx/qyXq?qy_id=${bean.qy_id!}">
+                <span title="${bean.zw_zwmc!}">${strutil.length(bean.zw_zwmc!)>9?strutil.subStringTo(bean.zw_zwmc!,0,9)+"...":bean.zw_zwmc!}</span>
+                <em>
+                    @if(bean.zw_yxfw==0){
+                    1000元以下
+                    @}else if(bean.zw_yxfw==1){
+                    1000-2000元
+                    @}else if(bean.zw_yxfw==2){
+                    2000-4000元
+                    @}else if(bean.zw_yxfw==3){
+                    4000-6000元
+                    @}else if(bean.zw_yxfw==4){
+                    6000-8000元
+                    @}else if(bean.zw_yxfw==5){
+                    8000-1000元
+                    @}else if(bean.zw_yxfw==6){
+                    10000-15000元
+                    @}else if(bean.zw_yxfw==7){
+                    15000-20000元
+                    @}else if(bean.zw_yxfw==8){
+                    20000-30000元
+                    @}else if(bean.zw_yxfw==9){
+                    30000-50000元
+                    @}else if(bean.zw_yxfw==10){
+                    50000-50000元
+                    @}else if(bean.zw_yxfw==11){
+                    70000-100000元
+                    @}else if(bean.zw_yxfw==12){
+                    100000元以上
+                    @}
+                </em>
+                <div class="clear"></div>
+                <p>${bean.qy_qymc!}</p>
+                <i>${bean.qy_xxdz!}</i>
+            </a>
+            <div class="clear"></div>
+        </li>
+    </#gw_info_list>
+    </ul>
+</div>
+<script>
+    $(function(){
+        var url= "${ctxPath}/cms/AllCharts";
+        $.ajax({
+            type: "POST",
+            async:false,
+            url:url,
+            dataType: "json",
+            success: function(data){
+
+                $("#count").append(''+data.legend.data+'');
+            }
+        });
+
+    });
+</script>
+<!--底部开始-->
+<div class="footer">
+    <div class="footer_in">
+       <!-- <a><img src="images/blue.png"/></a>-->
+        <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/09/158/0000/60022510/CA091580000600225100000.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <div>
+            <p>主办：吉林省白城市暨洮北区人才交流中心</p>
+            <p><a style="color: #fff;margin: 0;" href="https://beian.miit.gov.cn/" target="_blank"><img src="${resPath}/bcrc/images/jsbgh.png" style="margin: 0px 0 0 0;"/>吉ICP备14003212号-1</a></p>
+            <p>技术支持：长春首佳科技有限公司</p>
+            <p>地址：白城市中兴东大路2-21号</p>
+            <p>邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：<i id="count"></i></p>
+            <p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+        </div>
+    </div>
+</div>
+<!--底部结束-->
+
+
+
+
+
+</body>
+</html>
+
+

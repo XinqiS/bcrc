@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>投递详情</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/swiper.min.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"/>
+    <link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"/>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+    <script type="text/javascript" src="${resPath}/syrc-mobile/images/swiper.min.js"></script>
+    <script type="text/javascript">
+        var _tkd = _tkd || [];
+        var $_CONFIG = {};
+        //$_CONFIG['domain'] = '//m.51job.com/';
+        //$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+        //$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+        //$_CONFIG['template'] = 'resume/baseinfo';
+        $_CONFIG['islogin'] = '1';
+        $_CONFIG['jobarea'] = '030800';
+        $_CONFIG['jobareaname'] = '东莞';
+        $_CONFIG['ip'] = '36.48.27.149';
+        $_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+    </script>
+</head>
+
+<body style="background: #f6f6f5 ;" id="m_45">
+
+<div id="pageContent" class="fixtop">
+    <div class="top">
+        <a href="javascript:history.go(-1)" class="back"></a>
+        投递详情
+    </div>
+    <div class="sbox" ng-controller="appCtrl">
+        <div class="e">
+            <label>姓名</label>
+            <input type="text" class="txt inputblur" maxlength="20" value="${ecZxbm.name}" readonly/>
+        </div>
+        <div class="e">
+            <label>性别</label>
+            <input type="text" class="txt inputblur" value="${ecZxbm.sex == 0 ? '女' : '男'}" readonly/>
+        </div>
+        <div class="e">
+            <label>民族</label>
+            <input type="text" class="txt inputblur" value="${ecZxbm.nation}" readonly/>
+        </div>
+        <div class="e">
+            <label>身份证号</label>
+            <input type="text" class="txt inputblur" value="${ecZxbm.idNumber}" readonly/>
+        </div>
+        <div class="e">
+            <label>联系电话</label>
+            <input type="text" class="txt inputblur" value="${ecZxbm.tel}" readonly/>
+        </div>
+        <div class="e">
+            <label>学历</label>
+            <div class="rdob" id="worktype">
+                @if(ecZxbm.education == '0'){
+                <input type="text" class="txt inputblur" value="高中" readonly/>
+                @}else if(ecZxbm.education == '1'){
+                <input type="text" class="txt inputblur" value="大专" readonly/>
+                @}else if(ecZxbm.education == '2'){
+                <input type="text" class="txt inputblur" value="本科" readonly/>
+                @}
+            </div>
+        </div>
+        <a href="javascript:void(0)" class="e">
+            <label>出生年月</label>
+            <div class="selt">
+                <span class="sval">${ecZxbm.birthday}</span>
+            </div>
+        </a>
+        <a href="javascript:void(0)" class="e">
+            <label>毕业时间</label>
+            <div class="selt">
+                <span class="sval">${ecZxbm.graduationTime}</span>
+            </div>
+        </a>
+        <div class="e">
+            <label>毕业院校</label>
+            <input type="text" class="txt inputblur" value="${ecZxbm.wentToSchool}" readonly/>
+        </div>
+    </div>
+    <!-- 修改页面 -->
+</div>
+<!--中间内容  结束-->
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js">
+</script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/indtype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/funtype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popindtype.js"></script>
+<script type="text/javascript">
+    var time = '1572570880666';
+    var pagecode = '30199';
+    var cusParam = "116425202951job_msem_baidupz_570m.51job.com";
+    var param = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+</script>
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

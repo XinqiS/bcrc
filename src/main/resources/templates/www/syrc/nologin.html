@@ -1,0 +1,61 @@
+@includeFileTemplate("/www/syrc/include/mm-header.html"){}
+<script type="text/javascript">
+	 function  grdl(){
+			  var url='${url}';
+              var zh_user=$('#zh_user').val();
+              var zh_pwd=$('#zh_pwd').val();
+              
+           		 if(zh_user==''){
+				 alert("账号不能为空");
+				 return;
+  				 }
+  				 if(zh_pwd==''){
+  				 alert("密码不能为空");
+  				 return;
+        		}
+            $.ajax({
+				url:"${ctxPath}/system/reception/methodNotLoggedIn",   //请求的url地址
+				dataType:"json",   //返回格式为json
+				data:{"zh_user":zh_user,"zh_pwd":zh_pwd,"url":url},    //参数值
+				type:"post",   //请求方式
+				success:function(data){
+					if(data.msg=='success'){
+					window.location.href=data.url;
+		 			}
+		 			else if(data.msg=='notUrl'){
+		 			window.location.href='${frontPath!}/4';
+		 			}
+		 			else if(data.msg=='error'){
+		 			alert("您输入的帐号或密码有误,重新登录或尝试找回密码");
+		 			}
+		 			}
+				}); 
+             	}
+
+</script>
+
+<div class="logo"><img src="${resPath}/bcrc/images/bcrc-index_03.png"/></div>
+<div class="clearfix">
+	<div class="dl_left"><img src="${resPath}/bcrc/images/login_06.png"/></div>
+	<div class="dl_right">
+		<h1><img src="${resPath}/bcrc/images/login_10000.png"/></h1>
+		<ul class="dl_cont">
+			<li>
+				<span>*用户名：</span>
+				<input type="text" id="zh_user" placeholder="请输入邮箱，它将用于登录和找回密码" />
+			</li>
+			<li>
+				<span>密码：</span>
+				<input type="password" id="zh_pwd" placeholder="请输入密码，6-16位字母/数字/符号组合" />
+			</li>
+			<li style="text-align: right; color: #fff;"><a target="_blank" style="color: #fff;" href="${ctxPath}/system/reception/gotowjmm1">忘记密码？</a></li>
+			<a href="javascript:void(0);" onclick="grdl();" style="color: #fff;"><li class="login_but">登录</li></a>
+
+		</ul>
+	</div>
+</div>
+</div>
+@includeFileTemplate("/www/syrc/include/mm-footer.html",{"current":"index"}){}
+
+
+

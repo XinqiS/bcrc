@@ -1,0 +1,90 @@
+
+<!--底部开始-->
+<!--<div class="footerbox">
+	<table>
+    	<tr>
+        	<td align="center" valign="top">
+                <img src="${resPath}/syrc/images/sy-index_82.png" width="38" height="38"/>
+                <a target="_blank" href="${frontPath!}/4/991.html">关于我们</a>
+            </td>
+            <td align="center" valign="top">
+                <img src="${resPath}/syrc/images/sy-index_84.png" width="38" height="38"/>
+                <a target="_blank" href="${frontPath!}/4/992.html">法律申明</a>
+            </td>
+            <td align="center" valign="top">
+                <img src="${resPath}/syrc/images/sy-index_86.png" width="38" height="38"/>
+                <a target="_blank" href="${frontPath!}/4/993.html">帮助中心</a>
+            </td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center"><p>版权所有松原人才市场 吉ICP备12002825号-2 增值电信业务经营许可证号：吉B2-20150082号</p></td>
+        </tr>
+        <tr>
+        	<td colspan="3" align="center"><p>技术支持：长春首佳科技有限公司</p></td>
+        </tr>
+    </table>
+</div>-->
+<!--底部结束-->
+
+<script type="text/javascript">
+ function jinggao(url){
+    alert("对不起！您还未登录，请您先登录");
+    var  test='${ctxPath}/system/reception/nologin';
+     mypost(test,{"url":url});  
+ }
+
+
+function mypost(url, params) {
+    // 创建form
+    var temp_form = document.createElement("form");
+    // 设置form
+    temp_form .action = url;     
+    temp_form .target = "_self";
+    temp_form .method = "post";     
+    temp_form .style.display = "none";
+    // 处理需要传递的参数
+    for (var x in params) {
+        var opt = document.createElement("textarea");     
+        opt.name = x;     
+        opt.value = params[x];     
+        temp_form .appendChild(opt);     
+    }     
+    document.body.appendChild(temp_form);
+    // 提交表单     
+    temp_form .submit();    
+}
+
+ $(function(){
+     var url= "${ctxPath}/cms/AllCharts";
+     $.ajax({
+         type: "POST",
+         async:false,
+         url:url,
+         dataType: "json",
+         success: function(data){
+
+             $("#count").append(''+data.legend.data+'');
+         }
+     });
+
+ });
+</script>
+<style>
+    #_ideConac{float: left;margin: 16px 33px 0 0;}
+</style>
+
+<div class="footer">
+    <div class="footer_in">
+        <script type="text/javascript">document.write(unescape("%3Cspan id='_ideConac' %3E%3C/span%3E%3Cscript src='http://dcs.conac.cn/js/09/158/0000/60022510/CA091580000600225100000.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+       <!-- <a><img src="${resPath}/bcrc/images/blue.png"/></a>-->
+        <div>
+            <p>主办：吉林省白城市暨洮北区人才交流中心</p>
+            <p><a style="width: 100%;color: #fff;margin: 0;" href="https://beian.miit.gov.cn/" target="_blank"><img style="margin: 6px 10px 0px 0;" src="${resPath}/bcrc/images/jsbgh.png"/>吉ICP备14003212号-1</a></p>
+            <p>技术支持：长春首佳科技有限公司</p>
+            <p>地址：白城市中兴东大路2-21号&nbsp;&nbsp;&nbsp;邮编：137000&nbsp;&nbsp;&nbsp;网站总访问量：<i id="count"></i></p>
+            <p>声明：本站所有信息、图片，未经许可不得复制、转载</p>
+
+        </div>
+    </div>
+</div>

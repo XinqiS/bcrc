@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/syrc/css/myPagination.css">
+<script src="${resPath}/syrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/syrc/js/myPagination.js"></script>
+<script src="${resPath}/syrc/js/TL_Tab.js"></script>
+<script src="${resPath}/syrc/js/TL_PC_Slider.js"></script>
+<script type="text/javascript">
+	function jlDel(id){
+		if(confirm("确定删除该简历么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/delete",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{id:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findUserResume"
+			 		}
+					}); 
+		 }
+  }
+</script>
+</head>
+
+<body class="contentbig">
+<!--header begin-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--header end-->
+
+<!--内容开始-->
+<div class="wz_cont">
+	<div  class="wz_cont_in">
+		<div class="dqwz">当前位置：<a href="${frontPath!}/4">首页</a>>>个人中心</div>
+		<div class=" clearfix">
+			<div class="con_left fl">
+				<h4><img src="${resPath}/bcrc/images/grzx_03.png"/></h4>
+				<ul class="left_nav">
+					@includeFileTemplate("/www/syrc/include/grzx-eightOtherLeftMeun.html",{"current":"index"}){}
+				</ul>
+			</div>
+			<div class="con_right fr">
+				<!--简历中心   开始-->
+				<div class="all_title">
+					<a><span>查看简历</span></a>
+					<a class="jlzx_cjjl er_tit_a" href="${ctxPath}/cms/resume/goCreateResume" style="float: right;background: none;font-size: 16px; margin: 1px 0 0 0;color: #046798;font-weight: normal;line-height: 40px;">创建简历</a>
+				</div>
+
+				<table class="jlzx_table">
+					<thead>
+					<th>简历名称</th>
+					<th>简历状态</th>
+					<th>操作</th>
+					</thead>
+					@for(bb in model!){
+					<tr>
+						<td>${bb.jlBbName!,xss}</td>
+						<td><select>
+							<option>${bb.jlBbMrtdzt==0?"未设置":"默认简历",xss}</option>
+						</select></td>
+						<td>
+							<a class="btn_bj btn_a" href="${ctxPath}/cms/resume/goEditResume?id=${bb.jlBbId!}" target="_blank"><img src="${resPath}/syrc/images/jlzx_con_46.png"/>编辑</a>
+							@if(bb.jlBbMrtdzt==0){
+							<a class="btn_bj btn_a" href="${ctxPath}/cms/resume/editJlbanbenMRtdzt?id=${bb.jlBbId!}&jianliId=${bb.jianliId!}"><img src="${resPath}/syrc/images/jlzx_con_46.png"/>默认简历</a>
+							@}
+							<a class="btn_sc btn_a" href="javascript:void(0);" onclick="jlDel('${bb.jlBbId!}');"><img src="${resPath}/syrc/images/jlzx_con_11.png">删除</a>
+						</td>
+					</tr>
+
+					@}
+				</table>
+				<div id="pagination" class="pagination"></div>
+				<script>
+
+					var datatotal = '${total}';
+					var pageAmount = '${pagesize}';
+					var pagenum = '${pagenum}';
+
+					pageTotal=Math.ceil(datatotal/pageAmount);
+
+					if(pageTotal>5){
+						pageSize=5
+					}else{
+						pageSize=pageTotal
+					}
+
+					window.onload = function () {
+						new myPagination({
+							id: 'pagination',
+							curPage:pagenum, //初始页码
+							pageTotal: pageTotal, //总页数
+							pageAmount: pageAmount,  //每页多少条
+							dataTotal: datatotal, //总共多少条数据
+							getPage: function (page) {
+								window.location.href ='${ctxPath}/cms/resume/findUserResume?pageCurrent='+page;
+
+							}
+						})
+
+					}
+				</script>
+				<!--			简历中心   结束-->
+			</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+<!--footer begin-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--footer end-->
+
+
+</body>
+</html>

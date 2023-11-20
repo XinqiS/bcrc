@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/ly_html.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-body.css">
+<link rel="stylesheet" type="text/css" href="${resPath}/bcrc/css/bcrc-page.css">
+<script src="${resPath}/bcrc/js/jquery-1.7.2.min.js"></script>
+<script src="${resPath}/bcrc/js/TL_Tab.js"></script>
+<script src="${resPath}/bcrc/js/TL_PC_Slider.js"></script>
+    <link href="${resPath}/bcrc/css/video-js.css" rel="stylesheet">
+    <script src='${resPath}/bcrc/js/video.js'></script>
+    <script src="${resPath}/bcrc/js/videojs-contrib-hls.min.js"></script>
+
+</head>
+<style>
+    .video-js .vjs-tech {position: relative !important;}
+</style>
+
+<body>
+<div class="contentbig">
+<!--头部开始-->
+@includeFileTemplate("/www/syrc/include/header.html",{"current":"index"}){}
+<!--头部结束-->
+    <!--内容开始-->
+    <div class="wz_cont">
+        <div  class="wz_cont_in">
+            <div class="dqwz">
+                <#cms_site_pos  site="${site}" category="${category}"  var="bean">
+                当前位置：
+                ${bean.baseURL}
+                >>
+                @for(location in bean.locations){
+                ${location.categoryName}
+                @if(!locationLP.last){
+                >>
+                @}
+                @}
+            </#cms_site_pos>
+        </div>
+            <div class="sycon_bg">
+                <div class="sycon_leftwh news_cont">
+                    <div class="news_title">
+                        <h1 class="sywzy_h2">${content.title}</h1>
+                        <div class="wxx_neirong_times">
+                            <div class="sywzy_xbt">
+                                <span>发布时间：${content.inputdate,dateFormat="yyyy年MM月dd日"}</span> <span>信息来源：${content.author}</span>
+                                <i>浏览次数：${content.viewNum}次</i>
+                                <em>字体：[
+                                    <a href="javascript:void(0)" class="icon_fb j-fontBig" title="字号大">大</a>
+                                    <a href="javascript:void(0)" class="icon_fm j-fontNormal active" title="字号中">中</a>
+                                    <a href="javascript:void(0)" class="icon_fs j-fontSmall" title="字号小">小</a>]
+                                </em>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sy_wz">
+                        <p>${content.content!}</p>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $(function(){
+
+                    $(".icon_fb").on('click',function(){
+
+                        $(".sy_wz p").css("font-size", "24px");
+
+                    });
+                    $(".icon_fm").on('click',function(){
+
+                        $(".sy_wz p").css("font-size", "16px");
+
+                    });
+                    $(".icon_fs").on('click',function(){
+
+                        $(".sy_wz p").css("font-size", "14px");
+
+                    });
+
+                });
+
+
+            </script>
+        </div>
+    </div>
+    <!--内容结束-->
+<!--底部开始-->
+@includeFileTemplate("/www/syrc/include/footer.html",{"current":"index"}){}
+<!--底部结束-->
+
+
+</body>
+</html>
+<script>
+
+    $(function(){
+        var src=document.getElementById("myVideo").poster;
+        if (/\.m3u8$/.test(src)) { //判断视频源是否是m3u8的格式
+            document.getElementById("myVideo").poster = "";
+            var kuan = $('video').width();
+            var gao = $('video').height();
+            changeVideo(src);
+            $("video").attr("width", kuan + "px");
+            $("video").attr("height", gao + "px");
+            var classmyv = $("#myVideo").attr("class");
+            $("#myVideo").removeClass();
+            document.getElementById("myVideo").poster = "";
+            $("#myVideo").attr("style", "text-align:center;width:" + kuan + "px;height: " + gao + "px");
+            $("#myVideo").attr("class", classmyv + " video-js vjs-default-skin vjs-big-play-centered");
+        }
+    });
+
+    /*var myVideo1 = videojs('myVideo1', {
+        loop: true,
+        controls: true,
+        preload: 'auto',
+        autoplay: true,
+    })*/
+
+
+    var changeVideo = function (vdoSrc) {
+        if (/\.m3u8$/.test(vdoSrc)) { //判断视频源是否是m3u8的格式
+            videojs('myVideo', {
+                loop: true,
+                controls: true,
+                preload: 'auto',
+                autoplay: true,
+            }).src({
+                src: vdoSrc,
+                type: 'application/x-mpegURL' //在重新添加视频源的时候需要给新的type的值
+            })
+        } else {
+           // myVideo1.src(vdoSrc)
+        }
+       // myVideo1.load();
+       // myVideo1.play();
+
+    }
+
+    var changeVideo1 = function (vdoSrc) {
+        if (/\.m3u8$/.test(vdoSrc)) { //判断视频源是否是m3u8的格式
+            $("#myVideo").append('<source src="'+vdoSrc+'" type="application/x-mpegURL" />');
+            changeVideo(vdoSrc);
+        }
+       /* $("#myVideo").load();
+        $("#myVideo").play();*/
+
+    }
+
+</script>

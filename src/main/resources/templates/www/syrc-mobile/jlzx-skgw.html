@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>谁看过我</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<script src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script type="text/javascript">
+	function sqzw(zwId,jlBbId){
+		$.ajax({
+        type: "POST",
+        async:false,
+        url: "${ctxPath}/cms/resume/skgwsqzw",
+        data: {zwId:zwId,jlBbId:jlBbId},
+        dataType: "json",
+        success: function(data){
+        	alert(data.message);
+        }
+     	});
+	
+	}
+	function skgwDel(id){
+		if(confirm("确定删除该条数据么？")){
+			$.ajax({
+					url:"${ctxPath}/cms/resume/deleteSkgw",   //请求的url地址
+					dataType:"json",   //返回格式为json
+					data:{ids:id},    //参数值
+					type:"post",   //请求方式
+					asyc:false,
+					success:function(data){
+					//alert(data.message);
+						window.location.href="${ctxPath}/cms/resume/findSkgwList"
+			 		}
+					}); 
+		 }
+  }
+
+
+</script>
+</head>
+<body>
+<div id="pageWp" class="bb" >
+  <div id="pageTop" > 
+    <!--	top  头部  开始-->
+   <div class="sy_header"><span class="location" onclick="shouye();"><font style="font-size: 0.6rem;color: #747474;font-weight: bold">返回首页</font></span> <img src="${resPath}/syrc-mobile/images/sy_sj_27.png" /> <span class="ss_dz"><a href="${ctxPath}/cms/resume/goGrzxForSj">个人中心</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="${ctxPath}/system/reception/logOut">退出</a></span> 
+    
+    
+    </div>
+    <script>
+ 	function shouye(){
+ 	window.location.href="${ctxPath}/bcrc/4"
+ 	}
+ 	 </script>
+    <!--	top  头部  结束--> 
+	<!--简历nav 开始-->
+	@includeFileTemplate("/www/syrc-mobile/include/grzx-meun.html",{"current":"index"}){}
+	<!--简历nav 结束-->
+
+<!--简历中间   开始-->
+ <div id="pageContent">
+<div class="jl_con" id="rsm_397738433">
+  <div class="new_l" value="397738433"> 
+  	 @for(map in model){
+	  <div  class="e ">
+    <a class="gs" href="${ctxPath}/qyzx/qyXq?qy_id=${map.QY_ID!}">${map.QY_QYMC!}</a>
+    <div class="ms"><strong>${map.QY_SSHY!}/
+    				@if(map.QY_QYGM==0){
+						20人以下
+					@}else if(map.QY_QYGM==1){
+						20-99人
+					@}else if(map.QY_QYGM==2){
+						100-499人
+					@}else if(map.QY_QYGM==3){
+						500-999人
+					@}else if(map.QY_QYGM==4){
+						1000-9999人
+					@}else if(map.QY_QYGM==5){
+						10000人以上
+					@}
+					</strong><b><span>公司地址：${map.QY_XXDZ!}</span>
+     
+      </b>
+      <p class="lk">
+       
+        
+		<a class="t5 delrsm" href="javascript:void(0)" onclick="skgwDel('${map.JLLL_ID}');">删除</a>
+		</p>
+    </div>
+    </div> 
+	@}
+
+	
+	</div>
+
+	</div>
+  
+  <!--简历中间   结束--> 
+  
+  <!--底部导航  开始-->
+	<div id="pageFooter">
+  <!-- <div class="btab">
+<div class="t_in"> <a class="i1" href="${frontPath!}/4">首页</a> <a class="i2" href="${frontPath!}/4/1001.html">松原引才</a> <a class="i3" href="${ctxPath!}/gjss/selectExample">网络招聘</a> <a class="i4" href="${frontPath!}/4/1009.html">高级人才</a> <a class="i5 on" href="${frontPath!}/4/1023.html">职业培训</a> </div>
+  </div> -->
+  </div>
+  <!--底部导航  结束--> 
+  
+</div>
+</div>
+</div>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<div class="bjui-pageHeader">
+    <form id="regForm" data-toggle="ajaxsearch" action="${ctxPath}/cms/reg" method="post">
+        <input type="hidden" name="pageSize" value="${model.pageSize!}">
+        <input type="hidden" name="pageCurrent" value="${model.pageNum!}">
+        <!--<div class="bjui-searchBar">
+            <label>专业:</label>
+            <select name="major" data-toggle="selectpicker">
+                @if(isEmpty(pojo.r_major)){
+                <option value="" selected>所有</option>
+                <option value="建筑装饰">建筑装饰</option>
+                <option value="计算机平面设计">计算机平面设计</option>
+                <option value="动漫游戏">动漫游戏</option>
+                <option value="工艺美术">工艺美术</option>
+                <option value="数字影像技术">数字影像技术</option>
+                <option value="服装设计与工艺">服装设计与工艺</option>
+                <option value="电子商务">电子商务</option>
+                <option value="商务助理">商务助理</option>
+                <option value="美发与形象设计">美发与形象设计</option>
+                <option value="美术绘画">美术绘画</option>
+                @}else{
+                <option value="">所有</option>
+                <option value="建筑装饰">建筑装饰</option>
+                <option value="计算机平面设计">计算机平面设计</option>
+                <option value="动漫游戏">动漫游戏</option>
+                <option value="工艺美术">工艺美术</option>
+                <option value="数字影像技术">数字影像技术</option>
+                <option value="服装设计与工艺">服装设计与工艺</option>
+                <option value="电子商务">电子商务</option>
+                <option value="商务助理">商务助理</option>
+                <option value="美发与形象设计">美发与形象设计</option>
+                <option value="美术绘画">美术绘画</option>
+                @}
+            </select>
+        </div>-->
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <form id="reg_form" class="pageForm" data-toggle="validate" method="post">
+        <table id="reg" class="table table-bordered table-hover table-top">
+            <thead>
+            <tr style="text-align: center">
+                <th align="center" title="No.">No.</th>
+                <th align="center" title="姓名">姓名</th>
+                <th align="center" title="联系电话">联系电话</th>
+                <th align="center" title="身份证号">身份证号</th>
+                <th align="center" title="报名专业">报名专业</th>
+                <th align="center" title="时间">时间</th>
+                <th align="center" title="操作">操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            @for(reg in model.list){
+            <tr>
+                <td align="center">${reg.r_id!}</td>
+                <td align="center">${reg.r_name!,xss}</td>
+                <td align="center">${reg.r_tel!}</td>
+                <td align="center">${reg.r_idcard!}</td>
+                <td align="center">${reg.r_major!}</td>
+                <td align="center">${reg.r_time!,dateFormat="yyyy/MM/dd HH:mm"}</td>
+                <td align="center">
+                  <a href="${ctxPath}/cms/reg/delete?id=${reg.r_id!}" class="btn btn-red" data-toggle="doajax" title="删除" data-confirm-msg="确定要删除该行信息吗？">删除</a>
+                </td>
+            </tr>
+            @}
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 ${model.total!} 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="${model.total!}" data-page-size="30" data-page-current="1">
+    </div>
+</div>

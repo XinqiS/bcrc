@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<meta name="viewport"
+	content="initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no,uc-fitscreen=yes">
+
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+	<link rel="stylesheet"  href="${resPath}/bcrc-mobile/css/sy_sjhtml.css"/>
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/sy_sjbase.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/resume.css"  />
+	<link rel="stylesheet" href="${resPath}/bcrc-mobile/css/pop.css"  />
+	<script type="text/javascript" language="javascript" src="${resPath}/bcrc-mobile/js/jquery-1.7.2.min.js"></script>
+	<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+	<script src="${resPath}/syrc/js/idealDic.js"></script>
+	<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+</head>
+
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left cjjl_nav">
+				<div class="xbox xebox">
+					<div class="e e0">
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/getJlInfoById?jianliId=${jlinfo.jianliId}&jlBbId=${jlbb.jlBbId}">基本信息</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/getJlInfoById?jianliId=${jlinfo.jianliId}">基本信息</a>
+						@}
+						<div class="face">
+							@if(jlinfo.jianliXb==0){
+							@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+							<img src="${resPath}/bcrc/images/man.png" width="68" height="83" alt="头像">
+							@}else{
+							<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+							@ }
+							@}else if(jlinfo.jianliXb==1){
+							@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+							<img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+							@}else{
+							<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+							@ }
+							@}else{
+							@if(isEmpty(jlinfo.jianliTx) || jlinfo.jianliTx=="null"){
+							<img src="${resPath}/bcrc/images/woman.png" width="68" height="83" alt="头像">
+							@}else{
+							<img src="${jlinfo.jianliTx!}" width="68" height="83" alt="头像">
+
+							@ }
+							@}
+							<div class="name">${jlinfo.jianliXm!}</div>
+							<p class="p">现居住${jlinfo.jianliJzd!} | ${jlinfo.jianliKsgz!} |
+								@if(jlinfo.jianliXb!=null){
+								<script>document.write(dicContainer.getDicItemName('100', ${jlinfo.jianliXb!}));</script>
+								@}
+								| ${jlinfo.jianliCsrq!}</p>
+							<span class="email icons">${jlinfo.jianliYx!}</span>
+							<span class="tel icons">${jlinfo.jianliSj!}</span>
+							<span class="state icons"><script> document.write(dicContainer.getDicItemName('qzzt', ${jlinfo.jianliQzzt!}));</script></span>
+						</div>
+					</div>
+
+					<div class="e e1" id="showdetail">
+						@if(isNotEmpty(jlbb)){
+						<a class="tit nsr_a" href="${ctxPath}/cms/resume/findQzyxByJlbbId?jlBbId=${jlbb.jlBbId}&type=0">目前年收入</a>
+						@}else{
+						<a class="tit nsr_a" href="${ctxPath}/cms/resume/findQzyxByJlbbId?type=0">目前年收入</a>
+						@}
+						<div class="tbox">
+							<!--<input type="text" id="yearsalary" class="txt inputblur nsr_inp" placeholder="完善年收入情况，让HR更了解你" maxlength="6" >-->
+							@if(qzyx!=null&&qzyx.qzyxNsr!=null){
+							<span class="wy">${qzyx.qzyxNsr}万元</span>
+							@}else{
+							<div class="none">年收入尚不完整，请填写年收入完善简历</div>
+							@}
+
+						</div>
+					</div>
+
+					<div class="e e2">
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/findQzyxByJlbbId?jlBbId=${jlbb.jlBbId}&type=1">求职意向</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/findQzyxByJlbbId?type=1">求职意向</a>
+						@}
+						@if(qzyx!=null&&qzyx.qzyxQwxz!=null){
+						<div class="txt">
+							<div class="t">
+								<label>期望职能：</label>
+								<div>${qzyx.qzyxZn!}</div>
+							</div>
+							<div class="t">
+								<label>工作地点：</label>
+								<div>${qzyx.qzyxDd!}</div>
+							</div>
+							<div class="t">
+								<label>期望薪资：</label>
+								<div>${qzyx.qzyxQwxz!}</div>
+							</div>
+						</div>
+						@}else{
+						<div class="none">求职意向尚不完整，请填写求职意向完善简历</div>
+						@}
+					</div>
+
+					<div class="e e3" >
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/findGzjyByJlbbId?jlBbId=${jlbb.jlBbId}">工作经验</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/findGzjyByJlbbId">工作经验</a>
+						@}
+						@if(isNotEmpty(gzjyList)){
+						<div class="txt jbox">
+							<div class="x x2">
+
+								@for(gzjy in gzjyList){
+								<div class="bn">
+									<p class="st">${gzjy.gzjyKssj!}-${gzjy.gzjyJssj!}</p>
+									<p class="st">${gzjy.gzjyGs!}</p>
+									<p class="tx2">
+										<span>${gzjy.gzjyBm!} | ${gzjy.gzjyZn}</span>
+									</p>
+								</div>
+								@}
+							</div>
+						</div>
+						@}else{
+						<div class="none">工作经验尚不完整，请填写工作经验完善简历</div>
+						@}
+					</div>
+					<div class="e e4" >
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/findJyjlByJlbbId?jlBbId=${jlbb.jlBbId}">教育经历</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/findJyjlByJlbbId">教育经历</a>
+						@}
+						@if(isNotEmpty(jyjlList)){
+
+						<div class="txt jbox">
+							<div class="x x2">
+								@for(jyjl  in   jyjlList){
+								<div class="bn">
+									<p class="st">${jyjl.jyjlKssj!}-${jyjl.jyjlJssj!}</p>
+									<p class="st">
+										<span>${jyjl.jyjlXx!}</span>
+										@if(jyjl.jyjlHwjl==0){
+										<span class="hai">海外经历</span>
+										@}
+									</p>
+									<p class="tx2">${jyjl.jyjlZy!} |  <script> document.write(dicContainer.getDicItemName('syxl', ${jyjl.jyjlXl!}));</script></p>
+								</div>
+								@}
+							</div>
+						</div>
+						@}else{
+						<div class="none">教育经历尚不完整，请填写教育经历完善简历</div>
+						@}
+					</div>
+					<div class="e e5" >
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId?jlBbId=${jlbb.jlBbId}">在校情况</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/findXnzwAndXnryByJlbbId">在校情况</a>
+						@}
+						@if(isNotEmpty(xnryList)||isNotEmpty(xnzwList)){
+						<div class="txt jbox">
+							<div class="x x2">
+								<div class="bn">
+									<p class="st">校内荣誉</p>
+									@if(isNotEmpty(xnryList)){
+									@for(xnry  in   xnryList){
+									<p class="tx2">
+										<span>${xnry.xnrySj!}   ${xnry.xnryJx!}</span>
+									</p>
+									@}
+									@}
+								</div>
+								<div class="bn">
+									<p class="st">校内职务</p>
+
+									@if(isNotEmpty(xnzwList)){
+									@for(xnzw  in   xnzwList){
+									<p class="tx2">
+										<span>${xnzw.xnzwKssj!}-${xnzw.xnzwJssj!}   ${xnzw.xnzwZw!}</span>
+									</p>
+									@}
+									@}
+								</div>
+
+							</div>
+						</div>
+						@}else{
+						<div class="none">在校情况尚不完整，请填写在校情况完善简历</div>
+						@}
+					</div>
+					<div class="e e6" >
+						@if(isNotEmpty(jlbb)){
+						<a class="tit" href="${ctxPath}/cms/resume/findQzyxByJlbbId?jlBbId=${jlbb.jlBbId}&type=2">技能特长</a>
+						@}else{
+						<a class="tit" href="${ctxPath}/cms/resume/findQzyxByJlbbId?type=2">技能特长</a>
+						@}
+						@if(qzyx!=null&&qzyx.qzyxJntc!=null){
+						<div class="txt">
+							<p class="jn_txt">${qzyx.qzyxJntc!}</p>
+						</div>
+						@}else{
+						<div class="none">技能特长尚不完整，请填写技能特长完善简历</div>
+						@}
+					</div>
+					<div class="etip">如需修改附加信息,请登录白城人力招聘网站版操作</div>
+				</div>
+
+
+			</div>
+
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+</body>
+</html>

@@ -1,0 +1,298 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>求职意向</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+    <link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet"  href="${resPath}/syrc-mobile/images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/sy_sjbase.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css"  />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css"  />
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/basic.js" ></script>
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+	var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+function saveQzyx(){
+	if(isNull($("#areaname").text())){
+		alert("地点不能为空！！！");
+		return false;
+	}
+	if(isNull($("#funtypename").text())){
+		alert("职能不能为空！！！");
+		return false;
+	}
+	if(isNull($("#indtypename").text())){
+		alert("行业不能为空！！！");
+		return false;
+	}
+	if(isNull($("#position").val())){
+		alert("职位不能为空！！！");
+		return false;
+	}
+    var zjadd=$("#sal3").val();
+
+    if(isNull(zjadd)){
+        alert("期望薪资不能为空！！！");
+        return false;
+    }else if(zjadd.indexOf("-")==-1){
+        alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+        return false;
+    }
+    var zj=zjadd.split("-");
+    if(zj.length==2){
+        if(isNull(trim(zj[0]))){
+            alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+            return false;
+        }else if(!isNumber(parseInt(trim(zj[0])))){
+            alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+            return false;
+        }
+
+        if(isNull(trim(zj[1]))){
+            alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+            return false;
+        }else  if(!isNumber(parseInt(trim(zj[1])))){
+            alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+            return false;
+        }
+        if(parseInt(trim(zj[0]))>=parseInt(trim(zj[1]))){
+            alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+            return false;
+        }
+    }else{
+        alert("期望薪资格式不对，请修改为正确格式数字-数字，例2001-4001！！！");
+        return false;
+    }
+
+	var gzlx=parseInt($("#gzlx1").val());
+	var dgsj=parseInt($("#dgsj1").val());
+	if(isNull($("#gzlx").text())){
+		alert("工作类型不能为空！！！");
+		return false;
+	}else if($("#gzlx").text()=='全职'){
+		gzlx=0;
+	}else if($("#gzlx").text()=='兼职'){
+		gzlx=1;
+	}else if($("#gzlx").text()=='实习'){
+		gzlx=2;
+	}
+	if(isNull($("#dgsj").text())){
+		alert("到岗时间不能为空！！！");
+		return false;
+	}else if($("#dgsj").text()=='随时'){
+		dgsj=0;
+	}else if($("#dgsj").text()=='1周内'){
+		dgsj=1;
+	}else if($("#dgsj").text()=='1个月内'){
+		dgsj=2;
+	}else if($("#dgsj").text()=='3个月内'){
+		dgsj=3;
+	}else if($("#dgsj").text()=='待定'){
+		dgsj=4;
+	}
+	/* if(isNull($("#intro").val())){
+		alert("自我评价不能为空！！！");
+		return false;
+	} */
+	var  json={};
+	if($("#qzyxId").val()!=undefined){
+		json.qzyxId=$("#qzyxId").val();
+	}
+	if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	}
+	json.qzyxDd=$("#areaname").text();
+	json.qzyxZn=$("#funtypename").text();
+	json.qzyxZw=$("#position").val();
+	json.qzyxQwxz=$("#sal3").val();
+	json.qzyxGzlx=$("#gzlx").text();
+	json.qzyxDgsj=$("#dgsj").text();
+	json.qzyxHy=$("#indtypename").text();
+	json.qzyxZwpj=$("#intro").val();
+	json.qzyxGrbq=$("#resumekey").val();
+	json.qzyxDgsj=dgsj;
+	json.qzyxGzlx=gzlx;
+	$.ajax({
+      type: "POST",
+      async:false,
+      url: "saveUserQzyx",
+      data:json,
+      dataType: "json",
+      success: function(data){
+      		alert(data.message);
+      		window.location.href="${ctxPath}/cms/resume/goEditResume?id="+data.qzyx.jlBbId;
+      }
+	});
+}
+</script>
+</head>
+<body >
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+    <div  class="wz_cont_in">
+        <div class="touxiangbox">
+            <div class="con_left">
+                <div class="all_title"><a href="${ctxPath}/cms/resume/goEditResume?id=${session.jlbbIdSession}"><span>求职意向</span></a></div>
+
+                <div id="pageContent" class="fixtop qzyx">
+                    <div class="sbox">
+                        <a href="javascript:void(0)" class="e">
+                            <label><em>*</em>地点</label>
+                            <div id="areaname" class="txt" onclick="areaPopDeal.showAreaPop(this,'multi');">${qzyx.qzyxDd!}</div>
+                            <input type="hidden" id="area" value="030800">
+                            <p class="error" style="display:none;" id="err_area"><span></span></p>
+                        </a>
+                        <a href="javascript:void(0)" class="e">
+                            <label><em>*</em>职能</label>
+                            <div id="funtypename" class="txt c_default" onclick="setFuntypePage(this,1)">${qzyx.qzyxZn!}</div>
+                            <input type="hidden" id="funtype" value="">
+                            <p class="error" style="display:none;" id="err_funtype"><span></span></p>
+                        </a>
+                        <div class="e">
+                            <label><em>*</em>职位</label>
+                            <input type="text" class="txt inputblur" id="position"  placeholder="请输入职位名称" name="Job" oninput="simpleAssociationforintent('Job')"  value="${qzyx.qzyxZw!}"  maxlength="25">
+                            <p class="error" style="display:none;" id="err_position"><span></span></p>
+                            <div class="job_ass" style="display:none;"> </div>
+                        </div>
+
+                        <div class="e lb_w">
+                            <label><em>*</em>期望薪资</label>
+                            <input type="text" class="txt long xx" id="sal3" maxlength="30"  value="${qzyx.qzyxQwxz!}">
+                            <span class="f12">清合理输入薪资区间，格式为数字-数字例：2001-4001元</span>
+                            <p type="hidden" id="sal"></p>
+                            <p class="error" style="display:none;" id="err_sal"><span></span></p>
+                        </div>
+                        <div class="custom lb_w" id="customizesalary" style="display:none;">
+                            <div class="iptb">
+                                <p class="ipt">
+                                    <input type="text" maxlength="7" class="txt c_tdefault" id="sal_min" value="" placeholder="薪资下限">
+                                </p>
+                                <span class="slash">-</span>
+                                <p class="ipt">
+                                    <input type="text" maxlength="7" class="txt c_tdefault" id="sal_max" value="" placeholder="薪资上限">
+                                </p>
+                                元
+                                <p class="error" style="display:none;" id="err_customizesalary"><span></span></p>
+                            </div>
+                            <div class="warn">建议您薪资上限不超过下限数值的50%</div>
+                        </div>
+                        <a href="javascript:void(0)" class="e">
+                            <label>工作类型</label>
+                            <div class="selt"> <span class="sval" id="gzlx">
+    @if(isNotEmpty(qzyx.qzyxGzlx)){
+						<input type="hidden" id="gzlx1" value="${qzyx.qzyxGzlx!}"/>
+						<script>document.write(dicContainer.getDicItemName('gzlx', ${qzyx.qzyxGzlx!}))</script>
+					@}else{
+						<input type="hidden" id="gzlx1" value="0"/>
+					@}
+
+    </span>
+                                <select id="jobterm">
+                                    <script >
+                                        document.write(dicContainer["gzlx"].toString());
+                                    </script>
+                                </select>
+                            </div>
+                        </a>
+                        <a href="javascript:void(0)" class="e">
+                            <label>行业</label>
+                            <div href="javascript:void(0)" id="indtypename" class="txt c_default" onclick="setIndtypePage(this,1);">${qzyx.qzyxHy!}</div>
+                            <input type="hidden" id="indtype" value="">
+                        </a>
+                        <a href="javascript:void(0)" class="e">
+                            <label>到岗时间</label>
+                            <div class="selt">
+                                <span class="sval" id="dgsj">
+                                     @if(isNotEmpty(qzyx.qzyxDgsj)){
+						<input type="hidden" id="dgsj1" value="${qzyx.qzyxDgsj!}"/>
+						<script>document.write(dicContainer.getDicItemName('dgsj', ${qzyx.qzyxDgsj!}))</script>
+					@}else{
+						<input type="hidden" id="dgsj1" value="0"/>
+					@}
+                                </span>
+                                <select id="entrytime">
+                                    <script >
+                                        document.write(dicContainer["dgsj"].toString());
+                                    </script>
+                                </select>
+                            </div>
+                        </a>
+                        <div class="e e_ta">
+                            <label>自我评价</label>
+                            <div class="ptxa">
+                                <textarea maxlength="500" id="intro" class="inputblur" placeholder="请简单的介绍自己，说明自己最大的优势，让企业看到你的闪光点，限1000中文字">${qzyx.qzyxZwpj!}</textarea>
+
+                            </div>
+                            <p class="error" style="display:none;" id="err_intro"><span></span></p>
+                        </div>
+                        <div class="e e_ta">
+                            <label>个人标签（不超过10个，用空格隔开）</label>
+                            <div class="ptxa noNum">
+                                <textarea maxlength="500" id="resumekey" class="inputblur" placeholder="请输入代表您行业、特长的关键词，例如：销售 懂英语 可出差，每个词不超过12个中文字">${qzyx.qzyxGrbq!}</textarea>
+                            </div>
+                            <p class="error" style="display:none;" id="err_resumekey"><span></span></p>
+                        </div>
+                    </div>
+                    <center class="btnbox">
+                        <button class="btn" onclick="saveQzyx();">保存</button>
+                        <input type="hidden" id="userid" value="398719117"/>
+                        @if(isNotEmpty(qzyx.qzyxId)){
+                        <input type="hidden" name="qzyxId" id="qzyxId" value="${qzyx.qzyxId}">
+                        <input type="hidden" name="jlBbId" id="jlBbId" value="${qzyx.jlBbId}">
+                        @}
+                        @if(isNotEmpty(jlBbId)){
+                        <input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+                        @}
+                    </center>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script> 
+<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js">
+	</script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/indtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/funtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popindtype.js"></script> 
+<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script> 
+
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>添加校内职务</title>
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+<link rel="stylesheet"  href="images/sy_sjhtml.css"/>
+<link rel="stylesheet" href="images/sy_sjbase.css"  />
+<link rel="stylesheet" href="images/cover.css"  />
+<link rel="stylesheet" href="images/pop.css"  />
+<link rel="stylesheet" href="images/search.css"  />
+<link rel="stylesheet" href="images/swiper.min.css"  />
+<link rel="stylesheet" href="images/resume.css"  />
+<script type="text/javascript" src="images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="images/basic.js" ></script>
+<script type="text/javascript" src="images/zepto.js"></script>
+
+</head>
+<body style="background: #f6f6f5 ;">
+<div id="pageContent" class="fixtop">
+<div class="top">
+		<a href="创建简历 - 在校情况.html" class="back"></a>
+		添加校内职务	</div>
+	
+	<div class="sbox">
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [0,70] , 'starttime' );">
+			<label><em>*</em>开始时间</label>
+			<div class="selt">
+			<span id="starttime" class="sval c_default">请选择</span><p class="error" id="err_starttime" style="display:none;"><span>请选择开始时间</span></p>
+			</div>
+		</a>
+
+		<a href="javascript:void(0)" class="e" onclick="calendar( 'month' , [0,70] , 'endtime','1');">
+			<label><em>*</em>结束时间</label>
+			<div class="selt">
+			<span id="endtime" class="sval">至今</span>
+			</div>
+			<p class="error" id="err_endtime" style="display:none;"><span></span></p>
+		</a>
+
+		<div class="e">
+			<label><em>*</em>职务</label>
+			<input type="text" id="cpracticename" value="" class="txt inputblur" placeholder="请输入职务" err_text="请输入职务" maxlength="50">
+			<p class="error" style="display:none;" id="err_cpracticename"><span>请输入职务</span></p>
+		</div>
+
+		<div class="e e_ta eb">
+			<label>职务描述</label>
+			<div class="ptxa">
+				<textarea class="inputblur" id="cdescribe" placeholder="可以描述在校期间所担任的职务工作内容和职责等" maxlength="2000"></textarea>
+				<div class="gray">
+				0/1000</div>
+			</div>
+			<p class="error" style="display:none;" id="err_cdescribe"><span></span></p>
+		</div>
+	</div>
+	<center class="btnbox">
+		<button class="btn savepractrice" click-data="1">保存</button>
+	</center>
+	
+	</div>
+<script type="text/javascript" src="images/base.js"></script> 
+<script type="text/javascript" src="images/fun.js"></script> 
+<script type="text/javascript" src="images/d_jobarea.js"></script> 
+<script type="text/javascript" src="images/popjobarea.js"></script> 
+<script type="text/javascript" src="images/resumecommon.js"></script> 
+<script type="text/javascript" src="images/swiper.min.js"></script> 
+<script type="text/javascript" src="images/school.js"></script> 
+<div id="shadow" style="display:none"></div>
+</body>
+</html>

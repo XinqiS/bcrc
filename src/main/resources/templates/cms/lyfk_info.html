@@ -1,0 +1,69 @@
+
+<div class="bjui-pageContent">
+    <form method="post" action="${ctxPath}/cms/lyfk/updateFknr" id="j_xf_form" data-toggle="validate" data-autorefresh="true" data-alertmsg="false">
+        <input TYPE="hidden" name="lyfkId"  value="${lyfk.lyfkId!}">
+        <table class="table table-condensed table-hover" width="100%">
+            <tbody>
+            <tr>
+                <td>
+                    
+                    <label for="name" class="control-label x85">类别：</label>
+                    <input type="text" name="hdlb" id="hdlb" value=""  style="width: 490px; margin-top:6px;"  readonly>
+                     <script> $("#hdlb").val(dicContainer.getDicItemName('101', ${lyfk.lyfkLb!,xss}));</script>
+               
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="name" class="control-label x85">电子邮箱：</label>
+                    <input type="text" name="lyfkYx" id="lyfkYx" value="${lyfk.lyfkYx}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+			 <tr>
+                <td>
+                    <label for="name" class="control-label x85">电话：</label>
+                    <input type="text" name="lyfkDh" id="lyfkDh" value="${lyfk.lyfkDh}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                    <label for="name" class="control-label x85">QQ：</label>
+                    <input type="text" name="lyfkQq" id="lyfkQq" value="${lyfk.lyfkQq}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+			<tr>
+                <td>
+                    <label for="name" class="control-label x85">标题：</label>
+                    <input type="text" name="lyfkBt" id="lyfkBt" value="${lyfk.lyfkBt}"  style="width: 490px; margin-top:6px;"  readonly>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label for="phone" class="control-label x85">留言内容：</label>
+                   <textarea rows="10" cols="50" style="width: 490px; margin-top:6px;" readonly="readonly">${lyfk.lyfkNr!,xss}</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="result_notification" class="control-label x85">结果告知：</label>
+                     <textarea rows="10" cols="50" style="width: 490px; margin-top:6px;" id="lyfkFknr" name="lyfkFknr">${lyfk.lyfkFknr!,xss}</textarea>
+                </td>
+            </tr>
+			
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+       
+        <li><button type="submit" class="btn-default"  data-icon="save">保存</button></li>
+       <!--  <li><button onclick="del(this)" type="button" class="btn-close" data-icon="close">删除</button></li> -->
+    </ul>
+</div>
+<script>
+    function del(obj) {
+        $(obj).bjuiajax('doAjax', {url:'${ctxPath}/cms/lyfk/delete?id=${lyfk.lyfkId!}',confirmMsg:'确定要删除该行信息吗？'});
+    }
+</script>

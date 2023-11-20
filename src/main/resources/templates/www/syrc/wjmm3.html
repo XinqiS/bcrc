@@ -1,0 +1,28 @@
+@includeFileTemplate("/www/syrc/include/mm-header.html"){}
+
+<!--内容开始-->
+<div class="logo"><img src="${resPath}/bcrc/images/bcrc-index_03.png"/></div>
+<div class="content2 ">
+	<ul class="lr_step">
+		<li class="step1">填写帐号</li>
+		<li class="step2">验证身份</li>
+		<li class="step3 on">设置新密码</li>
+	</ul>
+	<div class="con_form con_form2">
+		<h4>请输入你需要设置的新密码</h4>
+		<div class="line">
+			<span>新密码：</span>
+			<input type="password" placeholder="请输入新密码，6-16位字母/数字/符号组合"  id="zh_pwd" onblur=""/>
+			<i id="ys2"></i>
+		</div>
+		<div class="line">
+			<span>确认密码：</span>
+			<input type="hidden" value="${zh_user}" id="zh">
+			<input type="password" placeholder="请输入和上面相同的密码"  id="zh_pwds" onblur=""/>
+			<i id="ys3"></i>
+		</div>
+		<a class="qr_btn" onclick="wjmm3();" href="javascript:void(0)">确定</a>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/mm-footer.html",{"current":"index"}){}

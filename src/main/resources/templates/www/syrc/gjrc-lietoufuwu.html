@@ -1,0 +1,67 @@
+@includeFileTemplate("/www/syrc/include/gjrc-head.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="gjrc_contentbox">
+	<div class="gjrc_top">
+    	<h1><img src="${resPath}/syrc/images/gjrc_04.png" width="170" height="49"></h1>
+        <ul>
+        	<li><a  href="${frontPath!}/${site.siteId}/1020.html">加入高级人才库</a></li>
+           <li><a href="${ctxPath}/gjrc/gjrcb">高级人才榜</a></li>
+            <li><a href="${frontPath!}/${site.siteId}/1015.html">猎头服务</a></li>
+            <li><a href="${ctxPath}/gjrc/zgjgw">中高级岗位</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">中高级招聘会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1022.html">小型见面会</a></li>
+            <li><a href="${frontPath!}/${site.siteId!}/1009.html">频道首页</a></li>
+        </ul>
+    </div>
+    <div class="main">
+    	<#cms_category_list  siteId="4" categoryId="1009" isNav="0" var="bean">
+ @if(bean.categoryId==1015){
+    	<div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>${bean.categoryName!}</a></div>
+            <div class="sycon_bg">
+                <div class="news_cont">
+                    <p class="sy_wz">
+                    ${bean.content}
+                    </p>
+                </div>
+            </div>
+        </div>
+         @}else if(bean.categoryId==1016){
+        <div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>${bean.categoryName!}</a></div>
+            <div class="sycon_bg">
+                <div class="news_cont">
+                    <p class="sy_wz">
+                    ${bean.content}
+                    </p>
+                </div>
+            </div>
+        </div>
+         @}else if(bean.categoryId==1017){
+        <div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>${bean.categoryName!}</a></div>
+            <div class="sycon_bg">
+                <div class="news_cont">
+                    <p class="sy_wz">
+ 				 ${bean.content}
+                    </p>
+                </div>
+            </div>
+        </div>
+         @}else if(bean.categoryId==1018){
+        <div class="gjrcb_main">
+        	<div class="all_title gjrc"><i></i><a>${bean.categoryName!}</a></div>
+            <div class="sycon_bg">
+                <div class="news_cont">
+                    <p class="sy_wz">
+					 ${bean.content}
+                    </p>
+                </div>
+            </div>
+        </div>
+             @   }
+            </#cms_category_list>
+    </div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/gjrc-footer.html",{"current":"index"}){}

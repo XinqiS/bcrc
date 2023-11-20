@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sooka.mybatis.mapper.JlinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.sooka.mybatis.model.Jlinfo" >
+    <id column="JIANLI_ID" property="jianliId" jdbcType="VARCHAR" />
+    <result column="ZH_ID" property="zhId" jdbcType="VARCHAR" />
+    <result column="JIANLI_XM" property="jianliXm" jdbcType="VARCHAR" />
+    <result column="JIANLI_XB" property="jianliXb" jdbcType="INTEGER" />
+    <result column="JIANLI_CSRQ" property="jianliCsrq" jdbcType="VARCHAR" />
+    <result column="JIANLI_KSGZ" property="jianliKsgz" jdbcType="VARCHAR" />
+    <result column="JIANLI_SJ" property="jianliSj" jdbcType="VARCHAR" />
+    <result column="JIANLI_QZZT" property="jianliQzzt" jdbcType="INTEGER" />
+    <result column="JIANLI_JZD" property="jianliJzd" jdbcType="VARCHAR" />
+    <result column="JIANLI_HK" property="jianliHk" jdbcType="VARCHAR" />
+    <result column="JIANLI_HYZT" property="jianliHyzt" jdbcType="INTEGER" />
+    <result column="JIANLI_ZJLX" property="jianliZjlx" jdbcType="INTEGER" />
+    <result column="JIANLI_ZJHM" property="jianliZjhm" jdbcType="VARCHAR" />
+    <result column="JIANLI_ZZMM" property="jianliZzmm" jdbcType="INTEGER" />
+    <result column="JIANLI_QTFALX" property="jianliQtfalx" jdbcType="VARCHAR" />
+    <result column="JIANLI_QTFSHM" property="jianliQtfshm" jdbcType="VARCHAR" />
+    <result column="JIANLI_SG" property="jianliSg" jdbcType="VARCHAR" />
+    <result column="JIANLI_JTZZ" property="jianliJtzz" jdbcType="VARCHAR" />
+    <result column="JIANLI_YB" property="jianliYb" jdbcType="VARCHAR" />
+    <result column="JIANLI_TX" property="jianliTx" jdbcType="VARCHAR" />
+    <result column="JIANLI_YX" property="jianliYx" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    JIANLI_ID, ZH_ID, JIANLI_XM, JIANLI_XB, JIANLI_CSRQ, JIANLI_KSGZ, JIANLI_SJ, JIANLI_QZZT, 
+    JIANLI_JZD, JIANLI_HK, JIANLI_HYZT, JIANLI_ZJLX, JIANLI_ZJHM, JIANLI_ZZMM, JIANLI_QTFALX, 
+    JIANLI_QTFSHM, JIANLI_SG, JIANLI_JTZZ, JIANLI_YB,JIANLI_TX,JIANLI_YX
+  </sql>
+
+</mapper>

@@ -1,0 +1,32 @@
+@includeFileTemplate("/www/syrc/include/mm-header.html"){}
+
+<!--内容开始-->
+<div class="logo"><img src="${resPath}/bcrc/images/bcrc-index_03.png"/></div>
+<div class="content2 ">
+	<ul class="lr_step">
+		<li class="step1 on">填写帐号</li>
+		<li class="step2">验证身份</li>
+		<li class="step3">设置新密码</li>
+	</ul>
+	<div class="con_form con_form2">
+		<div class="line">
+			<span>邮箱：</span>
+			<input type="text" placeholder="请输入邮箱"  id="zh_user" onblur=""/>
+			<i id="ys1"></i>
+		</div>
+		<div class="line">
+			<span>验证码：</span>
+			<input type="text" placeholder="不区分大小写，点击图片可刷新" class="inp_yzm" id="yzm" onblur=""/>
+			<img class="img_yzm"  id="captcha_img"  src="${ctxPath}/verify" onclick="changeCode();" alt="点击更换" title="点击更换"/>
+			
+			<i id="ys4"></i>
+		</div>
+		<a class="qr_btn"  onclick="wjmm1();" href="javascript:void(0)">下一步</a>
+		<a class="fhdl_a" href="${frontPath!}/4">返回登录>></a>
+	</div>
+</div>
+		
+
+<!--内容结束-->
+@includeFileTemplate("/www/syrc/include/mm-footer.html",{"current":"index"}){}
+

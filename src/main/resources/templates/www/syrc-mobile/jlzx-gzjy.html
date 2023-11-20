@@ -1,0 +1,427 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>${siteTitle!}</title>
+<meta name="viewport"
+	content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/ly_html.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-body.css">
+	<link rel="stylesheet" type="text/css" href="${resPath}/bcrc-mobile/css/bcrc-phone-page.css">
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjhtml.css" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/sy_sjbase.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/cover.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/resume.css" />
+<link rel="stylesheet" href="${resPath}/syrc-mobile/images/pop.css" />
+<link rel="stylesheet"
+	href="${resPath}/syrc-mobile/images/swiper.min.css" />
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/jquery-2.1.1.min.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/basic.js"></script>
+<script type="text/javascript"
+	src="${resPath}/syrc-mobile/images/zepto.js"></script>
+<script src="${resPath}/syrc/js/idealDicConfig.js"></script>
+<script src="${resPath}/syrc/js/idealDic.js"></script>
+<script src="${resPath}/syrc/js/idealDicInclude.js"></script>
+<script src="${resPath}/syrc/js/formValidate.js"></script>
+<script type="text/javascript">
+var _tkd = _tkd || [];
+	var $_CONFIG = {};
+//		$_CONFIG['domain'] = '//m.51job.com/';
+//		$_CONFIG['imgpath'] = '//img01.51jobcdn.com/im/m';
+//		$_CONFIG['jspath'] = '//js.51jobcdn.com/in/js/h5';
+//		$_CONFIG['template'] = 'resume/jobintent';
+		$_CONFIG['islogin'] = '1';
+		$_CONFIG['jobarea'] = '240700';
+		$_CONFIG['jobareaname'] = '松原';
+		$_CONFIG['ip'] = '36.48.27.149';
+		$_CONFIG['guid'] = 'db7398e3a4d3205cf89c37f039c6005f';
+$(function(){
+	
+	
+});
+function saveGzjy(){
+	if(isNull($("#entrytime").text())){
+		alert("开始时间不能为空！！！");
+		return false;
+	}
+	if(isNull($("#leavetime").text())){
+		alert("结束时间不能为空！！！");
+		return false;
+	}
+	if(isNull($("#coname").val())){
+		alert("公司不能为空！！！");
+		return false;
+	}
+	if(isNull($("#funtypename").text())){
+		alert("职能不能为空！！！");
+		return false;
+	}
+	if(isNull($("#indtypename").text())){
+		alert("行业不能为空！！！");
+		return false;
+	}
+	if(isNull($("#position").val())){
+		alert("职位不能为空！！！");
+		return false;
+	}
+	if(isNull($("#department").val())){
+		alert("部门不能为空！！！");
+		return false;
+		
+	}
+	if(isNull($("#workdesc").val())){
+		alert("工作描述不能为空！！！");
+		return false;
+	}
+	var  json={};
+	if($("#gzjyId").val()!=undefined){
+		json.gzjyId=$("#gzjyId").val();
+	}
+	if($("#jlBbId").val()!=undefined){
+		json.jlBbId=$("#jlBbId").val();
+	}
+	json.gzjyKssj=$("#entrytime").text();
+	json.gzjyJssj=$("#leavetime").text();
+	json.gzjyGs=$("#coname").val();
+	json.gzjyZn=$("#funtypename").text();
+	json.gzjyHy=$("#indtypename").text();
+	json.gzjyZw=$("#position").val();
+	var gsgm=parseInt($("#gmyc").val());;
+	var gsxz=parseInt($("#xzyc").val());;
+	var gzlx=0;
+	var hwjl=0;
+	if($("#gsgm").text()==''){
+		alert("公司规模不能为空！！！");
+		return false;
+	}else if($("#gsgm").text()=='少于50人'){
+		gsgm=0;
+	}else if($("#gsgm").text()=='150-500人'){
+		gsgm=1;
+	}else if($("#gsgm").text()=='500-1000人'){
+		gsgm=2;
+	}else if($("#gsgm").text()=='5000-10000人'){
+		gsgm=3;
+	}
+	if($("#gsxz").text()==''){
+		alert("公司性质不能为空！！！");
+		return false;
+	}else if($("#gsxz").text()=='外资（欧美）'){
+		gsxz=0;
+	}else if($("#gsxz").text()=='外资（非欧美）'){
+		gsxz=1;
+	}else if($("#gsxz").text()=='合资'){
+		gsxz=2;
+	}else if($("#gsxz").text()=='国企'){
+		gsxz=3;
+	}else if($("#gsxz").text()=='民营公司'){
+		gsxz=4;
+	}else if($("#gsxz").text()=='上市公司'){
+		gsxz=5;
+	}else if($("#gsxz").text()=='创业公司'){
+		gsxz=6;
+	}else if($("#gsxz").text()=='外企代表处'){
+		gsxz=7;
+	}else if($("#gsxz").text()=='政府机关'){
+		gsxz=8;
+	}else if($("#gsxz").text()=='事业单位'){
+		gsxz=9;
+	}else if($("#gsxz").text()=='非营利组织'){
+		gsxz=10;
+	}
+	json.gzjyGsgm=gsgm;
+	json.gzjyBm=$("#department").val();
+	json.gzjyGsxz=gsxz;
+	$.each($('#worktype span'),function(){
+        var classname = $(this).attr('class');
+        	if(classname =="rdo on"){
+				json.gzjyGzlx=$(this).attr('value');
+        	}
+    });
+    $.each($('#overseawork span'),function(){
+        var classname = $(this).attr('class');
+        	if(classname =="rdo on"){
+				json.gzjyHwjl=$(this).attr('value');
+        	}
+    });
+	json.gzjyXsrs=$("#reportperson").val();
+	json.gzjyHbdx=$("#reportboss").val();
+	json.gzjyLzyy=$("#leavereason").val();
+	json.gzjyGzms=$("#workdesc").val();
+	json.gzjyZyyj=$("#score").val();
+	$.ajax({
+      type: "POST",
+      async:false,
+      url: "saveGzjy",
+      data:json,
+      dataType: "json",
+      success: function(data){
+      		alert(data.message);
+      		window.location.href="${ctxPath}/cms/resume/findGzjyByJlbbId?jlBbId="+data.gzjy.jlBbId;
+	}
+	});
+}
+</script>
+</head>
+<body>
+@includeFileTemplate("/www/syrc-mobile/include/qyzx-header.html",{"current":"index"}){}
+<!--内容开始-->
+<div class="wz_cont grzx_in">
+	<div  class="wz_cont_in">
+		<div class="touxiangbox">
+			<div class="con_left">
+				<div class="all_title"><a href="${ctxPath}/cms/resume/findGzjyByJlbbId?jlBbId=${session.jlbbIdSession}"><span>创建工作经验</span></a></div>
+
+				<div id="pageContent" class="fixtop qzyx">
+
+					<div class="sbox">
+						<div class="e">
+							<label><em>*</em>公司名称</label>
+							<input type="text" id="coname" class="txt inputblur" value="${gzjy.gzjyGs}" placeholder="请输入公司名称" name="gzjyGs" oninput="simpleAssociation('Company')"  maxlength="25"  />
+							<p class="error" id="err_coname" style="display:none;"><span></span></p>
+							<div class="asslist bb" style="display:none;">
+								<div class="Company cn">
+
+								</div>
+							</div>
+						</div>
+
+						<a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [0,70] , 'entrytime' );">
+							<label><em>*</em>入职时间</label>
+							<div class="selt">
+								<span id="entrytime" class="sval c_default">
+									@if(isNotEmpty(gzjy.gzjyKssj)){
+										${gzjy.gzjyKssj!}
+									@}else{
+										2019-01-01
+									@}
+								</span>
+								<p class="error" id="err_entrytime" style="display:none;"><span></span></p>
+							</div>
+						</a>
+
+						<a href="javascript:void(0)" class="e" onclick="calendar( 'date' , [0,70] , 'leavetime'  );">
+							<label><em>*</em>离职时间</label>
+							<div class="selt">
+								<span id="leavetime" class="sval">
+									@if(isNotEmpty(gzjy.gzjyJssj)){
+										${gzjy.gzjyJssj!}
+									@}else{
+										2019-01-01
+									@}
+								</span>
+							</div>
+							<p class="error" id="err_leavetime" style="display:none;"><span></span></p>
+						</a>
+
+						<a href="javascript:void(0)" class="e">
+							<label><em>*</em>职能</label>
+							<div class="txt c_default" id="funtypename" onclick="setFuntypePage();" placeholder="请输入职位名称">${gzjy.gzjyZn}</div>
+							<input type="hidden" id="funtype" value=""/>
+							<p class="error" style="display:none;" id="err_funtypename"><span></span></p>
+						</a>
+
+						<div class="e">
+							<label><em>*</em>职位名称</label>
+							<input type="text" id="position" value="${gzjy.gzjyZw}" class="txt inputblur" placeholder="请输入职位名称" name="Job" oninput="simpleAssociation('Job')"  maxlength="35"/>
+							<p class="error" style="display:none;" id="err_position"><span></span></p>
+							<div class="asslist bb" style="display:none;">
+								<div class="Job cn">
+
+								</div>
+							</div>
+						</div>
+
+						<div class="e">
+							<label>部门</label>
+							<input type="text" id="department" class="txt inputblur" placeholder="请输入部门" maxlength="25" value="${gzjy.gzjyBm}" />
+						</div>
+
+						<a href="javascript:void(0)" class="e">
+							<label>公司规模</label>
+							<div class="selt">
+								<span class="sval c_default" id="gsgm">
+								@if(isNotEmpty(gzjy.gzjyGsgm)){
+									<input type="hidden" id="gmyc" value="${gzjy.gzjyGsgm}"/>
+									<script>document.write(dicContainer.getDicItemName('gsgm', ${gzjy.gzjyGsgm}))</script>
+								@}else{
+									<input type="hidden" id="gmyc" value="0"/>
+								@}
+								</span>
+								<select id="cosize">
+									<script >
+										document.write(dicContainer["gsgm"].toString());
+									</script>
+								</select>
+							</div>
+						</a>
+
+						<a href="javascript:void(0)" class="e">
+							<label>公司性质</label>
+							<div class="selt">
+								<span class="sval c_default" id=gsxz>
+									@if(isNotEmpty(gzjy.gzjyGsxz)){
+									<input type="hidden" id="xzyc" value="${gzjy.gzjyGsxz}"/>
+									<script>document.write(dicContainer.getDicItemName('gsxz', ${gzjy.gzjyGsxz}))</script>
+									@}else{
+										<input type="hidden" id="xzyc" value="0"/>
+									@}
+									</span> <select id="cotype">
+												<script >
+													document.write(dicContainer["gsxz"].toString());
+												</script>
+											</select>
+							</div>
+						</a>
+						<a href="javascript:void(0)" class="e">
+							<label>行业</label>
+							<div class="txt c_default" id="indtypename" onclick="setIndtypePage(this,0);">${gzjy.gzjyHy}</div>
+							<input type="hidden" id="indtype" value="">
+						</a>
+
+						<div class="e">
+							<label>工作类型</label>
+							<div class="rdob" id="worktype">
+								@if(isNotEmpty(gzjy.gzjyGzlx)){
+								@if(gzjy.gzjyGzlx==0){
+								<span class="rdo on" value="0">全职</span>
+								<span class="rdo" value="1">兼职</span>
+								<span class="rdo" value="2">实习</span>
+								@}else if(gzjy.gzjyGzlx==1){
+								<span class="rdo" value="0">全职</span>
+								<span class="rdo on" value="1">兼职</span>
+								<span class="rdo" value="2">实习</span>
+								@}else{
+								<span class="rdo" value="0">全职</span>
+								<span class="rdo" value="1">兼职</span>
+								<span class="rdo on" value="2">实习</span>
+								@}
+								@}else{
+								<span class="rdo on" value="0">全职</span>
+								<span class="rdo" value="1">兼职</span>
+								<span class="rdo" value="2">实习</span>
+								@}
+
+							</div>
+						</div>
+
+						<div class="e e_ta">
+							<label><em>*</em>工作描述</label>
+							<div class="ptxa">
+								<textarea id="workdesc" class="inputblur" placeholder="可以描述您的职责范围、工作任务以及取得的成绩等（必填）" maxlength="500">${gzjy.gzjyGzms}</textarea>
+
+							</div>
+							<p class="error" style="display:none;" id="err_workdesc"><span></span></p>
+						</div>
+
+						<div class="e e2" onclick="showSenior(this)">
+							<label>高级人才附加信息</label>
+							<div class="tbox">
+								<span class="arr2"></span>
+							</div>
+						</div>
+
+						<div class="custom" id="highworkinfo" style="display:none">
+							<div class="e">
+								<label>汇报对象</label>
+								<input type="text" id="reportboss" class="txt inputblur" placeholder="请输入汇报对象" maxlength="25" value="${gzjy.gzjyHbdx}" />
+								<p class="error" style="display:none;" id="err_reportboss"><span></span></p>
+							</div>
+							<div class="e">
+								<label>下属人数</label>
+								<input type="text" id="reportperson" class="txt inputblur" placeholder="请输入下属人数"  maxlength="5" value="${gzjy.gzjyXsrs}" />
+								<p class="error" style="display:none;" id="err_reportperson"><span></span></p>
+							</div>
+
+							<div class="e">
+								<label>海外工作</label>
+								<div class="rdob" id="overseawork">
+									@if(isNotEmpty(gzjy.gzjyHwjl)){
+									@if(gzjy.gzjyHwjl==1){
+									<span class="rdo" value="0">是</span>
+									<span class="rdo on" value="1">否</span>
+									@}else{
+									<span class="rdo on" value="0">是</span>
+									<span class="rdo" value="1">否</span>
+									@}
+									@}else{
+									<span class="rdo" value="0">是</span>
+									<span class="rdo on" value="1">否</span>
+									@}
+								</div>
+							</div>
+
+							<div class="e e_ta">
+								<label>离职原因</label>
+								<div class="ptxa">
+									<textarea id="leavereason" class="inputblur" maxlength="200" placeholder="请输入离职原因">${gzjy.gzjyLzyy}</textarea>
+									<div class="gray">
+										</div>
+								</div>
+								<p class="error" style="display:none;" id="err_leavereason"><span></span></p>
+							</div>
+
+							<div class="e e_ta">
+								<label>主要业绩</label>
+								<div class="ptxa">
+									<textarea id="score" class="inputblur" maxlength="200" placeholder="请输入主要业绩">${gzjy.gzjyZyyj}</textarea>
+
+								</div>
+								<p class="error" style="display:none;" id="err_score"><span></span></p>
+							</div>
+						</div>
+
+					</div>
+					<center class="btnbox">
+						<button class="btn" onclick="saveGzjy()">保存</button>
+						@if(isNotEmpty(gzjy.gzjyId)){
+						<input type="hidden" name="gzjyId" id="gzjyId" value="${gzjy.gzjyId}">
+						<input type="hidden" name="jlBbId" id="jlBbId" value="${gzjy.jlBbId}">
+						@}
+						@if(isNotEmpty(jlBbId)){
+						<input type="hidden" name="jlBbId" id="jlBbId" value="${jlBbId}">
+						@}
+					</center>
+
+				</div>
+
+
+
+			</div>
+		</div>
+	</div>
+</div>
+<!--内容结束-->
+@includeFileTemplate("/www/syrc-mobile/include/footer.html",{"current":"index"}){}
+
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/base.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/fun.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/d_jobarea.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popjobarea.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/resume.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/indtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/funtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popfuntype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/popindtype.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/major.js"></script>
+	<script type="text/javascript" src="${resPath}/syrc-mobile/images/swiper.min.js"></script>
+	<script type="text/javascript">
+    var time        = '1572570880666';
+    var pagecode    = '30199';
+    var cusParam    = "116425202951job_msem_baidupz_570m.51job.com";
+    var param   = 'VerType=3&webId=2&logTime=' + time + '&ip=' + $_CONFIG['ip'] + '&guid=db7398e3a4d3205cf89c37f039c6005f&domain=m.51job.com&pageCode=' + pagecode + '&cusParam=' + cusParam;
+
+</script>
+	<script>
+	(function() {
+	  var hm = document.createElement("img");
+	  hm.src = "//trace.51jingying.com/logRecord.php?" + param + "&vt=" + new Date().getTime() + "&logType=pageView";
+	})();
+
+</script>
+	<div id="shadow" style="display:none"></div>
+</body>
+</html>
